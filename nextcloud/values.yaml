@@ -1,0 +1,106 @@
+nextcloud:
+  fullnameOverride: nextcloud
+  image:
+    repository: nextcloud
+    tag: 19.0.1-apache
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-nextcloud-dav-redirect@kubernetescrd,cajun-pro-hsts@kubernetescrd
+      cert-manager.io/cluster-issuer: le-production
+    tls:
+      - hosts:
+          - files.cajun.pro
+        secretName: files-cajun-pro
+  nextcloud:
+    host: files.cajun.pro
+    tableprefix: oc_
+    mail:
+      enabled: true
+      fromAddress: no-reply
+      domain: cajun.pro
+      smtp:
+        host: smtp.gmail.com
+        secure: tls
+        port: 587
+        authtype: LOGIN
+    extraVolumes:
+      - name: data
+        hostPath:
+          path: /mnt/media/nextcloud_data
+    extraVolumeMounts:
+      - mountPath: /data
+        name: data
+  internalDatabase:
+    enabled: false
+  externalDatabase:
+    enabled: true
+    type: mysql
+    host: mysql-nextcloud.cajun-pro.svc
+    database: nextcloud
+    existingSecret:
+      enabled: true
+      secretName: mysql-nextcloud-auth
+      usernameKey: username
+      passwordKey: password
+  cronjob:
+    enabled: true
+  persistence:
+    enabled: true
+    storageClass: rook-cephfs
+    accessMode: ReadWriteMany
+    size: 10Gi
+  metrics:
+    enabled: true
+    https: true
+  nodeSelector:
+    kubernetes.io/hostname: node4.k8s.cajun.pro
+raw:
+  resources:
+    - apiVersion: kubedb.com/v1alpha1
+      kind: MySQL
+      metadata:
+        name: mysql-nextcloud
+        namespace: cajun-pro
+      spec:
+        version: "8.0.14"
+        storageType: Durable
+        replicas: 1
+        updateStrategy:
+          type: RollingUpdate
+        terminationPolicy: Pause
+        storage:
+          storageClassName: rook-cephfs
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+        podTemplate:
+          spec:
+            nodeSelector:
+              cajun.pro/cluster-gen: "2"
+            env:
+              - name: MYSQL_DATABASE
+                value: nextcloud
+    - apiVersion: traefik.containo.us/v1alpha1
+      kind: Middleware
+      metadata:
+        name: nextcloud-dav-redirect
+      spec:
+        redirectRegex:
+          regex: https://(.*)/.well-known/(card|cal)dav
+          replacement: https://${1}/remote.php/dav/
+    - apiVersion: traefik.containo.us/v1alpha1
+      kind: Middleware
+      metadata:
+        name: hsts
+      spec:
+        headers:
+          forceSTSHeader: true
+          stsIncludeSubdomains: true
+          stsSeconds: 15552000

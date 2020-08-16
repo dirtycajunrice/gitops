@@ -1,0 +1,24 @@
+external-dns:
+  fullnameOverride: external-dns
+  sources:
+    - crd
+    - service
+    - ingress
+  aws:
+    credentials:
+      secretName: aws-creds
+    evaluateTargetHealth: false
+  domainFilters:
+    - "nickflix.io"
+    - "cajun.pro"
+    - "itscontained.io"
+  interval: "1m"
+  logLevel: debug
+  logFormat: json
+  txtPrefix: "_."
+  replicas: 1
+  crd:
+    create: true
+  metrics:
+    serviceMonitor:
+      enabled: true

@@ -1,0 +1,11 @@
+loki-stack:
+  loki:
+    nodeSelector:
+      cajun.pro/cluster-gen: "2"
+    serviceMonitor:
+      enabled: true
+  promtail:
+    fullnameOverride: promtail
+    serviceMonitor:
+      enabled: true
+

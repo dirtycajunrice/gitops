@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: le-production
+  labels:
+    app: argocd
+  name: argocd
+spec:
+  rules:
+    - host: argocd.cajun.pro
+      http:
+        paths:
+          - backend:
+              serviceName: argocd-server
+              servicePort: 80
+            path: /
+  tls:
+    - hosts:
+        - argocd.cajun.pro
+      secretName: argocd-cajun-pro

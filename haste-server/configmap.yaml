@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: haste-files
+  namespace: cajun-pro
+data:
+  config.js: |
+    {
+      "host": "0.0.0.0",
+      "port": 7777,
+      "keyLength": 10,
+      "maxLength": 4000000,
+      "staticMaxAge": 86400,
+      "recompressStaticAssets": true,
+      "logging": [
+        {
+          "level": "verbose",
+          "type": "Console",
+          "colorize": true
+        }
+      ],
+      "keyGenerator": {
+        "type": "phonetic"
+      },
+      "rateLimits": {
+        "categories": {
+          "normal": {
+            "totalRequests": 500,
+            "every": 60000
+          }
+        }
+      },
+      "storage": {
+        "type": "redis",
+        "expire": 604800,
+        "host": "redis-haste-server.cajun-pro.svc",
+        "port": 6379,
+        "db": 2
+      },
+      "documents": {
+        "about": "./about.md"
+      }
+    }
+

@@ -1,0 +1,7 @@
+name: grafana
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: grafana
+    version: 5.4.1
+    repository: https://kubernetes-charts.storage.googleapis.com

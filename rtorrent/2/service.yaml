@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rtorrent2
+  labels:
+    app: rtorrent2
+spec:
+  ports:
+  - port: 9081
+    targetPort: 9081
+    protocol: TCP
+    name: web
+  - port: 50106
+    targetPort: 50106
+    protocol: TCP
+    name: seed
+  selector:
+    app: rtorrent2

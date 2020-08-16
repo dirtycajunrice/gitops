@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nvidia-smi-exporter-env
+  namespace: cajun-pro
+data:
+  NVIDIA_VISIBLE_DEVICES: "all"
+  NVIDIA_DRIVER_CAPABILITIES: "all"
+  NVIDIA_SMI_EXPORTER_QUERY: "clocks.current.graphics,clocks.current.memory,clocks.current.sm,clocks.current.video,clocks.max.graphics,clocks.max.memory,clocks.max.sm,fan.speed,memory.total,memory.used,memory.free,power.draw,power.limit,temperature.gpu,utilization.gpu,utilization.memory,encoder.stats.sessionCount,encoder.stats.averageFps,encoder.stats.averageLatency,temperature.gpu,power.draw"
+  NVIDIA_SMI_EXPORTER_HOST: "0.0.0.0"
+  NVIDIA_SMI_EXPORTER_PORT: "9454"

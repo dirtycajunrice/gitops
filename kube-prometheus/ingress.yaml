@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-google-auth@kubernetescrd
+    cert-manager.io/cluster-issuer: le-production
+  labels:
+    app: prometheus
+  name: prometheus
+spec:
+  rules:
+    - host: prometheus.cajun.pro
+      http:
+        paths:
+          - backend:
+              serviceName: prometheus-k8s
+              servicePort: 9090
+            path: /
+  tls:
+    - hosts:
+        - prometheus.cajun.pro
+      secretName: prometheus-cajun-pro

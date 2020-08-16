@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-cachet-env
+  namespace: cajun-pro
+data:
+  TZ: "America/Chicago"
+  POSTGRES_USER: "postgres"
+  POSTGRES_PASSWORD: "postgres"
+

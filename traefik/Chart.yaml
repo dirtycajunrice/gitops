@@ -1,0 +1,10 @@
+name: traefik
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: traefik
+    version: 8.10.0
+    repository: https://charts.itscontained.io
+  - name: raw
+    version: 0.2.3
+    repository: https://kubernetes-charts-incubator.storage.googleapis.com

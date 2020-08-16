@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: thelounge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: thelounge
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: thelounge
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: thelounge
+        image: thelounge/thelounge:4.1.0-alpine
+        ports:
+          - containerPort: 9000
+            name: http
+        livenessProbe:
+          failureThreshold: 10000
+          httpGet:
+            path: /
+            port: 9000
+        volumeMounts:
+          - mountPath: /var/opt/thelounge
+            name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: thelounge
+

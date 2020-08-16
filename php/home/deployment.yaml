@@ -1,0 +1,47 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: php
+  name: php
+  namespace: cajun-pro
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: php
+    spec:
+      securityContext:
+        fsGroup: 1000
+      containers:
+      - image: php:7.4.4-fpm-alpine3.11
+        name: php
+        ports:
+        - containerPort: 9000
+          protocol: TCP
+          name: http
+        volumeMounts:
+          - name: automarkwatched-static
+            mountPath: /var/www/automarkwatched/static
+          - name: www
+            mountPath: /usr/share/nginx
+      hostname: php
+      nodeSelector:
+        node-role.k8s.cajun.pro/general: "true"
+      restartPolicy: Always
+      volumes:
+        - name: www
+          nfs:
+            server: 10.0.10.140
+            path: /mnt/nfs/nginx/www
+        - name: automarkwatched-static
+          nfs:
+            server: 10.0.10.211
+            path: /mnt/nfs/automarkwatched/static_files
+

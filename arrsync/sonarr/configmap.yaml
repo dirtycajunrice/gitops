@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: arrsync-sonarr-env
+  namespace: cajun-pro
+data:
+  TZ: "America/Chicago"
+  ARRSYNC_APP: "sonarr"
+  ARRSYNC_MEDIA_BASE_PATH_MASTER: "/tv/"
+  ARRSYNC_MEDIA_BASE_PATH_SLAVE: "/tv4k/"
+  ARRSYNC_QUALITY_PROFILE_ID_SLAVE: "1"
+  ARRSYNC_SEARCH_ON_ADD: "true"
+  ARRSYNC_URL_MASTER: "https://nickflix.io/sonarr"
+  ARRSYNC_URL_SLAVE: "https://nickflix.io/sonarr4k"

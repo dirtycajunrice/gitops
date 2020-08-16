@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: le-production
+  name: charts-itscontained-io
+spec:
+  rules:
+    - host: charts.itscontained.io
+      http:
+        paths:
+          - backend:
+              serviceName: itscontained-github-io
+              servicePort: 443
+            path: /
+  tls:
+    - hosts:
+        - charts.itscontained.io
+      secretName: charts-itscontained-io

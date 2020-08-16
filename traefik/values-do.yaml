@@ -1,0 +1,56 @@
+traefik:
+  deployment:
+    replicas: 2
+  additionalArguments:
+    - "--serverstransport.insecureskipverify=true"
+    - "--providers.kubernetesingress.ingressclass=traefik"
+    - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-do.k8s.cajun.pro"
+  service:
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: traefik-do.k8s.cajun.pro
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+              - key: app.kubernetes.io/name
+                operator: In
+                values:
+                  - traefik
+          topologyKey: failure-domain.beta.kubernetes.io/zone
+raw:
+  resources:
+    - apiVersion: traefik.containo.us/v1alpha1
+      kind: IngressRoute
+      metadata:
+        name: traefik
+      spec:
+        entryPoints:
+          - websecure
+        routes:
+          - kind: Rule
+            match: Host(`traefik-do.cajun.pro`)
+            middlewares:
+              - name: google-auth
+                namespace: kube-system
+            priority: 10
+            services:
+              - kind: TraefikService
+                name: api@internal
+        tls:
+          secretName: traefik-do-cajun-pro
+    - apiVersion: networking.k8s.io/v1beta1
+      kind: Ingress
+      metadata:
+        annotations:
+          cert-manager.io/cluster-issuer: le-production
+        labels:
+          app: traefik
+        name: traefik
+      spec:
+        rules:
+          - host: traefik-do.cajun.pro
+        tls:
+          - hosts:
+              - traefik-do.cajun.pro
+            secretName: traefik-do-cajun-pro

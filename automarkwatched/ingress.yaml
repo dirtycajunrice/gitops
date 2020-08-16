@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: le-production
+  labels:
+    app: automarkwatched
+  name: automarkwatched
+spec:
+  rules:
+    - host: amw.cajun.pro
+      http:
+        paths:
+          - backend:
+              serviceName: automarkwatched
+              servicePort: 8000
+            path: /
+  tls:
+    - hosts:
+        - amw.cajun.pro
+      secretName: amw-cajun-pro

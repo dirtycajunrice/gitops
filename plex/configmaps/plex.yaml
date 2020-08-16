@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: plex-env
+  namespace: cajun-pro
+data:
+  VERSION: "latest"
+  NVIDIA_VISIBLE_DEVICES: "all"
+  NVIDIA_DRIVER_CAPABILITIES: "all"
+  ALLOWED_NETWORKS: "10.0.10.0/24,172.16.0.0/16"
+#  CHANGE_CONFIG_DIR_OWNERSHIP: "false"

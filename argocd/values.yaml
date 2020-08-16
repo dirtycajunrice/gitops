@@ -1,0 +1,13 @@
+server:
+  extraArgs:
+    - --insecure
+  config:
+    url: https://argocd.cajun.pro
+    application.instanceLabelKey: argocd.argoproj.io/instance
+repoServer:
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 5
+    targetCPUUtilizationPercentage: 75
+    targetMemoryUtilizationPercentage: 75

@@ -1,0 +1,26 @@
+traefik:
+  fullnameOverride: traefik
+  globalArguments:
+    - "--global.checknewversion"
+  redirections:
+    web:
+      enabled: true
+      to: ":443"
+  logs:
+    general:
+      format: json
+    access:
+      enabled: true
+      format: json
+  metrics:
+    prometheus:
+      enabled: true
+      entryPoint: metrics
+  service:
+    spec:
+      externalTrafficPolicy: Local
+  ports:
+    metrics:
+      port: 8082
+      expose: true
+      exposedPort: 8082

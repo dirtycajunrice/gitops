@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      nodeSelector:
+        node-role.k8s.cajun.pro/general: "true"
+      hostname: postgres
+      restartPolicy: Always
+      containers:
+      - name: postgres
+        image: postgres:9.5.15-alpine
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 5432
+        envFrom:
+          - configMapRef:
+              name: postgres-env
+        #livenessProbe:
+        #  failureThreshold: 10000
+        #  httpGet:
+        #    path: /
+        #    port: 1880
+        volumeMounts:
+             - mountPath: /var/lib/postgresql/data
+               name: postgres-data-volume
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+      volumes:
+        - name: postgres-data-volume
+          nfs:
+            server: 10.0.10.211
+            path: /mnt/nfs/postgres/data

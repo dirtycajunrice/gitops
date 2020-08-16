@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-0@kubernetescrd,cajun-pro-redirectslashwithstrip@kubernetescrd
+    cert-manager.io/cluster-issuer: le-production
+  labels:
+    app: rtorrent2
+  name: rtorrent2
+spec:
+  rules:
+    - host: nickflix.io
+      http:
+        paths:
+          - backend:
+              serviceName: rtorrent2
+              servicePort: 9081
+            path: /rtorrent2
+  tls:
+    - hosts:
+        - nickflix.io
+      secretName: nickflix-io

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: xbackbone
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xbackbone
+  serviceName: xbackbone
+  template:
+    metadata:
+      labels:
+        app: xbackbone
+    spec:
+      restartPolicy: Always
+      nodeSelector:
+        cajun.pro/cluster-gen: '2'
+      containers:
+      - name: xbackbone
+        image: pe46dro/xbackbone-docker:3.1.4
+        ports:
+          - containerPort: 80
+        envFrom:
+          - configMapRef:
+              name: xbb-env
+        volumeMounts:
+          - mountPath: /app/storage
+            subPath: storage
+            name: xbackbone
+          - mountPath: /app/resources/database
+            subPath: database
+            name: xbackbone
+      volumes:
+        - name: xbackbone
+          persistentVolumeClaim:
+            claimName: xbackbone
+
