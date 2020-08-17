@@ -12,7 +12,7 @@ spec:
         spec:
           containers:
             - name: cachet-sync
-              image: registry.cajun.pro/internal/cachet-push:1.0.1
+              image: dirtycajunrice/cachet-push:1.0.0
               envFrom:
                 - configMapRef:
                     name: cachet-push-env
