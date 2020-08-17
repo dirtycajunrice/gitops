@@ -1,9 +1,25 @@
+installCRDs: false
 server:
   extraArgs:
     - --insecure
   config:
     url: https://argocd.cajun.pro
     application.instanceLabelKey: argocd.argoproj.io/instance
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      traefik.ingress.kubernetes.io/router.middlewares: argocd-disable-content-type@kubernetescrd
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - argocd.cajun.pro
+    tls:
+      - hosts:
+          - argocd.cajun.pro
+        secretName: argocd-cajun-pro
 repoServer:
   autoscaling:
     enabled: true
