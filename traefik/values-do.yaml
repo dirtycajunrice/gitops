@@ -8,6 +8,8 @@ traefik:
   service:
     annotations:
       external-dns.alpha.kubernetes.io/hostname: traefik-do.k8s.cajun.pro
+      service.beta.kubernetes.io/do-loadbalancer-name: "traefik"
+      service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: "true"
   affinity:
     podAntiAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
