@@ -11,6 +11,7 @@ metadata:
     app: cachet
   name: cachet
 spec:
+  ingressClassName: traefik
   rules:
     - host: status.cajun.pro
       http:
