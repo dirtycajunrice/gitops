@@ -3,6 +3,7 @@ traefik:
     - "--serverstransport.insecureskipverify=true"
     - "--providers.kubernetesingress.ingressclass=traefik"
     - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-home.k8s.cajun.pro"
+    - "--entryPoints.websecure.http.tls=true"
   service:
     spec:
       loadBalancerIP: 10.0.10.150
