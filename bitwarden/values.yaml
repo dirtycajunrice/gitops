@@ -40,21 +40,21 @@ bitwarden_rs:
         secretName: password-cajun-pro
 raw:
   resources:
-    - apiVersion: kubernetes-client.io/v1
-      kind: ExternalSecret
-      metadata:
-        name: bitwarden
-      spec:
-        backendType: vault
-        vaultMountPoint: kubernetes-do
-        vaultRole: vault-auth
-        data:
-          - name: admin-token
-            key: kv-v2/data/auth/bitwarden
-            property: admin-token
-          - name: smtp-password
-            key: kv-v2/data/auth/bitwarden
-            property: smtp-password
-          - name: smtp-username
-            key: kv-v2/data/auth/bitwarden
-            property: smtp-username
+    -
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
