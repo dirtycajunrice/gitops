@@ -38,9 +38,6 @@ bitwarden_rs:
       - hosts:
           - password.cajun.pro
         secretName: password-cajun-pro
-raw:
-  resources:
-    -
 
 
 
