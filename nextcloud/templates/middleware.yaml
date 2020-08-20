@@ -1,4 +1,3 @@
-{{- if lookup "traefik.containo.us/v1alpha1" "CustomResourceDefinition" "" "middlewares.traefik.containo.us"}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -17,6 +16,3 @@ spec:
     forceSTSHeader: true
     stsIncludeSubdomains: true
     stsSeconds: 15552000
-  {{- else }}
-  {{ fail "Traefik Middleware CRD missing"}}
-{{- end }}
