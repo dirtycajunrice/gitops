@@ -5,6 +5,3 @@ dependencies:
   - name: nextcloud
     version: 1.12.0
     repository: https://kubernetes-charts.storage.googleapis.com
-  - name: raw
-    version: 0.2.3
-    repository: https://kubernetes-charts-incubator.storage.googleapis.com

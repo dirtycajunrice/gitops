@@ -1,0 +1,29 @@
+{{- if lookup "kubedb.com/v1alpha1" "CustomResourceDefinition" "" "mysqls.kubedb.com"}}
+apiVersion: kubedb.com/v1alpha1
+kind: MySQL
+metadata:
+  name: mysql-nextcloud
+  namespace: cajun-pro
+spec:
+  version: "8.0.14"
+  storageType: Durable
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  terminationPolicy: Pause
+  storage:
+    storageClassName: rook-cephfs
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+  podTemplate:
+    spec:
+      nodeSelector:
+        cajun.pro/cluster-gen: "2"
+      env:
+        - name: MYSQL_DATABASE
+          value: nextcloud
+  {{ fail "KubeDB MySQL CRD missing"}}
+  {{- end }}
