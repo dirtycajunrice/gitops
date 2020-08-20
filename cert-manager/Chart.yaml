@@ -5,6 +5,3 @@ dependencies:
   - name: cert-manager
     version: v0.15.0
     repository: https://charts.jetstack.io
-  - name: raw
-    version: 0.2.3
-    repository: https://kubernetes-charts-incubator.storage.googleapis.com

@@ -5,6 +5,3 @@ dependencies:
   - name: kubernetes-external-secrets
     version: 5.1.0
     repository: https://godaddy.github.io/kubernetes-external-secrets/
-  - name: raw
-    version: 0.2.3
-    repository: https://kubernetes-charts-incubator.storage.googleapis.com
