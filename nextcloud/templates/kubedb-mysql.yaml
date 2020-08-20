@@ -1,4 +1,3 @@
-{{- if lookup "kubedb.com/v1alpha1" "CustomResourceDefinition" "" "mysqls.kubedb.com"}}
 apiVersion: kubedb.com/v1alpha1
 kind: MySQL
 metadata:
@@ -25,5 +24,3 @@ spec:
       env:
         - name: MYSQL_DATABASE
           value: nextcloud
-  {{ fail "KubeDB MySQL CRD missing"}}
-  {{- end }}
