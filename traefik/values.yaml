@@ -53,6 +53,7 @@ tfa:
     middleware:
       enabled: true
       name: "google-auth"
+    secret: "-"
   envFrom:
     SECRET:
       name: traefik-forward-auth
