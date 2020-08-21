@@ -12,6 +12,7 @@ spec:
     path: traefik-forward-auth
     targetRevision: HEAD
     helm:
+      releaseName: traefik-forward-auth
       valueFiles:
         - values.yaml
         - values-home.yaml
