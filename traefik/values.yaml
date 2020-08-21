@@ -64,7 +64,7 @@ tfa:
       valueFrom:
         secretKeyRef:
           name: traefik-forward-auth
-            key: google-client-id
+          key: google-client-id
     - name: PROVIDERS_GOOGLE_CLIENT_SECRET
       valueFrom:
         secretKeyRef:
