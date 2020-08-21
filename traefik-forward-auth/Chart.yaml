@@ -1,7 +1,0 @@
-name: traefik-forward-auth
-apiVersion: v2
-version: 1.0.0
-dependencies:
-  - name: traefik-forward-auth
-    version: 0.1.1
-    repository: https://charts.itscontained.io
