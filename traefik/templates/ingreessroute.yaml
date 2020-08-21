@@ -1,0 +1,18 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Values.traefik.fullnameOverride }}
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`{{ include "traefik.hostname" . }}`)
+      middlewares:
+        - name: {{ .Values.tfa.traefikForwardAuth.middleware.name }}
+      priority: 10
+      services:
+        - kind: TraefikService
+          name: api@internal
+  tls:
+    secretName: {{ include "traefik.secretname" . }}

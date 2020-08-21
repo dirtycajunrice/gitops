@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: le-production
+  name: {{ .Values.traefik.fullnameOverride }}
+spec:
+  rules:
+    - host: {{ include "traefik.hostname" . }}
+      http:
+        paths:
+          - backend:
+              serviceName: traefik
+              servicePort: 80
+            path: /
+  tls:
+    - hosts:
+        - {{ include "traefik.hostname" . }}
+      secretName: {{ include "traefik.secretname" . }}

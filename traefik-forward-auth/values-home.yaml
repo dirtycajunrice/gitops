@@ -1,16 +1,2 @@
 global:
   cluster: home
-traefik-forward-auth:
-  traefikForwardAuth:
-    authHost: nickflix.io
-  ingress:
-    hosts:
-      - host: nickflix.io
-        paths:
-          - /_oauth
-    tls:
-      - hosts:
-          - nickflix.io
-        secretName: nickflix-io
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"

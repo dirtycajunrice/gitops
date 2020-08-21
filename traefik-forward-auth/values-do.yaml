@@ -1,14 +1,2 @@
 global:
   cluster: do
-traefik-forward-auth:
-  traefikForwardAuth:
-    authHost: cajun.pro
-  ingress:
-    hosts:
-      - host: cajun.pro
-        paths:
-          - /_oauth
-    tls:
-      - hosts:
-          - cajun.pro
-        secretName: cajun-pro

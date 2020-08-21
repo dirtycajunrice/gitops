@@ -2,10 +2,10 @@ traefik:
   fullnameOverride: traefik
   globalArguments:
     - "--global.checknewversion"
-  redirections:
-    web:
-      enabled: true
-      to: ":443"
+    - "--serverstransport.insecureskipverify=true"
+    - "--providers.kubernetesingress.ingressclass=traefik"
+    - "--entryPoints.websecure.http.tls=true"
+    - "--metrics.prometheus.entryPoint=metrics"
   logs:
     general:
       format: json
@@ -20,7 +20,55 @@ traefik:
     spec:
       externalTrafficPolicy: Local
   ports:
+    web:
+      redirectTo: websecure
     metrics:
       port: 8082
       expose: true
       exposedPort: 8082
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                    - traefik
+            topologyKey: kubernetes.io/hostname
+
+tfa:
+  fullnameOverride: traefik-forward-auth
+  traefikForwardAuth:
+    cookie:
+      domain: "cajun.pro,nickflix.io"
+    logging:
+      level: debug
+      format: json
+    providers:
+      google:
+        enabled: true
+    middleware:
+      enabled: true
+      name: "google-auth"
+  envFrom:
+    SECRET:
+      name: traefik-forward-auth
+      key: secret
+    PROVIDERS_GOOGLE_CLIENT_ID:
+      name: traefik-forward-auth
+      key: google-client-id
+    PROVIDERS_GOOGLE_CLIENT_SECRET:
+      name: traefik-forward-auth
+      key: google-client-secret
+    WHITELIST:
+      name: traefik-forward-auth
+      key: whitelist
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "50"

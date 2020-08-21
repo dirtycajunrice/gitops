@@ -1,66 +1,25 @@
+global:
+  cluster: do
+
 traefik:
   deployment:
     replicas: 2
   additionalArguments:
-    - "--serverstransport.insecureskipverify=true"
-    - "--providers.kubernetesingress.ingressclass=traefik"
+    - "--providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik"
     - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-do.k8s.cajun.pro"
-    - "--entryPoints.websecure.http.tls=true"
   service:
     annotations:
-      external-dns.alpha.kubernetes.io/hostname: traefik-do.k8s.cajun.pro
       service.beta.kubernetes.io/do-loadbalancer-name: "traefik"
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchExpressions:
-              - key: app.kubernetes.io/name
-                operator: In
-                values:
-                  - traefik
-          topologyKey: failure-domain.beta.kubernetes.io/zone
-raw:
-  resources:
-    - apiVersion: traefik.containo.us/v1alpha1
-      kind: IngressRoute
-      metadata:
-        name: traefik
-      spec:
-        entryPoints:
-          - websecure
-        routes:
-          - kind: Rule
-            match: Host(`traefik-do.cajun.pro`)
-            middlewares:
-              - name: google-auth
-                namespace: kube-system
-            priority: 10
-            services:
-              - kind: TraefikService
-                name: api@internal
-        tls:
-          secretName: traefik-do-cajun-pro
-    - apiVersion: networking.k8s.io/v1beta1
-      kind: Ingress
-      metadata:
-        annotations:
-          cert-manager.io/cluster-issuer: le-production
-        labels:
-          app: traefik
-        name: traefik
-      spec:
-        rules:
-          - host: traefik-do.cajun.pro
-        tls:
-          - hosts:
-              - traefik-do.cajun.pro
-            secretName: traefik-do-cajun-pro
-    - apiVersion: networking.k8s.io/v1beta1
-      kind: IngressClass
-      metadata:
-        annotations:
-          ingressclass.kubernetes.io/is-default-class: "true"
-        name: traefik
-      spec:
-        controller: traefik.io/ingress-controller
+
+tfa:
+  traefikForwardAuth:
+    authHost: cajun.pro
+  ingress:
+    hosts:
+      - host: cajun.pro
+        paths:
+          - /_oauth
+    tls:
+      - hosts:
+          - cajun.pro
+        secretName: cajun-pro
