@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+    traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-secret-manager-github-com@kubernetescrd
+    cert-manager.io/cluster-issuer: le-production
+  name: secret-manager-itscontained-io
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: secret-manager.itscontained.io
+      http:
+        paths:
+          - backend:
+              serviceName: github-com
+              servicePort: 443
+            path: /
+  tls:
+    - hosts:
+        - secret-manager.itscontained.io
+      secretName: secret-manager-itscontained-io
