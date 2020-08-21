@@ -9,7 +9,7 @@ metadata:
     cert-manager.io/cluster-issuer: le-production
   name: secret-manager-itscontained-io
 spec:
-  ingressClassName: traefik
+#  ingressClassName: traefik
   rules:
     - host: secret-manager.itscontained.io
       http:
