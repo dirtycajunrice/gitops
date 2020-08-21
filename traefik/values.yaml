@@ -54,19 +54,27 @@ tfa:
       enabled: true
       name: "google-auth"
     secret: "-"
-  envFrom:
-    SECRET:
-      name: traefik-forward-auth
-      key: secret
-    PROVIDERS_GOOGLE_CLIENT_ID:
-      name: traefik-forward-auth
-      key: google-client-id
-    PROVIDERS_GOOGLE_CLIENT_SECRET:
-      name: traefik-forward-auth
-      key: google-client-secret
-    WHITELIST:
-      name: traefik-forward-auth
-      key: whitelist
+  env:
+    - name: SECRET
+      valueFrom:
+        secretKeyRef:
+          name: traefik-forward-auth
+          key: secret
+    - name: PROVIDERS_GOOGLE_CLIENT_ID
+      valueFrom:
+        secretKeyRef:
+          name: traefik-forward-auth
+            key: google-client-id
+    - name: PROVIDERS_GOOGLE_CLIENT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: traefik-forward-auth
+          key: google-client-secret
+    - name: WHITELIST
+      valueFrom:
+        secretKeyRef:
+          name: traefik-forward-auth
+          key: whitelist
   ingress:
     enabled: true
     annotations:
