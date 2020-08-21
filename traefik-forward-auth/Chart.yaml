@@ -5,6 +5,3 @@ dependencies:
   - name: traefik-forward-auth
     version: 0.1.1
     repository: https://charts.itscontained.io
-  - name: raw
-    version: 0.2.3
-    repository: https://kubernetes-charts-incubator.storage.googleapis.com

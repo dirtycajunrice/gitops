@@ -1,3 +1,5 @@
+global:
+  cluster: home
 traefik-forward-auth:
   traefikForwardAuth:
     authHost: nickflix.io
@@ -12,37 +14,3 @@ traefik-forward-auth:
         secretName: nickflix-io
   nodeSelector:
     cajun.pro/cluster-gen: "2"
-
-raw:
-  resources:
-    - apiVersion: kubernetes-client.io/v1
-      kind: ExternalSecret
-      metadata:
-        name: traefik-forward-auth
-      spec:
-        backendType: vault
-        vaultMountPoint: kubernetes-home
-        vaultRole: vault-auth
-        data:
-          - name: google-client-id
-            key: kv-v2/data/auth/traefik-forward-auth
-            property: google-client-id
-          - name: google-client-secret
-            key: kv-v2/data/auth/traefik-forward-auth
-            property: google-client-secret
-          - name: secret
-            key: kv-v2/data/auth/traefik-forward-auth
-            property: secret
-          - name: whitelist
-            key: kv-v2/data/auth/traefik-forward-auth
-            property: whitelist
-    - apiVersion: traefik.containo.us/v1alpha1
-      kind: Middleware
-      metadata:
-        name: google-auth
-      spec:
-        forwardAuth:
-          address: 'http://traefik-forward-auth.kube-system.svc:4181'
-          authResponseHeaders:
-            - X-Forwarded-User
-          trustForwardHeader: true

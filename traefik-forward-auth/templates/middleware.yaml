@@ -1,0 +1,10 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: google-auth
+spec:
+  forwardAuth:
+    address: 'http://{{ .Release.Name }}.{{ .Release.Namespace }}.svc:4181'
+    authResponseHeaders:
+      - X-Forwarded-User
+    trustForwardHeader: true
