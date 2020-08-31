@@ -29,9 +29,10 @@ argo-cd:
       hosts:
         - argocd.cajun.pro
       tls:
-        - hosts:
+        - secretName: argocd-cajun-pro
+          hosts:
             - argocd.cajun.pro
-          secretName: argocd-cajun-pro
+
     metrics:
       enabled: true
       serviceMonitor:
