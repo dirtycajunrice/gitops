@@ -1,29 +1,74 @@
-installCRDs: false
-server:
-  extraArgs:
-    - --insecure
-  config:
-    url: https://argocd.cajun.pro
-    application.instanceLabelKey: argocd.argoproj.io/instance
-  ingress:
-    enabled: true
-    annotations:
-      kubernetes.io/ingress.class: traefik
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.priority: "10"
-      traefik.ingress.kubernetes.io/router.tls: "true"
-      traefik.ingress.kubernetes.io/router.middlewares: argocd-disable-content-type@kubernetescrd
-      cert-manager.io/cluster-issuer: le-production
-    hosts:
-      - argocd.cajun.pro
-    tls:
-      - hosts:
-          - argocd.cajun.pro
-        secretName: argocd-cajun-pro
-repoServer:
-  autoscaling:
-    enabled: true
-    minReplicas: 3
-    maxReplicas: 5
-    targetCPUUtilizationPercentage: 75
-    targetMemoryUtilizationPercentage: 75
+argo-cd:
+  fullnameOverride: argocd
+  installCRDs: false
+  global:
+    image:
+      tag: v1.7.2
+  controller:
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    resources:
+      requests:
+        cpu: 250m
+        memory: 300Mi
+  server:
+    extraArgs:
+      - --insecure
+    config:
+      url: https://argocd.cajun.pro
+      application.instanceLabelKey: argocd.argoproj.io/instance
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        cert-manager.io/cluster-issuer: le-production
+      hosts:
+        - argocd.cajun.pro
+      tls:
+        - hosts:
+            - argocd.cajun.pro
+          secretName: argocd-cajun-pro
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    resources:
+      requests:
+        cpu: 100m
+        memory: 100Mi
+  repoServer:
+    autoscaling:
+      enabled: true
+      minReplicas: 3
+      maxReplicas: 20
+      targetCPUUtilizationPercentage: 75
+      targetMemoryUtilizationPercentage: 75
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: argocd-repo-server
+              topologyKey: kubernetes.io/hostname
+            weight: 100
+    resources:
+      requests:
+        cpu: 100m
+        memory: 100Mi
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+  dex:
+    resources:
+      requests:
+        cpu: 10m
+        memory: 50Mi
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
