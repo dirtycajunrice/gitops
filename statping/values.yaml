@@ -3,7 +3,7 @@ statping:
   statping:
     name: cajun.pro status
     description: cajun.pro hosting status page
-    domain: https://status-dev.cajun.pro
+    domain: https://status.cajun.pro
     admin:
       existingSecret:
         enabled: true
@@ -18,13 +18,13 @@ statping:
       traefik.ingress.kubernetes.io/router.priority: "10"
       cert-manager.io/cluster-issuer: le-production
     hosts:
-      - host: status-dev.cajun.pro
+      - host: status.cajun.pro
         paths:
           - /
     tls:
       - hosts:
-          - status-dev.cajun.pro
-        secretName: status-dev-cajun-pro
+          - status.cajun.pro
+        secretName: status-cajun-pro
   externalSecret:
     enabled: true
     type: kubernetes-external-secrets
