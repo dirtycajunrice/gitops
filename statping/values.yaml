@@ -41,8 +41,8 @@ statping:
           key: kv-v2/data/auth/statping
           property: admin-password
         - name: admin-email
-          key: kv-v2/data/auth/statping
-          property: admin-email
+          key: kv-v2/data/auth/common
+          property: email
   resources:
     requests:
      cpu: 100m
