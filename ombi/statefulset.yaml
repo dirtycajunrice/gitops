@@ -18,7 +18,7 @@ spec:
         fsGroup: 569
       containers:
        - name: ombi
-         image: itscontained/ombi:4.0.449
+         image: itscontained/ombi:4.0.471
          ports:
            - containerPort: 5000
              protocol: TCP

@@ -1,7 +1,7 @@
 arr:
   image:
     repository: sonarr
-    tag: 3.0.3.907
+    tag: 3.0.3.913
   env:
     TZ: America/Chicago
     PUID: "1000"
