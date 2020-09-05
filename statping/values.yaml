@@ -18,7 +18,9 @@ statping:
       traefik.ingress.kubernetes.io/router.priority: "10"
       cert-manager.io/cluster-issuer: le-production
     hosts:
-      - status-dev.cajun.pro
+      - host: status-dev.cajun.pro
+        paths:
+          - /
     tls:
       - hosts:
           - status-dev.cajun.pro
