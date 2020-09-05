@@ -19,6 +19,10 @@ argo-cd:
     config:
       url: https://argocd.cajun.pro
       application.instanceLabelKey: argocd.argoproj.io/instance
+      accounts.cajunguest: login
+    rbacConfig:
+      policy.csv: |
+        policy.default: role:readonly
     ingress:
       enabled: true
       annotations:
