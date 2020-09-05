@@ -1,0 +1,47 @@
+statping:
+  fullnameOverride: statping
+  statping:
+    name: cajun.pro status
+    description: cajun.pro hosting status page
+    domain: https://status-dev.cajun.pro
+    admin:
+      existingSecret:
+        enabled: true
+        name: statping
+  persistence:
+    enabled: true
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: traefik
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - status-dev.cajun.pro
+    tls:
+      - hosts:
+          - status-dev.cajun.pro
+        secretName: status-dev-cajun-pro
+  externalSecret:
+    enabled: true
+    type: kubernetes-external-secrets
+    kubernetesExternalSecrets:
+      spec:
+        backendType: vault
+        vaultMountPoint: kubernetes-do
+        vaultRole: vault-auth
+      data:
+        - name: admin-user
+          key: kv-v2/data/auth/statping
+          property: admin-user
+        - name: admin-password
+          key: kv-v2/data/auth/statping
+          property: admin-password
+        - name: admin-email
+          key: kv-v2/data/auth/statping
+          property: admin-email
+  resources:
+    requests:
+     cpu: 100m
+     memory: 128Mi

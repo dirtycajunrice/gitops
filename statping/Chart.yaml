@@ -1,0 +1,7 @@
+name: statping
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: statping
+    version: 0.1.4
+    repository: https://charts.itscontained.io
