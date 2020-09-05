@@ -1,6 +1,5 @@
-arr:
+radarr:
   image:
-    repository: radarr
     tag: 3.0.0.3587
   env:
     TZ: America/Chicago
@@ -42,6 +41,5 @@ arr:
     runAsUser: 1000
     runAsGroup: 1000
     fsGroup: 1000
-    fsGroupChangePolicy: "OnRootMismatch"
   nodeSelector:
     cajun.pro/cluster-gen: "2"
