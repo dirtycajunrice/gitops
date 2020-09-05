@@ -3,5 +3,5 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: statping
-    version: 0.1.6
+    version: 0.1.7
     repository: https://charts.itscontained.io
