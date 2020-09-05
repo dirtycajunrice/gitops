@@ -21,8 +21,7 @@ argo-cd:
       application.instanceLabelKey: argocd.argoproj.io/instance
       accounts.cajunguest: login
     rbacConfig:
-      policy.csv: |
-        policy.default: role:readonly
+      policy.default: role:readonly
     ingress:
       enabled: true
       annotations:
