@@ -1,7 +1,8 @@
 radarr:
   radarr:
     image:
-      tag: 3.0.0.3587
+      organization: itscontained
+      tag: 3.0.0.3736
     env:
       TZ: America/Chicago
       PUID: "1000"
@@ -11,7 +12,6 @@ radarr:
       annotations:
         kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.tls: "true"
         traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
       tls:
         - hosts:
@@ -20,19 +20,16 @@ radarr:
     persistence:
       type: statefulset
       config:
-        enabled: true
         accessMode: ReadWriteMany
         size: 10Gi
         storageClass: rook-cephfs
-      media:
-        enabled: false
     additionalVolumes:
       - name: mnt
         nfs:
           server: 10.0.10.211
           path: /mnt/media
       - name: emptydir
-        emptyDir: { }
+        emptyDir: {}
     additionalVolumeMounts:
       - name: mnt
         mountPath: /mnt/media
