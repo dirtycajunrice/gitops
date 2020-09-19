@@ -3,5 +3,5 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: nextcloud
-    version: 1.12.0
-    repository: https://kubernetes-charts.storage.googleapis.com
+    version: 2.1.1
+    repository: https://nextcloud.github.io/helm/
