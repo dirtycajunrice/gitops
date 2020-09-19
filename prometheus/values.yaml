@@ -47,7 +47,9 @@ kube-prometheus-stack:
       server:
         root_url: https://grafana.cajun.pro
   prometheus:
-    fullnameOverride: prometheus
+    podDisruptionBudget:
+      enabled: true
+      maxUnavailable: 1
     ingress:
       enabled: true
       annotations:
@@ -64,6 +66,9 @@ kube-prometheus-stack:
         - hosts:
             - prometheus.cajun.pro
           secretName: prometheus-cajun-pro
+    ruleNamespaceSelector: true
+    serviceMonitorNamespaceSelector: true
+    podMonitorNamespaceSelector: true
   kube-state-metrics:
     fullnameOverride: kube-state-metrics
   prometheus-node-exporter:
