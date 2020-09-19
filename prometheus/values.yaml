@@ -67,29 +67,32 @@ kube-prometheus-stack:
             - prometheus.cajun.pro
           secretName: prometheus-cajun-pro
     ruleNamespaceSelector:
-      - cajun-pro
-      - default
-      - kube-node-lease
-      - kube-public
-      - kube-system
-      - monitoring
-      - rook-ceph
+      matchNames:
+        - cajun-pro
+        - default
+        - kube-node-lease
+        - kube-public
+        - kube-system
+        - monitoring
+        - rook-ceph
     serviceMonitorNamespaceSelector:
-      - cajun-pro
-      - default
-      - kube-node-lease
-      - kube-public
-      - kube-system
-      - monitoring
-      - rook-ceph
+      matchNames:
+        - cajun-pro
+        - default
+        - kube-node-lease
+        - kube-public
+        - kube-system
+        - monitoring
+        - rook-ceph
     podMonitorNamespaceSelector:
-      - cajun-pro
-      - default
-      - kube-node-lease
-      - kube-public
-      - kube-system
-      - monitoring
-      - rook-ceph
+      matchNames:
+        - cajun-pro
+        - default
+        - kube-node-lease
+        - kube-public
+        - kube-system
+        - monitoring
+        - rook-ceph
   kube-state-metrics:
     fullnameOverride: kube-state-metrics
   prometheus-node-exporter:
