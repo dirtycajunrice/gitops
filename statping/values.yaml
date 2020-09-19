@@ -10,6 +10,11 @@ statping:
         name: statping
   persistence:
     enabled: true
+  postgres:
+    type: kubedb
+    kubedb:
+      enabled: true
+      version: '1.11'
   ingress:
     enabled: true
     annotations:
