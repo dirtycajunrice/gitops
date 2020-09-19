@@ -9,7 +9,7 @@ spec:
     server: https://node5.k8s.cajun.pro:6443
   project: default
   source:
-    path: kube-prometheus
+    path: prometheus
     targetRevision: HEAD
     helm:
       valueFiles:
