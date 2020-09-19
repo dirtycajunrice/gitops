@@ -18,6 +18,7 @@ kube-prometheus-stack:
           hosts:
             - alertmanager.cajun.pro
   grafana:
+    fullnameOverride: grafana
     testFramework:
       enabled: false
     ingress:
