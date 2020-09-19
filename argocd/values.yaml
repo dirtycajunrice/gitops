@@ -3,7 +3,7 @@ argo-cd:
   installCRDs: false
   global:
     image:
-      tag: v1.7.4
+      tag: v1.7.6
   controller:
     metrics:
       enabled: true
@@ -35,7 +35,6 @@ argo-cd:
         - secretName: argocd-cajun-pro
           hosts:
             - argocd.cajun.pro
-
     metrics:
       enabled: true
       serviceMonitor:
