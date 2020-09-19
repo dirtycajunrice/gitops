@@ -1,6 +1,7 @@
 kube-prometheus-stack:
   fullnameOverride: prometheus
   alertmanager:
+    fullnameOverride: alertmanager
     ingress:
       enabled: true
       annotations:
