@@ -67,8 +67,7 @@ kube-prometheus-stack:
             - prometheus.cajun.pro
           secretName: prometheus-cajun-pro
     prometheusSpec:
-      ruleNamespaceSelector:
-        any: true
+      ruleNamespaceSelector: true
         # matchNames:
         #   - cajun-pro
         #   - default
@@ -77,8 +76,7 @@ kube-prometheus-stack:
         #   - kube-system
         #   - monitoring
         #   - rook-ceph
-      serviceMonitorNamespaceSelector:
-        any: true
+      serviceMonitorNamespaceSelector: true
         #matchNames:
         #  - cajun-pro
         #  - default
@@ -87,8 +85,7 @@ kube-prometheus-stack:
         #  - kube-system
         #  - monitoring
         #  - rook-ceph
-      podMonitorNamespaceSelector:
-        any: true
+      podMonitorNamespaceSelector: true
         #matchNames:
         #  - cajun-pro
         #  - default
