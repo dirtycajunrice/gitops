@@ -47,6 +47,7 @@ kube-prometheus-stack:
       server:
         root_url: https://grafana.cajun.pro
   prometheus:
+    fullnameOverride: prometheus
     ingress:
       enabled: true
       annotations:
