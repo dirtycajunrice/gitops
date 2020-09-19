@@ -11,6 +11,7 @@ statping:
   persistence:
     enabled: true
   postgres:
+    enabled: true
     type: kubedb
     kubedb:
       enabled: true
