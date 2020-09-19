@@ -1,5 +1,5 @@
 kube-prometheus-stack:
-  fullnameOverride: prometheus-k8s
+  fullnameOverride: prometheus
   alertmanager:
     fullnameOverride: alertmanager
     ingress:
@@ -47,7 +47,6 @@ kube-prometheus-stack:
       server:
         root_url: https://grafana.cajun.pro
   prometheus:
-    fullnameOverride: prometheus
     ingress:
       enabled: true
       annotations:
