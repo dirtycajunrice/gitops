@@ -63,3 +63,5 @@ kube-prometheus-stack:
         - hosts:
             - prometheus.cajun.pro
           secretName: prometheus-cajun-pro
+  prometheus-node-exporter:
+    fullnameOverride: node-exporter
