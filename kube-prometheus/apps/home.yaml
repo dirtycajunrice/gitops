@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus-home
+  namespace: argocd
+spec:
+  destination:
+    namespace: monitoring
+    server: https://node5.k8s.cajun.pro:6443
+  project: default
+  source:
+    path: kube-prometheus
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+    repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
+#  syncPolicy:
+#    automated: {}

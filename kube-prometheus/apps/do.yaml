@@ -1,0 +1,19 @@
+#apiVersion: argoproj.io/v1alpha1
+#kind: Application
+#metadata:
+#  name: prometheus-do
+#  namespace: argocd
+#spec:
+#  destination:
+#    namespace: monitoring
+#    server: https://kubernetes.default.svc
+#  project: default
+#  source:
+#    path: kube-prometheus
+#    targetRevision: HEAD
+#    helm:
+#      valueFiles:
+#        - values.yaml
+#    repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
+#  syncPolicy:
+#    automated: {}

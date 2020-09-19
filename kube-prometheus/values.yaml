@@ -1,0 +1,63 @@
+kube-prometheus-stack:
+  fullnameOverride: prometheus
+  alertmanager:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        traefik.ingress.kubernetes.io/router.middlewares: kube-system-google-auth@kubernetescrd
+        cert-manager.io/cluster-issuer: le-production
+      hosts:
+        - alertmanager.cajun.pro
+      paths:
+        - /
+      tls:
+        - secretName: alertmanager-cajun-pro
+          hosts:
+            - alertmanager.cajun.pro
+  grafana:
+    testFramework:
+      enabled: false
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        cert-manager.io/cluster-issuer: le-production
+      hosts:
+        - grafana.cajun.pro
+      tls:
+        - hosts:
+            - grafana.cajun.pro
+          secretName: grafana-cajun-pro
+    nodeSelector:
+      cajun.pro/cluster-gen: "2"
+    persistence:
+      enabled: true
+      accessModes:
+        - ReadWriteMany
+    plugins:
+      - grafana-piechart-panel
+    grafana.ini:
+      server:
+        root_url: https://grafana.cajun.pro
+  prometheus:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        traefik.ingress.kubernetes.io/router.middlewares: kube-system-google-auth@kubernetescrd
+        cert-manager.io/cluster-issuer: le-production
+      hosts:
+        - prometheus.cajun.pro
+      paths:
+        - /
+      tls:
+        - hosts:
+            - prometheus.cajun.pro
+          secretName: prometheus-cajun-pro
