@@ -16,7 +16,7 @@ statping:
     kubedb:
       enabled: true
       version: '1.11'
-    postgresql:
+    posgresql:
       enabled: false
   ingress:
     enabled: true
