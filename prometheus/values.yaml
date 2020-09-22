@@ -67,6 +67,9 @@ kube-prometheus-stack:
     serviceMonitor:
       scheme: https
       insecureSkipVerify: true
+      caFile: /etc/prometheus/secrets/etcd-client/ca.crt
+      certFile: /etc/prometheus/secrets/etcd-client/server.crt
+      keyFile: /etc/prometheus/secrets/etcd-client/server.key
   prometheusOperator:
     admissionWebhooks:
       failurePolicy: Fail
@@ -91,6 +94,8 @@ kube-prometheus-stack:
             - prometheus.cajun.pro
           secretName: prometheus-cajun-pro
     prometheusSpec:
+      secrets:
+        - etcd-client
       ruleSelectorNilUsesHelmValues: false
       serviceMonitorSelectorNilUsesHelmValues: false
       podMonitorSelectorNilUsesHelmValues: false
