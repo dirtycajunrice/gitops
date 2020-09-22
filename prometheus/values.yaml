@@ -61,12 +61,12 @@ kube-prometheus-stack:
       https: true
       insecureSkipVerify: true
   kubeEtcd:
+    service:
+      port: 2381
+      targetPort: 2381
     serviceMonitor:
-      scheme: https
-      serverName: localhost
-      caFile: /etc/kubernetes/pki/etcd/ca.crt
-      certFile: /etc/kubernetes/pki/etcd/server.crt
-      keyFile: /etc/kubernetes/pki/etcd/server.key
+      https: true
+      insecureSkipVerify: true
   prometheus:
     podDisruptionBudget:
       enabled: true
@@ -88,15 +88,6 @@ kube-prometheus-stack:
             - prometheus.cajun.pro
           secretName: prometheus-cajun-pro
     prometheusSpec:
-      volumes:
-        - hostPath:
-            path: /etc/kubernetes/pki/etcd
-          name: etcd-certs
-      volumeMounts:
-        - mountPath: /etc/kubernetes/pki/etcd
-          name: etcd-certs
-      nodeSelector:
-        node-role.kubernetes.io/master: ""
       ruleSelectorNilUsesHelmValues: false
       serviceMonitorSelectorNilUsesHelmValues: false
       podMonitorSelectorNilUsesHelmValues: false
