@@ -67,6 +67,9 @@ kube-prometheus-stack:
     serviceMonitor:
       scheme: https
       insecureSkipVerify: true
+  prometheusOperator:
+    admissionWebhooks:
+      failurePolicy: Fail
   prometheus:
     podDisruptionBudget:
       enabled: true
