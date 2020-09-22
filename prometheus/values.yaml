@@ -50,6 +50,9 @@ kube-prometheus-stack:
     serviceMonitor:
       https: true
       insecureSkipVerify: true
+      service:
+        port: 10259
+        targetPort: 10259
   kubeEtcd:
     serviceMonitor:
       scheme: https
