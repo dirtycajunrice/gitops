@@ -65,7 +65,7 @@ kube-prometheus-stack:
       port: 2381
       targetPort: 2381
     serviceMonitor:
-      https: true
+      scheme: https
       insecureSkipVerify: true
   prometheus:
     podDisruptionBudget:
