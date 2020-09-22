@@ -88,8 +88,6 @@ kube-prometheus-stack:
             - prometheus.cajun.pro
           secretName: prometheus-cajun-pro
     prometheusSpec:
-      secrets:
-        - etcd-client
       ruleSelectorNilUsesHelmValues: false
       serviceMonitorSelectorNilUsesHelmValues: false
       podMonitorSelectorNilUsesHelmValues: false
