@@ -46,6 +46,10 @@ kube-prometheus-stack:
     grafana.ini:
       server:
         root_url: https://grafana.cajun.pro
+  kubeScheduler:
+    serviceMonitor:
+      https: true
+      insecureSkipVerify: true
   kubeEtcd:
     serviceMonitor:
       scheme: https
@@ -86,33 +90,6 @@ kube-prometheus-stack:
       ruleSelectorNilUsesHelmValues: false
       serviceMonitorSelectorNilUsesHelmValues: false
       podMonitorSelectorNilUsesHelmValues: false
-      #ruleNamespaceSelector: true
-        # matchNames:
-        #   - cajun-pro
-        #   - default
-        #   - kube-node-lease
-        #   - kube-public
-        #   - kube-system
-        #   - monitoring
-        #   - rook-ceph
-      #serviceMonitorNamespaceSelector: true
-        #matchNames:
-        #  - cajun-pro
-        #  - default
-        #  - kube-node-lease
-        #  - kube-public
-        #  - kube-system
-        #  - monitoring
-        #  - rook-ceph
-      #podMonitorNamespaceSelector: true
-        #matchNames:
-        #  - cajun-pro
-        #  - default
-        #  - kube-node-lease
-        #  - kube-public
-        #  - kube-system
-        #  - monitoring
-        #  - rook-ceph
   kube-state-metrics:
     fullnameOverride: kube-state-metrics
   prometheus-node-exporter:
