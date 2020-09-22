@@ -64,12 +64,6 @@ kube-prometheus-stack:
     service:
       port: 2381
       targetPort: 2381
-    serviceMonitor:
-      scheme: https
-      insecureSkipVerify: true
-      caFile: /etc/prometheus/secrets/etcd-client/ca.crt
-      certFile: /etc/prometheus/secrets/etcd-client/server.crt
-      keyFile: /etc/prometheus/secrets/etcd-client/server.key
   prometheusOperator:
     admissionWebhooks:
       failurePolicy: Fail
