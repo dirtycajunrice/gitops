@@ -1,4 +1,6 @@
 traefik:
+  image:
+    tag: 2.3.0
   fullnameOverride: traefik
   globalArguments:
     - "--global.checknewversion"
