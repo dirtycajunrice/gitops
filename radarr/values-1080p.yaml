@@ -6,4 +6,4 @@ radarr:
         traefik.ingress.kubernetes.io/router.priority: "10"
       hosts:
         - host: nickflix.io
-          paths:[/radarr]
+          paths: [/radarr]
