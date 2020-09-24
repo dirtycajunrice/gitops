@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
@@ -14,11 +14,13 @@ spec:
     - host: nickflix.io
       http:
         paths:
-          - backend:
-              serviceName: tautulli
-              servicePort: 8181
-            path: /tautulli
+          - path: /tautulli
+            pathType: Prefix
+            backend:
+              service:
+                name: tautulli
+                port:
+                  number: 8181
   tls:
-    - hosts:
-        - nickflix.io
+    - hosts: [nickflix.io]
       secretName: nickflix-io

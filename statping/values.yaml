@@ -26,8 +26,7 @@ statping:
       cert-manager.io/cluster-issuer: le-production
     hosts:
       - host: status.cajun.pro
-        paths:
-          - /
+        paths: [/]
     tls:
       - hosts:
           - status.cajun.pro
