@@ -3,7 +3,7 @@ global:
 
 traefik:
   deployment:
-    replicas: 2
+    replicas: 3
   additionalArguments:
     - "--providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik"
     - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-do.k8s.cajun.pro"

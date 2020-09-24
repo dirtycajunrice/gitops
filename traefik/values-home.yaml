@@ -5,6 +5,7 @@ traefik:
   additionalArguments:
     - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-home.k8s.cajun.pro"
     - "--providers.kubernetesingress.ingressendpoint.ip=12.161.64.36"
+    - "--pilot.token=23f45ed9-8bcb-43a5-b41f-1af0762be61d"
   service:
     externalIPs:
       - 172.30.0.10
