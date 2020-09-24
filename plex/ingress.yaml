@@ -13,11 +13,13 @@ spec:
     - host: plex.cajun.pro
       http:
         paths:
-          - backend:
-              serviceName: plex
-              servicePort: 32400
-            path: /
+          - path: /
+            backend:
+              service:
+                name: plex
+                port:
+                  number: 32400
+
   tls:
-    - hosts:
-        - plex.cajun.pro
+    - hosts: [plex.cajun.pro]
       secretName: plex-cajun-pro
