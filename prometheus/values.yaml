@@ -25,7 +25,6 @@ kube-prometheus-stack:
     ingress:
       enabled: true
       annotations:
-        kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
         cert-manager.io/cluster-issuer: le-production
@@ -74,7 +73,6 @@ kube-prometheus-stack:
     ingress:
       enabled: true
       annotations:
-        kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
         traefik.ingress.kubernetes.io/router.middlewares: kube-system-google-auth@kubernetescrd
