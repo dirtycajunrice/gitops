@@ -10,11 +10,13 @@ spec:
     - host: nickflix.io
       http:
         paths:
-          - backend:
-              serviceName: {{ .Values.radarr.radarr.fullnameOverride }}
-              servicePort: 7878
-            path: /{{ .Values.radarr.radarr.fullnameOverride }}/api
+          - path: /{{ .Values.radarr.radarr.fullnameOverride }}/api
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.radarr.radarr.fullnameOverride }}
+                port:
+                  number: 7878
   tls:
-    - hosts:
-        - nickflix.io
+    - hosts: [nickflix.io]
       secretName: nickflix-io

@@ -13,8 +13,7 @@ sonarr:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
       tls:
-        - hosts:
-            - nickflix.io
+        - hosts: [nickflix.io]
           secretName: nickflix-io
     persistence:
       type: statefulset

@@ -14,11 +14,13 @@ spec:
     - host: nickflix.io
       http:
         paths:
-          - backend:
-              serviceName: rtorrent
-              servicePort: 9080
-            path: /rtorrent1
+          - path: /rtorrent1
+            pathType: Prefix
+            backend:
+              service:
+                name: rtorrent
+                port:
+                  number: 9080
   tls:
-    - hosts:
-        - nickflix.io
+    - hosts: [nickflix.io]
       secretName: nickflix-io

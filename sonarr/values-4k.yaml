@@ -6,5 +6,4 @@ sonarr:
         traefik.ingress.kubernetes.io/router.priority: "15"
       hosts:
         - host: nickflix.io
-          paths:
-            - /sonarr4k
+          paths: [/sonarr4k]
