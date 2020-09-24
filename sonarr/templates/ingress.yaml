@@ -10,11 +10,14 @@ spec:
     - host: nickflix.io
       http:
         paths:
-          - backend:
-              serviceName: {{ .Values.sonarr.sonarr.fullnameOverride }}
-              servicePort: 8989
-            path: /{{ .Values.sonarr.sonarr.fullnameOverride }}/api
+          - path: /{{ .Values.sonarr.sonarr.fullnameOverride }}/api
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.sonarr.sonarr.fullnameOverride }}
+                port:
+                  number: 8989
+
   tls:
-    - hosts:
-        - nickflix.io
+    - hosts: [nickflix.io]
       secretName: nickflix-io

@@ -8,11 +8,9 @@ vault:
         cert-manager.io/cluster-issuer: le-production
       hosts:
         - host: vault.cajun.pro
-          paths:
-            - /
+          paths: [/]
       tls:
-        - hosts:
-            - vault.cajun.pro
+        - hosts: [vault.cajun.pro]
           secretName: vault-cajun-pro
   dataStorage:
     storageClass: file
