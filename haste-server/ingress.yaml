@@ -15,7 +15,7 @@ spec:
         paths:
           - backend:
               serviceName: haste-server
-              servicePort: "7777"
+              servicePort: 7777
             path: /
   tls:
     - hosts:
