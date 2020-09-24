@@ -14,7 +14,7 @@ spec:
           - path: /
             backend:
               serviceName: itscontained-github-io
-              servicePort: "443"
+              servicePort: 443
   tls:
     - hosts: [charts.itscontained.io]
       secretName: charts-itscontained-io

@@ -14,6 +14,7 @@ spec:
       http:
         paths:
           - path: /
+            pathType: prefix
             backend:
               service:
                 name: plex

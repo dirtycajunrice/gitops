@@ -15,7 +15,7 @@ spec:
         paths:
           - backend:
               serviceName: bookstack
-              servicePort: "80"
+              servicePort: 80
             path: /
   tls:
     - hosts:

@@ -15,7 +15,7 @@ spec:
           - path: /
             backend:
               serviceName: github-com
-              servicePort: "443"
+              servicePort: 443
   tls:
     - hosts: [secret-manager.itscontained.io]
       secretName: secret-manager-itscontained-io
