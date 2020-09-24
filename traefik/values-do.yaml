@@ -7,7 +7,7 @@ traefik:
   additionalArguments:
     - "--providers.kubernetesingress.ingressendpoint.publishedservice=kube-system/traefik"
     - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-do.k8s.cajun.pro"
-    - "--pilot.token=23f45ed9-8bcb-43a5-b41f-1af0762be61d"
+    - "--pilot.token=cac885fb-0bee-4b6e-a316-ceaf61cab202"
   service:
     annotations:
       service.beta.kubernetes.io/do-loadbalancer-name: "traefik"
