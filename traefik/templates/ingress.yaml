@@ -22,7 +22,7 @@ spec:
                   number: 80
               {{- else }}
               serviceName: traefik
-              servicePort: "80"
+              servicePort: 80
               {{- end }}
   tls:
     - hosts: [{{ include "traefik.hostname" . }}]
