@@ -13,11 +13,10 @@ spec:
     - host: cajun.pro
       http:
         paths:
-          - backend:
+          - path: /
+            backend:
               serviceName: nginx
               servicePort: 80
-            path: /
   tls:
-    - hosts:
-        - cajun.pro
+    - hosts: [cajun.pro]
       secretName: cert-cajun-pro
