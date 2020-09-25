@@ -65,7 +65,7 @@ kube-prometheus-stack:
       targetPort: 2381
   prometheusOperator:
     admissionWebhooks:
-      failurePolicy: Fail
+      failurePolicy: Ignore
   prometheus:
     podDisruptionBudget:
       enabled: true
