@@ -17,9 +17,7 @@ tfa:
   ingress:
     hosts:
       - host: cajun.pro
-        paths:
-          - /_oauth
+        paths: [/_oauth]
     tls:
-      - hosts:
-          - cajun.pro
+      - hosts: [cajun.pro]
         secretName: cajun-pro

@@ -20,11 +20,9 @@ tfa:
   ingress:
     hosts:
       - host: nickflix.io
-        paths:
-          - /_oauth
+        paths: [/_oauth]
     tls:
-      - hosts:
-          - nickflix.io
+      - hosts: [nickflix.io]
         secretName: nickflix-io
   nodeSelector:
     cajun.pro/cluster-gen: "2"
