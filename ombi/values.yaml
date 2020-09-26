@@ -1,5 +1,5 @@
-organizr:
-  organizr:
+ombi:
+  ombi:
     image:
       organization: itscontained
       tag: 4.0.483
@@ -23,6 +23,7 @@ organizr:
         subPath: /var/lib/ombi
         accessMode: ReadWriteMany
         size: 10Gi
+        storageClass: do-block-storage
     resources:
       requests:
         cpu: 100m
