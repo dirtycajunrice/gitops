@@ -76,8 +76,8 @@ tfa:
         secretKeyRef:
           name: traefik-forward-auth
           key: whitelist
-    - name: INSECURE_COOKIE
-      value: "true"
+#   - name: INSECURE_COOKIE
+#     value: "true"
   ingress:
     enabled: true
     annotations:
