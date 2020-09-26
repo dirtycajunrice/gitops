@@ -1,0 +1,29 @@
+organizr:
+  organizr:
+    image:
+      organization: itscontained
+      tag: 4.0.483
+    service:
+      port: 5000
+    ingress:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        cert-manager.io/cluster-issuer: le-production
+      hosts:
+        - host: request.cajun.pro
+          paths: [/]
+      tls:
+        - hosts: [request.cajun.pro]
+          secretName: request.cajun.pro
+    persistence:
+      type: statefulset
+      config:
+        subPath: /var/lib/ombi
+        accessMode: ReadWriteMany
+        size: 10Gi
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128m
