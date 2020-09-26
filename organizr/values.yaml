@@ -1,0 +1,29 @@
+organizr:
+  organizr:
+    env:
+      fpm: "true"
+      branch: "v2-develop"
+    ingress:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "5"
+        cert-manager.io/cluster-issuer: le-production
+      hosts:
+        - host: nickflix.io
+          paths: [/]
+      tls:
+        - hosts: [nickflix.io]
+          secretName: nickflix-io
+    persistence:
+      type: statefulset
+      config:
+        accessMode: ReadWriteMany
+        size: 1Gi
+        storageClass: rook-cephfs
+    nodeSelector:
+      cajun.pro/cluster-gen: "2"
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128m
