@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-0@kubernetescrd
+    traefik.ingress.kubernetes.io/router.priority: "15"
+  name: ombi-wizard
+spec:
+  rules:
+    - host: request.cajun.pro
+      http:
+        paths:
+          - path: /Wizard
+            pathType: Prefix
+            backend:
+              serviceName: ombi
+              servicePort: 5000
+
+  tls:
+    - hosts: [request.cajun.pro]
+      secretName: request-cajun-pro
