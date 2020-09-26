@@ -17,7 +17,6 @@ spec:
                 name: tautulli
                 port:
                   number: 8181
-
   tls:
     - hosts: [nickflix.io]
       secretName: nickflix-io
