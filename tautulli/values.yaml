@@ -15,19 +15,19 @@ tautulli:
       tls:
         - hosts: [nickflix.io]
           secretName: nickflix-io
-      extraIngresses:
-        - enabled: true
-          nameSuffix: "api"
-          annotations:
-            traefik.ingress.kubernetes.io/router.entrypoints: websecure
-            traefik.ingress.kubernetes.io/router.priority: "15"
-          hosts:
-            - host: nickflix.io
-              paths:
-                - /tautulli/api
-          tls:
-            - hosts: [nickflix.io]
-              secretName: nickflix-io
+#      extraIngresses:
+#        - enabled: true
+#          nameSuffix: "api"
+#          annotations:
+#            traefik.ingress.kubernetes.io/router.entrypoints: websecure
+#            traefik.ingress.kubernetes.io/router.priority: "15"
+#          hosts:
+#            - host: nickflix.io
+#              paths:
+#                - /tautulli/api
+#          tls:
+#            - hosts: [nickflix.io]
+#              secretName: nickflix-io
     persistence:
       type: statefulset
       config:
