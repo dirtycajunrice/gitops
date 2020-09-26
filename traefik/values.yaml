@@ -43,19 +43,18 @@ traefik:
 
 tfa:
   fullnameOverride: traefik-forward-auth
-  traefikForwardAuth:
-    cookie:
-      domain: "cajun.pro,nickflix.io"
-    logging:
-      level: debug
-      format: json
-    providers:
-      google:
-        enabled: true
-    middleware:
+  cookie:
+    domain: "cajun.pro,nickflix.io"
+  logging:
+    level: debug
+    format: json
+  providers:
+    google:
       enabled: true
-      name: "google-auth"
-    secret: "-"
+  middleware:
+    enabled: true
+    name: "google-auth"
+  secret: "-"
   env:
     - name: SECRET
       valueFrom:

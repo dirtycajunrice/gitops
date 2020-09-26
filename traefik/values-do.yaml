@@ -13,8 +13,7 @@ traefik:
       service.beta.kubernetes.io/do-loadbalancer-name: "traefik"
 
 tfa:
-  traefikForwardAuth:
-    authHost: cajun.pro
+  authHost: cajun.pro
   ingress:
     hosts:
       - host: cajun.pro

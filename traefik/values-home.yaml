@@ -16,8 +16,7 @@ traefik:
       enabled: false
 
 tfa:
-  traefikForwardAuth:
-    authHost: nickflix.io
+  authHost: nickflix.io
   ingress:
     hosts:
       - host: nickflix.io
