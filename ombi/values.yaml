@@ -19,7 +19,6 @@ ombi:
       tls:
         - hosts: [request.cajun.pro]
           secretName: request-cajun-pro
-    configPath: /var/lib/ombi
     persistence:
       type: statefulset
       config:
