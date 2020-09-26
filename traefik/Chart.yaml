@@ -7,5 +7,5 @@ dependencies:
     repository: https://containous.github.io/traefik-helm-chart
   - name: traefik-forward-auth
     version: 1.0.1
-    repository: https://charts.itscontained.io
+    repository: https://k8s-at-home.com/charts/
     alias: tfa
