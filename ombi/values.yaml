@@ -16,13 +16,11 @@ ombi:
           paths: [/]
       tls:
         - hosts: [request.cajun.pro]
-          secretName: request.cajun.pro
+          secretName: request-cajun-pro
+    configPath: /var/lib/ombi
     persistence:
       type: statefulset
       config:
-        subPath: /var/lib/ombi
-        accessMode: ReadWriteMany
-        size: 10Gi
         storageClass: do-block-storage
     resources:
       requests:
