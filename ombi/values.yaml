@@ -5,6 +5,8 @@ ombi:
       tag: 4.0.483
     service:
       port: 5000
+    podSecurityContext:
+      fsGroup : 569
     ingress:
       enabled: true
       annotations:
