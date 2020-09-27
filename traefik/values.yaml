@@ -1,7 +1,7 @@
 traefik:
-  image:
-    tag: 2.3.0
   fullnameOverride: traefik
+  image:
+    tag: "2.3.0"
   globalArguments:
     - "--global.checknewversion"
     - "--serverstransport.insecureskipverify=true"
