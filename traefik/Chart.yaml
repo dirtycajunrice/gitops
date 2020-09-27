@@ -3,8 +3,8 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: traefik
-    version: 8.13.2
-    repository: https://containous.github.io/traefik-helm-chart
+    version: 9.3.0
+    repository: https://helm.traefik.io/traefik
   - name: traefik-forward-auth
     version: 1.0.1
     repository: https://k8s-at-home.com/charts/

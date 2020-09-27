@@ -28,6 +28,14 @@ traefik:
       port: 8082
       expose: true
       exposedPort: 8082
+  ingressRoute:
+    dashboard:
+      enabled: false
+  ingressClass:
+    enabled: true
+    isDefaultClass: true
+  pilot:
+    enabled: true
   affinity:
     podAntiAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:

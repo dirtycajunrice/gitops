@@ -1,8 +1,0 @@
-apiVersion: networking.k8s.io/v1beta1
-kind: IngressClass
-metadata:
-  annotations:
-    ingressclass.kubernetes.io/is-default-class: "true"
-  name: {{ .Values.traefik.fullnameOverride }}
-spec:
-  controller: traefik.io/ingress-controller
