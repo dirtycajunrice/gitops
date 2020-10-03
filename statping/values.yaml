@@ -1,4 +1,6 @@
 statping:
+  image:
+    tag: v0.90.69
   fullnameOverride: statping
   statping:
     name: cajun.pro status
