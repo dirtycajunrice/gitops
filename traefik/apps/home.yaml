@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     namespace: kube-system
-    server: https://node5.k8s.cajun.pro:6443
+    name: home
   project: default
   source:
     path: traefik

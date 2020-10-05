@@ -2,7 +2,7 @@ ombi:
   ombi:
     image:
       organization: itscontained
-      tag: 4.0.483
+      tag: 4.0.505
     service:
       port: 5000
     podSecurityContext:
