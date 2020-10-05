@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     namespace: kube-system
-    name: in-cluster
+    name: do
   project: default
   source:
     path: traefik
