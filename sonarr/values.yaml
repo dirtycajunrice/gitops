@@ -2,7 +2,7 @@ sonarr:
   sonarr:
     image:
       organization: itscontained
-      tag: 3.0.3.938
+      tag: 3.0.4.980
     env:
       TZ: America/Chicago
       PUID: "1000"
