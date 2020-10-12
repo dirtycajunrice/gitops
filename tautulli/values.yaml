@@ -11,7 +11,8 @@ tautulli:
       hosts:
         - host: nickflix.io
           paths:
-            - /tautulli
+            - path: /tautulli
+              pathType: Prefix
       tls:
         - hosts: [nickflix.io]
           secretName: nickflix-io
