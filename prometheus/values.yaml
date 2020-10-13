@@ -108,8 +108,10 @@ kube-prometheus-stack:
     fullnameOverride: kube-state-metrics
   prometheus-node-exporter:
     fullnameOverride: node-exporter
-    extraHostVolumeMounts:
-      - name: rootfs
-        hostPath: /
-        mountPath: /rootfs
-        readOnly: false
+    securityContext:
+      runAsUser: 0
+#    extraHostVolumeMounts:
+#      - name: rootfs
+#        hostPath: /
+#        mountPath: /rootfs
+#        readOnly: false
