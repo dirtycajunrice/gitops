@@ -111,5 +111,5 @@ kube-prometheus-stack:
     extraHostVolumeMounts:
       - name: rootfs
         hostPath: /
-        mountPath: /host/rootfs
+        mountPath: /rootfs
         readOnly: true
