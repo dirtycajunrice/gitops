@@ -13,7 +13,7 @@ sonarr:
           hosts:
             - host: nickflix.io
               paths:
-                - path: /sonarr4k/api
+                - path: /sonarr/api
                   pathType: Prefix
           tls:
             - hosts: [nickflix.io]
