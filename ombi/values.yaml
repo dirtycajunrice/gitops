@@ -15,10 +15,30 @@ ombi:
         cert-manager.io/cluster-issuer: le-production
       hosts:
         - host: request.cajun.pro
-          paths: [/]
+          paths:
+            - path: /
+              pathType: Prefix
       tls:
         - hosts: [request.cajun.pro]
           secretName: request-cajun-pro
+      extraIngresses:
+        - enabled: true
+          nameSuffix: "wizard"
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: websecure
+            traefik.ingress.kubernetes.io/router.middlewares: kube-system-google-auth@kubernetescrd
+            traefik.ingress.kubernetes.io/router.priority: "15"
+          hosts:
+            - host: request.cajun.pro
+              paths:
+                - path: /Wizard
+                  pathType: Prefix
+                  backend:
+                    serviceName: ombi
+                    servicePort: 5000
+          tls:
+            - hosts: [request.cajun.pro]
+              secretName: request-cajun-pro
     persistence:
       type: statefulset
       config:
