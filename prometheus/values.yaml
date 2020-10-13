@@ -45,13 +45,12 @@ kube-prometheus-stack:
     grafana.ini:
       server:
         root_url: https://grafana.cajun.pro
-      auth:
-        google:
-          enabled: true
-          scopes: https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
-          auth_url: https://accounts.google.com/o/oauth2/auth
-          token_url: https://accounts.google.com/o/oauth2/token
-          allowed_domains: cajun.pro
+      auth.google:
+        enabled: true
+        scopes: https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email
+        auth_url: https://accounts.google.com/o/oauth2/auth
+        token_url: https://accounts.google.com/o/oauth2/token
+        allowed_domains: cajun.pro
     envValueFrom:
       GF_AUTH_GOOGLE_CLIENT_ID:
         secretKeyRef:
