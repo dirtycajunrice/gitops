@@ -112,4 +112,4 @@ kube-prometheus-stack:
       - name: rootfs
         hostPath: /
         mountPath: /rootfs
-        readOnly: true
+        readOnly: false
