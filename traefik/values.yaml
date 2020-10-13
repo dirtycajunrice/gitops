@@ -33,7 +33,7 @@ traefik:
       enabled: false
   ingressClass:
     enabled: true
-    isDefaultClass: true
+    isDefaultClass: "true"
   pilot:
     enabled: true
   affinity:
