@@ -4,6 +4,11 @@ sonarr:
     ingress:
       annotations:
         traefik.ingress.kubernetes.io/router.priority: "15"
+      hosts:
+        - host: nickflix.io
+          paths:
+            - path: /sonarr4k
+              pathType: Prefix
       extraIngresses:
         - enabled: true
           nameSuffix: "api"
@@ -18,6 +23,3 @@ sonarr:
           tls:
             - hosts: [nickflix.io]
               secretName: nickflix-io
-      hosts:
-        - host: nickflix.io
-          paths: [/sonarr4k]
