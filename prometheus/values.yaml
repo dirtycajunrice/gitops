@@ -110,6 +110,7 @@ kube-prometheus-stack:
     fullnameOverride: node-exporter
     securityContext:
       runAsUser: 0
+      runAsNonRoot: false
 #    extraHostVolumeMounts:
 #      - name: rootfs
 #        hostPath: /
