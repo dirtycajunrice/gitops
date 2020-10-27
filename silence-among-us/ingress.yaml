@@ -17,7 +17,7 @@ spec:
             pathType: Prefix
             backend:
               serviceName: silence-among-us
-              servicePort: "8080"
+              servicePort: 8080
   tls:
     - secretName: au-cajun-pro
       hosts: [au.cajun.pro]
