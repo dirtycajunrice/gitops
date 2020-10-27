@@ -1,0 +1,51 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: silence-among-us
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: silence-among-us
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: silence-among-us
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: silence-among-us
+          image: ghcr.io/tanndev/silence-among-us:2.6.0-beta.3
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+              name: http
+          env:
+            - name: SECURE
+              value: "true"
+            - name: HOST
+              valueFrom:
+                secretKeyRef:
+                  name: silence-among-us
+                  key: host
+            - name: DISCORD_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: silence-among-us
+                  key: discord-token
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-silence-among-us-auth
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-silence-among-us-auth
+                  key: password
+            - name: DATABASE_URL
+              value: "http://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@mongodb-silence-among-us.cajun-pro.svc:27017"
+
