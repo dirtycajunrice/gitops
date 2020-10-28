@@ -39,13 +39,32 @@ spec:
             - name: DATABASE_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: mongodb-silence-among-us-auth
-                  key: username
+                  name: silence-among-us
+                  key: database-username
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: mongodb-silence-among-us-auth
-                  key: password
+                  name: silence-among-us
+                  key: database-password
             - name: DATABASE_URL
-              value: "mongodb://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@mongodb-silence-among-us.cajun-pro.svc:27017"
-
+              value: "http://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@couch:5984"
+        - name: couchdb
+          image: couchdb:3.1
+          env:
+            - name: COUCHDB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: silence-among-us
+                  key: database-username
+            - name: COUCHDB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: silence-among-us
+                  key: database-password
+          volumeMounts:
+            - name: data
+              mountPath: /opt/couchdb/data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: silence-among-us
