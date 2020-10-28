@@ -47,5 +47,5 @@ spec:
                   name: mongodb-silence-among-us-auth
                   key: password
             - name: DATABASE_URL
-              value: "http://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@mongodb-silence-among-us.cajun-pro.svc:27017"
+              value: "mongodb://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@mongodb-silence-among-us.cajun-pro.svc:27017"
 
