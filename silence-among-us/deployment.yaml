@@ -47,7 +47,7 @@ spec:
                   name: silence-among-us
                   key: database-password
             - name: DATABASE_URL
-              value: "http://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@couch:5984"
+              value: "http://$(DATABASE_USERNAME):$(DATABASE_PASSWORD)@localhost:5984"
         - name: couchdb
           image: couchdb:3.1
           env:
