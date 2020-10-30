@@ -18,7 +18,7 @@ spec:
       restartPolicy: Always
       containers:
         - name: silence-among-us
-          image: ghcr.io/tanndev/silence-among-us:2.6.0-beta.4
+          image: ghcr.io/tanndev/silence-among-us:2.6.0
           ports:
             - containerPort: 8080
               protocol: TCP
