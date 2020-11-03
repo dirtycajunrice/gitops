@@ -1,35 +1,34 @@
 conreq:
-  conreq:
-    fullnameOverride: "conreq"
-    image:
-      organization: ghcr.io/roxedus
-      repository: conreq
-      tag: master-d23f8446
-    env:
-      TZ: America/Chicago
-      PUID: "1000"
-      PGID: "1000"
-    ingress:
-      enabled: true
-      annotations:
-        traefik.ingress.kubernetes.io/router.priority: "10"
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
-      tls:
-        - hosts: [nickflix.io]
-          secretName: nickflix-io
-      hosts:
-        - host: nickflix.io
-          paths:
-            - path: /conreq
-              pathType: Prefix
-    service:
-      port: 8000
-    persistence:
-      type: statefulset
-      config:
-        accessMode: ReadWriteMany
-        size: 10Gi
-        storageClass: rook-cephfs
-    nodeSelector:
-      cajun.pro/cluster-gen: "2"
+  fullnameOverride: "conreq"
+  image:
+    organization: ghcr.io/roxedus
+    repository: conreq
+    tag: master-d23f8446
+  env:
+    TZ: America/Chicago
+    PUID: "1000"
+    PGID: "1000"
+  ingress:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
+    tls:
+      - hosts: [nickflix.io]
+        secretName: nickflix-io
+    hosts:
+      - host: nickflix.io
+        paths:
+          - path: /conreq
+            pathType: Prefix
+  service:
+    port: 8000
+  persistence:
+    type: statefulset
+    config:
+      accessMode: ReadWriteMany
+      size: 10Gi
+      storageClass: rook-cephfs
+  nodeSelector:
+    cajun.pro/cluster-gen: "2"
