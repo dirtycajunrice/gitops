@@ -14,14 +14,14 @@ conreq:
     annotations:
       traefik.ingress.kubernetes.io/router.priority: "10"
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
+      cert-manager.io/cluster-issuer: le-production
     tls:
-      - hosts: [nickflix.io]
-        secretName: nickflix-io
+      - hosts: [conreq.cajun.pro]
+        secretName: conreq-cajun-pro
     hosts:
-      - host: nickflix.io
+      - host: conreq.cajun.pro
         paths:
-          - path: /conreq
+          - path: /
             pathType: Prefix
   service:
     port: 8000
