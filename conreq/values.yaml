@@ -1,9 +1,9 @@
 conreq:
   fullnameOverride: "conreq"
   image:
-    organization: ghcr.io/roxedus
+    organization: itscontained
     repository: conreq
-    tag: master-d23f8446
+    tag: alpha-2020-11-3
   env:
     TZ: America/Chicago
     PUID: "1000"
