@@ -2,7 +2,7 @@ conreq:
   conreq:
     fullnameOverride: "conreq"
     image:
-      organization: roxedus
+      organization: ghcr.io/roxedus
       repository: conreq
       tag: master-d23f8446
     env:
