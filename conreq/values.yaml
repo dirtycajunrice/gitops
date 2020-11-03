@@ -9,6 +9,7 @@ conreq:
     PUID: "1000"
     PGID: "1000"
     DATA_DIR: "/config"
+    ALLOWED_HOSTS: "conreq.cajun.pro"
   ingress:
     enabled: true
     annotations:
