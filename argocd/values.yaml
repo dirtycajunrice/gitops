@@ -3,7 +3,7 @@ argo-cd:
   installCRDs: false
   global:
     image:
-      tag: v1.7.6
+      tag: v1.7.8
   controller:
     metrics:
       enabled: true
