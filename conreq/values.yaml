@@ -8,6 +8,7 @@ conreq:
     TZ: America/Chicago
     PUID: "1000"
     PGID: "1000"
+    DATA_DIR: "/config"
   ingress:
     enabled: true
     annotations:
