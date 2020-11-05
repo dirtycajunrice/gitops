@@ -35,3 +35,9 @@ conreq:
       storageClass: rook-cephfs
   nodeSelector:
     cajun.pro/cluster-gen: "2"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      memory: 2Gi
