@@ -31,6 +31,9 @@ argo-cd:
           - email
     rbacConfig:
       policy.default: role:readonly
+      policy.csv: |
+        g, nick@cajun.pro, role:admin
+        g, nstgermain@ea.com, role:admin
     ingress:
       enabled: true
       annotations:
