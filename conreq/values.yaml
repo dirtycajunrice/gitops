@@ -3,7 +3,7 @@ conreq:
   image:
     organization: itscontained
     repository: conreq
-    tag: conreq:c2c6367
+    tag: c2c6367
   env:
     TZ: America/Chicago
     PUID: "1000"
