@@ -1,0 +1,2 @@
+metrics-server:
+  kubelet-preferred-address-types: InternalIP
