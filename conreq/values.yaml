@@ -4,12 +4,15 @@ conreq:
     organization: itscontained
     repository: conreq
     tag: c2c6367
+    pullPolicy: Always
   env:
     TZ: America/Chicago
     PUID: "1000"
     PGID: "1000"
     DATA_DIR: "/config"
     ALLOWED_HOSTS: "conreq.cajun.pro"
+    SONARR_URL: "http://sonarr.cajun-pro.svc:8989/sonarr"
+    RADARR_URL: "http://radarr.cajun-pro.svc:7878/radarr"
   ingress:
     enabled: true
     annotations:
