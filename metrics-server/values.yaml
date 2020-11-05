@@ -1,4 +1,6 @@
 metrics-server:
+  apiService:
+    create: true
   hostNetwork: true
   extraArgs:
     kubelet-preferred-address-types: InternalIP
