@@ -84,7 +84,7 @@ tfa:
         secretKeyRef:
           name: traefik-forward-auth
           key: whitelist
-#   - name: INSECURE_COOKIE
+#   - name: INSECURE_COOKIE 12:30-2 2:30 onward PST
 #     value: "true"
   ingress:
     enabled: true

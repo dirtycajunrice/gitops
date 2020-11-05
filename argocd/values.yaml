@@ -20,6 +20,15 @@ argo-cd:
       url: https://argocd.cajun.pro
       application.instanceLabelKey: argocd.argoproj.io/instance
       accounts.cajunguest: login
+      oidc.config: |
+        name: OIDC
+        issuer: https://accounts.google.com
+        clientID: 594747869011-98q8bqo6sfpsivnr1ud80j9aaans03mf.apps.googleusercontent.com
+        clientSecret: t7gQyljbegUsJOQtjh-iOYSL
+        requestedScopes:
+          - openid
+          - profile
+          - email
     rbacConfig:
       policy.default: role:readonly
     ingress:

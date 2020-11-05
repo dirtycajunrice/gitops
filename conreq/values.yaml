@@ -16,6 +16,7 @@ conreq:
       traefik.ingress.kubernetes.io/router.priority: "10"
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       cert-manager.io/cluster-issuer: le-production
+      traefik.ingress.kubernetes.io/router.middlewares: kube-system-google-auth@kubernetescrd
     tls:
       - hosts: [conreq.cajun.pro]
         secretName: conreq-cajun-pro
