@@ -145,7 +145,8 @@ petio-backend:
       memory: 2Gi
   additionalContainers:
     - name: mongodb
-      image: mongo:latest
+
+      image: quay.io/bitnami/mongodb:latest
       ports:
         - containerPort: 27017
           protocol: TCP
