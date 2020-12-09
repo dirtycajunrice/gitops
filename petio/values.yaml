@@ -50,6 +50,60 @@ petio-frontend:
       memory: 128Mi
     limits:
       memory: 2Gi
+#petio-frontend:
+#  fullnameOverride: "petio"
+#  imagePullSecrets:
+#    - name: docker-config-json
+#  image:
+#    organization: ghcr.io/petio-team
+#    repository: petio
+#    tag: fe-latest
+#    pullPolicy: Always
+#  env:
+#    PUBLIC_URL: "https://nickflix.io/petio"
+#  ingress:
+#    enabled: true
+#    annotations:
+#      traefik.ingress.kubernetes.io/router.priority: "10"
+#      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+#      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd,cajun-pro-petio-stripprefix@kubernetescrd
+#    hosts:
+#      - host: nickflix.io
+#        paths:
+#          - path: /petio
+#            pathType: Prefix
+#    tls:
+#      - hosts: [nickflix.io]
+#        secretName: nickflix-io
+#    extraIngresses:
+#      - enabled: true
+#        nameSuffix: "admin"
+#        annotations:
+#          traefik.ingress.kubernetes.io/router.priority: "15"
+#          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+#          traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-0@kubernetescrd,cajun-pro-petio-stripprefix@kubernetescrd
+#        hosts:
+#          - host: nickflix.io
+#            paths:
+#              - path: /petio/admin
+#                pathType: Prefix
+#        tls:
+#          - hosts: [nickflix.io]
+#            secretName: nickflix-io
+#  service:
+#    port: 80
+#  persistence:
+#    type: deployment
+#    config:
+#      enabled: false
+#  nodeSelector:
+#    cajun.pro/cluster-gen: "2"
+#  resources:
+#    requests:
+#      cpu: 100m
+#      memory: 128Mi
+#    limits:
+#      memory: 2Gi
 petio-backend:
   fullnameOverride: "petio-api"
   imagePullSecrets:
@@ -89,3 +143,17 @@ petio-backend:
       memory: 128Mi
     limits:
       memory: 2Gi
+  additionalContainers:
+    - name: mongodb
+      image: mongo:latest
+      ports:
+        - containerPort: 27017
+          protocol: TCP
+          name: http
+      volumeMounts:
+        - name: data
+          mountPath: /data/db
+  additionalVolumes:
+    - name: data
+        persistentVolumeClaim:
+          claimName: petio-temp
