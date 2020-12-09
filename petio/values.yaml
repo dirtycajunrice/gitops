@@ -27,7 +27,6 @@ petio-frontend:
         annotations:
           traefik.ingress.kubernetes.io/router.priority: "15"
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/router.middlewares: kube-system-google-auth@kubernetescrd
         hosts:
           - host: petio.cajun.pro
             paths:
