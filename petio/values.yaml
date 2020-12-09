@@ -12,30 +12,30 @@ petio-frontend:
     annotations:
       traefik.ingress.kubernetes.io/router.priority: "10"
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd,cajun-pro-petio-stripprefix@kubernetescrd
+      cert-manager.io/cluster-issuer: le-production
     hosts:
-      - host: nickflix.io
+      - host: petio.cajun.pro
         paths:
-          - path: /petio
+          - path: /
             pathType: Prefix
     tls:
-      - hosts: [nickflix.io]
-        secretName: nickflix-io
+      - hosts: [petio.cajun.pro]
+        secretName: petio-cajun-pro
     extraIngresses:
       - enabled: true
         nameSuffix: "admin"
         annotations:
           traefik.ingress.kubernetes.io/router.priority: "15"
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-0@kubernetescrd,cajun-pro-petio-stripprefix@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: kube-system-google-auth@kubernetescrd
         hosts:
-          - host: nickflix.io
+          - host: petio.cajun.pro
             paths:
-              - path: /petio/admin
+              - path: /admin
                 pathType: Prefix
         tls:
-          - hosts: [nickflix.io]
-            secretName: nickflix-io
+          - hosts: [petio.cajun.pro]
+            secretName: petio-cajun-pro
   service:
     port: 80
   persistence:
