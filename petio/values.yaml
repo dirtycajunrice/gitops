@@ -1,5 +1,7 @@
 petio-frontend:
   fullnameOverride: "petio"
+  imagePullSecrets:
+    - name: docker-config-json
   image:
     organization: ghcr.io/petio-team
     repository: petio
@@ -50,6 +52,8 @@ petio-frontend:
       memory: 2Gi
 petio-backend:
   fullnameOverride: "petio-api"
+  imagePullSecrets:
+    - name: docker-config-json
   image:
     organization: ghcr.io/petio-team
     repository: petio
