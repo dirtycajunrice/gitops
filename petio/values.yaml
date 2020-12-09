@@ -155,5 +155,5 @@ petio-backend:
           mountPath: /data/db
   additionalVolumes:
     - name: data
-        persistentVolumeClaim:
-          claimName: petio-temp
+      persistentVolumeClaim:
+        claimName: petio-temp
