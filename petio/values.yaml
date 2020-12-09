@@ -153,7 +153,7 @@ petio-backend:
           name: http
       volumeMounts:
         - name: data
-          mountPath: /data/db
+          mountPath: /bitnami/mongodb
   additionalVolumes:
     - name: data
       persistentVolumeClaim:
