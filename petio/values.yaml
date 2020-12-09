@@ -12,7 +12,7 @@ petio-frontend:
     annotations:
       traefik.ingress.kubernetes.io/router.priority: "10"
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
+      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd,cajun-pro-petio-stripprefix@kuberetescrd
     hosts:
       - host: nickflix.io
         paths:
@@ -27,7 +27,7 @@ petio-frontend:
         annotations:
           traefik.ingress.kubernetes.io/router.priority: "15"
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-0@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-0@kubernetescrd,cajun-pro-petio-stripprefix@kuberetescrd
         hosts:
           - host: nickflix.io
             paths:
@@ -66,6 +66,7 @@ petio-backend:
     annotations:
       traefik.ingress.kubernetes.io/router.priority: "15"
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-petio-stripprefix@kuberetescrd
     hosts:
       - host: nickflix.io
         paths:
