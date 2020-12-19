@@ -1,4 +1,3 @@
-overseerr:
   overseerr:
     fullnameOverride: overseerr
     configPath: /app/config
