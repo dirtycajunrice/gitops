@@ -1,0 +1,39 @@
+overseerr:
+  overseerr:
+    fullnameOverride: overseerr
+    configPath: /app/config
+    image:
+      organization: sctx
+      repository: overseerr
+      tag: 1.10.0
+    service:
+      port: 5055
+    env:
+      TZ: America/Chicago
+      LOG_LEVEL: debug
+    ingress:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
+      hosts:
+        - host: nickflix.io
+          paths:
+            - path: /overseerr
+              pathType: Prefix
+      tls:
+        - hosts: [nickflix.io]
+          secretName: nickflix-io
+    persistence:
+      type: statefulset
+      config:
+        accessMode: ReadWriteMany
+        size: 10Gi
+        storageClass: rook-cephfs
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128m
+    nodeSelector:
+      cajun.pro/cluster-gen: "2"
