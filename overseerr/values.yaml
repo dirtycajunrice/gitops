@@ -15,15 +15,15 @@
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
-        traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
+        cert-manager.io/cluster-issuer: le-production
       hosts:
-        - host: nickflix.io
+        - host: request-beta.cajun.pro
           paths:
-            - path: /overseerr
+            - path: /
               pathType: Prefix
       tls:
-        - hosts: [nickflix.io]
-          secretName: nickflix-io
+        - hosts: [request-beta.cajun.pro]
+          secretName: request-beta-cajun-pro
     persistence:
       type: statefulset
       config:
