@@ -4,7 +4,7 @@
     image:
       organization: sctx
       repository: overseerr
-      tag: 1.10.0
+      tag: develop
     service:
       port: 5055
     env:
