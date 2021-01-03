@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: bookstack
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: bookstack
@@ -15,6 +15,18 @@ spec:
         app: bookstack
     spec:
       restartPolicy: Always
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - bookstack
+                topologyKey: kubernetes.io/hostname
       containers:
       - name: bookstack
         image: linuxserver/bookstack:v0.29.3-ls97
