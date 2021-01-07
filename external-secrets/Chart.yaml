@@ -4,4 +4,4 @@ version: 1.0.0
 dependencies:
   - name: kubernetes-external-secrets
     version: 5.2.0
-    repository: https://godaddy.github.io/kubernetes-external-secrets/
+    repository: https://external-secrets.github.io/kubernetes-external-secrets/
