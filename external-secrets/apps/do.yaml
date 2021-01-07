@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: external-secrets-do
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
 spec:
   destination:
     namespace: kube-system

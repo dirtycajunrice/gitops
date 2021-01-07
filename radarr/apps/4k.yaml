@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: radarr-4k
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
 spec:
   destination:
     namespace: cajun-pro
