@@ -12,7 +12,7 @@ spec:
       requests:
         storage: 1Gi
   authSecret:
-    name: postgres
+    name: statping
   monitor:
     agent: prometheus.io/operator
     prometheus:
