@@ -1,0 +1,7 @@
+name: kubedb
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: kubedb
+    version: v0.16.1
+    repository: https://charts.appscode.com/stable/
