@@ -17,7 +17,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: auto-voice-channels
-        image: itscontained/auto-voice-channels:1.0.0
+        image: ghcr.io/itscontained/auto-voice-channels:af2bc36a
         volumeMounts:
           - name: data
             mountPath: /app/guilds
