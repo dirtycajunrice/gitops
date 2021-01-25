@@ -12,29 +12,10 @@ statping:
         name: statping
   persistence:
     enabled: true
+    storageClass: "-"
   postgres:
-    enabled: true
-    type: kubedb
     kubedb:
-      enabled: true
-      version: 11.2-v1
-      storageType: Durable
-      storage:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 1Gi
-      authSecret:
-        name: postgres
-      monitor:
-        agent: prometheus.io/operator
-        prometheus:
-          serviceMonitor:
-            labels:
-              app: postgres
-            interval: 10s
-      terminationPolicy: DoNotTerminate
+      enabled: false
     posgresql:
       enabled: false
   ingress:
@@ -68,12 +49,6 @@ statping:
         - name: admin-email
           key: kv-v2/data/auth/common
           property: email
-        - name: password
-          key: kv-v2/data/auth/statping
-          property: db-password
-        - name: username
-          key: kv-v2/data/auth/statping
-          property: db-username
   resources:
     requests:
      cpu: 100m
