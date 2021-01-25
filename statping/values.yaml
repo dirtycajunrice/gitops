@@ -19,12 +19,12 @@ statping:
       enabled: true
       version: 11.2-v1
       storageType: Durable
-        storage:
-          accessModes:
-            - ReadWriteOnce
-          resources:
-            requests:
-              storage: 1Gi
+      storage:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
       authSecret:
         name: postgres
       monitor:
