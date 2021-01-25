@@ -17,6 +17,6 @@ spec:
     prometheus:
       serviceMonitor:
         labels:
-          app: bookstack
+          app: haste-server
         interval: 10s
   terminationPolicy: DoNotTerminate

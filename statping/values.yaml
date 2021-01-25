@@ -1,6 +1,6 @@
 statping:
   image:
-    tag: v0.90.69
+    tag: v0.90.74
   fullnameOverride: statping
   statping:
     name: cajun.pro status
@@ -17,7 +17,24 @@ statping:
     type: kubedb
     kubedb:
       enabled: true
-      version: '11.1'
+      version: 11.2-v1
+      storageType: Durable
+        storage:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+      authSecret:
+        name: postgres
+      monitor:
+        agent: prometheus.io/operator
+        prometheus:
+          serviceMonitor:
+            labels:
+              app: postgres
+            interval: 10s
+      terminationPolicy: DoNotTerminate
     posgresql:
       enabled: false
   ingress:
