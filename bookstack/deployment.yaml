@@ -29,7 +29,7 @@ spec:
                 topologyKey: kubernetes.io/hostname
       containers:
       - name: bookstack
-        image: linuxserver/bookstack:v0.30.7-ls118
+        image: linuxserver/bookstack:version-v0.31.4
         ports:
           - containerPort: 80
             name: http
