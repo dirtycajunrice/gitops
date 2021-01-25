@@ -19,7 +19,7 @@ spec:
         interval: 10s
   storage:
     accessModes:
-    - ReadWriteOnce
+      - ReadWriteOnce
     resources:
       requests:
         storage: 2Gi

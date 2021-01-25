@@ -1,14 +1,22 @@
-apiVersion: kubedb.com/v1alpha1
+apiVersion: kubedb.com/v1alpha2
 kind: Redis
 metadata:
   name: redis-haste-server
   namespace: cajun-pro
 spec:
-  version: "5.0.3-v1"
+  version: 6.0.6
   storageType: Durable
   storage:
     accessModes:
-    - ReadWriteOnce
+      - ReadWriteOnce
     resources:
       requests:
         storage: 1Gi
+  monitor:
+    agent: prometheus.io/operator
+    prometheus:
+      serviceMonitor:
+        labels:
+          app: bookstack
+        interval: 10s
+  terminationPolicy: DoNotTerminate
