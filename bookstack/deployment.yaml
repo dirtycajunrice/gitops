@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: bookstack
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: bookstack
@@ -39,15 +39,15 @@ spec:
             path: /
             port: http
         volumeMounts:
-          - mountPath: /config/www/uploads
-            name: data
+#          - mountPath: /config/www/uploads
+#            name: data
           - name: env
             mountPath: /config/www/.env
             subPath: .env
       volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: bookstack
+#        - name: data
+#          persistentVolumeClaim:
+#          claimName: bookstack
         - name: env
           secret:
             secretName: bookstack
