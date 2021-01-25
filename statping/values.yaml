@@ -11,8 +11,7 @@ statping:
         enabled: true
         name: statping
   persistence:
-    enabled: true
-    storageClass: "-"
+    enabled: false
   postgres:
     kubedb:
       enabled: false
@@ -31,6 +30,23 @@ statping:
       - hosts:
           - status.cajun.pro
         secretName: status-cajun-pro
+  env:
+    - name: DB_CONN
+      value: postgres
+    - name: DB_HOST
+      value: postgres-statping
+    - name: DB_DATABASE
+      value: postgres
+    - name: DB_USER
+      valueFrom:
+        secretKeyRef:
+          name: statping
+          key: username
+    - name: DB_PASS
+      valueFrom:
+        secretKeyRef:
+          name: statping
+          key: password
   externalSecret:
     enabled: true
     type: kubernetes-external-secrets
@@ -49,6 +65,12 @@ statping:
         - name: admin-email
           key: kv-v2/data/auth/common
           property: email
+        - name: password
+          key: kv-v2/data/auth/statping
+          property: db-password
+        - name: username
+          key: kv-v2/data/auth/statping
+          property: db-username
   resources:
     requests:
      cpu: 100m
