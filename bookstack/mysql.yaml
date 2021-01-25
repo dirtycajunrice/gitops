@@ -8,6 +8,8 @@ spec:
   storageType: Durable
   authSecret:
     name: bookstack
+  configSecret:
+    name: mysql-bookstack-config
   monitor:
     agent: prometheus.io/operator
     prometheus:
