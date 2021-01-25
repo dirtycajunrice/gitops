@@ -2,7 +2,7 @@ radarr:
   radarr:
     image:
       organization: itscontained
-      tag: 3.0.2.4460
+      tag: 3.0.2.4479
     env:
       TZ: America/Chicago
       PUID: "1000"
