@@ -1,8 +1,12 @@
-apiVersion: v1
-kind: Secret
+apiVersion: kubernetes-client.io/v1
+kind: ExternalSecret
 metadata:
   name: mysql-bookstack-config
-data:
-  config.cnf: |
-    [mysqld]
-    default-authentication-plugin=mysql_native_password
+spec:
+  backendType: vault
+  vaultMountPoint: kubernetes-do
+  vaultRole: vault-auth
+  data:
+    - name: config.cnf
+      key: kv-v2/data/auth/bookstack
+      property: mysql-config
