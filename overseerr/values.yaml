@@ -18,13 +18,13 @@
         traefik.ingress.kubernetes.io/router.priority: "10"
         cert-manager.io/cluster-issuer: le-production
       hosts:
-        - host: request-beta.cajun.pro
+        - host: request.cajun.pro
           paths:
             - path: /
               pathType: Prefix
       tls:
-        - hosts: [request-beta.cajun.pro]
-          secretName: request-beta-cajun-pro
+        - hosts: [request.cajun.pro]
+          secretName: request-cajun-pro
     persistence:
       type: statefulset
       config:
