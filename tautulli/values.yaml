@@ -1,7 +1,7 @@
 tautulli:
   tautulli:
     image:
-      tag: v2.6.5
+      tag: v2.6.10
     ingress:
       enabled: true
       annotations:
