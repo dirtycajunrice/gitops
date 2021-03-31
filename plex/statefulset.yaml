@@ -39,6 +39,7 @@ spec:
           limits:
             memory: "8Gi"
             cpu: "4"
+            nvidia.com/gpu: "1"
         volumeMounts:
              - mountPath: /config
                name: config
