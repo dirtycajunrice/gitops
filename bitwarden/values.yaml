@@ -1,8 +1,8 @@
-bitwarden_rs:
+bitwardenrs:
   image:
-    tag: 1.16.3-alpine
+    tag: 1.20.0
   fullnameOverride: bitwarden
-  bitwarden_rs:
+  bitwardenrs:
     domain: https://password.cajun.pro
     admin:
       existingSecret:
@@ -33,23 +33,5 @@ bitwarden_rs:
         paths:
           - /
     tls:
-      - hosts:
-          - password.cajun.pro
+      - hosts: [password.cajun.pro]
         secretName: password-cajun-pro
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
