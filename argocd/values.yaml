@@ -136,7 +136,7 @@ argo-cd:
     initContainers:
       - name: copy-custom-kubectl
         image: "bitnami/kubectl:1.20.5"
-        command: ["cp", "/opt/bitnami/kubectl", "/custom"]
+        command: ["cp", "/opt/bitnami/kubectl/bin/kubectl", "/custom"]
         volumeMounts:
           - mountPath: /custom
             name: custom
