@@ -18,7 +18,6 @@ sonarr:
   persistence:
     config:
       enabled: true
-      storageClass: rook-cephfs
       skipuninstall: true
   additionalVolumes:
     - name: mnt

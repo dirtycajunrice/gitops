@@ -1,5 +1,8 @@
 sonarr:
   fullnameOverride: "sonarr"
+  persistence:
+    config:
+      existingClaim: sonarr
   ingress:
     annotations:
       traefik.ingress.kubernetes.io/router.priority: "10"
