@@ -100,7 +100,7 @@ plex:
   initContainers:
     - name: killwithfire
       image: busybox
-      command: ["sh", "-c", "rm /config/Library/Application\ Support/Plex\ Media\ Server/plexmediaserver.pid"]
+      command: ["sh", "-c", "rm '/config/Library/Application Support/Plex Media Server/plexmediaserver.pid'"]
       volumeMounts:
         - name: config
           mountPath: /config
