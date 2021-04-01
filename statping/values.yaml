@@ -50,9 +50,9 @@ statping:
       secretKeyRef:
         name: "statping"
         key: DB_PASS
-  envFrom:
-    - secretRef:
-        name: statping
+#  envFrom:
+#    - secretRef:
+#        name: statping
   resources:
     requests:
      cpu: 100m
