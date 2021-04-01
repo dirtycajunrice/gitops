@@ -102,12 +102,3 @@ plex:
     tls:
       - hostsTpl: ['{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}']
         secretNameTpl: '{{ include "common.names.fullname" . }}-{{ .Values.ingress.domainName | replace "." "-" }}'
-  initContainers:
-    - name: killwithfire
-      image: busybox
-      command: ["sh", "-c", "rm '/config/Library/Application Support/Plex Media Server/plexmediaserver.pid'"]
-      volumeMounts:
-        - name: config
-          mountPath: /config
-      securityContext:
-        runAsUser: 0
