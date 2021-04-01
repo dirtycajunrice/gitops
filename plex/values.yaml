@@ -18,6 +18,9 @@ plex:
       enabled: true
       existingClaim: plex
       skipuninstall: true
+    podSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 568
   probes:
     liveness:
       enabled: true
@@ -88,3 +91,12 @@ plex:
     tls:
       - hostsTpl: ['{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}']
         secretNameTpl: '{{ include "common.names.fullname" . }}-{{ .Values.ingress.domainName | replace "." "-" }}'
+  initContainers:
+    - name: see-vol-perms
+      image: busybox
+      command: ["sh", "-c", "stat /config/Library/Application Support/Plex Media Server/Preferences.xml"]
+      volumeMounts:
+        - name: config
+          mountPath: /config
+      securityContext:
+        runAsUser: 0
