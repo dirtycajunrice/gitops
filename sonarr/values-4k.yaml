@@ -1,25 +1,34 @@
 sonarr:
-  sonarr:
-    fullnameOverride: "sonarr4k"
-    ingress:
-      annotations:
-        traefik.ingress.kubernetes.io/router.priority: "15"
-      hosts:
-        - host: nickflix.io
-          paths:
-            - path: /sonarr4k
-              pathType: Prefix
-      extraIngresses:
-        - enabled: true
-          nameSuffix: "api"
-          annotations:
-            traefik.ingress.kubernetes.io/router.entrypoints: websecure
-            traefik.ingress.kubernetes.io/router.priority: "20"
-          hosts:
-            - host: nickflix.io
-              paths:
-                - path: /sonarr4k/api
-                  pathType: Prefix
-          tls:
-            - hosts: [nickflix.io]
-              secretName: nickflix-io
+  fullnameOverride: "sonarr4k"
+  ingress:
+    annotations:
+      traefik.ingress.kubernetes.io/router.priority: "15"
+    hosts:
+      - hostTpl: '{{ .Values.ingress.domainName }}'
+        paths:
+          - path: /sonarr4k
+            pathType: Prefix
+    extraIngresses:
+      - enabled: true
+        nameSuffix: "api"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/router.priority: "20"
+        hosts:
+          - hostTpl: '{{ .Values.ingress.domainName }}'
+            paths:
+              - path: /sonarr4k/api
+                pathType: Prefix
+        tls:
+          - hostsTpl: ['{{ .Values.ingress.domainName }}']
+            secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
+  probes:
+    liveness:
+      spec:
+        exec:
+          command:
+            - /usr/bin/env
+            - bash
+            - -c
+            - curl --fail localhost:8989/sonarr4k/api/v3/system/status?apiKey=`IFS=\> && while
+              read -d \< E C; do if [[ $E = "ApiKey" ]]; then echo $C; fi; done < /config/config.xml
