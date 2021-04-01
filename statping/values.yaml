@@ -3,11 +3,7 @@ statping:
     tag: v0.90.74
   fullnameOverride: statping
   persistence:
-    enabled: false
-  postgres:
-    kubedb:
-      enabled: false
-    posgresql:
+    data:
       enabled: false
   ingress:
     enabled: true
