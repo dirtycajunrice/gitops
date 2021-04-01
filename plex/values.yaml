@@ -87,6 +87,5 @@ plex:
           - path: /
             pathType: Prefix
     tls:
-      - hostTpl: ['{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}']
+      - hostsTpl: ['{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}']
         secretNameTpl: '{{ include "common.names.fullname" . }}-{{ .Values.ingress.domainName | replace "." "-" }}'
-        secretName: plex-cajun-pro
