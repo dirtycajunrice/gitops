@@ -1,9 +1,6 @@
 argo-cd:
   fullnameOverride: argocd
   installCRDs: false
-  global:
-    image:
-      tag: v1.8.1
   controller:
     metrics:
       enabled: true
