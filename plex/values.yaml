@@ -36,7 +36,7 @@ plex:
     limits:
       memory: "8Gi"
       cpu: "4"
-      nvidia.com/gpu: "1"
+#      nvidia.com/gpu: "1"
   additionalVolumes:
     - name: tv
       nfs:
