@@ -2,14 +2,6 @@ statping:
   image:
     tag: v0.90.74
   fullnameOverride: statping
-  statping:
-    name: cajun.pro status
-    description: cajun.pro hosting status page
-    domain: https://status.cajun.pro
-    admin:
-      existingSecret:
-        enabled: true
-        name: statping
   persistence:
     enabled: false
   postgres:
@@ -31,47 +23,18 @@ statping:
           - status.cajun.pro
         secretName: status-cajun-pro
   env:
-    - name: DB_CONN
-      value: postgres
-    - name: DB_HOST
-      value: postgres-statping
-    - name: DB_DATABASE
-      value: postgres
-    - name: DB_USER
-      valueFrom:
-        secretKeyRef:
-          name: statping
-          key: username
-    - name: DB_PASS
-      valueFrom:
-        secretKeyRef:
-          name: statping
-          key: password
-  externalSecret:
-    enabled: true
-    type: kubernetes-external-secrets
-    kubernetesExternalSecrets:
-      spec:
-        backendType: vault
-        vaultMountPoint: kubernetes-do
-        vaultRole: vault-auth
-      data:
-        - name: admin-user
-          key: kv-v2/data/auth/statping
-          property: admin-user
-        - name: admin-password
-          key: kv-v2/data/auth/statping
-          property: admin-password
-        - name: admin-email
-          key: kv-v2/data/auth/common
-          property: email
-        - name: password
-          key: kv-v2/data/auth/statping
-          property: db-password
-        - name: username
-          key: kv-v2/data/auth/statping
-          property: db-username
+    NAME: cajun.pro status
+    DESCRIPTION: cajun.pro hosting status page
+    VIRTUAL_HOST: https://status.cajun.pro
+    DB_CONN: postgres
+    DB_HOST: postgres-statping
+    DB_DATABASE: postgres
+  envFrom:
+    - secretRef:
+      name: statping
   resources:
     requests:
      cpu: 100m
      memory: 128Mi
+  postgresql:
+    enabled: false
