@@ -39,7 +39,7 @@ traefik:
     dashboard:
       enabled: false
   ingressClass:
-    enabled: true
+    enabled: false
     isDefaultClass: "true"
   pilot:
     enabled: true
