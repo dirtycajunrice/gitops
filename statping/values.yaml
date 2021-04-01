@@ -11,13 +11,15 @@ statping:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.priority: "10"
       cert-manager.io/cluster-issuer: le-production
+    domainName: "cajun.pro"
     hosts:
-      - host: status.cajun.pro
-        paths: [/]
+      - hostTpl: '{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}'
+        paths:
+          - path: /
+            pathType: Prefix
     tls:
-      - hosts:
-          - status.cajun.pro
-        secretName: status-cajun-pro
+      - hostsTpl: ['{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}']
+        secretNameTpl: '{{ include "common.names.fullname" . }}-{{ .Values.ingress.domainName | replace "." "-" }}'
   env:
     NAME: cajun.pro status
     DESCRIPTION: cajun.pro hosting status page

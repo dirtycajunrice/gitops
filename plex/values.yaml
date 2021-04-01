@@ -101,6 +101,7 @@ plex:
       - hostTpl: '{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}'
         paths:
           - path: /
+            pathType: Prefix
     tls:
       - hostsTpl: ['{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}']
         secretNameTpl: '{{ include "common.names.fullname" . }}-{{ .Values.ingress.domainName | replace "." "-" }}'
