@@ -5,21 +5,23 @@ statping:
   persistence:
     data:
       enabled: false
+  enableServiceLinks: false
   ingress:
     enabled: true
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.priority: "10"
       cert-manager.io/cluster-issuer: le-production
+    subDomainName: "status"
     domainName: "cajun.pro"
     hosts:
-      - hostTpl: '{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}'
+      - hostTpl: '{{ .Values.ingress.subDomainName }}.{{ .Values.ingress.domainName }}'
         paths:
           - path: /
             pathType: Prefix
     tls:
-      - hostsTpl: ['{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}']
-        secretNameTpl: '{{ include "common.names.fullname" . }}-{{ .Values.ingress.domainName | replace "." "-" }}'
+      - hostsTpl: ['{{ .Values.ingress.subDomainName }}.{{ .Values.ingress.domainName }}']
+        secretNameTpl: '{{ .Values.ingress.subDomainName }}-{{ .Values.ingress.domainName | replace "." "-" }}'
   env:
     NAME: cajun.pro status
     DESCRIPTION: cajun.pro hosting status page
