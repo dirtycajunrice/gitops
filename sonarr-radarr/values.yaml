@@ -3,13 +3,20 @@ domainName: "nickflix.io"
 authMiddleware: cajun-pro-organizr-auth-4@kubernetescrd
 apps:
   sonarr:
-    image: itscontained/sonarr
-    tag: 3.0.5.1143
-    chartVersion: 10.1.1
+    image:
+      repository: itscontained/sonarr
+      tag: 3.0.5.1143
+    chart:
+      name: sonarr
+      revision: 10.1.1
+    chartVersion:
   radarr:
-    image: itscontained/radarr
-    tag: 3.1.0.4706
-    chartVersion: 10.1.1
+    image:
+      repository: itscontained/radarr
+      tag: 3.1.0.4706
+    chart:
+      name: radarr
+      revision: 10.1.1
 
 qualities:
   - 1080p

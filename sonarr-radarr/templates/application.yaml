@@ -18,15 +18,15 @@ spec:
     name: home
   project: default
   source:
-    path: sonarr
+    chart: {{ $data.chart.name }}
     repoURL: 'https://k8s-at-home.com/charts'
-    targetRevision: {{ $data.chartVersion }}
+    targetRevision: {{ $data.chart.revision }}
     helm:
       values: |-
         fullnameOverride: {{ $fullname | quote }}}
         image:
-          repository: {{ $data.image }}
-          tag: {{ $data.tag }}
+          repository: {{ $data.image.repository }}
+          tag: {{ $data.image.tag }}
         env:
           TZ: America/Chicago
           PUID: "1000"
