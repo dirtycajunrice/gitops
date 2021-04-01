@@ -18,5 +18,5 @@ spec:
         - values.yaml
         - values-home.yaml
     repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
-#  syncPolicy:
-#    automated: {}
+  syncPolicy:
+    automated: {}
