@@ -1,15 +1,53 @@
 argo-cd:
   fullnameOverride: argocd
   installCRDs: false
+
+  global:
+    image:
+      tag: v1.8.7
+
   controller:
+    replicas: 1
+    enableStatefulSet: ftrue
     metrics:
       enabled: true
       serviceMonitor:
         enabled: true
+      rules:
+        enabled: false
+        spec:
+          - alert: ArgoAppMissing
+            expr: |
+              absent(argocd_app_info)
+            for: 15m
+            labels:
+              severity: critical
+            annotations:
+              summary: "[ArgoCD] No reported applications"
+              description: >
+                ArgoCD has not reported any applications data for the past 15 minutes which
+                means that it must be down or not functioning properly.  This needs to be
+                resolved for this cloud to continue to maintain state.
+          - alert: ArgoAppNotSynced
+            expr: |
+              argocd_app_info{sync_status!="Synced"} == 1
+            for: 12h
+            labels:
+              severity: warning
+            annotations:
+              summary: "[{{`{{$labels.name}}`}}] Application not synchronized"
+              description: >
+                The application [{{`{{$labels.name}}`}} has not been synchronized for over
+                12 hours which means that the state of this cloud has drifted away from the
+                state inside Git.
     resources:
       requests:
         cpu: 250m
         memory: 300Mi
+
+  dex:
+    enabled: false
+
   server:
     configEnabled: true
     extraArgs:
@@ -17,7 +55,6 @@ argo-cd:
     config:
       url: https://argocd.cajun.pro
       application.instanceLabelKey: argocd.argoproj.io/instance
-      accounts.cajunguest: login
       oidc.config: |
         name: OIDC
         issuer: https://accounts.google.com
@@ -60,8 +97,7 @@ argo-cd:
         - argocd.cajun.pro
       tls:
         - secretName: argocd-cajun-pro
-          hosts:
-            - argocd.cajun.pro
+          hosts: [argocd.cajun.pro]
     metrics:
       enabled: true
       serviceMonitor:
@@ -94,11 +130,20 @@ argo-cd:
       enabled: true
       serviceMonitor:
         enabled: true
-  dex:
-    resources:
-      requests:
-        cpu: 10m
-        memory: 50Mi
+    volumes:
+      - name: custom
+        emptyDir: {}
+    initContainers:
+      - name: copy-custom-kubectl
+        image: "bitnami/kubectl:1.20.5"
+        command: ["cp", "/opt/bitnami/kubectl", "/custom"]
+        volumeMounts:
+          - mountPath: /custom
+            name: custom
+    volumeMounts:
+      - mountPath: /usr/local/bin/kubectl
+        name: custom
+        subPath: kubectl
 podDisruptionBudget:
   enabled: true
   minAvailable: 1
