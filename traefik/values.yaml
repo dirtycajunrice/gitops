@@ -48,6 +48,26 @@ traefik:
   rollingUpdate:
     maxUnavailable: 3
     maxSurge: 3
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "50Mi"
+    limits:
+    cpu: "300m"
+    memory: "150Mi"
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 30
+    metrics:
+      - type: Resource
+        resource:
+          name: cpu
+          targetAverageUtilization: 80
+      - type: Resource
+        resource:
+          name: memory
+          targetAverageUtilization: 80
   affinity:
     podAntiAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
