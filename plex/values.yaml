@@ -7,12 +7,18 @@ plex:
     PLEX_PREFERENCE_1: "FriendlyName=NickFlix"
     PLEX_PREFERENCE_2: "EnableIPv6=0"
     PLEX_PREFERENCE_3: "sendCrashReports=0"
-    # PLEX_PREFERENCE_4: "ManualPortMappingMode=1"
-    # PLEX_PREFERENCE_8: "TranscoderH264BackgroundPreset=fast"
-    # PLEX_PREFERENCE_8: "TranscoderH264BackgroundPreset=fast"
-    # PLEX_PREFERENCE_6: "TranscoderQuality=2"
-    # PLEX_PREFERENCE_7: "TreatWanIpAsLocal=0"
-    # PLEX_PREFERENCE_8: "TranscoderH264BackgroundPreset=fast"
+    PLEX_PREFERENCE_4: "DlnaEnabled==0"
+    PLEX_PREFERENCE_5: "ManualPortMappingMode=1"
+    PLEX_PREFERENCE_6: "ScheduledLibraryUpdatesEnabled=1"
+    PLEX_PREFERENCE_7: "CinemaTrailersFromLibrary=0"
+    PLEX_PREFERENCE_8: "CinemaTrailersType=1"
+    PLEX_PREFERENCE_10: "HardwareAcceleratedCodecs=1"
+    PLEX_PREFERENCE_11: "autoEmptyTrash=1"
+    PLEX_PREFERENCE_12: "ManualPortMappingPort=32400"
+    PLEX_PREFERENCE_13: "TranscoderTempDirectory=/transcode"
+    PLEX_PREFERENCE_14: "ScheduledLibraryUpdateInterval=86400"
+    PLEX_PREFERENCE_15: "TranscoderCanOnlyRemuxVideo=0"
+    PLEX_PREFERENCE_16: "HardwareAcceleratedEncoders=1"
   persistence:
     config:
       enabled: true
@@ -92,9 +98,9 @@ plex:
       - hostsTpl: ['{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}']
         secretNameTpl: '{{ include "common.names.fullname" . }}-{{ .Values.ingress.domainName | replace "." "-" }}'
   initContainers:
-    - name: see-vol-perms
+    - name: killwithfire
       image: busybox
-      command: ["sh", "-c", "stat '/config/Library/Application Support/Plex Media Server/Preferences.xml'"]
+      command: ["sh", "-c", "rm /config/Library/Application\ Support/Plex\ Media\ Server/plexmediaserver.pid"]
       volumeMounts:
         - name: config
           mountPath: /config
