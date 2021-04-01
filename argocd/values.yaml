@@ -11,6 +11,7 @@ argo-cd:
         cpu: 250m
         memory: 300Mi
   server:
+    configEnabled: true
     extraArgs:
       - --insecure
     config:
@@ -26,6 +27,12 @@ argo-cd:
           - openid
           - profile
           - email
+      resource.customizations: |
+        core/Service:
+          health.lua: |
+            hs = {}
+            hs.status = "Healthy"
+            return hs
     rbacConfig:
       policy.default: role:readonly
       policy.csv: |
