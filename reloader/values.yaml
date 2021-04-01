@@ -2,7 +2,7 @@ reloader:
   reloader:
     deployment:
       nodeSelector:
-        cajun.pro/cluster-gen: 2
+        cajun.pro/cluster-gen: "2"
     service:
       port: 9090
     serviceMonitor:
