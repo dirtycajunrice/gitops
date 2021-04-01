@@ -9,7 +9,6 @@ traefik:
     - "--global.checknewversion"
     - "--serverstransport.insecureskipverify=true"
     - "--providers.kubernetesingress.ingressclass=traefik"
-    - "--entryPoints.websecure.http.tls=true"
     - "--metrics.prometheus.entryPoint=metrics"
   logs:
     general:
