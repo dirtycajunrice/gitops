@@ -6,5 +6,5 @@ dependencies:
     version: v0.16.1
     repository: https://charts.appscode.com/stable/
   - name: kubedb-catalog
-    version: v0.16.1
+    version: v0.17.1
     repository: https://charts.appscode.com/stable/
