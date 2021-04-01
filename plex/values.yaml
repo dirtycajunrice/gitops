@@ -16,7 +16,7 @@ plex:
   persistence:
     config:
       enabled: true
-      nameSuffix: ""
+      nameSuffix: " "
       storageClassName: rook-cephfs
       accessMode: ReadWriteMany
       size: 400Gi
