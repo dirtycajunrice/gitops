@@ -16,6 +16,7 @@ spec:
     helm:
       valueFiles:
         - values.yaml
+        - home-values.yaml
     repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
   syncPolicy:
     automated: {}
