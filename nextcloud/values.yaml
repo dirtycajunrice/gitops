@@ -2,7 +2,7 @@ nextcloud:
   fullnameOverride: nextcloud
   image:
     repository: nextcloud
-    tag: 19.0.1-apache
+    tag: 19.0.9-apache
   ingress:
     enabled: true
     annotations:
