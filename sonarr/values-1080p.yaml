@@ -11,7 +11,7 @@ sonarr:
         paths:
           - path: /sonarr
             pathType: Prefix
-    extraIngresses:
+    additionalIngresses:
       - enabled: true
         nameSuffix: "api"
         annotations:
