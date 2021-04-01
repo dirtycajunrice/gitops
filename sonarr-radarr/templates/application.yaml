@@ -1,7 +1,9 @@
 {{-  range $app, $data := .Values.apps -}}
   {{- range $quality := $.Values.qualities -}}
+    {{- $priority := 10 -}}
     {{- $fullname := $app -}}
     {{- if eq $quality "4k" -}}
+      {{- $priority = add $priority 5 -}}
       {{- $fullname = printf "%s4k" $app -}}
     {{- end }}
 ---
@@ -37,7 +39,7 @@ spec:
           annotations:
             traefik.ingress.kubernetes.io/router.entrypoints: websecure
             traefik.ingress.kubernetes.io/router.middlewares: {{ $.Values.authMiddleware }}
-            traefik.ingress.kubernetes.io/router.priority: "10"
+            traefik.ingress.kubernetes.io/router.priority: {{ $priority | quote }}
           hosts:
             - host: {{ $.Values.domainName }}
               paths:
@@ -51,7 +53,7 @@ spec:
               nameSuffix: "api"
               annotations:
                 traefik.ingress.kubernetes.io/router.entrypoints: websecure
-                traefik.ingress.kubernetes.io/router.priority: "15"
+                traefik.ingress.kubernetes.io/router.priority: {{ add $priority 5 | quote }}
               hosts:
                 - host: {{ $.Values.domainName }}
                   paths:
