@@ -1,42 +1,43 @@
 tautulli:
-  tautulli:
-    image:
-      tag: v2.6.10
-    ingress:
-      enabled: true
+  image:
+    tag: v2.6.10
+  enableServiceLinks: false
+  ingress:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
+    domainName: nickflix.io
+    hosts:
+      - hostTpl: '{{ .Values.ingress.domainName }}'
+        paths:
+          - path: /tautulli
+            pathType: Prefix
+    tls:
+      - hostsTpl: ['{{ .Values.ingress.domainName }}']
+        secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
+  additionalIngresses:
+    - enabled: true
+      nameSuffix: "api"
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.priority: "10"
-        traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
+        traefik.ingress.kubernetes.io/router.priority: "15"
       hosts:
-        - host: nickflix.io
+        - hostTpl: '{{ .Values.ingress.domainName }}'
           paths:
-            - path: /tautulli
+            - path: /tautulli/api
               pathType: Prefix
       tls:
-        - hosts: [nickflix.io]
-          secretName: nickflix-io
-      extraIngresses:
-        - enabled: true
-          nameSuffix: "api"
-          annotations:
-            traefik.ingress.kubernetes.io/router.entrypoints: websecure
-            traefik.ingress.kubernetes.io/router.priority: "15"
-          hosts:
-            - host: nickflix.io
-              paths:
-                - path: /tautulli/api
-                  pathType: Prefix
-          tls:
-            - hosts: [nickflix.io]
-              secretName: nickflix-io
-    persistence:
-      config:
-        enabled: true
-        existingClaim: tautulli
-        skipuninstall: true
-        accessMode: ReadWriteMany
-        size: 10Gi
-        storageClass: rook-cephfs
-    nodeSelector:
-      cajun.pro/cluster-gen: "2"
+        - hostsTpl: ['{{ .Values.ingress.domainName }}']
+          secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
+  persistence:
+    config:
+      enabled: true
+      existingClaim: tautulli
+      skipuninstall: true
+      accessMode: ReadWriteMany
+      size: 10Gi
+      storageClass: rook-cephfs
+  nodeSelector:
+    cajun.pro/cluster-gen: "2"
