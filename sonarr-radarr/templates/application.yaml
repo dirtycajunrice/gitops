@@ -3,7 +3,7 @@
     {{- $fullname := $app -}}
     {{- if eq $quality "4k" -}}
       {{- $fullname = printf "%s4k" $app -}}
-    {{- end -}}
+    {{- end }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -95,5 +95,5 @@ spec:
                     read -d \< E C; do if [[ $E = "ApiKey" ]]; then echo $C; fi; done < /config/config.xml
 #  syncPolicy:
 #    automated: {}
-  {{- end -}}
+  {{- end }}
 {{- end -}}
