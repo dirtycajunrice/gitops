@@ -97,8 +97,7 @@ kube-prometheus-stack:
       paths:
         - /
       tls:
-        - hosts:
-            - prometheus.cajun.pro
+        - hosts: [prometheus.cajun.pro]
           secretName: prometheus-cajun-pro
     prometheusSpec:
       ruleSelectorNilUsesHelmValues: false
@@ -111,8 +110,3 @@ kube-prometheus-stack:
     securityContext:
       runAsUser: 0
       runAsNonRoot: false
-#    extraHostVolumeMounts:
-#      - name: rootfs
-#        hostPath: /
-#        mountPath: /rootfs
-#        readOnly: false

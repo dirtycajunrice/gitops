@@ -53,8 +53,8 @@ traefik:
       cpu: "100m"
       memory: "50Mi"
     limits:
-    cpu: "300m"
-    memory: "150Mi"
+      cpu: "300m"
+      memory: "150Mi"
   autoscaling:
     enabled: true
     minReplicas: 3
@@ -116,8 +116,6 @@ tfa:
         secretKeyRef:
           name: traefik-forward-auth
           key: whitelist
-#   - name: INSECURE_COOKIE 12:30-2 2:30 onward PST
-#     value: "true"
   ingress:
     enabled: true
     annotations:
