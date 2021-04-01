@@ -1,0 +1,99 @@
+{{-  range $app, $data := .Values.apps -}}
+  {{- range $quality := $.Values.qualities -}}
+    {{- $fullname := $app -}}
+    {{- if eq $quality "4k" -}}
+      {{- $fullname = printf "%s4k" $app -}}
+    {{- end -}}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $app }}-{{ $quality }}
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
+spec:
+  destination:
+    namespace: cajun-pro
+    name: home
+  project: default
+  source:
+    path: sonarr
+    repoURL: 'https://k8s-at-home.com/charts'
+    targetRevision: {{ $data.chartVersion }}
+    helm:
+      values: |-
+        fullnameOverride: {{ $fullname | quote }}}
+        image:
+          repository: {{ $data.image }}
+          tag: {{ $data.tag }}
+        env:
+          TZ: America/Chicago
+          PUID: "1000"
+          PGID: "1000"
+        ingress:
+          enabled: true
+          domainName: "nickflix.io"
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: websecure
+            traefik.ingress.kubernetes.io/router.middlewares: {{ $.Values.authMiddleware }}
+            traefik.ingress.kubernetes.io/router.priority: "10"
+          hosts:
+            - host: {{ $.Values.domainName }}
+              paths:
+                - path: /{{ $fullname }}}
+                  pathType: Prefix
+          tls:
+            - hosts: [{{ $.Values.domainName }}]
+              secretName: '{{ $.Values.domainName | replace "." "-" }}'
+          additionalIngresses:
+            - enabled: true
+              nameSuffix: "api"
+              annotations:
+                traefik.ingress.kubernetes.io/router.entrypoints: websecure
+                traefik.ingress.kubernetes.io/router.priority: "15"
+              hosts:
+                - host: {{ $.Values.domainName }}
+                  paths:
+                    - path: /{{ $fullname }}}/api
+                      pathType: Prefix
+              tls:
+                - hosts: [{{ $.Values.domainName }}]
+                  secretName: '{{ $.Values.domainName | replace "." "-" }}'
+        persistence:
+          config:
+            enabled: true
+            existingClaim: {{ $fullname | quote }}}
+            skipuninstall: true
+        additionalVolumes:
+          - name: mnt
+            nfs:
+              server: 10.0.10.211
+              path: /mnt/media
+          - name: emptydir
+            emptyDir: {}
+        additionalVolumeMounts:
+          - name: mnt
+            mountPath: /mnt/media
+          - name: emptydir
+            mountPath: /mnt/media/torrents/incomplete
+        podSecurityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+        #    fsGroup: 1000
+        nodeSelector:
+          cajun.pro/cluster-gen: "2"
+        probes:
+          liveness:
+            spec:
+              exec:
+                command:
+                  - /usr/bin/env
+                  - bash
+                  - -c
+                  - curl --fail localhost:8989/{{ $fullname }}}/api/v3/system/status?apiKey=`IFS=\> && while
+                    read -d \< E C; do if [[ $E = "ApiKey" ]]; then echo $C; fi; done < /config/config.xml
+#  syncPolicy:
+#    automated: {}
+  {{- end -}}
+{{- end -}}
