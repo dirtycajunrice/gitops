@@ -20,7 +20,7 @@ plex:
       skipuninstall: true
     podSecurityContext:
       runAsUser: 1000
-      runAsGroup: 568
+      runAsGroup: 1000
   probes:
     liveness:
       enabled: true
