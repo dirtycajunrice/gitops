@@ -16,7 +16,6 @@ sonarr:
       - hostsTpl: ['{{ .Values.ingress.domainName }}']
         secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
   persistence:
-    type: statefulset
     config:
       enabled: true
       storageClass: rook-cephfs
