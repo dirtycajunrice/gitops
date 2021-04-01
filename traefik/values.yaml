@@ -2,6 +2,9 @@ traefik:
   fullnameOverride: traefik
   image:
     tag: 2.4.8
+  deployment:
+    annotations:
+      reloader.stakater.com/match: "true"
   globalArguments:
     - "--global.checknewversion"
     - "--serverstransport.insecureskipverify=true"
@@ -11,6 +14,7 @@ traefik:
   logs:
     general:
       format: json
+      level: ERROR
     access:
       enabled: true
       format: json
@@ -24,6 +28,9 @@ traefik:
   ports:
     web:
       redirectTo: websecure
+    websecure:
+      tls:
+        enabled: true
     metrics:
       port: 8082
       expose: true
@@ -36,6 +43,12 @@ traefik:
     isDefaultClass: "true"
   pilot:
     enabled: true
+  experimental:
+    plugins:
+      enabled: true
+  rollingUpdate:
+    maxUnavailable: 3
+    maxSurge: 3
   affinity:
     podAntiAffinity:
       preferredDuringSchedulingIgnoredDuringExecution:
