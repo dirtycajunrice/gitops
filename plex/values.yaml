@@ -7,7 +7,7 @@ plex:
     PLEX_PREFERENCE_1: "FriendlyName=NickFlix"
     PLEX_PREFERENCE_2: "EnableIPv6=0"
     PLEX_PREFERENCE_3: "sendCrashReports=0"
-    PLEX_PREFERENCE_4: "DlnaEnabled==0"
+    PLEX_PREFERENCE_4: "DlnaEnabled=0"
     PLEX_PREFERENCE_5: "ManualPortMappingMode=1"
     PLEX_PREFERENCE_6: "ScheduledLibraryUpdatesEnabled=1"
     PLEX_PREFERENCE_7: "CinemaTrailersFromLibrary=0"
