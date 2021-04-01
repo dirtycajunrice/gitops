@@ -18,9 +18,9 @@ plex:
       enabled: true
       existingClaim: plex
       skipuninstall: true
-    podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 1000
+  podSecurityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
   probes:
     liveness:
       enabled: true
