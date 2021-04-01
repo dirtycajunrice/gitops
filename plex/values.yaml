@@ -23,7 +23,10 @@ plex:
     PLEX_PREFERENCE_17: "DisableTLSv1_0=1"
     PLEX_PREFERENCE_18: "RelayEnabled=0"
     PLEX_PREFERENCE_19: "TreatWanIpAsLocal=0"
-
+    PLEX_PREFERENCE_20: "GdmEnabled=0"
+    PLEX_PREFERENCE_21: "secureConnections=2"
+  nodeSelector:
+    cajun.pro/cluster-gen: 2
   persistence:
     config:
       enabled: true

@@ -3,6 +3,8 @@ cert-manager:
   prometheus:
     servicemonitor:
       enabled: "true"
+  nodeSelector:
+    cajun.pro/cluster-gen: 2
   installCRDs: true
   volumes:
     - name: aws-credentials
@@ -13,3 +15,9 @@ cert-manager:
     - mountPath: /.aws
       name: aws-credentials
       readOnly: true
+  webhook:
+    nodeSelector:
+      cajun.pro/cluster-gen: 2
+  cainjector:
+    nodeSelector:
+      cajun.pro/cluster-gen: 2
