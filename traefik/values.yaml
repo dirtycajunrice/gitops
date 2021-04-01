@@ -62,11 +62,11 @@ traefik:
     metrics:
       - type: Resource
         resource:
-          name: cpu
+          name: memory
           targetAverageUtilization: 80
       - type: Resource
         resource:
-          name: memory
+          name: cpu
           targetAverageUtilization: 80
   affinity:
     podAntiAffinity:
