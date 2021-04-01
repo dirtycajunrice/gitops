@@ -91,7 +91,7 @@ spec:
                   - /usr/bin/env
                   - bash
                   - -c
-                  - curl --fail localhost:8989/{{ $fullname }}/api/v3/system/status?apiKey=`IFS=\> && while
+                  - curl --fail localhost:{{ $data.port }}/{{ $fullname }}/api/v3/system/status?apiKey=`IFS=\> && while
                     read -d \< E C; do if [[ $E = "ApiKey" ]]; then echo $C; fi; done < /config/config.xml
 #  syncPolicy:
 #    automated: {}

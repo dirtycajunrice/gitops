@@ -9,7 +9,7 @@ apps:
     chart:
       name: sonarr
       revision: 10.1.1
-    chartVersion:
+    port: 8989
   radarr:
     image:
       repository: itscontained/radarr
@@ -17,6 +17,7 @@ apps:
     chart:
       name: radarr
       revision: 10.1.1
+    port: 7878
 
 qualities:
   - 1080p
