@@ -1,0 +1,92 @@
+plex:
+  # hostNetwork: true
+  controllerType: deployment
+  fullnameOverride: plex
+  env:
+    ALLOWED_NETWORKS: "10.0.10.0/24,172.16.0.0/16"
+    PLEX_PREFERENCE_1: "FriendlyName=NickFlix"
+    PLEX_PREFERENCE_2: "EnableIPv6=0"
+    PLEX_PREFERENCE_3: "sendCrashReports=0"
+    # PLEX_PREFERENCE_4: "ManualPortMappingMode=1"
+    # PLEX_PREFERENCE_8: "TranscoderH264BackgroundPreset=fast"
+    # PLEX_PREFERENCE_8: "TranscoderH264BackgroundPreset=fast"
+    # PLEX_PREFERENCE_6: "TranscoderQuality=2"
+    # PLEX_PREFERENCE_7: "TreatWanIpAsLocal=0"
+    # PLEX_PREFERENCE_8: "TranscoderH264BackgroundPreset=fast"
+  persistence:
+    config:
+      enabled: true
+      storageClassName: rook-cephfs
+      accessMode: ReadWriteMany
+      size: 400Gi
+      skipuninstall: true
+  probes:
+    liveness:
+      enabled: true
+      custom: true
+      spec:
+        initialDelaySeconds: 60
+        periodSeconds: 60
+        exec:
+          command:
+            - cat
+            - /tv/healthcheck
+  resources:
+    requests:
+      memory: "2Gi"
+      cpu: "1"
+    limits:
+      memory: "8Gi"
+      cpu: "4"
+      nvidia.com/gpu: "1"
+  additionalVolumes:
+    - name: tv
+      nfs:
+        server: 10.0.10.211
+        path: /mnt/media/tv
+    - name: tv4k
+      nfs:
+        server: 10.0.10.211
+        path: /mnt/media/tv4k
+    - name: movies
+      nfs:
+        server: 10.0.10.211
+        path: /mnt/media/movies
+    - name: movies4k
+      nfs:
+        server: 10.0.10.211
+        path: /mnt/media/movies4k
+    - name: audiobooks
+      nfs:
+        server: 10.0.10.211
+        path: /mnt/media/audiobooks
+  additionalVolumeMounts:
+    - mountPath: /tv
+      name: tv
+      readOnly: true
+    - mountPath: /tv4k
+      name: tv4k
+      readOnly: true
+    - mountPath: /movies
+      name: movies
+      readOnly: true
+    - mountPath: /movies4k
+      name: movies4k
+      readOnly: true
+    - mountPath: /audiobooks
+      name: audiobooks
+      readOnly: true
+  ingress:
+    enabled: true
+    domainName: "cajun.pro"
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - hostTpl: '{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}'
+        paths: [/]
+    tls:
+      - hostTpl: ['{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}']
+        secretNameTpl: '{{ include "common.names.fullname" . }}-{{ .Values.ingress.domainName | replace "." "-" }}'
+        secretName: plex-cajun-pro
