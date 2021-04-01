@@ -29,6 +29,8 @@ statping:
     DB_CONN: postgres
     DB_HOST: postgres-statping
     DB_DATABASE: postgres
+    DB_USER: ~
+    DB_PASS: ~
   envFrom:
     - secretRef:
         name: statping
