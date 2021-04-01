@@ -29,7 +29,7 @@ statping:
     DB_DATABASE: postgres
   envFrom:
     - secretRef:
-      name: statping
+        name: statping
   resources:
     requests:
      cpu: 100m
