@@ -85,11 +85,11 @@ plex:
       traefik.ingress.kubernetes.io/router.priority: "10"
       cert-manager.io/cluster-issuer: le-production
     hosts:
-      - hostTpl: '{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}'
+      - hostTpl: '{{ .Values.fullnameOverride }}.{{ .Values.ingress.domainName }}'
         paths:
           - path: /
             pathType: Prefix
     tls:
-      - hostTpl: ['{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}']
-        secretNameTpl: '{{ include "common.names.fullname" . }}-{{ .Values.ingress.domainName | replace "." "-" }}'
+      - hostTpl: ['{{ .Values.fullnameOverride }}.{{ .Values.ingress.domainName }}']
+        secretNameTpl: '{{ .Values.fullnameOverride }}-{{ .Values.ingress.domainName | replace "." "-" }}'
         secretName: plex-cajun-pro
