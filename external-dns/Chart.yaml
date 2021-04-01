@@ -3,5 +3,5 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: external-dns
-    version: 3.2.6
+    version: 3.7.0
     repository: https://charts.bitnami.com/bitnami
