@@ -13,7 +13,7 @@ apps:
   radarr:
     image:
       repository: itscontained/radarr
-      tag: 3.1.0.4706
+      tag: 3.1.0.4799
     chart:
       name: radarr
       revision: 10.1.1
