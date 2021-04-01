@@ -31,8 +31,10 @@ tautulli:
             - hosts: [nickflix.io]
               secretName: nickflix-io
     persistence:
-      type: statefulset
       config:
+        enabled: true
+        existingClaim: tautulli
+        skipuninstall: true
         accessMode: ReadWriteMany
         size: 10Gi
         storageClass: rook-cephfs
