@@ -23,7 +23,7 @@ spec:
     targetRevision: {{ $data.chart.revision }}
     helm:
       values: |-
-        fullnameOverride: {{ $fullname | quote }}}
+        fullnameOverride: {{ $fullname | quote }}
         image:
           repository: {{ $data.image.repository }}
           tag: {{ $data.image.tag }}
@@ -41,7 +41,7 @@ spec:
           hosts:
             - host: {{ $.Values.domainName }}
               paths:
-                - path: /{{ $fullname }}}
+                - path: /{{ $fullname }}
                   pathType: Prefix
           tls:
             - hosts: [{{ $.Values.domainName }}]
@@ -55,7 +55,7 @@ spec:
               hosts:
                 - host: {{ $.Values.domainName }}
                   paths:
-                    - path: /{{ $fullname }}}/api
+                    - path: /{{ $fullname }}/api
                       pathType: Prefix
               tls:
                 - hosts: [{{ $.Values.domainName }}]
@@ -63,7 +63,7 @@ spec:
         persistence:
           config:
             enabled: true
-            existingClaim: {{ $fullname | quote }}}
+            existingClaim: {{ $fullname | quote }}
             skipuninstall: true
         additionalVolumes:
           - name: mnt
@@ -91,7 +91,7 @@ spec:
                   - /usr/bin/env
                   - bash
                   - -c
-                  - curl --fail localhost:8989/{{ $fullname }}}/api/v3/system/status?apiKey=`IFS=\> && while
+                  - curl --fail localhost:8989/{{ $fullname }}/api/v3/system/status?apiKey=`IFS=\> && while
                     read -d \< E C; do if [[ $E = "ApiKey" ]]; then echo $C; fi; done < /config/config.xml
 #  syncPolicy:
 #    automated: {}
