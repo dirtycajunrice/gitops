@@ -17,7 +17,7 @@ spec:
       valueFiles:
         - values.yaml
       values: |
-        txtOwnerId: "do"
+        txtOwnerId: do
     repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
   #syncPolicy:
   #  automated: {}
