@@ -23,6 +23,8 @@ spec:
         fullnameOverride: {{ $.Values.name }}
         env:
           VAULT_ADDR: {{ $.Values.vault }}
+          DEFAULT_VAULT_MOUNT_POINT: {{ printf "kubernetes-%s" . | quote }}
+          DEFAULT_VAULT_ROLE: "vault-auth"
         serviceMonitor:
           enabled: true
         {{- if eq . "home" }}
