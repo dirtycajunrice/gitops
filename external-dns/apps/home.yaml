@@ -17,9 +17,10 @@ spec:
       valueFiles:
         - values.yaml
       values: |
-        txtOwnerId: home
-        nodeSelector:
-          cajun.pro/cluster-gen: "2"
+        external-dns:
+          txtOwnerId: home
+          nodeSelector:
+            cajun.pro/cluster-gen: "2"
     repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
   #syncPolicy:
   #  automated: {}
