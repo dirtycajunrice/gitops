@@ -7,7 +7,7 @@ metadata:
     argocd.argoproj.io/manifest-generate-paths: .
 spec:
   destination:
-    namespace: kube-system
+    namespace: utility
     name: home
   project: default
   source:
