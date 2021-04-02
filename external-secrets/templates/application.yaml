@@ -12,7 +12,7 @@ spec:
   #  automated: {}
   destination:
     namespace: utility
-    name: {{- . -}}
+    name: {{ . }}
   project: default
   source:
     chart: {{ $.Values.chart.name }}
