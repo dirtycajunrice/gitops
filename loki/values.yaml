@@ -1,4 +1,5 @@
 loki-stack:
+  fullnameOverride: loki-stack
   loki:
     fullnameOverride: loki
     nodeSelector:
