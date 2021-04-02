@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     namespace: kube-system
-    server: https://kubernetes.default.svc
+    name: do
   project: default
   source:
     path: external-dns
@@ -16,7 +16,8 @@ spec:
     helm:
       valueFiles:
         - values.yaml
-        - values-do.yaml
+      values: |
+        txtOwnerId: "do"
     repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
   syncPolicy:
     automated: {}

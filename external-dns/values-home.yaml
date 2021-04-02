@@ -1,4 +1,0 @@
-external-dns:
-  txtOwnerId: "home"
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"
