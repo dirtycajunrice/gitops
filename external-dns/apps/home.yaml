@@ -22,5 +22,5 @@ spec:
           nodeSelector:
             cajun.pro/cluster-gen: "2"
     repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
-  #syncPolicy:
-  #  automated: {}
+  syncPolicy:
+    automated: {}

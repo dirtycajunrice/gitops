@@ -19,5 +19,5 @@ spec:
       values: |
         txtOwnerId: do
     repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
-  #syncPolicy:
-  #  automated: {}
+  syncPolicy:
+    automated: {}
