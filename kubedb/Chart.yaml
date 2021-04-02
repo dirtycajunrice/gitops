@@ -3,8 +3,8 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: kubedb
-    version: v0.16.1
+    version: v0.16.2
     repository: https://charts.appscode.com/stable/
   - name: kubedb-catalog
-    version: v0.16.1
+    version: v0.17.1
     repository: https://charts.appscode.com/stable/
