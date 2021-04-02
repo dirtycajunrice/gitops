@@ -1,5 +1,9 @@
 vault:
   server:
+    image:
+      repository: "vault"
+      tag: "1.7.0"
+      pullPolicy: IfNotPresent
     ingress:
       enabled: true
       annotations:
@@ -16,3 +20,4 @@ vault:
     storageClass: file
   ui:
     enabled: true
+
