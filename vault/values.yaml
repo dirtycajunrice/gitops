@@ -20,4 +20,3 @@ vault:
     storageClass: file
   ui:
     enabled: true
-
