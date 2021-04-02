@@ -17,7 +17,7 @@ organizr:
             - path: /
               pathType: Prefix
     tls:
-      - hostTpl: ['{{ .Values.ingress.domainName }}']
+      - hostsTpl: ['{{ .Values.ingress.domainName }}']
         secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
   persistence:
     config:
