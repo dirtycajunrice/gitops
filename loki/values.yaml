@@ -1,5 +1,6 @@
 loki-stack:
   loki:
+    fullnameOverride: loki
     nodeSelector:
       cajun.pro/cluster-gen: "2"
     serviceMonitor:
