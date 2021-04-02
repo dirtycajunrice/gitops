@@ -25,4 +25,8 @@ spec:
           VAULT_ADDR: {{ $.Values.vault }}
         serviceMonitor:
           enabled: true
+        {{- if eq . "home" }}
+        nodeSelector:
+          cajun.pro/cluster-gen: "2"
+        {{- end }}
 {{- end }}
