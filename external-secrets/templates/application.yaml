@@ -1,0 +1,26 @@
+{{-  range .Values.clusters -}}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ printf "%s-%s" $.Values.name . }}
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
+spec:
+  #syncPolicy:
+  #  automated: {}
+  destination:
+    namespace: utility
+    name: {{- . -}}
+  project: default
+  source:
+    chart: {{ $.Values.chart.name }}
+    repoURL: {{ $.Values.chart.repository }}
+    targetRevision: {{ $.Values.chart.version }}
+    helm:
+      values: |
+        fullnameOverride: {{ $.Values.name }}
+        env:
+          VAULT_ADDR: {{ $.Values.vault }}
+{{- end -}}
