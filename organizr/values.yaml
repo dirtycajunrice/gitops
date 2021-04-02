@@ -1,29 +1,32 @@
 organizr:
-  organizr:
-    env:
-      fpm: "true"
-      branch: "v2-develop"
-    ingress:
+  fullnameOverride: organizr
+  enableServiceLinks: false
+  env:
+    fpm: "true"
+    branch: "v2-develop"
+  ingress:
+    enabled: true
+    domainName: "nickflix.io"
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "5"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - hostTpl: '{{ .Values.ingress.domainName }}'
+        paths:
+            - path: /
+              pathType: Prefix
+    tls:
+      - hostTpl: ['{{ .Values.ingress.domainName }}']
+        secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
+  persistence:
+    config:
       enabled: true
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.priority: "5"
-        cert-manager.io/cluster-issuer: le-production
-      hosts:
-        - host: nickflix.io
-          paths: [/]
-      tls:
-        - hosts: [nickflix.io]
-          secretName: nickflix-io
-    persistence:
-      type: statefulset
-      config:
-        accessMode: ReadWriteMany
-        size: 1Gi
-        storageClass: rook-cephfs
-    nodeSelector:
-      cajun.pro/cluster-gen: "2"
-    resources:
-      requests:
-        cpu: 100m
-        memory: 128m
+      existingClaim: organizr
+      skipuninstall: true
+  nodeSelector:
+    cajun.pro/cluster-gen: "2"
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128m

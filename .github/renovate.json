@@ -14,18 +14,24 @@
   "commitBodyTable": true,
   "ignorePaths": ["archived/*"],
   "fetchReleaseNotes": true,
+  "labels": ["renovate"],
   "packageRules": [
     {
+      "matchDatasources": ["helm"],
+      "addLabels": ["chart"]
+    },
+    {
       "matchDatasources": ["docker"],
-      "labels": ["docker"]
+      "addLabels": ["container"]
     },
     {
       "matchDatasources": [
         "docker"
       ],
       "automerge": true,
-      "automergeType": "branch",
+      "automergeType": "pr",
       "requiredStatusChecks": null,
+      "addLabels": ["auto-merged"],
       "matchUpdateTypes": [
         "minor",
         "patch"
