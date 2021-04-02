@@ -9,6 +9,3 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: rook-cephfs
-    accessMode: ReadWriteMany
-      size: 1Gi
-      storageClass: rook-cephfs
