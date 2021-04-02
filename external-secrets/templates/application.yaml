@@ -1,4 +1,4 @@
-{{-  range .Values.clusters }}
+{{- range .Values.clusters }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -8,8 +8,8 @@ metadata:
   annotations:
     argocd.argoproj.io/manifest-generate-paths: .
 spec:
-  #syncPolicy:
-  #  automated: {}
+  syncPolicy:
+    automated: {}
   destination:
     namespace: utility
     name: {{ . }}
@@ -23,4 +23,6 @@ spec:
         fullnameOverride: {{ $.Values.name }}
         env:
           VAULT_ADDR: {{ $.Values.vault }}
+        serviceMonitor:
+          enabled: true
 {{- end }}
