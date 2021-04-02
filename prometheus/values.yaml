@@ -20,6 +20,10 @@ kube-prometheus-stack:
             - alertmanager.cajun.pro
   grafana:
     fullnameOverride: grafana
+    image:
+      repository: grafana/grafana
+      tag: 7.5.2
+      pullPolicy: IfNotPresent
     testFramework:
       enabled: false
     ingress:
