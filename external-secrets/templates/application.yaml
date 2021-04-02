@@ -1,4 +1,4 @@
-{{-  range .Values.clusters -}}
+{{-  range .Values.clusters }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -23,4 +23,4 @@ spec:
         fullnameOverride: {{ $.Values.name }}
         env:
           VAULT_ADDR: {{ $.Values.vault }}
-{{- end -}}
+{{- end }}
