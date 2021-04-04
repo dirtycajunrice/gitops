@@ -7,8 +7,8 @@ metadata:
     argocd.argoproj.io/manifest-generate-paths: .
 spec:
   destination:
-    namespace: kube-system
-    server: https://node5.k8s.cajun.pro:6443
+    namespace: utility
+    name: home
   project: default
   source:
     path: cert-manager
