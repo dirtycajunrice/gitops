@@ -18,7 +18,7 @@ plex:
     PLEX_PREFERENCE_12: "autoEmptyTrash=1"
     PLEX_PREFERENCE_13: "TranscoderTempDirectory=/transcode"
     PLEX_PREFERENCE_14: "ScheduledLibraryUpdateInterval=86400"
-    PLEX_PREFERENCE_15: "TranscoderCanOnlyRemuxVideo=1"
+    PLEX_PREFERENCE_15: "TranscoderCanOnlyRemuxVideo=0"
     PLEX_PREFERENCE_16: "HardwareAcceleratedEncoders=1"
     PLEX_PREFERENCE_17: "DisableTLSv1_0=1"
     PLEX_PREFERENCE_18: "RelayEnabled=0"
@@ -53,7 +53,7 @@ plex:
     limits:
       memory: "8Gi"
       cpu: "4"
-#      nvidia.com/gpu: "1"
+      nvidia.com/gpu: "1"
   additionalVolumes:
     - name: tv
       nfs:
