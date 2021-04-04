@@ -4,7 +4,7 @@ metadata:
   name: mysql-bookstack
   namespace: cajun-pro
 spec:
-  version: 8.0.21
+  version: 8.0.21-v1
   storageType: Durable
   authSecret:
     name: bookstack
