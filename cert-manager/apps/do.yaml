@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     namespace: utility
-    server: do
+    name: do
   project: default
   source:
     path: cert-manager
