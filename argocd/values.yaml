@@ -80,7 +80,7 @@ argo-cd:
         admissionregistration.k8s.io/MutatingWebhookConfiguration:
           ignoreDifferences: |
             jsonPointers:
-            - /webhooks/0/clientConfig/caBundle
+              - /webhooks/0/clientConfig/caBundle
     rbacConfig:
       policy.default: role:readonly
       scopes: '[email, group]'
