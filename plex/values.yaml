@@ -1,9 +1,9 @@
 plex:
+  controllerType: deployment
+  fullnameOverride: plex
   image:
     repository: ghcr.io/k8s-at-home/plex
     tag: v1.22.0.4163-d8c4875dd
-  controllerType: deployment
-  fullnameOverride: plex
   env:
     ALLOWED_NETWORKS: "10.0.10.0/24,172.16.0.0/16"
     PLEX_PREFERENCE_1: "FriendlyName=NickFlix"
