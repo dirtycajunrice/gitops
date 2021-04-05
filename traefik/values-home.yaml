@@ -12,7 +12,11 @@ traefik:
     cajun.pro/cluster-gen: "2"
   pilot:
     token: "23f45ed9-8bcb-43a5-b41f-1af0762be61d"
-
+  logs:
+    access:
+      fields:
+        headers:
+          defaultmode: keep
 tfa:
   authHost: nickflix.io
   ingress:
