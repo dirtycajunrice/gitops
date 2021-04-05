@@ -11,7 +11,7 @@ spec:
     targetPort: 9081
     protocol: TCP
     name: web
-  - port: 9081
+  - port: 5000
     targetPort: 5000
     protocol: TCP
     name: scgi
