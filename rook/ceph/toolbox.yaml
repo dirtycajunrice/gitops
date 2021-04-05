@@ -15,10 +15,12 @@ spec:
       labels:
         app: rook-ceph-tools
     spec:
+      nodeSelector:
+        cajun.pro/cluster-gen: "2"
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: rook-ceph-tools
-          image: rook/ceph:v1.4.4
+          image: rook/ceph:v1.5.9
           command: ["/tini"]
           args: ["-g", "--", "/usr/local/bin/toolbox.sh"]
           imagePullPolicy: IfNotPresent
