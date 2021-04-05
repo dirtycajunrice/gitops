@@ -17,7 +17,7 @@ spec:
           port: 5055
         - kind: Rule
     - match: Host(`nickflix.io`) && HeadersRegexp(`referer`, `https://nickflix.io/overseer/.*`)
-      priority: 10
+      priority: 15
       services:
         - kind: Service
           name: overseerr
