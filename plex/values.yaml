@@ -1,5 +1,7 @@
 plex:
-  # hostNetwork: true
+  image:
+    repository: ghcr.io/k8s-at-home/plex
+    tag: v1.22.0.4163-d8c4875dd
   controllerType: deployment
   fullnameOverride: plex
   env:
