@@ -22,6 +22,8 @@ spec:
           ports:
             - containerPort: 9081
               name: web
+            - containerPort: 5000
+              name: sgci
             - containerPort: 50106
               hostPort: 50106
               name: seed
