@@ -7,5 +7,5 @@ spec:
     plugin-rewritebody:
       lastModified: true
       rewrites:
-        - regex: 'href'
-          replacement: 'testhehe'
+        - regex: '((src|href)="/)'
+          replacement: '${1}overseerr'
