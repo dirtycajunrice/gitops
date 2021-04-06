@@ -4,7 +4,7 @@ metadata:
   name: overseerr-rewritebody
 spec:
   plugin:
-    rewrite:
+    plugin-rewritebody:
       lastModified: true
       rewrites:
         - regex: ((href|src)="(/))
