@@ -5,4 +5,4 @@ metadata:
 spec:
   stripPrefix:
     prefixes:
-      - "/overseerr"
+      - /overseerr

@@ -7,8 +7,8 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`nickflix.io`) && (PathPrefix(`/overseerr`) || Headers(`X-Overseer`, `nickflix`) || Headers(`Referer`, `https://nickflix.io/overseerr`))
-      priority: 10
+      match: "Host(`nickflix.io`) && (PathPrefix(`/overseerr`) || Headers(`X-Overseer`, `nickflix`) || Headers(`Referer`, `https://nickflix.io/overseerr`))"
+      priority: 30
       middlewares:
         - name: strip-prefix-overseerr
         - name: overseerr-header
