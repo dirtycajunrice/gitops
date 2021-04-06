@@ -7,5 +7,5 @@ spec:
     rewritebody:
       lastModified: true
       rewrites:
-        - regex: `((href|src)="(/))`
-          replacement: `${1}overseerr`
+        - regex: ((href|src)="(/))
+          replacement: ${1}overseerr
