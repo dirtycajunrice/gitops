@@ -20,8 +20,8 @@ spec:
       match: Host(`nickflix.io`) && Headers(`X-Powered-By`, `Overseerr`) && Path(`/login`)
       priority: 15
       middlewares:
-        - name: overseerr-redirectregex
         - name: overseerr-header2
+        - name: overseerr-redirectregex
       services:
         - kind: Service
           name: overseerr
