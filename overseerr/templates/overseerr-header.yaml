@@ -6,6 +6,7 @@ spec:
   headers:
     customRequestHeaders:
       X-Overseer: "nickflix"
+      Referer: "https://nickflix.io/overseerr"
     customResponseHeaders:
       X-Overseer: "nickflix"
-
+      Referer: "https://nickflix.io/overseerr"
