@@ -1,19 +1,11 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: referrer
+  name: overseerr-referrer
 spec:
   headers:
     customRequestHeaders:
       Referer: "https://nickflix.io/overseerr"
     customResponseHeaders:
       Referer: "https://nickflix.io/overseerr"
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: referrer-request
-spec:
-  headers:
-    customRequestHeaders:
-      X-Test-Request-Referer: "test"
+
