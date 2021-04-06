@@ -7,7 +7,27 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: "Host(`nickflix.io`) && (PathPrefix(`/overseerr`) || Headers(`X-Overseer`, `nickflix`) || Headers(`Referer`, `https://nickflix.io/overseerr`))"
+      match: Host(`nickflix.io`) && PathPrefix(`/overseerr`)
+      priority: 30
+      middlewares:
+        - name: strip-prefix-overseerr
+        - name: overseerr-header
+      services:
+        - kind: Service
+          name: overseerr
+          port: 5055
+    - kind: Rule
+      match: Host(`nickflix.io`) && Headers(`X-Overseer`, `nickflix`)
+      priority: 30 || Headers(`Referer`, `https://nickflix.io/overseerr`))
+      middlewares:
+        - name: strip-prefix-overseerr
+        - name: overseerr-header
+      services:
+        - kind: Service
+          name: overseerr
+          port: 5055
+    - kind: Rule
+      match: Host(`nickflix.io`) && HeadersRegexp(`Referer`, `https://nickflix.io/overseerr.*`)
       priority: 30
       middlewares:
         - name: strip-prefix-overseerr
