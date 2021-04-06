@@ -21,6 +21,7 @@ spec:
       priority: 15
       middlewares:
         - name: overseerr-redirectregex
+        - name: overseerr-header2
       services:
         - kind: Service
           name: overseerr
