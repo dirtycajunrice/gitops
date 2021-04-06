@@ -30,7 +30,6 @@ spec:
       priority: 20
       middlewares:
         - name: strip-prefix-overseerr
-        - name: overseerr-header
       services:
         - kind: Service
           name: overseerr
