@@ -11,7 +11,7 @@ spec:
       priority: 30
       middlewares:
         - name: strip-prefix-overseerr
-        - name: overseerr-header
+        - name: overseerr-headers
       services:
         - kind: Service
           name: overseerr
@@ -38,7 +38,7 @@ spec:
       match: Host(`nickflix.io`) && Headers(`X-Powered-By`, `Overseerr`)
       priority: 25
       middlewares:
-        - name: strip-prefix-overseerr
+        - name: overseerr-redirectregex
       services:
         - kind: Service
           name: overseerr

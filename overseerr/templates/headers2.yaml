@@ -6,3 +6,7 @@ spec:
   headers:
     customRequestHeaders:
       X-Powered-By: "Overseerr"
+      Referer: "https://nickflix.io/overseerr"
+    customResponseHeaders:
+      X-Powered-By: "Overseerr"
+      Referer: "https://nickflix.io/overseerr"
