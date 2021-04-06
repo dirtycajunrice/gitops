@@ -5,6 +5,7 @@ metadata:
 spec:
   plugin:
     rewritebody:
+      lastModified: true
       rewrites:
         - regex: `((href|src)="(/))`
           replacement: `${1}overseerr`
