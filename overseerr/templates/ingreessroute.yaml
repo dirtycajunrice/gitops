@@ -17,10 +17,9 @@ spec:
           name: overseerr
           port: 5055
     - kind: Rule
-      match: Host(`nickflix.io`) && Headers(`X-Powered-By`, `Overseerr`) && Path(`/login`)
+      match: Host(`nickflix.io`) && Headers(`Referer`, `https://nickflix.io/overseerr`) && Path(`/login`)
       priority: 15
       middlewares:
-        - name: overseerr-header2
         - name: overseerr-redirectregex
       services:
         - kind: Service
