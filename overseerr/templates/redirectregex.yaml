@@ -5,4 +5,4 @@ metadata:
 spec:
   redirectRegex:
     regex: ^https://nickflix.io/(.*)
-    replacement: https://mydomain/overseerr/${1}
+    replacement: https://nickflix.io/overseerr/${1}
