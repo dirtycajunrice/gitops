@@ -20,7 +20,6 @@ spec:
       match: Host(`nickflix.io`) && (Headers(`X-Overseer`, `nickflix`) || Headers(`Referer`, `https://nickflix.io/overseerr`))
       priority: 15
       middlewares:
-        - name: stripprefixregex
         - name: overseerr-header
       services:
         - kind: Service
