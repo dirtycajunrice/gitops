@@ -32,15 +32,15 @@ spec:
 #        - kind: Service
 #          name: overseerr
 #          port: 5055
-#    - kind: Rule
-#      match: Host(`nickflix.io`) && HeadersRegexp(`Referer`, `https://nickflix.io/overseerr.*`)
-#      priority: 15
+    - kind: Rule
+      match: Host(`nickflix.io`) && HeadersRegexp(`Referer`, `https://nickflix.io/overseerr.*`)
+      priority: 15
 #      middlewares:
 #        - name: overseerr-redirectregex
-#      services:
-#        - kind: Service
-#          name: overseerr
-#          port: 5055
+      services:
+        - kind: Service
+          name: overseerr
+          port: 5055
 #    - kind: Rule
 #      match: Host(`nickflix.io`) && Path(`/login`)
 #      priority: 10
