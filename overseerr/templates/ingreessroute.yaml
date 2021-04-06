@@ -35,7 +35,8 @@ spec:
     - kind: Rule
       match: Host(`nickflix.io`) && HeadersRegexp(`Referer`, `https://nickflix.io/overseerr.*`)
       priority: 15
-#      middlewares:
+      middlewares:
+        - name: overseerr-rewritebody
 #        - name: overseerr-redirectregex
       services:
         - kind: Service
