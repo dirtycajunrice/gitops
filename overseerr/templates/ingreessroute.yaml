@@ -17,7 +17,7 @@ spec:
           name: overseerr
           port: 5055
     - kind: Rule
-      match: Host(`nickflix.io`) && Path(`/login`)
+      match: Host(`nickflix.io`) && (Path(`/login`)
       priority: 15
       middlewares:
         - name: overseerr-redirectregex
@@ -26,7 +26,7 @@ spec:
           name: overseerr
           port: 5055
     - kind: Rule
-      match: Host(`nickflix.io`) && HeadersRegexp(`Referer`, `https://nickflix.io/overseer/.*`)
+      match: Host(`nickflix.io`) && Headers(`Referer`, `https://nickflix.io/overseerr.*`)
       priority: 20
       middlewares:
         - name: strip-prefix-overseerr
