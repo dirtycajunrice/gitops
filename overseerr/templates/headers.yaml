@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: referrer-response
+spec:
+  headers:
+    customResponseHeaders:
+      X-Test-Response-Referer: "test"
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: referrer-request
+spec:
+  headers:
+    customRequestHeaders:
+      X-Test-Request-Referer: "test"

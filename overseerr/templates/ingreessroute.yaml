@@ -11,12 +11,16 @@ spec:
       priority: 10
       middlewares:
         - name: stripprefixregex
+        - name: referrer-response
       services:
         - kind: Service
           name: overseerr
           port: 5055
     - kind: Rule
       match: Host(`nickflix.io`) && HeadersRegexp(`Referer`, `https://nickflix.io/overseerr/login`)
+      middlewares:
+        - name: referrer-request
+        - name: referrer-response
       priority: 15
       services:
         - kind: Service
