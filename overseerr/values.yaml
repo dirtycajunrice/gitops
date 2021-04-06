@@ -4,7 +4,7 @@
     image:
       organization: ghcr.io/dirtycajunrice
       repository: overseerr
-      tag: header-test
+      tag: header-test2
       pullPolicy: Always
     service:
       port: 5055
