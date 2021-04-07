@@ -10,7 +10,7 @@ spec:
       match: Host(`nickflix.io`) && PathPrefix(`/overseerr`)
       priority: 30
       middlewares:
-        - name: overseerr-rewritebody
+        - name: overseerr-subfilter
         - name: strip-prefix-overseerr
       services:
         - kind: Service
@@ -36,7 +36,7 @@ spec:
       match: Host(`nickflix.io`) && HeadersRegexp(`Referer`, `https://nickflix.io/overseerr.*`)
       priority: 15
       middlewares:
-        - name: overseerr-rewritebody
+        - name: overseerr-subfilter
 #        - name: overseerr-redirectregex
       services:
         - kind: Service
