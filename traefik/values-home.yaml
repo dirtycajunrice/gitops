@@ -6,7 +6,7 @@ traefik:
     - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-home.k8s.cajun.pro"
     - "--providers.kubernetesingress.ingressendpoint.ip=12.161.64.36"
     - "--experimental.plugins.subfilter.modulename=github.com/DirtyCajunRice/subfilter"
-    - "--experimental.plugins.subfilter.version=v0.4.2"
+    - "--experimental.plugins.subfilter.version=v0.4.3"
   service:
     externalIPs:
       - 172.30.0.10
