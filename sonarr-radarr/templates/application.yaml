@@ -70,6 +70,7 @@ spec:
             nameSuffix: "-"
             storageClass: rook-cephfs
             size: 10Gi
+            accessMode: ReadWriteMany
             skipuninstall: true
         additionalVolumes:
           - name: mnt
