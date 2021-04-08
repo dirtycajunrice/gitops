@@ -10,9 +10,8 @@
   "commitBody": "Signed-off-by: Nicholas St. Germain <dirtycajunrice@users.noreply.github.com>",
   "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "conflicted",
-  "assigneesFromCodeOwners": true,
   "commitBodyTable": true,
-  "ignorePaths": ["archived/*"],
+  "ignorePaths": ["archived/**"],
   "fetchReleaseNotes": true,
   "labels": ["renovate"],
   "packageRules": [
@@ -22,16 +21,14 @@
     },
     {
       "matchDatasources": ["docker"],
-      "addLabels": ["container"]
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
+      "versioning": "semver",
       "automerge": true,
       "automergeType": "pr",
       "requiredStatusChecks": null,
-      "addLabels": ["auto-merged"],
+      "addLabels": [
+        "auto-merged",
+        "container"
+      ],
       "matchUpdateTypes": [
         "minor",
         "patch"
