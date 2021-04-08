@@ -67,7 +67,7 @@ spec:
         persistence:
           config:
             enabled: true
-            nameSuffix "-"
+            nameSuffix: "-"
             storageClass: rook-cephfs
             size: 10Gi
             skipuninstall: true
