@@ -3,7 +3,7 @@ kind: Postgres
 metadata:
   name: postgres-statping
 spec:
-  version: "11.11"
+  version: "13.2"
   storageType: Durable
   storage:
     accessModes:
@@ -16,12 +16,12 @@ spec:
   podTemplate:
     spec:
       resources:
-        limits:
-          cpu: 250m
-          memory: 256Mi
         requests:
-          cpu: 250m
-          memory: 256Mi
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"
   monitor:
     agent: prometheus.io/operator
     prometheus:
