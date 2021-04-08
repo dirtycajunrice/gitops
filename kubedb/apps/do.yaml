@@ -19,5 +19,6 @@ spec:
       values: |
         cluster: do
     repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
-#  syncPolicy:
-#    automated: {}
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
