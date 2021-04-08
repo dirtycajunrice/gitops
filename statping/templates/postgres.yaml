@@ -3,7 +3,7 @@ kind: Postgres
 metadata:
   name: postgres-statping
 spec:
-  version: 11.2-v1
+  version: "11.11"
   storageType: Durable
   storage:
     accessModes:
