@@ -30,7 +30,7 @@
       "matchUpdateTypes": [
         "minor",
         "patch"
-      ],
+      ]
     },
     {
       "matchDatasources": ["docker"],
