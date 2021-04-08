@@ -1,4 +1,4 @@
-apiVersion: kubedb.com/v1alpha1
+apiVersion: kubedb.com/v1alpha2
 kind: MySQL
 metadata:
   name: mysql-nextcloud
@@ -7,9 +7,7 @@ spec:
   version: "8.0.14"
   storageType: Durable
   replicas: 1
-  updateStrategy:
-    type: RollingUpdate
-  terminationPolicy: Pause
+  terminationPolicy: Halt
   storage:
     storageClassName: rook-cephfs
     accessModes:
@@ -17,6 +15,13 @@ spec:
     resources:
       requests:
         storage: 1Gi
+  monitor:
+    agent: prometheus.io/operator
+    prometheus:
+      serviceMonitor:
+        labels:
+          app: kubedb
+        interval: 10s
   podTemplate:
     spec:
       nodeSelector:
