@@ -15,22 +15,59 @@
   "fetchReleaseNotes": true,
   "labels": ["renovate"],
   "packageRules": [
+    // Setup datasources
     {
       "matchDatasources": ["helm"],
-      "addLabels": ["chart"]
+      "commitMessageTopic": "Helm chart {{depName}}",
+      "separateMinorPatch": true
+    },
+    {
+      "matchDatasources": ["docker"],
+      "commitMessageTopic": "Docker image {{depName}}",
+      "commitMessageExtra": "to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}",
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "enabled": true,
+      "separateMinorPatch": true
     },
     {
       "matchDatasources": ["docker"],
       "automergeType": "true",
       "requiredStatusChecks": null,
       "addLabels": [
-        "auto-merged",
         "container"
       ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ]
+      "matchUpdateTypes": ["major", "minor", "patch" ]
+    },
+    // Add labels according to package and update types
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["major"],
+      "labels": ["renovate/image-release", "dependency/major"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["minor"],
+      "labels": ["renovate/image-release", "dependency/minor"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["patch"],
+      "labels": ["renovate/image-release", "dependency/patch"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["major"],
+      "labels": ["renovate/helm-chart", "dependency/major"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["minor"],
+      "labels": ["renovate/helm-chart", "dependency/minor"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["patch"],
+      "labels": ["renovate/helm-chart", "dependency/patch"]
     },
     {
       "matchDatasources": ["docker"],
@@ -38,6 +75,7 @@
         "ghcr.io/k8s-at-home/plex",
         "^itscontained/(radarr|sonarr)"
       ],
+      "addLabels": ["action/automerge"],
       "automerge": true,
       "versioning": "loose"
     }
