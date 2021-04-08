@@ -13,6 +13,15 @@ spec:
         storage: 1Gi
   authSecret:
     name: statping
+  podTemplate:
+    spec:
+      resources:
+        limits:
+          cpu: 250m
+          memory: 256Mi
+        requests:
+          cpu: 250m
+          memory: 256Mi
   monitor:
     agent: prometheus.io/operator
     prometheus:
