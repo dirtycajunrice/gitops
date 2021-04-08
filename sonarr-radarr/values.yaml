@@ -4,7 +4,7 @@ authMiddleware: cajun-pro-organizr-auth-4@kubernetescrd
 apps:
   sonarr:
     image:
-      repository: itscontained/sonarr
+      repository: ghcr.io/itscontained/sonarr
       tag: 3.0.5.1143
     chart:
       name: sonarr
@@ -12,7 +12,7 @@ apps:
     port: 8989
   radarr:
     image:
-      repository: itscontained/radarr
+      repository: ghcr.io/itscontained/radarr
       tag: 3.1.0.4799
     chart:
       name: radarr
