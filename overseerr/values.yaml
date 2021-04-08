@@ -1,32 +1,43 @@
 overseerr:
   fullnameOverride: overseerr
-  configPath: /app/config
   image:
-    organization: ghcr.io/dirtycajunrice
-    repository: overseerr
+    repository: ghcr.io/dirtycajunrice/overseerr
     tag: header-test6
-    pullPolicy: Always
-  service:
-    port: 5055
+    pullPolicy: IfNotPresent
   env:
     TZ: America/Chicago
     LOG_LEVEL: debug
   ingress:
     enabled: true
+    domainPrimary: request.cajun.pro
+    domainSecondary: overseerr.nickflix.io
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.priority: "10"
       cert-manager.io/cluster-issuer: le-production
     hosts:
-      - host: request.cajun.pro
+      - hostTpl: '{{ .Values.ingress.domainPrimary }}'
         paths:
           - path: /
             pathType: Prefix
     tls:
-      - hosts: [request.cajun.pro]
-        secretName: request-cajun-pro
+      - hostsTpl: ['{{ .Values.ingress.domainPrimary }}']
+        secretNameTpl: '{{ .Values.ingress.domainPrimary | replace "." "-" }}'
+    additionalIngresses:
+      - enabled: true
+        nameSuffix: "test"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/router.priority: "15"
+        hosts:
+          - hostTpl: '{{ .Values.ingress.domainSecondary }}'
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hostsTpl: ['{{ .Values.ingress.domainSecondary }}']
+            secretNameTpl: '{{ .Values.ingress.domainSecondary | replace "." "-" }}'
   persistence:
-    type: statefulset
     config:
       enabled: true
       nameSuffix: "-"
