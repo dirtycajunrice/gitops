@@ -3,7 +3,7 @@ plex:
   fullnameOverride: plex
   image:
     repository: ghcr.io/k8s-at-home/plex
-    tag: v1.22.1.4275-48e10484b
+    tag: v1.22.2.4282-a97b03fad
   env:
     # cat /config/Library/Application\ Support/Plex\ Media\ Server/Preferences.xml | tr " " "\n" | \
     # sed -n '/<Preferences/,$p' | tail -n +2 | sed 's,/>,,g' | \
