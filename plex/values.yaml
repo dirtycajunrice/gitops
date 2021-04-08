@@ -43,7 +43,10 @@ plex:
   persistence:
     config:
       enabled: true
-      existingClaim: plex
+      nameSuffix: "-"
+      storageClass: rook-cephfs
+      size: 400Gi
+      accessMode: ReadWriteMany
       skipuninstall: true
   podSecurityContext:
     runAsUser: 1000

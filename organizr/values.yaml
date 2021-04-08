@@ -22,7 +22,10 @@ organizr:
   persistence:
     config:
       enabled: true
-      existingClaim: organizr
+      nameSuffix: "-"
+      storageClass: rook-cephfs
+      size: 1Gi
+      accessMode: ReadWriteMany
       skipuninstall: true
   nodeSelector:
     cajun.pro/cluster-gen: "2"
