@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubedb-do
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: /kubedb
+spec:
+  destination:
+    namespace: databases
+    name: do
+  project: default
+  source:
+    path: kubedb
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+      values: |
+        cluster: do
+    repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
+#  syncPolicy:
+#    automated: {}
