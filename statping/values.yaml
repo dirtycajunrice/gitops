@@ -29,6 +29,11 @@ statping:
     DB_CONN: postgres
     DB_HOST: postgres-statping
     DB_DATABASE: postgres
+    ADMIN_USER: ""
+    ADMIN_PASSWORD: ""
+    ADMIN_EMAIL: ""
+    DB_USER: ""
+    DB_PASS: ""
   envValueFrom:
     ADMIN_USER:
       secretKeyRef:
