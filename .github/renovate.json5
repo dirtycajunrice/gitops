@@ -15,6 +15,7 @@
   "fetchReleaseNotes": true,
   "labels": ["renovate"],
   "packageRules": [
+    // Setup datasources
     {
       "matchDatasources": ["helm"],
       "commitMessageTopic": "Helm chart {{depName}}",
@@ -37,6 +38,7 @@
       ],
       "matchUpdateTypes": ["major", "minor", "patch" ]
     },
+    // Add labels according to package and update types
     {
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["major"],
