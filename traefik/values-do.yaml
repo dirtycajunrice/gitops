@@ -13,6 +13,10 @@ traefik:
     kubernetesIngress:
       publishedService:
         enabled: true
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 5
 tfa:
   authHost: cajun.pro
   ingress:
