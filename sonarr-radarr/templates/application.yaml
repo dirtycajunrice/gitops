@@ -67,7 +67,9 @@ spec:
         persistence:
           config:
             enabled: true
-            existingClaim: {{ $fullname | quote }}
+            nameSuffix "-"
+            storageClass: rook-cephfs
+            size: 10Gi
             skipuninstall: true
         additionalVolumes:
           - name: mnt

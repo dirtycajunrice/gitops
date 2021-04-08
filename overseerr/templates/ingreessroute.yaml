@@ -10,8 +10,8 @@ spec:
       match: Host(`nickflix.io`) && PathPrefix(`/overseerr`)
       priority: 30
       middlewares:
-        - name: overseerr-subfilter
         - name: strip-prefix-overseerr
+        - name: overseerr-subfilter
       services:
         - kind: Service
           name: overseerr
