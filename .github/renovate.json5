@@ -73,7 +73,8 @@
       "matchDatasources": ["docker"],
       "matchPackageNames": [
         "ghcr.io/k8s-at-home/plex",
-        "^itscontained/(radarr|sonarr)"
+        "^itscontained/(radarr|sonarr)",
+        "sonarr-radarr/values.yaml"
       ],
       "addLabels": ["action/automerge"],
       "automerge": true,
