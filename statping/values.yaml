@@ -33,15 +33,15 @@ statping:
     ADMIN_USER:
       secretKeyRef:
         name: "statping"
-        key: ADMIN_USER
+        key: admin-user
     ADMIN_PASSWORD:
       secretKeyRef:
         name: "statping"
-        key: ADMIN_PASSWORD
+        key: admin-password
     ADMIN_EMAIL:
       secretKeyRef:
         name: "statping"
-        key: ADMIN_EMAIL
+        key: admin-email
     DB_USER:
       secretKeyRef:
         name: "statping"
