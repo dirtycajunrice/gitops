@@ -45,11 +45,11 @@ statping:
     DB_USER:
       secretKeyRef:
         name: "statping"
-        key: POSTGRES_USER
+        key: username
     DB_PASS:
       secretKeyRef:
         name: "statping"
-        key: POSTGRES_PASSWORD
+        key: password
 #  envFrom:
 #    - secretRef:
 #        name: statping
