@@ -4,7 +4,7 @@ metadata:
   name: mysql-nextcloud
   namespace: cajun-pro
 spec:
-  version: "8.0.14"
+  version: "8.0.23"
   storageType: Durable
   replicas: 1
   terminationPolicy: Halt
