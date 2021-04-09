@@ -22,29 +22,24 @@ spec:
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-  ignoreDifferences:
-    - group: apiregistration.k8s.io
-      kind: APIService
-      #      name: v1alpha1.validators.kubedb.com
-      jsonPointers:
-        - /spec/caBundle
-        - /metadata
-    - group: apiregistration.k8s.io
-      kind: APIService
-      #      name: v1alpha1.mutators.kubedb.com
-      jsonPointers:
-        - /spec/caBundle
-        - /metadata
-    #    - kind: Secret
-    #      name: kubedb-license
-    #      jsonPointers:
-    #        - /data/key.txt
-    #        - /metadata
-    - kind: Secret
-      name: kubedb-apiserver-cert
-      jsonPointers:
-        - /data
-        - /metadata
+#  ignoreDifferences:
+#    - group: apiregistration.k8s.io
+#      kind: APIService
+#      #      name: v1alpha1.validators.kubedb.com
+#      jsonPointers:
+#        - /spec/caBundle
+#        - /metadata
+#    - group: apiregistration.k8s.io
+#      kind: APIService
+#      #      name: v1alpha1.mutators.kubedb.com
+#      jsonPointers:
+#        - /spec/caBundle
+#        - /metadata
+#    - kind: Secret
+#      name: kubedb-apiserver-cert
+#      jsonPointers:
+#        - /data
+#        - /metadata
 #    - group: apps
 #      kind: Deployment
 #      jsonPointers:
