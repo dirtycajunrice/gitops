@@ -62,4 +62,4 @@ spec:
             skipuninstall: true
         nodeSelector:
           cajun.pro/cluster-gen: "2"
-{{- end }}
+{{ end }}
