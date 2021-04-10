@@ -30,7 +30,7 @@ spec:
           annotations:
             traefik.ingress.kubernetes.io/router.entrypoints: websecure
             traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth@kubernetescrd
-            traefik.ingress.kubernetes.io/router.priority: 10
+            traefik.ingress.kubernetes.io/router.priority: "10"
           hosts:
             - host: {{ $.Values.domainName }}
               paths:
