@@ -53,3 +53,19 @@ spec:
 #          port: 5055
   tls:
     secretName: nickflix-io
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: projector
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`ide.cajun.pro`) && Headers(`Referer`, `https://ide.cajun.pro/goland`)
+      priority: 15
+      services:
+        - kind: Service
+          name: goland
+          port: 8887
