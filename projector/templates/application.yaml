@@ -1,0 +1,67 @@
+{{- range $app, $data := .Values.apps -}}
+    {{- $priority := 10 -}}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ $app }}
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
+spec:
+#  syncPolicy:
+#    automated: {}
+  destination:
+    namespace: cajun-pro
+    name: home
+  project: default
+  source:
+    chart: {{ $.Values.chart.name }}
+    repoURL: {{ $.Values.chart.repoURL }}
+    targetRevision: {{ $.Values.chart.revision }}
+    helm:
+      values: |-
+        fullnameOverride: {{ $app }}
+        image:
+          registry: {{ $data.image.registry }}
+          repository: {{ $data.image.repository }}
+          tag: {{ $data.image.tag }}
+        ingress:
+          enabled: true
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: websecure
+            traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth@kubernetescrd
+            traefik.ingress.kubernetes.io/router.priority: {{ $priority | quote }}
+          hosts:
+            - host: {{ $.Values.domainName }}
+              paths:
+                - path: /{{ $app }}
+                  pathType: Prefix
+          tls:
+            - hosts: [{{ $.Values.domainName }}]
+              secretName: '{{ $.Values.domainName | replace "." "-" }}'
+          additionalIngresses:
+            - enabled: false
+              nameSuffix: "api"
+              annotations:
+                traefik.ingress.kubernetes.io/router.entrypoints: websecure
+                traefik.ingress.kubernetes.io/router.priority: {{ add $priority 5 | quote }}
+              hosts:
+                - host: {{ $.Values.domainName }}
+                  paths:
+                    - path: /{{ $app }}/api
+                      pathType: Prefix
+              tls:
+                - hosts: [{{ $.Values.domainName }}]
+                  secretName: '{{ $.Values.domainName | replace "." "-" }}'
+        persistence:
+          data:
+            enabled: true
+            nameSuffix: "-"
+            storageClass: rook-cephfs
+            size: 10Gi
+            accessMode: ReadWriteMany
+            skipuninstall: true
+        nodeSelector:
+          cajun.pro/cluster-gen: "2"
+{{- end }}

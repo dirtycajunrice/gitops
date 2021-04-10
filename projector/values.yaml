@@ -1,0 +1,33 @@
+chart:
+  repoURL: https://charts.itscontained.io
+  name: jetbrains-projector
+  revision: 1.0.0
+
+domainName: "ide.cajun.pro"
+
+apps:
+  goland:
+    image:
+      registry: registry.jetbrains.team/p/prj/containers
+      repository: projector-goland
+      tag: latest
+  idea:
+    image:
+      registry: registry.jetbrains.team/p/prj/containers
+      repository: projector-idea-u
+      tag: latest
+  phpstorm:
+    image:
+      registry: registry.jetbrains.team/p/prj/containers
+      repository: projector-phpstorm
+      tag: latest
+  pycharm:
+    image:
+      registry: registry.jetbrains.team/p/prj/containers
+      repository: projector-pycharm-p
+      tag: latest
+  webstorm:
+    image:
+      registry: registry.jetbrains.team/p/prj/containers
+      repository: projector-webstorm
+      tag: latest
