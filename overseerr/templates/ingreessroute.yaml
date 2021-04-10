@@ -63,7 +63,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`ide.cajun.pro`) && Headers(`Referer`, `https://ide.cajun.pro/goland`)
+      match: Host(`ide.cajun.pro`) && HeadersRegexp(`Referer`, `https://ide.cajun.pro/goland.*`)
       priority: 15
       services:
         - kind: Service
