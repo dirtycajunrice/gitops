@@ -1,6 +1,7 @@
 tautulli:
   fullnameOverride: tautulli
   image:
+    repository: tautulli/tautulli
     tag: v2.6.10
   enableServiceLinks: false
   env:
