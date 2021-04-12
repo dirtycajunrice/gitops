@@ -8,7 +8,7 @@ domainName: "ide.cajun.pro"
 apps:
   goland:
     image:
-      registry: registry.jetbrains.team/p/prj/containers
+      registry: ghcr.io/itscontained
       repository: projector-goland
       tag: latest
   idea:

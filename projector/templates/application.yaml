@@ -56,7 +56,11 @@ spec:
                 - hosts: [{{ $.Values.domainName }}]
                   secretName: '{{ $.Values.domainName | replace "." "-" }}'
         persistence:
+        {{- if eq $app "goland" }}
+          config:
+        {{- else }}
           data:
+        {{- end }}
             enabled: true
             nameSuffix: "-"
             storageClass: rook-cephfs
