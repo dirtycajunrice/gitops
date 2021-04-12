@@ -78,4 +78,11 @@ spec:
             skipuninstall: true
         nodeSelector:
           cajun.pro/cluster-gen: "2"
+        additionalVolumes:
+          - name: ide-cajun-pro
+            secret:
+              secretName: ide-cajun-pro
+        additionalVolumeMounts:
+          - name: ide-cajun-pro
+            mountPath: /tmp/certs
 {{ end }}
