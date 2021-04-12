@@ -87,4 +87,7 @@ spec:
             mountPath: /tmp/certs
         env:
           ORG_JETBRAINS_PROJECTOR_SERVER_SSL_PROPERTIES_PATH: /config/ssl.properties
+        service:
+          labels:
+            traefik.ingress.kubernetes.io/service.serversscheme: https
 {{ end }}
