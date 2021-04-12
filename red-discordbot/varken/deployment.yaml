@@ -15,13 +15,13 @@ spec:
         app: red-varken
     spec:
       restartPolicy: Always
-#      initContainers:
-#        - name: copy
-#          image: busybox:1.28
-#          command: ["/bin/sh", "-c", "sleep 600"]
-#          volumeMounts:
-#            - mountPath: /data
-#              name: data
+      initContainers:
+        - name: copy
+          image: busybox:1.28
+          command: ["/bin/sh", "-c", "sleep 600"]
+          volumeMounts:
+            - mountPath: /data
+              name: data
       containers:
       - name: red-discordbot
         image: phasecorex/red-discordbot@sha256:10e89e48d2954aab02674bc453ab9aefa743b83863115abd87d84b3e36200cdd
