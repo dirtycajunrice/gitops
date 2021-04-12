@@ -25,6 +25,15 @@ spec:
           registry: {{ $data.image.registry }}
           repository: {{ $data.image.repository }}
           tag: {{ $data.image.tag }}
+        idea:
+          config:
+            path: "/config/config"
+          system:
+            path: "/config/system"
+          plugins:
+            path: "/config/plugins"
+          log:
+            path: "/config/plugins"
         ingress:
           enabled: true
           annotations:
