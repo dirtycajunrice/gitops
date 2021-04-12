@@ -10,24 +10,24 @@ apps:
     image:
       registry: ghcr.io/itscontained
       repository: projector-goland
-      tag: latest
+      tag: 2021.1
   idea:
     image:
       registry: ghcr.io/itscontained
       repository: projector-idea-u
-      tag: latest
+      tag: 2021.1
   phpstorm:
     image:
       registry: ghcr.io/itscontained
       repository: projector-phpstorm
-      tag: latest
+      tag: 2021.1
   pycharm:
     image:
       registry: ghcr.io/itscontained
       repository: projector-pycharm-p
-      tag: latest
+      tag: 2021.1
   webstorm:
     image:
       registry: ghcr.io/itscontained
       repository: projector-webstorm
-      tag: latest
+      tag: 2021.1

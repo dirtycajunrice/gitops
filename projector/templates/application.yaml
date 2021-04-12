@@ -40,9 +40,7 @@ spec:
             traefik.ingress.kubernetes.io/router.entrypoints: websecure
             traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth@kubernetescrd
             traefik.ingress.kubernetes.io/router.priority: "10"
-            {{- if eq $app "goland" }}
             cert-manager.io/cluster-issuer: le-production
-            {{- end }}
           hosts:
             - host: {{ $.Values.domainName }}
               paths:
