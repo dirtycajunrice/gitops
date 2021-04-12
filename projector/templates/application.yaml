@@ -85,4 +85,6 @@ spec:
         additionalVolumeMounts:
           - name: ide-cajun-pro
             mountPath: /tmp/certs
+        env:
+          ORG_JETBRAINS_PROJECTOR_SERVER_SSL_PROPERTIES_PATH: /config/ssl.properties
 {{ end }}
