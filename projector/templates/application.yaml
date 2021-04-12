@@ -46,7 +46,7 @@ spec:
           hosts:
             - host: {{ $.Values.domainName }}
               paths:
-                - path: /{{ $app }}
+                - path: /
                   pathType: Prefix
           tls:
             - hosts: [{{ printf "%s-%s" $app $.Values.domainName }}]
