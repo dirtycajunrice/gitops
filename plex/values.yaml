@@ -48,6 +48,10 @@ plex:
       size: 400Gi
       accessMode: ReadWriteMany
       skipuninstall: true
+    transcode:
+      enabled: true
+      emptyDir:
+        enabled: true
   podSecurityContext:
     runAsUser: 1000
     runAsGroup: 1000
