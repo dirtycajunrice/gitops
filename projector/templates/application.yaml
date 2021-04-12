@@ -49,8 +49,8 @@ spec:
                 - path: /{{ $app }}
                   pathType: Prefix
           tls:
-            - hosts: [{{ $.Values.domainName }}]
-              secretName: '{{ $.Values.domainName | replace "." "-" }}'
+            - hosts: [{{ printf "%s-%s" $app $.Values.domainName }}]
+              secretName: '{{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}'
           additionalIngresses:
             - enabled: false
               nameSuffix: "api"
@@ -65,11 +65,7 @@ spec:
                 - hosts: [{{ $.Values.domainName }}]
                   secretName: '{{ $.Values.domainName | replace "." "-" }}'
         persistence:
-        {{- if eq $app "goland" }}
           config:
-        {{- else }}
-          data:
-        {{- end }}
             enabled: true
             nameSuffix: "-"
             storageClass: rook-cephfs
@@ -79,11 +75,11 @@ spec:
         nodeSelector:
           cajun.pro/cluster-gen: "2"
         additionalVolumes:
-          - name: ide-cajun-pro
+          - name: {{ printf "%s-%s" $app $.Values.domainName }}
             secret:
-              secretName: ide-cajun-pro
+              secretName: {{ printf "%s-%s" $app $.Values.domainName }}
         additionalVolumeMounts:
-          - name: ide-cajun-pro
+          - name: {{ printf "%s-%s" $app $.Values.domainName }}
             mountPath: /tmp/certs
         env:
           ORG_JETBRAINS_PROJECTOR_SERVER_SSL_PROPERTIES_PATH: /config/ssl.properties

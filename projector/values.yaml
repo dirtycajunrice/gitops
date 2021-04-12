@@ -13,21 +13,21 @@ apps:
       tag: latest
   idea:
     image:
-      registry: registry.jetbrains.team/p/prj/containers
+      registry: ghcr.io/itscontained
       repository: projector-idea-u
       tag: latest
   phpstorm:
     image:
-      registry: registry.jetbrains.team/p/prj/containers
+      registry: ghcr.io/itscontained
       repository: projector-phpstorm
       tag: latest
   pycharm:
     image:
-      registry: registry.jetbrains.team/p/prj/containers
+      registry: ghcr.io/itscontained
       repository: projector-pycharm-p
       tag: latest
   webstorm:
     image:
-      registry: registry.jetbrains.team/p/prj/containers
+      registry: ghcr.io/itscontained
       repository: projector-webstorm
       tag: latest
