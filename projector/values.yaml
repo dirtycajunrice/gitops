@@ -10,7 +10,7 @@ apps:
     image:
       registry: ghcr.io/itscontained
       repository: projector-goland
-      tag: 2021.1
+      tag: v2021.1
   idea:
     image:
       registry: ghcr.io/itscontained
