@@ -5,7 +5,7 @@ dependencies:
   - name: traefik
     version: 9.18.2
     repository: https://helm.traefik.io/traefik
+    condition: both
   - name: traefik-forward-auth
     version: 1.0.8
     repository: https://k8s-at-home.com/charts/
-    alias: tfa

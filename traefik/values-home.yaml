@@ -1,6 +1,3 @@
-global:
-  cluster: home
-
 traefik:
   additionalArguments:
     - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-home.k8s.cajun.pro"
@@ -18,7 +15,7 @@ traefik:
     general:
       format: json
       level: DEBUG
-tfa:
+traefik-forward-auth:
   authHost: nickflix.io
   ingress:
     hosts:
@@ -29,3 +26,4 @@ tfa:
         secretName: nickflix-io
   nodeSelector:
     cajun.pro/cluster-gen: "2"
+

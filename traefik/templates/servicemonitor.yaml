@@ -2,7 +2,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    app.kubernetes.io/instance: traefik-{{ .Values.global.cluster }}
+    app.kubernetes.io/instance: traefik-{{ .Values.cluster }}
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: traefik
     helm.sh/chart: traefik-9.18.1
@@ -17,7 +17,7 @@ spec:
       - {{ .Release.Namespace }}
   selector:
     matchLabels:
-      app.kubernetes.io/instance: traefik-{{ .Values.global.cluster }}
+      app.kubernetes.io/instance: traefik-{{ .Values.cluster }}
       app.kubernetes.io/managed-by: Helm
       app.kubernetes.io/name: traefik
       helm.sh/chart: traefik-9.18.1

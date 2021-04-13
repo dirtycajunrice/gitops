@@ -17,8 +17,11 @@ spec:
       valueFiles:
         - values.yaml
         - values-home.yaml
+      values: |
+        both: true
+        cluster: home
     repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
-    automated: {}
+    # automated: {}

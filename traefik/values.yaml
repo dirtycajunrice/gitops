@@ -1,3 +1,5 @@
+cluster: ""
+
 traefik:
   fullnameOverride: traefik
   image:
@@ -81,9 +83,11 @@ traefik:
                     - traefik
             topologyKey: kubernetes.io/hostname
 
-tfa:
+traefik-forward-auth:
   fullnameOverride: traefik-forward-auth
   cookie:
+    name: "_cajun_forward_auth"
+    csrfName: "_cajun_forward_auth_csrf"
     domain: "cajun.pro,nickflix.io"
   logging:
     level: debug
@@ -95,27 +99,9 @@ tfa:
     enabled: true
     name: "google-auth"
   secret: "-"
-  env:
-    - name: SECRET
-      valueFrom:
-        secretKeyRef:
-          name: traefik-forward-auth
-          key: secret
-    - name: PROVIDERS_GOOGLE_CLIENT_ID
-      valueFrom:
-        secretKeyRef:
-          name: traefik-forward-auth
-          key: google-client-id
-    - name: PROVIDERS_GOOGLE_CLIENT_SECRET
-      valueFrom:
-        secretKeyRef:
-          name: traefik-forward-auth
-          key: google-client-secret
-    - name: WHITELIST
-      valueFrom:
-        secretKeyRef:
-          name: traefik-forward-auth
-          key: whitelist
+  envFrom:
+    - secretRef:
+        name: traefik-forward-auth
   ingress:
     enabled: true
     annotations:

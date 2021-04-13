@@ -1,0 +1,16 @@
+traefik-forward-auth:
+  isEnabled: true
+  fullnameOverride: traefik-forward-auth-home
+  authHost: home-oauth.cajun.pro
+  middleware:
+    enabled: true
+    name: "google-auth-home"
+  ingress:
+    hosts:
+      - host: home-oauth.cajun.pro
+        paths: [/_oauth]
+    tls:
+      - hosts: [home-oauth.cajun.pro]
+        secretName: home-oauth-cajun-pro
+  nodeSelector:
+    cajun.pro/cluster-gen: "2"
