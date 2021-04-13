@@ -63,13 +63,18 @@ spec:
           enabled: true
           certs:
             secret: "{{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}"
-        #additionalVolumes:
-        #  - name: {{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}
-        #    secret:
-        #      secretName: {{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}
-        #additionalVolumeMounts:
-        #  - name: {{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}
-        #    mountPath: /tmp/certs
+        additionalVolumes:
+          - name: git-data
+            persistentVolumeClaim:
+              claimName: git-data
+          - name: jetbrains-projector-config
+            persistentVolumeClaim:
+              claimName: jetbrains-projector-config
+        additionalVolumeMounts:
+          - name: git-data
+            mountPath: /git
+          - name: jetbrains-projector-config
+            mountPath: /config/JetBrains
         service:
           labels:
             traefik.ingress.kubernetes.io/service.serversscheme: https
