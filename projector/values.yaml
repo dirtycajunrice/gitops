@@ -15,22 +15,22 @@ apps:
     image:
       registry: ghcr.io/itscontained
       repository: projector-idea-u
-      tag: 2021.1
+      tag: v2021.1
   phpstorm:
     image:
       registry: ghcr.io/itscontained
       repository: projector-phpstorm
-      tag: 2021.1
+      tag: v2021.1
   pycharm:
     image:
       registry: ghcr.io/itscontained
       repository: projector-pycharm-p
-      tag: 2021.1
+      tag: v2021.1
   webstorm:
     image:
       registry: ghcr.io/itscontained
       repository: projector-webstorm
-      tag: 2021.1
+      tag: v2021.1
   clion:
     image:
       registry: ghcr.io/itscontained
