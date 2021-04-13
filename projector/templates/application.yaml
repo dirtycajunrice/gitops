@@ -59,15 +59,19 @@ spec:
             skipuninstall: true
         nodeSelector:
           cajun.pro/cluster-gen: "2"
-        additionalVolumes:
-          - name: {{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}
-            secret:
-              secretName: {{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}
-        additionalVolumeMounts:
-          - name: {{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}
-            mountPath: /tmp/certs
-        env:
-          ORG_JETBRAINS_PROJECTOR_SERVER_SSL_PROPERTIES_PATH: /config/ssl.properties
+        sslGen:
+          enabled: true
+          certs:
+            secret: "{{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}"
+          jks:
+            dest: "/tmp/cert.jks"
+        #additionalVolumes:
+        #  - name: {{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}
+        #    secret:
+        #      secretName: {{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}
+        #additionalVolumeMounts:
+        #  - name: {{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}
+        #    mountPath: /tmp/certs
         service:
           labels:
             traefik.ingress.kubernetes.io/service.serversscheme: https
