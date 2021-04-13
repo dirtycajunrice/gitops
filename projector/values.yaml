@@ -31,3 +31,8 @@ apps:
       registry: ghcr.io/itscontained
       repository: projector-webstorm
       tag: 2021.1
+  clion:
+    image:
+      registry: ghcr.io/itscontained
+      repository: projector-clion
+      tag: v2021.1
