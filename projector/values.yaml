@@ -1,7 +1,7 @@
 chart:
-  repoURL: https://charts.itscontained.io
+  repoURL: https://k8s-at-home.com/charts/
   name: jetbrains-projector
-  revision: 1.0.0-RC7
+  revision: 1.0.0
 
 domainName: "ide.cajun.pro"
 
