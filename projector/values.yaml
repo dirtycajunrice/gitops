@@ -1,7 +1,7 @@
 chart:
   repoURL: https://charts.itscontained.io
   name: jetbrains-projector
-  revision: 1.0.0-RC4
+  revision: 1.0.0-RC5
 
 domainName: "ide.cajun.pro"
 
