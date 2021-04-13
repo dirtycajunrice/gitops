@@ -42,12 +42,12 @@ spec:
             traefik.ingress.kubernetes.io/router.priority: "10"
             cert-manager.io/cluster-issuer: le-production
           hosts:
-            - host: {{ printf "%s-%s" $app $.Values.domainName }}
+            - host: {{ printf "%s.%s" $app $.Values.domainName }}
               paths:
                 - path: /
                   pathType: Prefix
           tls:
-            - hosts: [{{ printf "%s-%s" $app $.Values.domainName }}]
+            - hosts: [{{ printf "%s.%s" $app $.Values.domainName }}]
               secretName: '{{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}'
         persistence:
           config:
