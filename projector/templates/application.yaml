@@ -27,13 +27,13 @@ spec:
           tag: {{ $data.image.tag }}
         idea:
           config:
-            path: "/config/config"
+            path: "/config"
           system:
             path: "/config/system"
           plugins:
             path: "/config/plugins"
           log:
-            path: "/config/plugins"
+            path: "/config/log"
         ingress:
           enabled: true
           annotations:
