@@ -5,7 +5,3 @@
 {{- define "traefik.secretname" -}}
   {{- include "traefik.hostname" . | replace "." "-" -}}
 {{- end -}}
-
-{{- define "tfaVals" -}}
-  {{- get .Values "traefik-forward-auth" -}}
-{{- end -}}

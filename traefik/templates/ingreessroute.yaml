@@ -9,7 +9,7 @@ spec:
     - kind: Rule
       match: Host(`{{ include "traefik.hostname" . }}`)
       middlewares:
-        - name: {{ (include "tfaVals" .).middleware.name }}
+        - name: {{ dig "traefik-forward-auth" "middleware" "name" "tfa" .Values }}
       priority: 10
       services:
         - kind: TraefikService
