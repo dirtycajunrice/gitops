@@ -7,5 +7,5 @@
 {{- end -}}
 
 {{- define "tfaVals" -}}
-  {{- get .Values "traefik-forward-auth" . -}}
+  {{- get .Values "traefik-forward-auth" -}}
 {{- end -}}
