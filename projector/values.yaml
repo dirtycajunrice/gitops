@@ -36,3 +36,8 @@ apps:
       registry: ghcr.io/itscontained
       repository: projector-clion
       tag: v2021.1
+  datagrip:
+    image:
+      registry: ghcr.io/itscontained
+      repository: projector-datagrip
+      tag: v2021.1
