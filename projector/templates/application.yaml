@@ -42,26 +42,13 @@ spec:
             traefik.ingress.kubernetes.io/router.priority: "10"
             cert-manager.io/cluster-issuer: le-production
           hosts:
-            - host: {{ $.Values.domainName }}
+            - host: {{ printf "%s-%s" $app $.Values.domainName }}
               paths:
                 - path: /
                   pathType: Prefix
           tls:
             - hosts: [{{ printf "%s-%s" $app $.Values.domainName }}]
               secretName: '{{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}'
-          additionalIngresses:
-            - enabled: false
-              nameSuffix: "api"
-              annotations:
-                traefik.ingress.kubernetes.io/router.entrypoints: websecure
-              hosts:
-                - host: {{ $.Values.domainName }}
-                  paths:
-                    - path: /{{ $app }}/api
-                      pathType: Prefix
-              tls:
-                - hosts: [{{ $.Values.domainName }}]
-                  secretName: '{{ $.Values.domainName | replace "." "-" }}'
         persistence:
           config:
             enabled: true
