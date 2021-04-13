@@ -22,9 +22,9 @@ spec:
       values: |-
         fullnameOverride: {{ $app }}
         image:
-          registry: {{ $data.image.registry }}
+          registry: "{{ default $.Values.defaultImage.registry $data.image.registry }}"
           repository: {{ $data.image.repository }}
-          tag: {{ $data.image.tag }}
+          tag: "{{ default $.Values.defaultImage.tag $data.image.tag }}"
         idea:
           config:
             path: "/config"

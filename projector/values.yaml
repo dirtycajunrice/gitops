@@ -5,39 +5,28 @@ chart:
 
 domainName: "ide.cajun.pro"
 
+defaultImage:
+  registry: ghcr.io/k8s-at-home
+  tag: v2021.1
 apps:
   goland:
     image:
-      registry: ghcr.io/itscontained
       repository: projector-goland
-      tag: v2021.1
   idea:
     image:
-      registry: ghcr.io/itscontained
       repository: projector-idea-u
-      tag: v2021.1
   phpstorm:
     image:
-      registry: ghcr.io/itscontained
       repository: projector-phpstorm
-      tag: v2021.1
   pycharm:
     image:
-      registry: ghcr.io/itscontained
       repository: projector-pycharm-p
-      tag: v2021.1
   webstorm:
     image:
-      registry: ghcr.io/itscontained
       repository: projector-webstorm
-      tag: v2021.1
   clion:
     image:
-      registry: ghcr.io/itscontained
       repository: projector-clion
-      tag: v2021.1
   datagrip:
     image:
-      registry: ghcr.io/itscontained
       repository: projector-datagrip
-      tag: v2021.1
