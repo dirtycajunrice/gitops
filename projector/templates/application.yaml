@@ -38,7 +38,7 @@ spec:
           enabled: true
           annotations:
             traefik.ingress.kubernetes.io/router.entrypoints: websecure
-            traefik.ingress.kubernetes.io/router.middlewares: ingress-google-aut-homeh@kubernetescrd
+            traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auht-home@kubernetescrd
             traefik.ingress.kubernetes.io/router.priority: "10"
             cert-manager.io/cluster-issuer: le-production
           hosts:

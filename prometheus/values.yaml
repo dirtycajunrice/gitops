@@ -8,7 +8,7 @@ kube-prometheus-stack:
         kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
-        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth@kubernetescrd
+        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
         cert-manager.io/cluster-issuer: le-production
       hosts:
         - alertmanager.cajun.pro
@@ -94,7 +94,7 @@ kube-prometheus-stack:
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
-        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth@kubernetescrd
+        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
         cert-manager.io/cluster-issuer: le-production
       hosts:
         - prometheus.cajun.pro
