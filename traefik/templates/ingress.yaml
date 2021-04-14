@@ -1,4 +1,4 @@
-{{- if .Values.traefik.ingressRoute.dashboard.enabled -}}
+{{- if .Values.traefik.deployment.enabled -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
