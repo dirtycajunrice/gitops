@@ -3,6 +3,18 @@ traefik:
     enabled: false
   service:
     enabled: false
+  autoscaling:
+    enabled: false
+  ingressRoute:
+    dashboard:
+      enabled: false
+  providers:
+    kubernetesCRD:
+      enabled: false
+    kubernetesIngress:
+      enabled: false
+  rbac:
+    enabled: false
 traefik-forward-auth:
   isEnabled: true
   fullnameOverride: traefik-forward-auth-home
