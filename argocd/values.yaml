@@ -131,20 +131,6 @@ argo-cd:
       enabled: true
       serviceMonitor:
         enabled: true
-    volumes:
-      - name: custom
-        emptyDir: {}
-    initContainers:
-      - name: copy-custom-kubectl
-        image: "bitnami/kubectl:1.20.5"
-        command: ["cp", "/opt/bitnami/kubectl/bin/kubectl", "/custom"]
-        volumeMounts:
-          - mountPath: /custom
-            name: custom
-    volumeMounts:
-      - mountPath: /usr/local/bin/kubectl
-        name: custom
-        subPath: kubectl
 podDisruptionBudget:
   enabled: true
   minAvailable: 1
