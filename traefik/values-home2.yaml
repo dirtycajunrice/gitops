@@ -16,7 +16,7 @@ traefik:
   rbac:
     enabled: false
   ingressClass:
-    enabled: true
+    enabled: false
   serviceAccount:
     name: "-"
 traefik-forward-auth:
