@@ -3,7 +3,7 @@ xbackbone:
 
   image:
     repository: pe46dro/xbackbone-docker
-    tag: 3.3.3
+    tag: 3.3.4
 
   env:
     TZ: UTC
