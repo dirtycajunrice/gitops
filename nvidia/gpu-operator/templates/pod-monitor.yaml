@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: gpu-operator
+spec:
+  namespaceSelector:
+    matchNames:
+      - "{{ .Release.Namespace }}"
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: gpu-operator
+  podMetricsEndpoints:
+    - port: metrics
+      path: /metrics
+      interval: 15s
