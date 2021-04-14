@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: projector-patches
+  namespace: cajun-pro
+data:
+  jks.sh: |
+    #!/usr/bin/env bash
+    if [[ -n "$ORG_JETBRAINS_PROJECTOR_SERVER_SSL_PROPERTIES_PATH" ]]; then
+      echo "Generating temporary PKCS12"
+      temp_pkcs12="/tmp/cert.p12"
+      jks_path=$(grep -oP 'FILE_PATH=\K.*(?=$)' /tmp/ssl.properties)
+      key_pass=$(grep -oP 'KEY_PASSWORD=\K.*(?=$)' /tmp/ssl.properties)
+      jks_pass=$(grep -oP 'STORE_PASSWORD=\K.*(?=$)' /tmp/ssl.properties)
+      cat /tmp/certs/"${TLS_KEY}" /tmp/certs/"${TLS_CRT}" | \
+        openssl pkcs12 \
+          -export \
+          -out ${temp_pkcs12} \
+          -password "pass:${key_pass}"
+
+      echo "Generating java keystore from PKCS12"
+      /app/ide/jbr/bin/keytool \
+        -importkeystore \
+        -srckeystore ${temp_pkcs12} \
+        -srcstorepass "${key_pass}" \
+        -srcstoretype pkcs12 \
+        -destkeystore "${jks_path}" \
+        -deststorepass "${jks_pass}" \
+        -deststoretype jks
+    fi

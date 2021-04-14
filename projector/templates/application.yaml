@@ -70,11 +70,17 @@ spec:
           - name: jetbrains-projector-config
             persistentVolumeClaim:
               claimName: jetbrains-projector-config
+          - name: tempfix-1
+            configMap:
+              name: projector-patches
         additionalVolumeMounts:
           - name: git-data
             mountPath: /git
           - name: jetbrains-projector-config
             mountPath: /config/JetBrains
+          - name: temp-fix1
+            mountPath: /shim/jks.sh
+            subPath: jks.sh
         service:
           labels:
             traefik.ingress.kubernetes.io/service.serversscheme: https
