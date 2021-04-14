@@ -60,7 +60,7 @@ spec:
         nodeSelector:
           cajun.pro/cluster-gen: "2"
         sslGen:
-          enabled: true
+          enabled: false
           certs:
             secret: "{{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}"
         additionalVolumes:
