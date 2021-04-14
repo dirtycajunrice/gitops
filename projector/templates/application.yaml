@@ -78,7 +78,7 @@ spec:
             mountPath: /git
           - name: jetbrains-projector-config
             mountPath: /config/JetBrains
-          - name: temp-fix1
+          - name: tempfix-1
             mountPath: /shim/jks.sh
             subPath: jks.sh
         service:
