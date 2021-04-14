@@ -8,7 +8,7 @@ metadata:
 spec:
   destination:
     namespace: monitoring
-    server: https://node5.k8s.cajun.pro:6443
+    name: home
   project: default
   source:
     path: prometheus
@@ -16,6 +16,7 @@ spec:
     helm:
       valueFiles:
         - values.yaml
+        - values-home.yaml
     repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
 #  syncPolicy:
 #    automated: {}
