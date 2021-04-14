@@ -1,3 +1,4 @@
+{{- if .Values.traefik.ingressRoute.dashboard.enabled -}}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
@@ -21,3 +22,4 @@ spec:
       app.kubernetes.io/managed-by: Helm
       app.kubernetes.io/name: traefik
       helm.sh/chart: traefik-9.18.1
+{{- end -}}

@@ -1,3 +1,4 @@
+{{- if .Values.traefik.ingressRoute.dashboard.enabled -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -16,3 +17,4 @@ spec:
           name: api@internal
   tls:
     secretName: {{ include "traefik.secretname" . }}
+{{- end -}}
