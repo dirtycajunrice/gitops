@@ -1,7 +1,6 @@
 kube-prometheus-stack:
   alertmanager:
     ingress:
-      enabled: false
       annotations:
         traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
       hosts:
@@ -16,7 +15,6 @@ kube-prometheus-stack:
     enabled: false
   prometheus:
     ingress:
-      enabled: false
       ingressClassName: traefik
       pathType: "prefix"
       annotations:
