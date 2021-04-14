@@ -3,7 +3,7 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: traefik
-    version: 9.18.3
+    version: 9.18.4
     repository: https://charts.itscontained.io/
   - name: traefik-forward-auth
     version: 1.0.8
