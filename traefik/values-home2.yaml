@@ -1,5 +1,6 @@
 traefik:
-  enabled: false
+  deployment:
+    enabled: false
 traefik-forward-auth:
   isEnabled: true
   fullnameOverride: traefik-forward-auth-home
