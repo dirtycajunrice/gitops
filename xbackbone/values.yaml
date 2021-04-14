@@ -1,0 +1,40 @@
+xbackbone:
+  fullnameOverride: xbackbone
+
+  image:
+    repository: pe46dro/xbackbone-docker
+    tag: 3.3.3
+
+  env:
+    TZ: UTC
+    APP_NAME: "images.cajun.pro"
+    URL: "https://images.cajun.pro"
+    PHP_UPLOAD_MAX_FILESIZE: "25G"
+
+  ingress:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    domainName: images.cajun.pro
+    hosts:
+      - hostTpl: '{{ .Values.ingress.domainName }}'
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hostsTpl: ['{{ .Values.ingress.domainName }}']
+        secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
+
+  persistence:
+    config:
+      enabled: true
+      nameSuffix: "-"
+      storageClass: rook-cephfs
+      size: 1Gi
+      accessMode: ReadWriteMany
+      skipuninstall: true
+
+  nodeSelector:
+    cajun.pro/cluster-gen: "2"

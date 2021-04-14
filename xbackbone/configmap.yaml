@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: xbb-env
-  namespace: cajun-pro
-data:
-  APP_NAME: "images.cajun.pro"
-  URL: "https://images.cajun.pro"
-  PHP_UPLOAD_MAX_FILESIZE: "25G"
