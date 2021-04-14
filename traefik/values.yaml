@@ -3,6 +3,7 @@ cluster: ""
 traefik:
   fullnameOverride: traefik
   image:
+    name: traefik
     tag: 2.4.8
   deployment:
     annotations:
@@ -42,6 +43,7 @@ traefik:
   ingressClass:
     enabled: true
     isDefaultClass: true
+    fallbackApiVersion: v1
   pilot:
     enabled: true
   experimental:
