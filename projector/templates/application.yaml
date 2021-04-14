@@ -38,7 +38,6 @@ spec:
           enabled: true
           annotations:
             traefik.ingress.kubernetes.io/router.entrypoints: websecure
-            traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
             traefik.ingress.kubernetes.io/router.priority: "10"
             cert-manager.io/cluster-issuer: le-production
           hosts:
@@ -59,10 +58,6 @@ spec:
             skipuninstall: true
         nodeSelector:
           cajun.pro/cluster-gen: "2"
-        sslGen:
-          enabled: false
-          certs:
-            secret: "{{ printf "%s-%s" $app $.Values.domainName | replace "." "-" }}"
         additionalVolumes:
           - name: git-data
             persistentVolumeClaim:
@@ -81,6 +76,15 @@ spec:
           - name: tempfix-1
             mountPath: /shim/jks.sh
             subPath: jks.sh
+        envValueFrom:
+          ORG_JETBRAINS_PROJECTOR_SERVER_HANDSHAKE_TOKEN:
+            secretKeyRef:
+              name: "projeector-creds"
+              key: {{ $app }}
+          ORG_JETBRAINS_PROJECTOR_SERVER_RO_HANDSHAKE_TOKEN:
+            secretKeyRef:
+              name: "projeector-creds"
+              key: read-only
         service:
           labels:
             traefik.ingress.kubernetes.io/service.serversscheme: https
