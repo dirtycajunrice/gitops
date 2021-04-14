@@ -35,6 +35,13 @@ xbackbone:
       size: 1Gi
       accessMode: ReadWriteMany
       skipuninstall: true
+      mountPath: /app/resources/database
+      subPath: database
+
+  additionalVolumes:
+    - mountPath: /app/storage
+      name: config
+      subPath: storage
 
   nodeSelector:
     cajun.pro/cluster-gen: "2"
