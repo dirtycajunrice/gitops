@@ -1,44 +1,26 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: haste-files
+  name: haste-env
   namespace: cajun-pro
 data:
-  config.js: |
-    {
-      "host": "0.0.0.0",
-      "port": 7777,
-      "keyLength": 10,
-      "maxLength": 4000000,
-      "staticMaxAge": 86400,
-      "recompressStaticAssets": true,
-      "logging": [
-        {
-          "level": "verbose",
-          "type": "Console",
-          "colorize": true
-        }
-      ],
-      "keyGenerator": {
-        "type": "phonetic"
-      },
-      "rateLimits": {
-        "categories": {
-          "normal": {
-            "totalRequests": 500,
-            "every": 60000
-          }
-        }
-      },
-      "storage": {
-        "type": "redis",
-        "expire": 604800,
-        "host": "redis-haste-server.cajun-pro.svc",
-        "port": 6379,
-        "db": 2
-      },
-      "documents": {
-        "about": "./about.md"
-      }
-    }
-
+  HOST: 0.0.0.0
+  PORT: "7777"
+  KEY_LENGTH: "10"
+  MAX_LENGTH: "4000000"
+  STATIC_MAX_AGE: "86400"
+  RECOMPRESS_STATIC_ASSETS: "true"
+  KEYGENERATOR_TYPE: phonetic
+  DOCUMENTS: about=./about.md
+  LOGGING_LEVEL: verbose
+  LOGGING_TYPE: Console
+  LOGGING_COLORIZE: "true"
+  RATELIMITS_NORMAL_TOTAL_REQUESTS: "500"
+  RATELIMITS_NORMAL_EVERY_MILLISECONDS: "60000"
+  RATELIMITS_WHITELIST: ""
+  RATELIMITS_BLACKLIST: ""
+  STORAGE_TYPE: "redis"
+  STORAGE_EXPIRE_SECONDS: "604800"
+  STORAGE_HOST: redis-haste-server.cajun-pro.svc
+  STORAGE_PORT: "6379"
+  STORAGE_DB: "2"

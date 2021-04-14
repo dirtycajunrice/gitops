@@ -17,7 +17,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: haste-server
-        image: dirtycajunrice/haste-server
+        image: dirtycajunrice/haste-server:v2021.4.14
         imagePullPolicy: Always
         command: ["/bin/sh"]
         args: ["-c", "npm install redis && /usr/bin/node /app/server.js"]
@@ -28,15 +28,6 @@ spec:
           httpGet:
             path: /
             port: 7777
-        volumeMounts:
-          - mountPath: /app/config.js
-            subPath: config.js
-            name: config-js
-      volumes:
-        - name: config-js
-          configMap:
-            name: haste-files
-            items:
-            - key: config.js
-              path: config.js
-              mode: 0777
+        envFrom:
+          - configMapRef:
+              name: haste-env
