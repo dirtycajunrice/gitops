@@ -1,0 +1,18 @@
+# https://github.com/NVIDIA/gpu-monitoring-tools/blob/master/deployment/dcgm-exporter/templates/service-monitor.yaml
+# operator chart does not use their dcgm-exporter chart at all... /eyeroll
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: dgcm-exporter
+spec:
+  namespaceSelector:
+    matchNames:
+      - "{{ .Release.Namespace }}"
+  selector:
+    matchLabels:
+      app: nvidia-dcgm-exporter
+  endpoints:
+    - port: gpu-metrics
+      path: /metrics
+      interval: 15s
+
