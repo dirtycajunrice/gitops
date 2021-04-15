@@ -79,7 +79,7 @@ argo-cd:
         g, nick@cajun.pro, role:admin
         g, nstgermain@ea.com, role:admin
     ingress:
-      enabled: true
+      enabled: false
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
