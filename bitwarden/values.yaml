@@ -23,7 +23,7 @@ bitwardenrs:
     enabled: true
     storageClass: do-block-storage
   ingress:
-    enabled: true
+    enabled: false
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.priority: "10"
