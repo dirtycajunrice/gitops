@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
@@ -15,8 +15,10 @@ spec:
         paths:
           - path: /
             backend:
-              serviceName: thelounge
-              servicePort: 9000
+              service:
+                name: thelounge
+                port:
+                  name: http
 
   tls:
     - hosts: [irc.cajun.pro]

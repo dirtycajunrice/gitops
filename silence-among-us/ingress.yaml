@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
@@ -16,8 +16,10 @@ spec:
           - path: /
             pathType: Prefix
             backend:
-              serviceName: silence-among-us
-              servicePort: 8080
+              service:
+                name: silence-among-us
+                port:
+                  name: http
   tls:
     - secretName: au-cajun-pro
       hosts: [au.cajun.pro]

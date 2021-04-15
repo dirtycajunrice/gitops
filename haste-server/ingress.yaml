@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
@@ -14,8 +14,10 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: haste-server
-              servicePort: 7777
+              service:
+                name: haste-server
+                port:
+                  name: http
             path: /
   tls:
     - hosts:
