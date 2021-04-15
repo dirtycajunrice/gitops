@@ -1,0 +1,84 @@
+{{- if eq .Values.cluster "do" -}}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth@kubernetescrd
+    traefik.ingress.kubernetes.io/router.priority: '50'
+  name: traefik-forward-auth
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: cajun.pro
+      http:
+        paths:
+          - path: /_oauth
+            pathType: Prefix
+            backend:
+              service:
+                name: traefik-forward-auth
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - cajun.pro
+      secretName: cajun-pro
+{{- end -}}
+{{- if and (eq .Values.cluster "home") .Values.traefik.deployment.enabled -}}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth@kubernetescrd
+    traefik.ingress.kubernetes.io/router.priority: '50'
+  name: traefik-forward-auth
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: nickflix.io
+      http:
+        paths:
+          - path: /_oauth
+            pathType: Prefix
+            backend:
+              service:
+                name: traefik-forward-auth
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - nickflix.io
+      secretName: nickflix-io
+{{- end -}}
+{{- if and (eq .Values.cluster "home") (not .Values.traefik.deployment.enabled) -}}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
+    traefik.ingress.kubernetes.io/router.priority: '50'
+  name: traefik-forward-auth-home
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: home-oauth.cajun.pro
+      http:
+        paths:
+          - path: /_oauth
+            pathType: Prefix
+            backend:
+              service:
+                name: traefik-forward-auth-home
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - home-oauth.cajun.pro
+      secretName: home-oauth-cajun-pro
+{{- end -}}
