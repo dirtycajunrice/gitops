@@ -1,0 +1,5 @@
+applicationset:
+  fullnameOverride: argocd
+  image:
+    repository: quay.io/argocdapplicationset/argocd-applicationset
+    tag: v0.1.0
