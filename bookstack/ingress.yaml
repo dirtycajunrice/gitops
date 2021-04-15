@@ -13,12 +13,14 @@ spec:
     - host: wiki.cajun.pro
       http:
         paths:
-          - backend:
+          - path: /
+            pathType: Prefix
+            backend:
               service:
                 name: bookstack
                 port:
                   name: http
-            path: /
+
   tls:
     - hosts:
         - wiki.cajun.pro

@@ -13,12 +13,13 @@ spec:
     - host: bin.cajun.pro
       http:
         paths:
-          - backend:
+          - path: /
+            pathType: Prefix
+            backend:
               service:
                 name: haste-server
                 port:
                   name: http
-            path: /
   tls:
     - hosts:
         - bin.cajun.pro
