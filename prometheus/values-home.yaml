@@ -20,7 +20,7 @@ kube-prometheus-stack:
     testFramework:
       enabled: false
     ingress:
-      enabled: true
+      enabled: false
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"

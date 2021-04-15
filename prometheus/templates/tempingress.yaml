@@ -1,0 +1,138 @@
+{{- if eq .Values.cluster "home" }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: le-production
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: '10'
+  name: grafana
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: grafana.cajun.pro
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: grafana
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - grafana.cajun.pro
+      secretName: grafana-cajun-pro
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: le-production
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
+    traefik.ingress.kubernetes.io/router.priority: '10'
+  name: prometheus-alertmanager
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: alertmanager.cajun.pro
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus-alertmanager
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - alertmanager.cajun.pro
+      secretName: alertmanager-cajun-pro
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: le-production
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
+    traefik.ingress.kubernetes.io/router.priority: '10'
+  name: prometheus-prometheus
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: prometheus.cajun.pro
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus-prometheus
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - prometheus.cajun.pro
+      secretName: prometheus-cajun-pro
+{{- end }}
+{{- if eq .Values.cluster "do" }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: le-production
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth@kubernetescrd
+    traefik.ingress.kubernetes.io/router.priority: '10'
+  name: prometheus-alertmanager
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: alertmanager-do.cajun.pro
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus-alertmanager
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - alertmanager-do.cajun.pro
+      secretName: alertmanager-do-cajun-pro
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: le-production
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
+    traefik.ingress.kubernetes.io/router.priority: '10'
+  name: prometheus-prometheus
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: prometheus-do.cajun.pro
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus-prometheus
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - prometheus-do.cajun.pro
+      secretName: prometheus-do-cajun-pro
+{{- end }}

@@ -3,7 +3,7 @@ kube-prometheus-stack:
   alertmanager:
     fullnameOverride: alertmanager
     ingress:
-      enabled: true
+      enabled: false
       annotations:
         kubernetes.io/ingress.class: traefik
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
@@ -35,7 +35,7 @@ kube-prometheus-stack:
       enabled: true
       minAvailable: 1
     ingress:
-      enabled: true
+      enabled: false
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
