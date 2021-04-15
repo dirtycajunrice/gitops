@@ -11,6 +11,8 @@ kube-prometheus-stack:
         - secretName: alertmanager-do-cajun-pro
           hosts:
             - alertmanager-do.cajun.pro
+  grafana:
+    enabled: false
   prometheus:
     ingress:
       annotations:
