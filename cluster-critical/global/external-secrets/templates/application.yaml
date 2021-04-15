@@ -1,0 +1,34 @@
+{{- range .Values.clusters }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ printf "%s-%s" $.Values.name . }}
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
+spec:
+  syncPolicy:
+    automated: {}
+  destination:
+    namespace: utility
+    name: {{ . }}
+  project: default
+  source:
+    chart: {{ $.Values.chart.name }}
+    repoURL: {{ $.Values.chart.repository }}
+    targetRevision: {{ $.Values.chart.version }}
+    helm:
+      values: |
+        fullnameOverride: {{ $.Values.name }}
+        env:
+          VAULT_ADDR: {{ $.Values.vault }}
+          DEFAULT_VAULT_MOUNT_POINT: {{ printf "kubernetes-%s" . | quote }}
+          DEFAULT_VAULT_ROLE: "vault-auth"
+        serviceMonitor:
+          enabled: true
+        {{- if eq . "home" }}
+        nodeSelector:
+          cajun.pro/cluster-gen: "2"
+        {{- end }}
+{{- end }}

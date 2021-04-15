@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-env
+  namespace: cajun-pro
+data:
+  TZ: "America/Chicago"

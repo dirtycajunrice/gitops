@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cachet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cachet
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: cachet
+    spec:
+      containers:
+      - name: cachet
+        image: dirtycajunrice/cachet-docker_cachet:rebuild
+        ports:
+          - containerPort: 8000
+        envFrom:
+          - configMapRef:
+              name: cachet-env
+        env:
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: db-password
+                name: cachet
+          - name: APP_KEY
+            valueFrom:
+              secretKeyRef:
+                key: app-key
+                name: cachet
+          - name: MAIL_USERNAME
+            valueFrom:
+              secretKeyRef:
+                key: mail-username
+                name: cachet
+          - name: MAIL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: mail-password
+                name: cachet
+          - name: MAIL_ADDRESS
+            valueFrom:
+              secretKeyRef:
+                key: mail-address
+                name: cachet
+        volumeMounts:
+          - name: cachet-files
+            mountPath: /var/www/html/app/Repositories/Metric/PgSqlRepository.php
+            subPath: PgSqlRepository.php
+      volumes:
+        - name: cachet-files
+          configMap:
+            name: cachet-files
+            items:
+            - key: PgSqlRepository.php
+              path: PgSqlRepository.php
+              mode: 0777
+

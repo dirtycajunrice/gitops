@@ -1,0 +1,26 @@
+traefik:
+  additionalArguments:
+    - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-do.k8s.cajun.pro"
+  service:
+    annotations:
+      service.beta.kubernetes.io/do-loadbalancer-name: "traefik"
+  pilot:
+    token: "cac885fb-0bee-4b6e-a316-ceaf61cab202"
+  providers:
+    kubernetesIngress:
+      publishedService:
+        enabled: true
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 5
+
+traefik-forward-auth:
+  authHost: cajun.pro
+  ingress:
+    hosts:
+      - host: cajun.pro
+        paths: [/_oauth]
+    tls:
+      - hosts: [cajun.pro]
+        secretName: cajun-pro

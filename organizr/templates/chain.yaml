@@ -1,9 +1,0 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: redirectslashwithstrip
-spec:
-  chain:
-    middlewares:
-    - name: redirectregex
-    - name: stripprefixregex

@@ -1,5 +1,0 @@
-reloader:
-  reloader:
-    deployment:
-      nodeSelector:
-        cajun.pro/cluster-gen: "2"

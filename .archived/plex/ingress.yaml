@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+    cert-manager.io/cluster-issuer: le-production
+  labels:
+    app: plex
+  name: plex
+spec:
+  rules:
+    - host: plex.cajun.pro
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: plex
+                port:
+                  number: 32400
+
+  tls:
+    - hosts: [plex.cajun.pro]
+      secretName: plex-cajun-pro

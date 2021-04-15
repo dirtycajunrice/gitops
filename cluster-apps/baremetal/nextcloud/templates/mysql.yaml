@@ -1,0 +1,31 @@
+apiVersion: kubedb.com/v1alpha2
+kind: MySQL
+metadata:
+  name: mysql-nextcloud
+  namespace: cajun-pro
+spec:
+  version: "8.0.23"
+  storageType: Durable
+  replicas: 1
+  terminationPolicy: Halt
+  storage:
+    storageClassName: rook-cephfs
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
+  monitor:
+    agent: prometheus.io/operator
+    prometheus:
+      serviceMonitor:
+        labels:
+          app: kubedb
+        interval: 10s
+  podTemplate:
+    spec:
+      nodeSelector:
+        cajun.pro/cluster-gen: "2"
+      env:
+        - name: MYSQL_DATABASE
+          value: nextcloud

@@ -1,0 +1,8 @@
+reloader:
+  fullnameOverride: reloader
+  reloader:
+    service:
+      port: 9090
+    serviceMonitor:
+      # enabling this requires service to be enabled as well, or no endpoints will be found
+      enabled: true

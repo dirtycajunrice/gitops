@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: rtorrent2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rtorrent2
+  serviceName: rtorrent2
+  template:
+    metadata:
+      labels:
+        app: rtorrent2
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: node4.k8s.cajun.pro
+      restartPolicy: Always
+      containers:
+        - name: rtorrent
+          image: binhex/arch-rtorrentvpn:v3.10-01
+          ports:
+            - containerPort: 9081
+              name: web
+            - containerPort: 5000
+              name: sgci
+            - containerPort: 50106
+              hostPort: 50106
+              name: seed
+          envFrom:
+            - configMapRef:
+                name: rtorrent2-env
+          livenessProbe:
+            exec:
+              command:
+                - stat
+                - /mnt/torrents/completed/private
+            initialDelaySeconds: 0
+            periodSeconds: 15
+            failureThreshold: 2
+          volumeMounts:
+            - mountPath: /config
+              name: data
+            - mountPath: /mnt
+              name: media
+      volumes:
+        - name: data
+          hostPath:
+            path: /mnt/nfs/rtorrent2
+            type: Directory
+        - name: media
+          hostPath:
+            path: /mnt/media
+            type: Directory

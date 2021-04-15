@@ -1,0 +1,7 @@
+name: nfs-client-provisioner
+apiVersion: v2
+version: 1.0.0
+dependencies:
+- name: nfs-client-provisioner
+  version: 1.2.11
+  repository: https://charts.helm.sh/stable

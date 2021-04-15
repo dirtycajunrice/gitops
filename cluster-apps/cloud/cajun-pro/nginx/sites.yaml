@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-sites
+  namespace: cajun-pro
+data:
+  default.conf: |
+    server {
+        listen 80 default_server;
+        server_name cajun.pro;
+
+        root /usr/share/nginx/cajunpro;
+        index index.html index.htm index.php;
+
+        location ~ ^.+?\.php(/.*)?$ {
+            fastcgi_pass php.cajun-pro.svc:9000;
+            fastcgi_split_path_info ^(.+\.php)(/.*)$;
+            fastcgi_param PATH_INFO $fastcgi_path_info;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        }
+    }

@@ -1,0 +1,66 @@
+statping:
+  image:
+    tag: v0.90.74
+  fullnameOverride: statping
+  persistence:
+    data:
+      enabled: false
+  enableServiceLinks: false
+  ingress:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    subDomainName: "status"
+    domainName: "cajun.pro"
+    hosts:
+      - hostTpl: '{{ .Values.ingress.subDomainName }}.{{ .Values.ingress.domainName }}'
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hostsTpl: ['{{ .Values.ingress.subDomainName }}.{{ .Values.ingress.domainName }}']
+        secretNameTpl: '{{ .Values.ingress.subDomainName }}-{{ .Values.ingress.domainName | replace "." "-" }}'
+  env:
+    NAME: cajun.pro status
+    DESCRIPTION: cajun.pro hosting status page
+    VIRTUAL_HOST: https://status.cajun.pro
+    DB_CONN: postgres
+    DB_HOST: postgres-statping
+    DB_DATABASE: postgres
+    ADMIN_USER: ""
+    ADMIN_PASSWORD: ""
+    ADMIN_EMAIL: ""
+    DB_USER: ""
+    DB_PASS: ""
+  envValueFrom:
+    ADMIN_USER:
+      secretKeyRef:
+        name: "statping"
+        key: admin-user
+    ADMIN_PASSWORD:
+      secretKeyRef:
+        name: "statping"
+        key: admin-password
+    ADMIN_EMAIL:
+      secretKeyRef:
+        name: "statping"
+        key: admin-email
+    DB_USER:
+      secretKeyRef:
+        name: "statping"
+        key: username
+    DB_PASS:
+      secretKeyRef:
+        name: "statping"
+        key: password
+#  envFrom:
+#    - secretRef:
+#        name: statping
+  resources:
+    requests:
+     cpu: 100m
+     memory: 128Mi
+  postgresql:
+    enabled: false

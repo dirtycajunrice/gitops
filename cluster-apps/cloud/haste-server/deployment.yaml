@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: haste-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: haste-server
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: haste-server
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: haste-server
+        image: dirtycajunrice/haste-server:v2021.4.14
+        ports:
+          - containerPort: 7777
+        livenessProbe:
+          failureThreshold: 10000
+          httpGet:
+            path: /
+            port: 7777
+        envFrom:
+          - configMapRef:
+              name: haste-env

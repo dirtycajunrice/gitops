@@ -1,0 +1,16 @@
+cert-manager:
+  fullnameOverride: cert-manager
+  prometheus:
+    servicemonitor:
+      enabled: "true"
+  installCRDs: true
+  volumes:
+    - name: aws-credentials
+      secret:
+        defaultMode: 420
+        secretName: aws-creds
+  volumeMounts:
+    - mountPath: /.aws
+      name: aws-credentials
+      readOnly: true
+

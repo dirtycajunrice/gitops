@@ -1,0 +1,7 @@
+kubedb:
+  kubedb-community:
+    fullnameOverride: kubedb
+    monitoring:
+      enabled: true
+      agent: "prometheus.io/operator"
+

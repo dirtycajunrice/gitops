@@ -1,0 +1,6 @@
+fluent-bit:
+  loki:
+    serviceName: loki.monitoring.svc
+
+  serviceMonitor:
+    enabled: "true"

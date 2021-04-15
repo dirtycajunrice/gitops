@@ -1,4 +1,0 @@
-dependencies:
-- name: fluent-bit
-  version: 2.0.2
-  repository: https://grafana.github.io/loki/charts

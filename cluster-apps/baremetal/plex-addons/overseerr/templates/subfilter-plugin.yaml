@@ -1,0 +1,11 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: overseerr-subfilter
+spec:
+  plugin:
+    subfilter:
+      lastModified: true
+      filters:
+        - regex: '((src|href)=")'
+          replacement: '${1}/overseerr'

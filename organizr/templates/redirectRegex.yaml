@@ -1,9 +1,0 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: redirectregex
-spec:
-  redirectRegex:
-    regex: ^(https?://[^/]+/[a-z0-9_]+)$
-    replacement: ${1}/
-    permanent: true

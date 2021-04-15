@@ -1,9 +1,0 @@
-cert-manager:
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"
-  webhook:
-    nodeSelector:
-      cajun.pro/cluster-gen: "2"
-  cainjector:
-    nodeSelector:
-      cajun.pro/cluster-gen: "2"

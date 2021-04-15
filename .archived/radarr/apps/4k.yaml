@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: radarr-4k
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
+spec:
+  destination:
+    namespace: cajun-pro
+    server: https://node5.k8s.cajun.pro:6443
+  project: default
+  source:
+    path: radarr
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+        - values-4k.yaml
+    repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
+  syncPolicy:
+    automated: {}

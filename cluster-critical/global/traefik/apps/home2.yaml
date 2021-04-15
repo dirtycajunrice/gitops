@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik-forward-auth2-home
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
+spec:
+  destination:
+    namespace: ingress
+    name: home
+  project: default
+  source:
+    path: traefik
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+        - values-home2.yaml
+      values: |
+        cluster: home
+    repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    # automated: {}
