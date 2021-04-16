@@ -6,7 +6,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        revision: HEAD
+        revision: refactor
         files:
           - path: "cluster-apps"
           - path: "cluster-critical"
