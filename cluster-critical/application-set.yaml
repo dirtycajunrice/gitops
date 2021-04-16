@@ -13,7 +13,7 @@ spec:
           - path: cluster-critical/global/*
   template:
     metadata:
-      name: '{{ path.basename }}'
+      name: 'cluster-critical-{{ path.basename }}'
     spec:
       project: argoproj
       source:
