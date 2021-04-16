@@ -52,8 +52,6 @@ spec:
       destination:
         namespace: utility
       syncPolicy:
-        # automated:
-        #   prune: true
-        #   selfHeal: true
+        automated: {}
         syncOptions:
           - ApplyOutOfSyncOnly=true

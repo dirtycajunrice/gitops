@@ -24,19 +24,6 @@ spec:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: refactor
         directories:
-          - path: "cluster-critical/baremetal/calico"
-        template:
-          metadata: {}
-          spec:
-            destination:
-              namespace: kube-system
-            project: cluster-critical
-            source:
-              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-    - git:
-        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        revision: refactor
-        directories:
           - path: "cluster-critical/baremetal/gpu-operator"
         template:
           metadata: {}

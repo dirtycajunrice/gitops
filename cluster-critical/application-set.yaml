@@ -8,7 +8,9 @@ spec:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: refactor
         directories:
-          - path: cluster-critical/**/*
+          - path: cluster-critical/baremetal
+          - path: cluster-critical/cloud
+          - path: cluster-critical/global/*
   template:
     metadata:
       name: '{{ path.basename }}'
@@ -24,8 +26,6 @@ spec:
         name: do
         namespace: argocd
       syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
+        automated: {}
         syncOptions:
           - ApplyOutOfSyncOnly=true

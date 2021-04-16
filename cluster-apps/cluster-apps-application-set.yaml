@@ -13,7 +13,7 @@ spec:
     metadata:
       name: '{{ path.basename }}'
     spec:
-      project: cluster-critical
+      project: cluster-apps
       source:
         path: '{{ path }}'
         targetRevision: refactor
