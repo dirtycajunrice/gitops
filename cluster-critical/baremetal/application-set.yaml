@@ -6,7 +6,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        revision: refactor
+        revision: HEAD
         directories:
           - path: "cluster-critical/baremetal/rook-ceph"
         template:
@@ -22,7 +22,7 @@ spec:
                   - values.yaml
     - git:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        revision: refactor
+        revision: HEAD
         directories:
           - path: "cluster-critical/baremetal/gpu-operator"
         template:
@@ -43,7 +43,7 @@ spec:
       project: cluster-critical
       source:
         path: '{{ path }}'
-        targetRevision: refactor
+        targetRevision: HEAD
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
       destination:
         name: home

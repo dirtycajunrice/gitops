@@ -6,7 +6,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        revision: refactor
+        revision: HEAD
         directories:
           - path: "cluster-critical/cloud/vault"
   template:
@@ -16,7 +16,7 @@ spec:
       project: cluster-critical
       source:
         path: '{{ path }}'
-        targetRevision: refactor
+        targetRevision: HEAD
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         helm:
           valueFiles:
@@ -25,6 +25,6 @@ spec:
         name: do
         namespace: vault
       syncPolicy:
-        automated: {}
+        # automated: {}
         syncOptions:
           - ApplyOutOfSyncOnly=true

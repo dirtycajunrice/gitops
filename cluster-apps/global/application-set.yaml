@@ -6,7 +6,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        revision: refactor
+        revision: HEAD
         directories:
           - path: "cluster-critical/global/utility/*"
         template:
@@ -24,7 +24,7 @@ spec:
                   - do.yaml
     - git:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        revision: refactor
+        revision: HEAD
         directories:
           - path: "cluster-critical/global/utility/*"
         template:
@@ -47,7 +47,7 @@ spec:
       project: cluster-critical
       source:
         path: '{{ path }}'
-        targetRevision: refactor
+        targetRevision: HEAD
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
       destination:
         namespace: utility

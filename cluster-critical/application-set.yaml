@@ -6,7 +6,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        revision: refactor
+        revision: HEAD
         directories:
           - path: cluster-critical/baremetal
           - path: cluster-critical/cloud
@@ -15,10 +15,10 @@ spec:
     metadata:
       name: '{{ path.basename }}'
     spec:
-      project: cluster-critical
+      project: argoproj
       source:
         path: '{{ path }}'
-        targetRevision: refactor
+        targetRevision: HEAD
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         directory:
           recurse: false
@@ -26,6 +26,6 @@ spec:
         name: do
         namespace: argocd
       syncPolicy:
-        automated: {}
+        # automated: {}
         syncOptions:
           - ApplyOutOfSyncOnly=true
