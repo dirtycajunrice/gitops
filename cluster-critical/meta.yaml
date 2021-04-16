@@ -14,7 +14,7 @@ spec:
     metadata:
       name: '{{ path.basename }}'
     spec:
-      project: argoproj
+      project: cluster-critical
       source:
         path: '{{ path }}'
         targetRevision: refactor
