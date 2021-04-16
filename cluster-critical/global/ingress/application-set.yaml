@@ -40,6 +40,24 @@ spec:
                 valueFiles:
                   - values.yaml
                   - home.yaml
+    - git:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        revision: HEAD
+        directories:
+          - path: "cluster-critical/global/ingress/*"
+        template:
+          metadata:
+            name: '{{ path.basename }}-forward-auth2-home'
+          spec:
+            destination:
+              name: home
+            project: cluster-critical
+            source:
+              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+              helm:
+                valueFiles:
+                  - values.yaml
+                  - tfa2.yaml
   template:
     metadata:
       name: '{{ path.basename }}'

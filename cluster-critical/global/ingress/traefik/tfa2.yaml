@@ -1,3 +1,5 @@
+cluster: home
+
 traefik:
   deployment:
     enabled: false
