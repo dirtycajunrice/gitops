@@ -8,7 +8,8 @@ spec:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: refactor
         directories:
-          - path: "cluster-critical"
+          - path: cluster-critical
+          - path: cluster-apps
   template:
     metadata:
       name: '{{ path.basename }}'
