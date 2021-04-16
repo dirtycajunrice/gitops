@@ -1,53 +1,18 @@
-kube-prometheus-stack:
-  fullnameOverride: prometheus
+kps:
+  fullnameOverride: kps
   alertmanager:
     fullnameOverride: alertmanager
-    ingress:
-      enabled: false
-      annotations:
-        kubernetes.io/ingress.class: traefik
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.priority: "10"
-        cert-manager.io/cluster-issuer: le-production
-  kubeScheduler:
-    service:
-      port: 10259
-      targetPort: 10259
-    serviceMonitor:
-      https: true
-      insecureSkipVerify: true
-  kubeControllerManager:
-    service:
-      port: 10257
-      targetPort: 10257
-    serviceMonitor:
-      https: true
-      insecureSkipVerify: true
-  kubeEtcd:
-    service:
-      port: 2381
-      targetPort: 2381
   prometheusOperator:
+    fullnameOverride: prometheus-operator
     admissionWebhooks:
       failurePolicy: Ignore
   prometheus:
-    podDisruptionBudget:
-      enabled: true
-      minAvailable: 1
-    ingress:
-      enabled: false
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.priority: "10"
-        cert-manager.io/cluster-issuer: le-production
-    prometheusSpec:
-      ruleSelectorNilUsesHelmValues: false
-      serviceMonitorSelectorNilUsesHelmValues: false
-      podMonitorSelectorNilUsesHelmValues: false
+    fullnameOverride: prometheus
   kube-state-metrics:
     fullnameOverride: kube-state-metrics
   prometheus-node-exporter:
     fullnameOverride: node-exporter
-    securityContext:
-      runAsUser: 0
-      runAsNonRoot: false
+  grafana:
+    fullnameOverride: grafana
+  defaultRules:
+    create: false

@@ -1,18 +1,72 @@
-kube-prometheus-stack:
+kps:
   alertmanager:
     ingress:
+      enabled: false
+      ingress:
+        annotations:
+          traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
+        hosts:
+          - alertmanager.cajun.pro
+        paths:
+          - /
+        tls:
+          - secretName: alertmanager-cajun-pro
+            hosts:
+              - alertmanager.cajun.pro
       annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
+        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        cert-manager.io/cluster-issuer: le-production
+  kubeScheduler:
+    service:
+      port: 10259
+      targetPort: 10259
+    serviceMonitor:
+      https: true
+      insecureSkipVerify: true
+  kubeControllerManager:
+    service:
+      port: 10257
+      targetPort: 10257
+    serviceMonitor:
+      https: true
+      insecureSkipVerify: true
+  kubeEtcd:
+    service:
+      port: 2381
+      targetPort: 2381
+  prometheusOperator:
+    admissionWebhooks:
+      failurePolicy: Ignore
+  prometheus:
+    podDisruptionBudget:
+      enabled: true
+      minAvailable: 1
+    ingress:
+      enabled: false
       hosts:
-        - alertmanager.cajun.pro
+        - prometheus.cajun.pro
       paths:
         - /
       tls:
-        - secretName: alertmanager-cajun-pro
-          hosts:
-            - alertmanager.cajun.pro
+        - hosts: [prometheus.cajun.pro]
+          secretName: prometheus-cajun-pro
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        cert-manager.io/cluster-issuer: le-production
+    prometheusSpec:
+      ruleSelectorNilUsesHelmValues: false
+      serviceMonitorSelectorNilUsesHelmValues: false
+      podMonitorSelectorNilUsesHelmValues: false
+  prometheus-node-exporter:
+    securityContext:
+      runAsUser: 0
+      runAsNonRoot: false
   grafana:
-    fullnameOverride: grafana
+    enabled: true
     image:
       repository: grafana/grafana
       tag: 7.5.3
@@ -57,14 +111,5 @@ kube-prometheus-stack:
         secretKeyRef:
           key: google_oauth_client_secret
           name: grafana-oauth
-  prometheus:
-    ingress:
-      annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
-      hosts:
-        - prometheus.cajun.pro
-      paths:
-        - /
-      tls:
-        - hosts: [prometheus.cajun.pro]
-          secretName: prometheus-cajun-pro
+
+

@@ -1,38 +1,38 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    cert-manager.io/cluster-issuer: le-production
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.priority: '10'
-  name: bitwarden
-spec:
-  rules:
-    - host: password.cajun.pro
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: bitwarden
-                port:
-                  name: http
-          - path: /notifications/hub
-            pathType: Prefix
-            backend:
-              service:
-                name: bitwarden
-                port:
-                  name: websocket
-          - path: /notifications/hub/negotiate
-            pathType: Prefix
-            backend:
-              service:
-                name: bitwarden
-                port:
-                  name: http
-  tls:
-    - hosts:
-        - password.cajun.pro
-      secretName: password-cajun-pro
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+#  annotations:
+#    cert-manager.io/cluster-issuer: le-production
+#    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+#    traefik.ingress.kubernetes.io/router.priority: '10'
+#  name: bitwarden
+#spec:
+#  rules:
+#    - host: password.cajun.pro
+#      http:
+#        paths:
+#          - path: /
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: bitwarden
+#                port:
+#                  name: http
+#          - path: /notifications/hub
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: bitwarden
+#                port:
+#                  name: websocket
+#          - path: /notifications/hub/negotiate
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: bitwarden
+#                port:
+#                  name: http
+#  tls:
+#    - hosts:
+#        - password.cajun.pro
+#      secretName: password-cajun-pro

@@ -1,10 +1,9 @@
 metrics-server:
   fullnameOverride: metrics-server
+
   apiService:
     create: true
-  hostNetwork: true
+
   extraArgs:
     kubelet-preferred-address-types: InternalIP
     kubelet-insecure-tls: true
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"
