@@ -43,10 +43,10 @@ argo-cd:
                 state inside Git.
     resources:
       limits:
-        cpu: 1000m
+        cpu: 1.5
         memory: 1.75Gi
       requests:
-        cpu: 250m
+        cpu: 500m
         memory: 1.25Gi
 
   dex:
