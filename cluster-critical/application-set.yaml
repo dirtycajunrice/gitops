@@ -7,7 +7,7 @@ spec:
     - git:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: HEAD
-        files:
+        directories:
           - path: "cluster-critical/*"
   template:
     metadata:

@@ -1,45 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: cluster-critical-global
+  name: meta
 spec:
   generators:
     - git:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: refactor
         directories:
-          - path: "cluster-critical/global/*"
-        template:
-          metadata:
-            name: '{{ path.basename }}-home'
-          spec:
-            destination:
-              name: do
-            project: cluster-critical
-            source:
-              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-              helm:
-                valueFiles:
-                  - values.yaml
-                  - home.yaml
-    - git:
-        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        revision: refactor
-        directories:
-          - path: "cluster-critical/global/*"
-        template:
-          metadata:
-            name: '{{ path.basename }}-do'
-          spec:
-            destination:
-              name: do
-            project: cluster-critical
-            source:
-              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-              helm:
-                valueFiles:
-                  - values.yaml
-                  - do.yaml
+          - path: "cluster-critical"
   template:
     metadata:
       name: '{{ path.basename }}'
@@ -49,11 +18,9 @@ spec:
         path: '{{ path }}'
         targetRevision: refactor
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        helm:
-          valueFiles:
-            - values.yaml
       destination:
         namespace: argocd
+        name: do
       syncPolicy:
         # automated:
         #   prune: true
