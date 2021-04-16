@@ -1,0 +1,28 @@
+kube-prometheus-stack:
+  alertmanager:
+    ingress:
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
+      hosts:
+        - alertmanager-do.cajun.pro
+      paths:
+        - /
+      tls:
+        - secretName: alertmanager-do-cajun-pro
+          hosts:
+            - alertmanager-do.cajun.pro
+  grafana:
+    enabled: false
+  prometheus:
+    ingress:
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
+      hosts:
+        - prometheus-do.cajun.pro
+      paths:
+        - /
+      tls:
+        - secretName: prometheus-do-cajun-pro
+          hosts:
+            - prometheus-do.cajun.pro
+
