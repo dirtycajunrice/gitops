@@ -1,0 +1,31 @@
+#apiVersion: argoproj.io/v1alpha1
+#kind: ApplicationSet
+#metadata:
+#  name: cluster-apps
+#spec:
+#  generators:
+#    - git:
+#        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+#        revision: refactor
+#        directories:
+#          - path: cluster-apps/globa
+#  template:
+#    metadata:
+#      name: '{{ path.basename }}'
+#    spec:
+#      project: cluster-apps
+#      source:
+#        path: '{{ path }}'
+#        targetRevision: refactor
+#        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+#        directory:
+#          recurse: false
+#      destination:
+#        name: do
+#        namespace: argocd
+#      syncPolicy:
+#        automated:
+#          prune: true
+#          selfHeal: true
+#        syncOptions:
+#          - ApplyOutOfSyncOnly=true
