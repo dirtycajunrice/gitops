@@ -72,7 +72,7 @@ argo-cd:
           ignoreDifferences: |
             jsonPointers:
               - /webhooks/0/clientConfig/caBundle
-        Service: |
+        Service:
           health.lua: |
             hs.status = "Healthy"
             hs.message = "overwritten"
