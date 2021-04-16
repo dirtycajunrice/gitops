@@ -1,0 +1,9 @@
+name: external-secrets
+clusters:
+  - do
+  - home
+chart:
+  name: kubernetes-external-secrets
+  repository: "https://external-secrets.github.io/kubernetes-external-secrets/"
+  version: 6.4.0
+vault: https://vault.cajun.pro

@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+    cert-manager.io/cluster-issuer: le-production
+  labels:
+    app: haste-server
+  name: haste-server
+spec:
+  rules:
+    - host: bin.cajun.pro
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: haste-server
+                port:
+                  name: http
+  tls:
+    - hosts:
+        - bin.cajun.pro
+      secretName: bin-cajun-pro

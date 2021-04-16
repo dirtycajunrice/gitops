@@ -1,0 +1,55 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-critical-baremetal
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        revision: HEAD
+        directories:
+          - path: "cluster-critical/baremetal/rook-ceph"
+        template:
+          metadata: {}
+          spec:
+            destination:
+              namespace: rook-ceph
+            project: cluster-critical
+            source:
+              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+              helm:
+                valueFiles:
+                  - values.yaml
+    - git:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        revision: HEAD
+        directories:
+          - path: "cluster-critical/baremetal/gpu-operator"
+        template:
+          metadata: {}
+          spec:
+            destination:
+              namespace: gpu-operator-resources
+            project: cluster-critical
+            source:
+              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+              helm:
+                valueFiles:
+                  - values.yaml
+  template:
+    metadata:
+      name: '{{ path.basename }}'
+    spec:
+      project: cluster-critical
+      source:
+        path: '{{ path }}'
+        targetRevision: HEAD
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+      destination:
+        name: home
+      syncPolicy:
+        # automated:
+        #   prune: true
+        #   selfHeal: true
+        syncOptions:
+          - ApplyOutOfSyncOnly=true

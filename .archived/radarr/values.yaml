@@ -1,0 +1,41 @@
+radarr:
+  radarr:
+    image:
+      organization: itscontained
+      tag: 3.1.0.4706
+    env:
+      TZ: America/Chicago
+      PUID: "1000"
+      PGID: "1000"
+    ingress:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
+      tls:
+        - hosts: [nickflix.io]
+          secretName: nickflix-io
+    persistence:
+      type: statefulset
+      config:
+        accessMode: ReadWriteMany
+        size: 10Gi
+        storageClass: rook-cephfs
+    additionalVolumes:
+      - name: mnt
+        nfs:
+          server: 10.0.10.211
+          path: /mnt/media
+      - name: emptydir
+        emptyDir: {}
+    additionalVolumeMounts:
+      - name: mnt
+        mountPath: /mnt/media
+      - name: emptydir
+        mountPath: /mnt/media/torrents/incomplete
+    podSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+    nodeSelector:
+      cajun.pro/cluster-gen: "2"

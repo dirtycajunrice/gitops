@@ -1,0 +1,115 @@
+cluster: ""
+
+traefik:
+  fullnameOverride: traefik
+  image:
+    name: traefik
+    tag: 2.4.8
+  deployment:
+    annotations:
+      reloader.stakater.com/match: "true"
+  globalArguments:
+    - "--global.checknewversion"
+    - "--serverstransport.insecureskipverify=true"
+    - "--providers.kubernetesingress.ingressclass=traefik"
+    - "--metrics.prometheus.entryPoint=metrics"
+  logs:
+    general:
+      format: json
+      level: ERROR
+    access:
+      enabled: true
+      format: json
+  metrics:
+    prometheus:
+      enabled: true
+      entryPoint: metrics
+  service:
+    spec:
+      externalTrafficPolicy: Local
+  ports:
+    web:
+      redirectTo: websecure
+    websecure:
+      tls:
+        enabled: true
+    metrics:
+      port: 8082
+      expose: true
+      exposedPort: 8082
+  ingressRoute:
+    dashboard:
+      enabled: false
+  ingressClass:
+    enabled: true
+    isDefaultClass: true
+    fallbackApiVersion: v1
+  pilot:
+    enabled: true
+  experimental:
+    plugins:
+      enabled: true
+  rollingUpdate:
+    maxUnavailable: 3
+    maxSurge: 3
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "50Mi"
+    limits:
+      cpu: "300m"
+      memory: "150Mi"
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 30
+    metrics:
+      - type: Resource
+        resource:
+          name: memory
+          target:
+            type: Utilization
+            averageUtilization: 80
+      - type: Resource
+        resource:
+          name: cpu
+          target:
+            type: Utilization
+            averageUtilization: 80
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                    - traefik
+            topologyKey: kubernetes.io/hostname
+
+traefik-forward-auth:
+  fullnameOverride: traefik-forward-auth
+  cookie:
+    name: "_cajun_forward_auth"
+    csrfName: "_cajun_forward_auth_csrf"
+    domain: "cajun.pro,nickflix.io"
+  logging:
+    level: debug
+    format: json
+  providers:
+    google:
+      enabled: true
+  middleware:
+    enabled: true
+    name: "google-auth"
+  secret: "-"
+  envFrom:
+    - secretRef:
+        name: traefik-forward-auth
+  ingress:
+    enabled: false
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "50"

@@ -11,7 +11,7 @@
   "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "conflicted",
   "commitBodyTable": true,
-  "ignorePaths": ["archived/**"],
+  "ignorePaths": [".archived/**"],
   "fetchReleaseNotes": true,
   "labels": ["renovate"],
   "packageRules": [

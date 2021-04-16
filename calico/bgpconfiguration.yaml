@@ -1,7 +1,0 @@
-apiVersion: crd.projectcalico.org/v1
-kind: BGPConfiguration
-metadata:
-  name: default
-spec:
-  serviceExternalIPs:
-    - cidr: 172.30.0.0/24

@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-critical
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        revision: HEAD
+        directories:
+          - path: cluster-critical/baremetal
+          - path: cluster-critical/cloud
+          - path: cluster-critical/global/*
+  template:
+    metadata:
+      name: '{{ path.basename }}'
+    spec:
+      project: argoproj
+      source:
+        path: '{{ path }}'
+        targetRevision: HEAD
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        directory:
+          recurse: false
+      destination:
+        name: do
+        namespace: argocd
+      syncPolicy:
+        # automated: {}
+        syncOptions:
+          - ApplyOutOfSyncOnly=true

@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+    traefik.ingress.kubernetes.io/router.middlewares: monitoring-loki-basic-auth@kubernetescrd
+    cert-manager.io/cluster-issuer: le-production
+  labels:
+    app: loki
+  name: loki
+spec:
+  rules:
+    - host: loki.cajun.pro
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: loki
+                port:
+                  number: 3100
+  tls:
+    - secretName: loki-cajun-pro
+      hosts: [loki.cajun.pro]

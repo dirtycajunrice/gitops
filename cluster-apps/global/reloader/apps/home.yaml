@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: reloader-home
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .
+spec:
+  destination:
+    namespace: utility
+    name: home
+  project: default
+  source:
+    path: reloader
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+        - values-home.yaml
+    repoURL: git@github.com:DirtyCajunRice/GitOps-Argo-CD.git
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

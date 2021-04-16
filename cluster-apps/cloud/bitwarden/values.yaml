@@ -1,0 +1,37 @@
+bitwardenrs:
+  image:
+    tag: 1.20.0
+  fullnameOverride: bitwarden
+  bitwardenrs:
+    domain: https://password.cajun.pro
+    admin:
+      existingSecret:
+        enabled: true
+        name: bitwarden
+        tokenKey: admin-token
+    smtp:
+      enabled: true
+      host: smtp.gmail.com
+      from: no-reply@cajun.pro
+      fromName: password.cajun.pro
+      existingSecret:
+        enabled: true
+        name: bitwarden
+        userKey: smtp-username
+        passwordKey: smtp-password
+  persistence:
+    enabled: true
+    storageClass: do-block-storage
+  ingress:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - host: password.cajun.pro
+        paths:
+          - /
+    tls:
+      - hosts: [password.cajun.pro]
+        secretName: password-cajun-pro

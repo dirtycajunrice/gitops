@@ -1,0 +1,26 @@
+{{- if .Values.traefik.deployment.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    # used only to automate certificate and dns. Point to metrics to ensure its not used
+    traefik.ingress.kubernetes.io/router.entrypoints: metrics
+    traefik.ingress.kubernetes.io/router.priority: "1"
+    cert-manager.io/cluster-issuer: le-production
+  name: {{ .Values.traefik.fullnameOverride }}
+spec:
+  rules:
+    - host: {{ include "traefik.hostname" . }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: traefik
+                port:
+                  number: 80
+  tls:
+    - hosts: [{{ include "traefik.hostname" . }}]
+      secretName: {{ include "traefik.secretname" . }}
+{{- end -}}

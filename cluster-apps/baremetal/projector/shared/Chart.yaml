@@ -1,0 +1,7 @@
+name: projector-shared
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: raw
+    version: v0.2.5
+    repository: https://charts.itscontained.io/

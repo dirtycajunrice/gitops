@@ -1,0 +1,7 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: organizr-auth-0
+spec:
+  forwardAuth:
+    address: https://nickflix.io/api/v2/auth?group=0
