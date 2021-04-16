@@ -15,10 +15,6 @@ traefik:
     general:
       format: json
       level: INFO
-  providers:
-    kubernetesIngress:
-      publishedService:
-        enabled: true
 traefik-forward-auth:
   authHost: nickflix.io
   ingress:
