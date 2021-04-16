@@ -2,6 +2,7 @@ traefik:
   additionalArguments:
     - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-home.k8s.cajun.pro"
     - "--providers.kubernetesingress.ingressendpoint.ip=12.161.64.36"
+    - "--providers.kubernetesIngress.ingressEndpoint.publishedService=ingress/traefik"
     - "--experimental.plugins.subfilter.modulename=github.com/DirtyCajunRice/subfilter"
     - "--experimental.plugins.subfilter.version=v0.5.0"
   service:
