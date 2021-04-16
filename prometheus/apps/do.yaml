@@ -14,7 +14,6 @@ spec:
     path: prometheus
     targetRevision: HEAD
     helm:
-      releaseName: kube-prometheus-stack
       valueFiles:
         - values.yaml
         - do.yaml
