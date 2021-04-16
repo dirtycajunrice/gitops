@@ -8,13 +8,14 @@ spec:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: HEAD
         directories:
-          - path: "cluster-critical/global/*"
+          - path: "cluster-critical/global/ingress/*"
         template:
           metadata:
             name: '{{ path.basename }}-home'
           spec:
             destination:
               name: do
+              namespace: ingress
             project: cluster-critical
             source:
               repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
@@ -26,13 +27,90 @@ spec:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: HEAD
         directories:
-          - path: "cluster-critical/global/*"
+          - path: "cluster-critical/global/monitoring/*"
+        template:
+          metadata:
+            name: '{{ path.basename }}-home'
+          spec:
+            destination:
+              name: do
+              namespace: monitoring
+            project: cluster-critical
+            source:
+              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+              helm:
+                valueFiles:
+                  - values.yaml
+                  - home.yaml
+    - git:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        revision: HEAD
+        directories:
+          - path: "cluster-critical/global/utility/*"
+        template:
+          metadata:
+            name: '{{ path.basename }}-home'
+          spec:
+            destination:
+              name: do
+              namespace: utility
+            project: cluster-critical
+            source:
+              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+              helm:
+                valueFiles:
+                  - values.yaml
+                  - home.yaml
+    - git:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        revision: HEAD
+        directories:
+          - path: "cluster-critical/global/ingress/*"
         template:
           metadata:
             name: '{{ path.basename }}-do'
           spec:
             destination:
               name: do
+              namespace: ingress
+            project: cluster-critical
+            source:
+              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+              helm:
+                valueFiles:
+                  - values.yaml
+                  - do.yaml
+    - git:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        revision: HEAD
+        directories:
+          - path: "cluster-critical/global/monitoring/*"
+        template:
+          metadata:
+            name: '{{ path.basename }}-do'
+          spec:
+            destination:
+              name: do
+              namespace: monitoring
+            project: cluster-critical
+            source:
+              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+              helm:
+                valueFiles:
+                  - values.yaml
+                  - do.yaml
+    - git:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        revision: HEAD
+        directories:
+          - path: "cluster-critical/global/utility/*"
+        template:
+          metadata:
+            name: '{{ path.basename }}-do'
+          spec:
+            destination:
+              name: do
+              namespace: utility
             project: cluster-critical
             source:
               repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
@@ -52,8 +130,7 @@ spec:
         helm:
           valueFiles:
             - values.yaml
-      destination:
-        namespace: argocd
+      destination: {}
       syncPolicy:
         # automated:
         #   prune: true
