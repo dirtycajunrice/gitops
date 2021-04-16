@@ -14,3 +14,5 @@ kps:
     fullnameOverride: node-exporter
   grafana:
     fullnameOverride: grafana
+  defaultRules:
+    create: false
