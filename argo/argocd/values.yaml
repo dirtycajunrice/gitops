@@ -47,10 +47,10 @@ argo-cd:
         cpu: 500m
         memory: 1.25Gi
 
-      nodeSelector:
-        doks.digitalocean.com/node-pool: memory-optimized
+    nodeSelector:
+      doks.digitalocean.com/node-pool: memory-optimized
 
-      priorityClassName: high-priority
+    priorityClassName: high-priority
 
   dex:
     enabled: false
