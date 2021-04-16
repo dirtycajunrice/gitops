@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: cluster-critical-cloud
+  name: cluster-critical
 spec:
   generators:
     - git:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: refactor
         directories:
-          - path: "cluster-critical/cloud/vault"
+          - path: cluster-critical/**/*
   template:
     metadata:
       name: '{{ path.basename }}'
@@ -18,15 +18,14 @@ spec:
         path: '{{ path }}'
         targetRevision: refactor
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        helm:
-          valueFiles:
-            - values.yaml
+        directory:
+          recurse: false
       destination:
         name: do
-        namespace: vault
+        namespace: argocd
       syncPolicy:
-        # automated:
-        #   prune: true
-        #   selfHeal: true
+        automated:
+          prune: true
+          selfHeal: true
         syncOptions:
           - ApplyOutOfSyncOnly=true
