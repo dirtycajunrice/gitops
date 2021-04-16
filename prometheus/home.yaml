@@ -1,7 +1,5 @@
 kps:
-  fullnameOverride: prometheus
   alertmanager:
-    fullnameOverride: alertmanager
     ingress:
       enabled: false
       ingress:
@@ -63,16 +61,12 @@ kps:
       ruleSelectorNilUsesHelmValues: false
       serviceMonitorSelectorNilUsesHelmValues: false
       podMonitorSelectorNilUsesHelmValues: false
-  kube-state-metrics:
-    fullnameOverride: kube-state-metrics
   prometheus-node-exporter:
-    fullnameOverride: node-exporter
     securityContext:
       runAsUser: 0
       runAsNonRoot: false
   grafana:
     enabled: true
-    fullnameOverride: grafana
     image:
       repository: grafana/grafana
       tag: 7.5.3

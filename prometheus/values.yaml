@@ -1,1 +1,16 @@
-kps: {}
+kps:
+  fullnameOverride: kps
+  alertmanager:
+    fullnameOverride: alertmanager
+  prometheusOperator:
+    fullnameOverride: prometheus-operator
+    admissionWebhooks:
+      failurePolicy: Ignore
+  prometheus:
+    fullnameOverride: prometheus
+  kube-state-metrics:
+    fullnameOverride: kube-state-metrics
+  prometheus-node-exporter:
+    fullnameOverride: node-exporter
+  grafana:
+    fullnameOverride: grafana
