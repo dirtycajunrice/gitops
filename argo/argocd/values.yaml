@@ -74,8 +74,8 @@ argo-cd:
               - /webhooks/0/clientConfig/caBundle
         Service:
           health.lua: |
+            hs = {}
             hs.status = "Healthy"
-            hs.message = "overwritten"
             return hs
     rbacConfig:
       policy.default: role:readonly
