@@ -1,0 +1,9 @@
+{
+  "name": "traefik-do",
+  "cluster": "do",
+  "path": "cluster-critical/global/ingress/traefik",
+  "extraValueFiles": [
+    "values.yaml",
+    "do.yaml"
+  ]
+}
