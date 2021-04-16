@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: meta
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        revision: HEAD
+        files:
+          - path: "cluster-apps"
+          - path: "cluster-critical"
+  template:
+    metadata:
+      name: '{{ path.basename }}'
+    spec:
+      project: argoproj
+      source:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        targetRevision: HEAD
+        path: '{{ path }}'
+        directory:
+          recurse: false
+      destination:
+        name: 'do'
+        namespace: argocd
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - PruneLast=true
+          - ApplyOutOfSyncOnly=true
+          - PrunePropagationPolicy=background
