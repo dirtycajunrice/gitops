@@ -1,33 +1,63 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: meta
+  name: cluster-critical-global
 spec:
   generators:
     - git:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        revision: refactor
-        files:
-          - path: "cluster-apps"
-          - path: "cluster-critical"
+        revision: HEAD
+        directories:
+          - path: "cluster-critical/global/*"
+        template:
+          metadata:
+            name: '{{ path.basename }}-home'
+          spec:
+            destination:
+              name: do
+            project: cluster-critical
+            source:
+              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+              helm:
+                valueFiles:
+                  - values.yaml
+                  - home.yaml
+    - git:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        revision: HEAD
+        directories:
+          - path: "cluster-critical/global/*"
+        template:
+          metadata:
+            name: '{{ path.basename }}-do'
+          spec:
+            destination:
+              name: do
+            project: cluster-critical
+            source:
+              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+              helm:
+                valueFiles:
+                  - values.yaml
+                  - do.yaml
   template:
     metadata:
       name: '{{ path.basename }}'
     spec:
-      project: argoproj
+      project: cluster-critical
       source:
-        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        targetRevision: HEAD
         path: '{{ path }}'
-        directory:
-          recurse: false
+        targetRevision: HEAD
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        helm:
+          valueFiles:
+            - values.yaml
       destination:
-        name: 'do'
         namespace: argocd
       syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
+        # automated:
+        #   prune: true
+        #   selfHeal: true
         syncOptions:
           - PruneLast=true
           - ApplyOutOfSyncOnly=true
