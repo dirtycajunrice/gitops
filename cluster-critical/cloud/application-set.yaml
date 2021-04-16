@@ -8,26 +8,26 @@ spec:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: refactor
         directories:
-          - path: cluster-critical/**/*
-          - path: cluster-apps/**/*
+          - path: "cluster-critical/cloud/vault/*"
   template:
     metadata:
       name: '{{ path.basename }}'
     spec:
-      project: argoproj
+      project: cluster-critical
       source:
         path: '{{ path }}'
         targetRevision: refactor
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        directory:
-          recurse: false
+        helm:
+          valueFiles:
+            - values.yaml
       destination:
         name: do
-        namespace: argocd
+        namespace: vault
       syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
+        # automated:
+        #   prune: true
+        #   selfHeal: true
         syncOptions:
           - PruneLast=true
           - ApplyOutOfSyncOnly=true

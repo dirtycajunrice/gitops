@@ -8,38 +8,47 @@ spec:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: refactor
         directories:
-          - path: "cluster-critical/global/utility/*"
+          - path: "cluster-critical/baremetal/rook-ceph"
         template:
-          metadata:
-            name: '{{ path.basename }}-do'
+          metadata: {}
           spec:
             destination:
-              name: do
+              namespace: rook-ceph
             project: cluster-critical
             source:
               repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
               helm:
                 valueFiles:
                   - values.yaml
-                  - do.yaml
     - git:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: refactor
         directories:
-          - path: "cluster-critical/global/utility/*"
+          - path: "cluster-critical/baremetal/calico"
         template:
-          metadata:
-            name: '{{ path.basename }}-home'
+          metadata: {}
           spec:
             destination:
-              name: home
+              namespace: kube-system
+            project: cluster-critical
+            source:
+              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+    - git:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        revision: refactor
+        directories:
+          - path: "cluster-critical/baremetal/gpu-operator"
+        template:
+          metadata: {}
+          spec:
+            destination:
+              namespace: gpu-operator-resources
             project: cluster-critical
             source:
               repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
               helm:
                 valueFiles:
                   - values.yaml
-                  - home.yaml
   template:
     metadata:
       name: '{{ path.basename }}'
@@ -50,7 +59,7 @@ spec:
         targetRevision: refactor
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
       destination:
-        namespace: utility
+        name: home
       syncPolicy:
         # automated:
         #   prune: true

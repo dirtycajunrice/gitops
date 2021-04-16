@@ -8,7 +8,7 @@ spec:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: refactor
         directories:
-          - path: "cluster-critical/global/utility/*"
+          - path: "cluster-critical/global/ingress/*"
         template:
           metadata:
             name: '{{ path.basename }}-do'
@@ -26,7 +26,7 @@ spec:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: refactor
         directories:
-          - path: "cluster-critical/global/utility/*"
+          - path: "cluster-critical/global/ingress/*"
         template:
           metadata:
             name: '{{ path.basename }}-home'
@@ -50,7 +50,7 @@ spec:
         targetRevision: refactor
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
       destination:
-        namespace: utility
+        namespace: ingress
       syncPolicy:
         # automated:
         #   prune: true
