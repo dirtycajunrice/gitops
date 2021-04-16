@@ -1,4 +1,6 @@
-kube-prometheus-stack: {}
+kps:
+  grafana:
+    enabled: false
 #kube-prometheus-stack:
 #  alertmanager:
 #    ingress:

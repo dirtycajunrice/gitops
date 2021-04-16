@@ -1,4 +1,4 @@
-kube-prometheus-stack:
+kps:
   fullnameOverride: prometheus
   alertmanager:
     fullnameOverride: alertmanager
@@ -71,6 +71,7 @@ kube-prometheus-stack:
       runAsUser: 0
       runAsNonRoot: false
   grafana:
+    enabled: true
     fullnameOverride: grafana
     image:
       repository: grafana/grafana
