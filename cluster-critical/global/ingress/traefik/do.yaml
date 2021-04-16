@@ -1,3 +1,5 @@
+cluster: do
+
 traefik:
   additionalArguments:
     - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-do.k8s.cajun.pro"

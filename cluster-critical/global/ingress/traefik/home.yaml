@@ -1,3 +1,5 @@
+cluster: home
+
 traefik:
   additionalArguments:
     - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-home.k8s.cajun.pro"
