@@ -1,6 +1,6 @@
 [
   {
-    "name": "rook-ceph",
+    "name": "rook-operator",
     "cluster": "home",
     "namespace": "rook-ceph",
     "path": "cluster-critical/rook-ceph",
