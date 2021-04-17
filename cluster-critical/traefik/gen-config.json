@@ -1,0 +1,24 @@
+[
+  {
+    "name": "traefik-home",
+    "cluster": "home",
+    "namespace": "ingress",
+    "path": "cluster-critical/traefik",
+    "valueFile": "home.yaml"
+  },
+  {
+    "name": "traefik-do",
+    "cluster": "do",
+    "namespace": "ingress",
+    "path": "cluster-critical/traefik",
+    "valueFile": "do.yaml"
+  },
+  {
+    "name": "traefik-forward-auth2-home",
+    "cluster": "home",
+    "namespace": "ingress",
+    "path": "cluster-critical/traefik",
+    "valueFile": "tfa2.yaml"
+  }
+]
+

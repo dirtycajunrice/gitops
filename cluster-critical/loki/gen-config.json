@@ -1,0 +1,17 @@
+[
+  {
+    "name": "loki-home",
+    "cluster": "home",
+    "namespace": "monitoring",
+    "path": "cluster-critical/loki",
+    "valueFile": "home.yaml"
+  },
+  {
+    "name": "loki-do",
+    "cluster": "do",
+    "namespace": "monitoring",
+    "path": "cluster-critical/loki",
+    "valueFile": "do.yaml"
+  }
+]
+

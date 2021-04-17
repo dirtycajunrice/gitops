@@ -1,0 +1,10 @@
+[
+  {
+    "name": "rook-ceph",
+    "cluster": "home",
+    "namespace": "rook-ceph",
+    "path": "cluster-critical/rook-ceph",
+    "valueFile": ""
+  }
+]
+

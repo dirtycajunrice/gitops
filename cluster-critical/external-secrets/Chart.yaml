@@ -1,0 +1,8 @@
+name: external-secrets
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: kubernetes-external-secrets
+    version: 6.4.0
+    repository: https://external-secrets.github.io/kubernetes-external-secrets/
+    alias: external-secrets

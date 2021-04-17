@@ -1,0 +1,9 @@
+external-secrets:
+  fullnameOverride: external-secrets
+
+  env:
+    VAULT_ADDR: https://vault.cajun.pro
+    DEFAULT_VAULT_ROLE: "vault-auth"
+
+  serviceMonitor:
+    enabled: true

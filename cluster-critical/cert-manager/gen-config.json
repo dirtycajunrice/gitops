@@ -1,0 +1,17 @@
+[
+  {
+    "name": "cert-manager-home",
+    "cluster": "home",
+    "namespace": "utility",
+    "path": "cluster-critical/cert-manager",
+    "valueFile": "home.yaml"
+  },
+  {
+    "name": "cert-manager-do",
+    "cluster": "do",
+    "namespace": "utility",
+    "path": "cluster-critical/cert-manager",
+    "valueFile": "do.yaml"
+  }
+]
+

@@ -1,0 +1,10 @@
+[
+  {
+    "name": "vault",
+    "cluster": "do",
+    "namespace": "vault",
+    "path": "cluster-critical/vault",
+    "valueFile": ""
+  }
+]
+

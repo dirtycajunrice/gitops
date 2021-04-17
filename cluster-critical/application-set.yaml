@@ -7,25 +7,25 @@ spec:
     - git:
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
         revision: HEAD
-        directories:
-          - path: cluster-critical/baremetal
-          - path: cluster-critical/cloud
-          - path: cluster-critical/global/*
+        files:
+          - path: "cluster-critical/**/gen-config.json"
   template:
     metadata:
-      name: 'cluster-critical-{{ path.basename }}'
+      name: '{{ name }}'
     spec:
-      project: argoproj
+      project: cluster-critical
       source:
         path: '{{ path }}'
         targetRevision: HEAD
         repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
-        directory:
-          recurse: false
+        helm:
+          valueFiles:
+            - values.yaml
+            - '{{ valueFile }}'
       destination:
-        name: do
-        namespace: argocd
+        namespace: '{{ namespace }}'
+        name: '{{ cluster }}'
       syncPolicy:
-        # automated: {}
+        #  automated: {}
         syncOptions:
           - ApplyOutOfSyncOnly=true

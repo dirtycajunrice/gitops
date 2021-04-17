@@ -1,0 +1,3 @@
+external-secrets:
+  env:
+    DEFAULT_VAULT_MOUNT_POINT: kubernetes-do

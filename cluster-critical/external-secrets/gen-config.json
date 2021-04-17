@@ -1,0 +1,17 @@
+[
+  {
+    "name": "external-secrets-home",
+    "cluster": "home",
+    "namespace": "utility",
+    "path": "cluster-critical/external-secrets",
+    "valueFile": "home.yaml"
+  },
+  {
+    "name": "external-secrets-do",
+    "cluster": "do",
+    "namespace": "utility",
+    "path": "cluster-critical/external-secrets",
+    "valueFile": "do.yaml"
+  }
+]
+

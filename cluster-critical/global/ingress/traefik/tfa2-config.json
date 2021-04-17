@@ -1,9 +1,0 @@
-{
-  "name": "traefik-forward-auth2-home",
-  "cluster": "home",
-  "path": "cluster-critical/global/ingress/traefik",
-  "extraValueFiles": [
-    "values.yaml",
-    "tfa2.yaml"
-  ]
-}

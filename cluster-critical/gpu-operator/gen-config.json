@@ -1,0 +1,10 @@
+[
+  {
+    "name": "gpu-operator",
+    "cluster": "home",
+    "namespace": "gpu-operator-resources",
+    "path": "cluster-critical/gpu-operator",
+    "valueFile": ""
+  }
+]
+
