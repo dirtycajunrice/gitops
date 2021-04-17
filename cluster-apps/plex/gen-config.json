@@ -1,0 +1,10 @@
+[
+  {
+    "name": "plex",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/plex",
+    "valueFile": ""
+  }
+]
+
