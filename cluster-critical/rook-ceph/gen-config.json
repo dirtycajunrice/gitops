@@ -1,13 +1,13 @@
 [
   {
-    "name": "rook-operator",
+    "name": "rook-ceph-operator",
     "cluster": "home",
     "namespace": "rook-ceph",
     "path": "cluster-critical/rook-ceph/rook",
     "valueFile": ""
   },
   {
-    "name": "ceph-cluster",
+    "name": "rook-ceph-cluster",
     "cluster": "home",
     "namespace": "rook-ceph",
     "path": "cluster-critical/rook-ceph/ceph",
