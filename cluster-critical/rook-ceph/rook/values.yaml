@@ -1,0 +1,3 @@
+rook-ceph:
+  nodeSelector:
+    cajun.pro/cluster-gen: "2"
