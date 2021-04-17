@@ -1,6 +1,6 @@
 [
   {
-    "name": "vault",
+    "name": "vault-do",
     "cluster": "do",
     "namespace": "vault",
     "path": "cluster-critical/vault",
