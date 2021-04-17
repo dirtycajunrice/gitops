@@ -1,16 +1,16 @@
 [
   {
-    "name": "prometheus-home",
+    "name": "metrics-server-home",
     "cluster": "home",
-    "namespace": "monitoring",
-    "path": "cluster-critical/prometheus",
+    "namespace": "kube-system",
+    "path": "cluster-critical/metrics-server",
     "valueFile": "home.yaml"
   },
   {
-    "name": "prometheus-do",
+    "name": "metrics-server-do",
     "cluster": "do",
-    "namespace": "monitoring",
-    "path": "cluster-critical/prometheus",
+    "namespace": "kube-system",
+    "path": "cluster-critical/metrics-server",
     "valueFile": "do.yaml"
   }
 ]
