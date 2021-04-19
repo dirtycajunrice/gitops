@@ -1,24 +1,23 @@
-domainName: "nickflix.io"
-
 arr:
   env:
     TZ: America/Chicago
     PUID: "1000"
     PGID: "1000"
   ingress:
+    domainName: "nickflix.io"
     enabled: true
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
       traefik.ingress.kubernetes.io/router.priority: "10"
     hosts:
-      - hostTpl: '{{ .Values.domainName }}'
+      - hostTpl: '{{ .Values.ingress.domainName }}'
         paths:
           - pathTpl: '{{ printf "/%s" .Values.fullnameOverride }}'
             pathType: Prefix
     tls:
-      - hostsTpl: ['{{ .Values.domainName }}']
-        secretNameTpl: '{{ .Values.domainName | replace "." "-" }}'
+      - hostsTpl: ['{{ .Values.ingress.domainName }}']
+        secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
     additionalIngresses:
       - enabled: true
         nameSuffix: "api"
@@ -26,13 +25,13 @@ arr:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           traefik.ingress.kubernetes.io/router.priority: "15"
         hosts:
-          - hostTpl: '{{ .Values.domainName }}'
+          - hostTpl: '{{ .Values.ingress.domainName }}'
             paths:
               - pathTpl: '{{ printf "/%s/api" .Values.fullnameOverride }}'
                 pathType: Prefix
         tls:
-          - hostsTpl: ['{{ .Values.domainName }}']
-            secretNameTpl: '{{ .Values.domainName | replace "." "-" }}'
+          - hostsTpl: ['{{ .Values.ingress.domainName }}']
+            secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
   persistence:
     config:
       enabled: true
