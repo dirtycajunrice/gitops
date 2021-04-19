@@ -1,3 +1,5 @@
 rook-ceph:
+  allowMultipleFilesystems: true
+
   nodeSelector:
     cajun.pro/cluster-gen: "2"
