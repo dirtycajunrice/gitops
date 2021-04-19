@@ -81,6 +81,10 @@ argo-cd:
           ignoreDifferences: |
             jsonPointers:
               - /webhooks/0/clientConfig/caBundle
+        apiregistration.k8s.io/APIService:
+          ignoreDifferences: |
+            jsonPointers:
+              - /spec/caBundle
         Service:
           health.lua: |
             hs = {}
