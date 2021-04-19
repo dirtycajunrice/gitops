@@ -44,7 +44,7 @@ spec:
             - mountPath: /mnt
               name: media
       volumes:
-        - name: rtorrent-data-volume
+        - name: data
           hostPath:
             {{- if eq .Values.iteration "2" }}
             path: /mnt/nfs/rtorrent2
