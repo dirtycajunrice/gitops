@@ -96,19 +96,19 @@ plex:
         server: 10.0.10.211
         path: /mnt/media/audiobooks
   additionalVolumeMounts:
-    - mountPath: /tv
+    - mountPath: /mnt/media/tv
       name: tv
       readOnly: true
-    - mountPath: /tv4k
+    - mountPath: /mnt/media/tv4k
       name: tv4k
       readOnly: true
-    - mountPath: /movies
+    - mountPath: /mnt/media/movies
       name: movies
       readOnly: true
-    - mountPath: /movies4k
+    - mountPath: /mnt/media/movies4k
       name: movies4k
       readOnly: true
-    - mountPath: /audiobooks
+    - mountPath: /mnt/media/audiobooks
       name: audiobooks
       readOnly: true
   ingress:
