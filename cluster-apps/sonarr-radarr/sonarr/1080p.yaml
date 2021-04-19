@@ -1,0 +1,8 @@
+arr:
+  image:
+    repository: ghcr.io/k8s-at-home/sonarr
+    tag: 3.0.5.1143
+  fullnameOverride: sonarr-1080p
+  env:
+    APP_NAME: "sonarr-1080p"
+    APP_PORT: "8989"

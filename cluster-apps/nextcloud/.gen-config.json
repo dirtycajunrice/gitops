@@ -1,0 +1,16 @@
+[
+  {
+    "name": "kubedb-do",
+    "cluster": "do",
+    "namespace": "databases",
+    "path": "cluster-apps/kubedb",
+    "valueFile": "do.yaml"
+  },
+  {
+    "name": "kubedb-home",
+    "cluster": "home",
+    "namespace": "databases",
+    "path": "cluster-apps/kubedb",
+    "valueFile": "home.yaml"
+  }
+]

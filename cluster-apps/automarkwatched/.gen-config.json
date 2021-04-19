@@ -1,0 +1,9 @@
+[
+  {
+    "name": "charts-itscontained-io",
+    "cluster": "do",
+    "namespace": "ingress",
+    "path": "cluster-apps/itscontained",
+    "valueFile": ""
+  }
+]

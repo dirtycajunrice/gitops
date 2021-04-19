@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+    traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-0@kubernetescrd,cajun-pro-redirectslashwithstrip@kubernetescrd
+    cert-manager.io/cluster-issuer: le-production
+  labels:
+    app: {{ printf "rtorrent%s" .Values.iteration }}
+  name: {{ printf "rtorrent%s" .Values.iteration }}
+spec:
+  rules:
+    - host: nickflix.io
+      http:
+        paths:
+          - path: {{ printf "/rtorrent%s" .Values.iteration }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ printf "rtorrent%s" .Values.iteration }}
+                port:
+                  number: {{ .Values.service.web.port }}
+  tls:
+    - hosts: [nickflix.io]
+      secretName: nickflix-io

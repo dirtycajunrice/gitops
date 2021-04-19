@@ -1,0 +1,9 @@
+[
+  {
+    "name": "xbackbone",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/xbackbone",
+    "valueFile": ""
+  }
+]

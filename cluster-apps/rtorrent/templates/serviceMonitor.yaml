@@ -1,0 +1,13 @@
+# apiVersion: monitoring.coreos.com/v1
+# kind: ServiceMonitor
+# metadata:
+#   name: {{ printf "rtorrent%s" .Values.iteration }}
+#   labels:
+#     app: {{ printf "rtorrent%s" .Values.iteration }}
+# spec:
+#   selector:
+#     matchLabels:
+#       app: {{ printf "rtorrent%s" .Values.iteration }}
+#   endpoints:
+#   - port: metrics
+

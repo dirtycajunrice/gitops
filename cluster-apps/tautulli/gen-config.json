@@ -1,0 +1,9 @@
+[
+  {
+    "name": "tautulli",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/tautulli",
+    "valueFile": ""
+  }
+]

@@ -1,0 +1,71 @@
+domainName: "nickflix.io"
+
+arr:
+  env:
+    TZ: America/Chicago
+    PUID: "1000"
+    PGID: "1000"
+  ingress:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
+      traefik.ingress.kubernetes.io/router.priority: "10"
+    hosts:
+      - hostTpl: '{{ .Values.domainName }}'
+        paths:
+          - pathTpl: '{{ printf "/%s" .Values.fullnameOverride }}'
+            pathType: Prefix
+    tls:
+      - hostsTpl: ['{{ .Values.domainName }}']
+        secretName: '{{ .Values.domainName | replace "." "-" }}'
+    additionalIngresses:
+      - enabled: true
+        nameSuffix: "api"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+          traefik.ingress.kubernetes.io/router.priority: "15"
+        hosts:
+          - hostTpl: '{{ .Values.domainName }}'
+            paths:
+              - pathTpl: '{{ printf "/%s/api" .Values.fullnameOverride }}'
+                pathType: Prefix
+        tls:
+          - hostsTpl: ['{{ .Values.domainName }}']
+            secretName: '{{ .Values.domainName | replace "." "-" }}'
+  persistence:
+    config:
+      enabled: true
+      nameSuffix: "-"
+      storageClass: rook-cephfs
+      size: 10Gi
+      accessMode: ReadWriteMany
+      skipuninstall: true
+  additionalVolumes:
+    - name: mnt
+      nfs:
+        server: 10.0.10.211
+        path: /mnt/media
+    - name: emptydir
+      emptyDir: {}
+  additionalVolumeMounts:
+    - name: mnt
+      mountPath: /mnt/media
+    - name: emptydir
+      mountPath: /mnt/media/torrents/incomplete
+  podSecurityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+  nodeSelector:
+    cajun.pro/cluster-gen: "2"
+  probes:
+    liveness:
+      spec:
+        exec:
+          command:
+            - /usr/bin/env
+            - bash
+            - -c
+            - curl --fail localhost:${APP_PORT}/${APP_NAME}/api/v3/system/status?apiKey=`IFS=\> && while
+              read -d \< E C; do if [[ $E = "ApiKey" ]]; then echo $C; fi; done < /config/config.xml`

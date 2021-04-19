@@ -9,6 +9,22 @@ spec:
         revision: HEAD
         files:
           - path: "cluster-apps/**/gen-config.json"
+    - git:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        revision: HEAD
+        files:
+          - path: "cluster-apps/**/gen-config2.json"
+        template:
+          metadata: {}
+          spec:
+            destination: {}
+            project: cluster-apps
+            source:
+              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+              helm:
+                valueFiles:
+                  - '../values.yaml'
+                  - '{{ valueFile }}'
   template:
     metadata:
       name: '{{ name }}'

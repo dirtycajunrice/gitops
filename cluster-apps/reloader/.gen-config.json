@@ -1,0 +1,9 @@
+[
+  {
+    "name": "overseerr",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/overseerr",
+    "valueFile": ""
+  }
+]

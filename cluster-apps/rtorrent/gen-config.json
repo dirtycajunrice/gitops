@@ -1,0 +1,16 @@
+[
+  {
+    "name": "rtorrent-1",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/rtorrent",
+    "valueFile": "1.yaml"
+  },
+  {
+    "name": "rtorrent-2",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/rtorrent",
+    "valueFile": "2.yaml"
+  }
+]

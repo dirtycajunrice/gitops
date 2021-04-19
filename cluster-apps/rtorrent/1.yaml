@@ -1,0 +1,9 @@
+iteration: "1"
+
+service:
+  web:
+    port: 9080
+  seed:
+    port: 50105
+  scgi:
+    port: 5000

@@ -1,0 +1,8 @@
+iteration: ""
+service:
+  web:
+    port: 0
+  seed:
+    port: 0
+  scgi:
+    port: 0

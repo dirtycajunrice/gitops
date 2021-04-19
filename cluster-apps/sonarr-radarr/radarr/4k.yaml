@@ -1,0 +1,8 @@
+arr:
+  fullnameOverride: radarr-4k
+  env:
+    APP_NAME: "radarr-4k"
+    APP_PORT: "7878"
+  image:
+    repository: ghcr.io/k8s-at-home/radarr
+    tag: 3.1.0.4887

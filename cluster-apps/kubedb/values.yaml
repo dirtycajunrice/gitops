@@ -1,0 +1,24 @@
+kubedb:
+  kubedb-community:
+    fullnameOverride: kubedb
+    monitoring:
+      enabled: true
+      agent: "prometheus.io/operator"
+
+
+# todo:
+# ignoreDifferences:
+#   - group: apiregistration.k8s.io
+#     kind: APIService
+#     jsonPointers:
+#       - /spec/caBundle
+#       - /metadata
+#   - kind: Secret
+#     name: kubedb-apiserver-cert
+#     jsonPointers:
+#       - /data
+#       - /metadata
+#   - group: apps
+#     kind: Deployment
+#     jsonPointers:
+#       - /metadata/annotations

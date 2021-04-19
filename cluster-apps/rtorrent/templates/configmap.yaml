@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ printf "rtorrent%s-env" .Values.iteration }}
+  namespace: cajun-pro
+data:
+  PUID: '1000'
+  PGID: '1000'
+  UMASK: '007'
+  TZ: "America/Chicago"
+  PHP_TZ: "America/Chicago"
+  VPN_ENABLED: "no"
+  DEBUG: "false"
+  ENABLE_AUTODL_IRSSI: "no"
+  ENABLE_RPC2: "yes"
+  ENABLE_RPC2_AUTH: "no"
+  ENABLE_WEBUI_AUTH: "no"

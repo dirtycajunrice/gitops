@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.domain.upstream | replace "." "-" }}
+spec:
+  type: ExternalName
+  externalName: {{ .Values.domain.upstream }}
+  ports:
+    - port: 443

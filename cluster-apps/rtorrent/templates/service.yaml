@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ printf "rtorrent%s" .Values.iteration }}
+  labels:
+    app: {{ printf "rtorrent%s" .Values.iteration }}
+spec:
+  ports:
+    {{- range $name, $config := .Values.service }}
+    - port: {{ $config.port }}
+      targetPort: {{ $config.port }}
+      protocol: {{ default "TCP" $config.protocol }}
+      name: {{ $name }}
+    {{- end }}
+  selector:
+    app: {{ printf "rtorrent%s" .Values.iteration }}
