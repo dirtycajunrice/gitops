@@ -6,6 +6,3 @@ k10:
     company: cajun.pro
     email: nick@cajun.pro
 
-  prometheus:
-    enabled: false
-
