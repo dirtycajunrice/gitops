@@ -3,5 +3,5 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: kubedb
-    version: v2021.03.17
+    version: v2021.04.16
     repository: https://charts.appscode.com/stable/
