@@ -10,6 +10,9 @@ argo-cd:
   controller:
     replicas: 1
     enableStatefulSet: true
+    extraArgs:
+      - --repo-server-timeout-seconds
+      - "500"
     metrics:
       enabled: true
       serviceMonitor:
@@ -132,6 +135,9 @@ argo-cd:
       enabled: true
       serviceMonitor:
         enabled: true
+    env:
+      - name: "ARGOCD_EXEC_TIMEOUT"
+        value: "5m"
 podDisruptionBudget:
   enabled: true
   minAvailable: 1
