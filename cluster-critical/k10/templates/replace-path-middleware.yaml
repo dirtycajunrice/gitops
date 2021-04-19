@@ -1,0 +1,8 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: k10-replace-path-regex
+spec:
+  replacePathRegex:
+    regex: ^/(.*)
+    replacement: /k10-home/#/$1
