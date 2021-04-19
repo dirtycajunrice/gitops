@@ -18,9 +18,9 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: service
+                name: grafana
                 port:
-                  name: http
+                  name: service
   tls:
     - hosts:
         - grafana.cajun.pro
