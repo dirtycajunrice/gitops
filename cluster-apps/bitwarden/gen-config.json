@@ -1,0 +1,9 @@
+[
+  {
+    "name": "bitwarden",
+    "cluster": "do",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/bitwarden",
+    "valueFile": ""
+  }
+]
