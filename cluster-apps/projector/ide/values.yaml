@@ -39,6 +39,7 @@ jetbrains-projector:
       emptydir:
         enabled: true
       mountPath: /log
+      accessMode: ReadWriteOnce
   nodeSelector:
     cajun.pro/cluster-gen: "2"
   additionalVolumes:
