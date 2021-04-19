@@ -56,7 +56,7 @@ jetbrains-projector:
   envValueFrom:
     ORG_JETBRAINS_PROJECTOR_SERVER_RO_HANDSHAKE_TOKEN:
       secretKeyRef:
-        name: "projeector-creds"
+        name: "projector-creds"
         key: read-only
   service:
     labels:
