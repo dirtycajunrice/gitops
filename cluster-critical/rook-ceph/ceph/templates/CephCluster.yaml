@@ -5,10 +5,10 @@ metadata:
   namespace: rook-ceph
 spec:
   cephVersion:
-    image: ceph/ceph:v15.2.10-20210318
+    image: ceph/ceph:v16.2.0-20210401
   dataDirHostPath: /var/lib/rook
   mon:
-    count: 1
+    count: 3
   mgr:
     modules:
     - name: pg_autoscaler
