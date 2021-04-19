@@ -85,6 +85,7 @@ argo-cd:
           ignoreDifferences: |
             jsonPointers:
               - /spec/caBundle
+              - /metadata/annotations
         Service:
           health.lua: |
             hs = {}
