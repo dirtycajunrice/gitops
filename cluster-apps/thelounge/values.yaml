@@ -19,8 +19,8 @@ thelounge:
     config:
       enabled: true
       nameSuffix: "-"
-      storageClass: rook-cephfs
-      size: 1Gi
-      accessMode: ReadWriteMany
+      storageClass: do-block-storage
+      size: 10Gi
+      accessMode: ReadWriteOnce
       skipuninstall: true
 
