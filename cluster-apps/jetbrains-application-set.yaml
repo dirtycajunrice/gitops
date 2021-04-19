@@ -22,7 +22,7 @@ spec:
           valueFiles:
             - values.yaml
           values: |
-            projector:
+            jetbrains-projector:
               fullnameOverride: {{ app }}
               image:
                 repository: projector-{{ app }}{{ suffix }}
