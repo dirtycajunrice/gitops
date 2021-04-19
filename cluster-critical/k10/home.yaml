@@ -3,5 +3,17 @@ k10:
     create: false
     host: k10.cajun.pro
 
+  global:
+    persistence:
+      storageClass: rook-cephfs
+
+  prometheus:
+    enabled: true
+    server:
+      persistantVolume:
+        enabled: false
+
+  clusterName: home
+
   nodeSelector:
     cajun.pro/cluster-gen: "2"

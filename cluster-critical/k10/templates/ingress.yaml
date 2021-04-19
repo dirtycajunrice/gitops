@@ -16,7 +16,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: k10-svc
+                name: gateway
                 port:
                   number: 8000
   tls:
