@@ -1,0 +1,41 @@
+haste-server:
+  image:
+    repository: dirtycajunrice/haste-server
+    pullPolicy: IfNotPresent
+    tag: v2021.4.14
+  env:
+    HOST: 0.0.0.0
+    PORT: "7777"
+    KEY_LENGTH: "10"
+    MAX_LENGTH: "4000000"
+    STATIC_MAX_AGE: "86400"
+    RECOMPRESS_STATIC_ASSETS: "true"
+    KEYGENERATOR_TYPE: phonetic
+    DOCUMENTS: about=./about.md
+    LOGGING_LEVEL: verbose
+    LOGGING_TYPE: Console
+    LOGGING_COLORIZE: "true"
+    RATELIMITS_NORMAL_TOTAL_REQUESTS: "500"
+    RATELIMITS_NORMAL_EVERY_MILLISECONDS: "60000"
+    RATELIMITS_WHITELIST: ""
+    RATELIMITS_BLACKLIST: ""
+    STORAGE_TYPE: "redis"
+    STORAGE_EXPIRE_SECONDS: "604800"
+    STORAGE_HOST: redis-haste-server.cajun-pro.svc
+    STORAGE_PORT: "6379"
+    STORAGE_DB: "2"
+  ingress:
+    enabled: true
+    domainName: "bin.cajun.pro"
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - hostTpl: '{{ .Values.ingress.domainName }}'
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hostsTpl: ['{{ .Values.ingress.domainName }}']
+        secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'

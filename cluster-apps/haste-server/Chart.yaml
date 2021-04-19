@@ -1,0 +1,7 @@
+name: haste-server
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: haste-server
+    version: 1.0.0
+    repository: https://charts.itscontained.io

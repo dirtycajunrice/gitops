@@ -1,0 +1,9 @@
+[
+  {
+    "name": "thelounge",
+    "cluster": "do",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/thelounge",
+    "valueFile": ""
+  }
+]

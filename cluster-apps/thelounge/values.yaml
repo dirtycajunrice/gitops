@@ -1,0 +1,26 @@
+thelounge:
+  fullnameOverride: thelounge
+  ingress:
+    enabled: true
+    domainName: "irc.cajun.pro"
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - hostTpl: '{{ .Values.ingress.domainName }}'
+        paths:
+            - path: /
+              pathType: Prefix
+    tls:
+      - hostsTpl: ['{{ .Values.ingress.domainName }}']
+        secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
+  persistence:
+    config:
+      enabled: true
+      nameSuffix: "-"
+      storageClass: rook-cephfs
+      size: 1Gi
+      accessMode: ReadWriteMany
+      skipuninstall: true
+

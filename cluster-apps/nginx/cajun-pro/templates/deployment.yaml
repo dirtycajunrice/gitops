@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: nginx
+          image: nginx:1.17.9-alpine
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - name: www
+              mountPath: /usr/share/nginx
+            - name: sites
+              mountPath: /etc/nginx/conf.d
+        - name: php
+          image: php:7.4.4-fpm-alpine3.11
+          ports:
+            - containerPort: 9000
+              protocol: TCP
+              name: http
+      volumes:
+        - name: www
+          persistentVolumeClaim:
+            claimName: nginx
+        - name: sites
+          configMap:
+            name: nginx-sites

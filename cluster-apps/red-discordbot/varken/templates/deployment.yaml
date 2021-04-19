@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: red-varken
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: red-varken
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: red-varken
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: red-discordbot
+        image: phasecorex/red-discordbot@sha256:10e89e48d2954aab02674bc453ab9aefa743b83863115abd87d84b3e36200cdd
+        env:
+          - name: TOKEN
+            valueFrom:
+              secretKeyRef:
+                key: varken-bot-token
+                name: discord
+          - name: PREFIX
+            value: "!"
+          - name: PUID
+            value: "1000"
+          - name: PGID
+            value: "1000"
+        volumeMounts:
+          - mountPath: /data
+            name: data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: red-varken
+

@@ -1,0 +1,26 @@
+apiVersion: kubedb.com/v1alpha2
+kind: MySQL
+metadata:
+  name: mysql-bookstack
+  namespace: cajun-pro
+spec:
+  version: 8.0.21-v1
+  storageType: Durable
+  authSecret:
+    name: bookstack
+  configSecret:
+    name: mysql-bookstack-config
+  monitor:
+    agent: prometheus.io/operator
+    prometheus:
+      serviceMonitor:
+        labels:
+          app: bookstack
+        interval: 10s
+  storage:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 4Gi
+  terminationPolicy: DoNotTerminate

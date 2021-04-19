@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookstack
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bookstack
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: bookstack
+    spec:
+      restartPolicy: Always
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - bookstack
+                topologyKey: kubernetes.io/hostname
+      containers:
+      - name: bookstack
+        image: linuxserver/bookstack:version-v0.31.4
+        ports:
+          - containerPort: 80
+            name: http
+        livenessProbe:
+          failureThreshold: 10000
+          httpGet:
+            path: /
+            port: http
+        volumeMounts:
+#          - mountPath: /config/www/uploads
+#            name: data
+          - name: env
+            mountPath: /config/www/.env
+            subPath: .env
+      volumes:
+#        - name: data
+#          persistentVolumeClaim:
+#          claimName: bookstack
+        - name: env
+          secret:
+            secretName: bookstack
+            items:
+            - key: temp-env
+              path: .env
