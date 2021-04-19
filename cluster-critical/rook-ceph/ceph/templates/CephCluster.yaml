@@ -90,4 +90,4 @@ spec:
       - name: "node6.k8s.cajun.pro"
       - name: "node7.k8s.cajun.pro"
     useAllDevices: false
-    useAllNodes: false
+    # useAllNodes: false
