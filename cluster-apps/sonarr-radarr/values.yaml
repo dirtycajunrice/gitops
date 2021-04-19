@@ -1,5 +1,6 @@
+domainName: "nickflix.io"
+
 arr:
-  domainName: "nickflix.io"
   env:
     TZ: America/Chicago
     PUID: "1000"
@@ -17,7 +18,7 @@ arr:
             pathType: Prefix
     tls:
       - hostsTpl: ['{{ .Values.domainName }}']
-        secretName: '{{ .Values.domainName | replace "." "-" }}'
+        secretNameTpl: '{{ .Values.domainName | replace "." "-" }}'
     additionalIngresses:
       - enabled: true
         nameSuffix: "api"
@@ -31,7 +32,7 @@ arr:
                 pathType: Prefix
         tls:
           - hostsTpl: ['{{ .Values.domainName }}']
-            secretName: '{{ .Values.domainName | replace "." "-" }}'
+            secretNameTpl: '{{ .Values.domainName | replace "." "-" }}'
   persistence:
     config:
       enabled: true
