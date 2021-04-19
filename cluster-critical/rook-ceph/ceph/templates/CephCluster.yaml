@@ -5,33 +5,67 @@ metadata:
   namespace: rook-ceph
 spec:
   cephVersion:
+    # allowUnsupported: false
     image: ceph/ceph:v16.2.0-20210401
-    allowUnsupported: false
+
   dataDirHostPath: /var/lib/rook
-  skipUpgradeChecks: false
-  continueUpgradeAfterChecksEvenIfNotHealthy: false
+
   waitTimeoutForHealthyOSDInMinutes: 10
+
+  dashboard:
+    enabled: true
+
+  disruptionManagement:
+    machineDisruptionBudgetNamespace: openshift-machine-api
+    # manageMachineDisruptionBudgets: false
+    managePodBudgets: true
+    osdMaintenanceTimeout: 30
+    # pgHealthCheckTimeout: 0
+
+  healthCheck:
+    daemonHealth:
+      mon:
+        # disabled: false
+        interval: 45s
+      osd:
+        # disabled: false
+        interval: 1m0s
+      status:
+        # disabled: false
+        interval: 1m0s
+    livenessProbe:
+      mon: {}
+        # disabled: false
+      mgr: {}
+        # disabled: false
+      osd: {}
+        # disabled: false
+
   mon:
     count: 3
-    allowMultiplePerNode: false
+    # allowMultiplePerNode: false
+
   mgr:
     count: 1
     modules:
       - name: pg_autoscaler
         enabled: true
-  dashboard:
-    enabled: true
+
   monitoring:
     enabled: true
     rulesNamespace: rook-ceph
+
+  # removeOSDsIfOutAndSafeToRemove: false
   network: {}
   cleanupPolicy:
-    confirmation: ""
+    # allowUninstallWithVolumes: false
+    # confirmation: ""
     sanitizeDisks:
       method: quick
       dataSource: zero
       iteration: 1
-    allowUninstallWithVolumes: false
+  # continueUpgradeAfterChecksEvenIfNotHealthy: false
+  # skipUpgradeChecks: false
   placement:
     all:
       nodeAffinity:
@@ -48,36 +82,12 @@ spec:
         memory: "2Gi"
       limits:
         memory: "4Gi"
-  removeOSDsIfOutAndSafeToRemove: false
+
   storage:
-    useAllNodes: false
-    useAllDevices: false
     deviceFilter: "sdb"
     nodes:
-    - name: "node5.k8s.cajun.pro"
-    - name: "node6.k8s.cajun.pro"
-    - name: "node7.k8s.cajun.pro"
-  disruptionManagement:
-    managePodBudgets: true
-    osdMaintenanceTimeout: 30
-    pgHealthCheckTimeout: 0
-    manageMachineDisruptionBudgets: false
-    machineDisruptionBudgetNamespace: openshift-machine-api
-  healthCheck:
-    daemonHealth:
-      mon:
-        disabled: false
-        interval: 45s
-      osd:
-        disabled: false
-        interval: 60s
-      status:
-        disabled: false
-        interval: 60s
-    livenessProbe:
-      mon:
-        disabled: false
-      mgr:
-        disabled: false
-      osd:
-        disabled: false
+      - name: "node5.k8s.cajun.pro"
+      - name: "node6.k8s.cajun.pro"
+      - name: "node7.k8s.cajun.pro"
+    useAllDevices: false
+    useAllNodes: false
