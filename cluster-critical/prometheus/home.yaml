@@ -73,6 +73,10 @@ kps:
       pullPolicy: IfNotPresent
     testFramework:
       enabled: false
+    serviceMonitor:
+      enabled: true
+    service:
+      portName: grafana
     ingress:
       enabled: false
       annotations:
