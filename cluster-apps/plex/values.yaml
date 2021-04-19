@@ -57,7 +57,7 @@ plex:
     runAsGroup: 1000
   probes:
     liveness:
-      enabled: true
+      enabled: false
       custom: true
       spec:
         initialDelaySeconds: 60
