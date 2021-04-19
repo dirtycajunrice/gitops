@@ -1,0 +1,67 @@
+projector:
+  image:
+    registry: ghcr.io/k8s-at-home
+    tag: v2021.1
+  idea:
+    config:
+      path: "/jetbrains"
+    system:
+      path: "/config/system"
+    plugins:
+      path: "/config/plugins"
+    log:
+      path: "/log"
+  ingress:
+    enabled: true
+    domainName: "ide.cajun.pro"
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - hostTpl: '{{ printf "%s.%s" .Values.ingress.app .Values.ingress.domainName }}'
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hostsTpl: ['{{ printf "%s.%s" .Values.ingress.app .Values.ingress.domainName }}']
+        secretNameTpl: '{{ printf "%s-%s" .Values.ingress.app .Values.ingress.domainName | replace "." "-" }}'
+  persistence:
+    config:
+      enabled: true
+      nameSuffix: "-"
+      storageClass: rook-cephfs
+      size: 10Gi
+      accessMode: ReadWriteMany
+      skipuninstall: true
+    log:
+      enabled: true
+      emptydir:
+        enabled: true
+      mountPath: /log
+  nodeSelector:
+    cajun.pro/cluster-gen: "2"
+  additionalVolumes:
+    - name: git
+      persistentVolumeClaim:
+        claimName: git
+    - name: jetbrains
+      persistentVolumeClaim:
+        claimName: jetbrains
+  additionalVolumeMounts:
+    - name: git
+      mountPath: /git
+    - name: jetbrains
+      mountPath: /jetbrains
+    ORG_JETBRAINS_PROJECTOR_SERVER_RO_HANDSHAKE_TOKEN:
+      secretKeyRef:
+        name: "projeector-creds"
+        key: read-only
+  service:
+    labels:
+      traefik.ingress.kubernetes.io/service.serversscheme: https
+
+
+
+
+

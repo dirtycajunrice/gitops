@@ -1,0 +1,30 @@
+[
+  {
+    "app": "goland",
+    "suffix": ""
+  },
+  {
+    "app": "idea",
+    "suffix": "-u"
+  },
+  {
+    "app": "phpstorm",
+    "suffix": ""
+  },
+  {
+    "app": "pycharm",
+    "suffix": "-p"
+  },
+  {
+    "app": "webstorm",
+    "suffix": ""
+  },
+  {
+    "app": "clion",
+    "suffix": ""
+  },
+  {
+    "app": "datagrip",
+    "suffix": ""
+  }
+]

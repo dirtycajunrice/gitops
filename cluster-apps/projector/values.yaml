@@ -7,26 +7,5 @@ domainName: "ide.cajun.pro"
 
 defaultImage:
   registry: ghcr.io/k8s-at-home
-  tag: v2021.1
-apps:
-  goland:
-    image:
-      repository: projector-goland
-  idea:
-    image:
-      repository: projector-idea-u
-  phpstorm:
-    image:
-      repository: projector-phpstorm
-  pycharm:
-    image:
-      repository: projector-pycharm-p
-  webstorm:
-    image:
-      repository: projector-webstorm
-  clion:
-    image:
-      repository: projector-clion
-  datagrip:
-    image:
-      repository: projector-datagrip
+  tag:
+

@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-apps-jetbrains
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        revision: HEAD
+        files:
+          - path: "cluster-apps/projector/gen-ide-config.json"
+  template:
+    metadata:
+      name: '{{ app }}'
+    spec:
+      project: cluster-apps
+      source:
+        path: cluster-apps/projector/ide
+        targetRevision: HEAD
+        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        helm:
+          valueFiles:
+            - values.yaml
+          values: |
+            projector:
+              fullnameOverride: {{ app }}
+              image:
+                repository: projector-{{ app }}{{ suffix }}
+              ingress:
+                app: {{ app }}
+              envValueFrom:
+                  ORG_JETBRAINS_PROJECTOR_SERVER_HANDSHAKE_TOKEN:
+                    secretKeyRef:
+                      name: "projeector-creds"
+                      key: {{ app }}
+      destination:
+        namespace: cajun-pro
+        name: home
+      syncPolicy:
+        #  automated: {}
+        syncOptions:
+          - ApplyOutOfSyncOnly=true
+          - PrunePropagationPolicy=orphan

@@ -1,9 +1,9 @@
 [
   {
-    "name": "overseerr",
+    "name": "projector-shared",
     "cluster": "home",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/overseerr",
+    "path": "cluster-apps/projector/shared",
     "valueFile": ""
   }
 ]
