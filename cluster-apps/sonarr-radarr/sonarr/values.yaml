@@ -1,0 +1,6 @@
+arr:
+  env:
+    APP_PORT: "8989"
+  image:
+    repository: ghcr.io/k8s-at-home/sonarr
+    tag: v3.0.6.1196

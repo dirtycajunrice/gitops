@@ -24,6 +24,7 @@ spec:
               helm:
                 valueFiles:
                   - '../values.yaml'
+                  - 'values.yaml'
                   - '{{ valueFile }}'
   template:
     metadata:
