@@ -31,7 +31,7 @@ spec:
               envValueFrom:
                 ORG_JETBRAINS_PROJECTOR_SERVER_HANDSHAKE_TOKEN:
                   secretKeyRef:
-                    name: "projeector-creds"
+                    name: "projector-creds"
                     key: "{{ app }}"
       destination:
         namespace: cajun-pro

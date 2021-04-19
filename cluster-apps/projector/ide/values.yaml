@@ -53,6 +53,7 @@ jetbrains-projector:
       mountPath: /git
     - name: jetbrains
       mountPath: /jetbrains
+  envValueFrom:
     ORG_JETBRAINS_PROJECTOR_SERVER_RO_HANDSHAKE_TOKEN:
       secretKeyRef:
         name: "projeector-creds"
