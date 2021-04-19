@@ -1,8 +1,8 @@
 overseerr:
   fullnameOverride: overseerr
   image:
-    repository: ghcr.io/dirtycajunrice/overseerr
-    tag: header-test6
+    repository: ghcr.io/sct/overseerr
+    tag: 1.23.1
     pullPolicy: IfNotPresent
   env:
     TZ: America/Chicago
