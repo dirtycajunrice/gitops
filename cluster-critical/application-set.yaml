@@ -13,7 +13,7 @@ spec:
     metadata:
       name: '{{ name }}'
       annotations:
-        argocd.argoproj.io/manifest-generate-paths: '{{ path }}'
+        argocd.argoproj.io/manifest-generate-paths: '/{{ path }}'
     spec:
       project: cluster-critical
       source:
