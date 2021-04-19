@@ -1,10 +1,12 @@
+global:
+  skipCleaner: true
 kubedb:
   kubedb-community:
     fullnameOverride: kubedb
+    enableAnalytics: false
     monitoring:
       enabled: true
       agent: "prometheus.io/operator"
-
 
 # todo:
 # ignoreDifferences:
