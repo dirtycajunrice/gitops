@@ -29,6 +29,8 @@ traefik-forward-auth:
     enabled: true
     name: "google-auth-home"
   ingress:
+    annotations:
+      cert-manager.io/cluster-issuer: le-production
     hosts:
       - host: home-oauth.cajun.pro
         paths: [/_oauth]
