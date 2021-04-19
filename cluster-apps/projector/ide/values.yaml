@@ -1,4 +1,4 @@
-projector:
+jetbrains-projector:
   image:
     registry: ghcr.io/k8s-at-home
     tag: v2021.1
