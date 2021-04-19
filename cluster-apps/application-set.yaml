@@ -29,6 +29,8 @@ spec:
   template:
     metadata:
       name: '{{ name }}'
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: '{{ path }}'
     spec:
       project: cluster-apps
       source:

@@ -12,6 +12,8 @@ spec:
   template:
     metadata:
       name: '{{ app }}'
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: 'cluster-apps/projector/ide'
     spec:
       project: cluster-apps
       source:

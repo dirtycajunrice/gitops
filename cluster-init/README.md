@@ -2,4 +2,10 @@
 
 This folder is used 
 
-argocd.argoproj.io/sync-options: Prune=false
+```yaml
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
+    argocd.argoproj.io/compare-options: IgnoreExtraneous
+    argocd.argoproj.io/manifest-generate-paths: .
+```

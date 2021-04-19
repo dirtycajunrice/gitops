@@ -4,6 +4,7 @@ metadata:
   name: rook-cephfs
   annotations:
     storageclass.kubernetes.io/is-default-class: "true"
+    argocd.argoproj.io/sync-options: Prune=false
 provisioner: rook-ceph.cephfs.csi.ceph.com
 parameters:
   clusterID: rook-ceph

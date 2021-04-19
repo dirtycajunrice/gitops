@@ -3,6 +3,8 @@ kind: CephFilesystem
 metadata:
   name: shared-fs
   namespace: rook-ceph
+  annotations:
+    argocd.argoproj.io/sync-options: Prune=false
 spec:
   metadataPool:
     replicated:
