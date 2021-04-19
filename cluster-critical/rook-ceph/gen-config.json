@@ -12,6 +12,13 @@
     "namespace": "rook-ceph",
     "path": "cluster-critical/rook-ceph/ceph",
     "valueFile": ""
+  },
+  {
+    "name": "csi-snapshotter",
+    "cluster": "home",
+    "namespace": "rook-ceph",
+    "path": "cluster-critical/rook-ceph/csi-snapshotter",
+    "valueFile": ""
   }
 ]
 
