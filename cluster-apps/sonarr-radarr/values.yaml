@@ -1,6 +1,5 @@
-domainName: "nickflix.io"
-
 arr:
+  domainName: "nickflix.io"
   env:
     TZ: America/Chicago
     PUID: "1000"
