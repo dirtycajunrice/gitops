@@ -2,7 +2,7 @@
   {
     "name": "k10-home",
     "cluster": "home",
-    "namespace": "utility",
+    "namespace": "k10",
     "path": "cluster-critical/k10",
     "valueFile": "home.yaml"
   }
