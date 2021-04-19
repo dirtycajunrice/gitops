@@ -1,0 +1,10 @@
+[
+  {
+    "name": "k10-home",
+    "cluster": "home",
+    "namespace": "utility",
+    "path": "cluster-critical/k10",
+    "valueFile": "home.yaml"
+  }
+]
+

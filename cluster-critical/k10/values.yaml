@@ -1,0 +1,10 @@
+k10:
+  fullnameOverride: k10
+
+  eula:
+    accept: true
+    company: cajun.pro
+    email: nick@cajun.pro
+
+
+

@@ -1,0 +1,7 @@
+k10:
+  ingress:
+    create: false
+    host: k10.cajun.pro
+
+  nodeSelector:
+    cajun.pro/cluster-gen: "2"

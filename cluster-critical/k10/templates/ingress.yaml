@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+    cert-manager.io/cluster-issuer: le-production
+  name: {{ .Values.k10.fullnameOverride }}
+spec:
+  rules:
+    - host: {{ .Values.k10.ingress.host }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: k10-svc
+                port:
+                  number: 8000
+  tls:
+    - hosts: [{{ .Values.k10.ingress.host }}]
+      secretName: {{ .Values.k10.ingress.host | replace "." "-" }}
