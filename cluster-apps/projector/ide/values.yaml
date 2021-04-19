@@ -34,12 +34,11 @@ jetbrains-projector:
       size: 10Gi
       accessMode: ReadWriteMany
       skipuninstall: true
-    log:
+    shared:
       enabled: true
       emptydir:
         enabled: true
       mountPath: /log
-      accessMode: ReadWriteOnce
   nodeSelector:
     cajun.pro/cluster-gen: "2"
   additionalVolumes:
