@@ -46,7 +46,7 @@ plex:
       nameSuffix: "-"
       storageClass: rook-ceph-block
       size: 50Gi
-      accessMode: ReadWriteMany
+      accessMode: ReadWriteOnce
       skipuninstall: true
     transcode:
       enabled: true
