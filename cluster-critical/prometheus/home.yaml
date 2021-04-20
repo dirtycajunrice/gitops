@@ -92,7 +92,7 @@ kps:
     persistence:
       enabled: true
       accessModes:
-        - ReadWriteMany
+        - ReadWriteOnce
     plugins:
       - grafana-piechart-panel
     grafana.ini:
