@@ -36,9 +36,9 @@ arr:
     config:
       enabled: true
       nameSuffix: "-"
-      storageClass: rook-cephfs
+      storageClass: rook-ceph-block
       size: 10Gi
-      accessMode: ReadWriteMany
+      accessMode: ReadWriteOnce
       skipuninstall: true
   additionalVolumes:
     - name: mnt
