@@ -57,7 +57,7 @@ spec:
     enabled: true
     rulesNamespace: rook-ceph
 
-  # removeOSDsIfOutAndSafeToRemove: false
+  removeOSDsIfOutAndSafeToRemove: true
   network: {}
   cleanupPolicy:
     # allowUninstallWithVolumes: false
