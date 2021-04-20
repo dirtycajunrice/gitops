@@ -44,8 +44,8 @@ plex:
     config:
       enabled: true
       nameSuffix: "-"
-      storageClass: rook-cephfs
-      size: 400Gi
+      storageClass: rook-ceph-block
+      size: 50Gi
       accessMode: ReadWriteMany
       skipuninstall: true
     transcode:
