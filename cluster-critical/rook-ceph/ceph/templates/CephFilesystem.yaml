@@ -1,7 +1,7 @@
 apiVersion: ceph.rook.io/v1
 kind: CephFilesystem
 metadata:
-  name: shared-fs
+  name: cephfs
   namespace: rook-ceph
   annotations:
     argocd.argoproj.io/sync-options: Prune=false
