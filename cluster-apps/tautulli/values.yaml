@@ -39,9 +39,9 @@ tautulli:
     config:
       enabled: true
       nameSuffix: "-"
-      storageClass: rook-cephfs
+      storageClass: rook-ceph-block
       size: 10Gi
-      accessMode: ReadWriteMany
+      accessMode: ReadWriteOnce
       skipuninstall: true
   nodeSelector:
     cajun.pro/cluster-gen: "2"
