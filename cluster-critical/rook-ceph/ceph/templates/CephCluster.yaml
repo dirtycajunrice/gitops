@@ -16,11 +16,12 @@ spec:
 
   dashboard:
     enabled: true
-
+    port: 7000
+    ssl: false
   disruptionManagement:
     machineDisruptionBudgetNamespace: openshift-machine-api
     # manageMachineDisruptionBudgets: false
-    managePodBudgets: true
+    managePodBudgets: false
     osdMaintenanceTimeout: 30
     # pgHealthCheckTimeout: 0
 
@@ -79,17 +80,26 @@ spec:
               values:
               - "2"
   resources:
+    mon:
+      requests:
+        cpu: 35m
+        memory: 800Mi
+      limits:
+        memory: 1536Mi
     osd:
       requests:
-        memory: "2Gi"
+        cpu: "35m"
+        memory: "2048Mi"
       limits:
-        memory: "4Gi"
-
+        memory: "4096Mi"
   storage:
     deviceFilter: "sdb"
+    config:
+      metadataDevice:
+      osdsPerDevice: "1"
     nodes:
       - name: "node5.k8s.cajun.pro"
       - name: "node6.k8s.cajun.pro"
       - name: "node7.k8s.cajun.pro"
     useAllDevices: false
-    # useAllNodes: false
+    useAllNodes: false
