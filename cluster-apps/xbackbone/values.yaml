@@ -31,9 +31,9 @@ xbackbone:
     config:
       enabled: true
       nameSuffix: "-"
-      storageClass: rook-cephfs
+      storageClass: rook-ceph-block
       size: 1Gi
-      accessMode: ReadWriteMany
+      accessMode: ReadWriteOnce
       skipuninstall: true
       mountPath: /app/resources/database
       subPath: database
