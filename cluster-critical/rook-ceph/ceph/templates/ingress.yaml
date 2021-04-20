@@ -17,9 +17,9 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: ceph-cajun-pro
+                name: rook-ceph-mgr-dashboard
                 port:
-                  name: http
+                  name: http-dashboard
   tls:
     - hosts:
         - ceph.cajun.pro
