@@ -9,4 +9,3 @@ spec:
   replicated:
     size: 3
     requireSafeReplicaSize: true
-  enableRBDStats: true

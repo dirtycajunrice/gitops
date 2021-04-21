@@ -1,0 +1,21 @@
+domainName: authentik.cajun.pro
+authentik:
+  fullnameOverride: authentik
+  image:
+    name: beryju/authentik
+    tag: 2021.4.3
+
+  pvc:
+    mode: ReadWriteOnce
+    uploadsSize: 5Gi
+    uploadsStorageClass: do-block-storage
+    geoIpSize: 1Gi
+    geoIpStorageClass: do-block-storage
+
+  postgresql:
+    postgresqlPassword: PaSsWoRdYoUgEnErAtEd
+  redis:
+    password: PaSsWoRdYoUgEnErAtEd
+  config:
+    secretKey: PaSsWoRdYoUgEnErAtEd
+

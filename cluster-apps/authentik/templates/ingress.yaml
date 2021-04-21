@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+    cert-manager.io/cluster-issuer: le-production
+  name: {{ .Values.domainName | replace "." "-" }}
+spec:
+  rules:
+    - host: {{ .Values.domainName }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: authentik-web
+                port:
+                  name: http
+  tls:
+    - hosts: [{{ .Values.domainName }}]
+      secretName: {{ .Values.domainName | replace "." "-" }}

@@ -1,0 +1,20 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .Values.domainName | replace "." "-" }}
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`{{ .Values.domainName | replace "." "-" }}`) && PathPrefix(`/{tp:(((static|if|media)/)|(favicon.ico|robots.txt))}`)
+#      middlewares:
+#        - name: someshit
+      priority: 10
+      services:
+        - kind: Service
+          name: authentik-static
+          port: 80
+  tls:
+    secretName: {{ .Values.domainName | replace "." "-" }}
+
