@@ -7,7 +7,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`{{ .Values.domainName | replace "." "-" }}`) && PathPrefix(`/static`)
+      match: Host(`{{ .Values.domainName }}`) && PathPrefix(`/static`)
       #      middlewares:
       #        - name: someshit
       priority: 15
@@ -16,7 +16,7 @@ spec:
           name: authentik-static
           port: 80
     - kind: Rule
-      match: Host(`{{ .Values.domainName | replace "." "-" }}`) && PathPrefix(`/if`)
+      match: Host(`{{ .Values.domainName }}`) && PathPrefix(`/if`)
       #      middlewares:
       #        - name: someshit
       priority: 15
@@ -25,7 +25,7 @@ spec:
           name: authentik-static
           port: 80
     - kind: Rule
-      match: Host(`{{ .Values.domainName | replace "." "-" }}`) && PathPrefix(`/media`)
+      match: Host(`{{ .Values.domainName }}`) && PathPrefix(`/media`)
       #      middlewares:
       #        - name: someshit
       priority: 15
@@ -34,7 +34,7 @@ spec:
           name: authentik-static
           port: 80
     - kind: Rule
-      match: Host(`{{ .Values.domainName | replace "." "-" }}`) && Path(`/favicon.ico`)
+      match: Host(`{{ .Values.domainName }}`) && Path(`/favicon.ico`)
       #      middlewares:
       #        - name: someshit
       priority: 15
@@ -43,7 +43,7 @@ spec:
           name: authentik-static
           port: 80
     - kind: Rule
-      match: Host(`{{ .Values.domainName | replace "." "-" }}`) && Path(`/robots.txt`)
+      match: Host(`{{ .Values.domainName }}`) && Path(`/robots.txt`)
       #      middlewares:
       #        - name: someshit
       priority: 15
@@ -52,5 +52,5 @@ spec:
           name: authentik-static
           port: 80
   tls:
-    secretName: {{ .Values.domainName | replace "." "-" }}
+    secretName: {{ .Values.domainName }}
 
