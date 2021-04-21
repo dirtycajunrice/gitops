@@ -10,7 +10,7 @@ spec:
       match: Host(`{{ .Values.domainName | replace "." "-" }}`) && PathPrefix(`/{tp:(((static|if|media)/)|(favicon.ico|robots.txt))}`)
 #      middlewares:
 #        - name: someshit
-      priority: 10
+      priority: 15
       services:
         - kind: Service
           name: authentik-static
