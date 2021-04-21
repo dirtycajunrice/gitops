@@ -7,9 +7,45 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`{{ .Values.domainName | replace "." "-" }}`) && PathPrefix(`/{tp:(((static|if|media)/)|(favicon.ico|robots.txt))}`)
-#      middlewares:
-#        - name: someshit
+      match: Host(`{{ .Values.domainName | replace "." "-" }}`) && PathPrefix(`/static`)
+      #      middlewares:
+      #        - name: someshit
+      priority: 15
+      services:
+        - kind: Service
+          name: authentik-static
+          port: 80
+    - kind: Rule
+      match: Host(`{{ .Values.domainName | replace "." "-" }}`) && PathPrefix(`/if`)
+      #      middlewares:
+      #        - name: someshit
+      priority: 15
+      services:
+        - kind: Service
+          name: authentik-static
+          port: 80
+    - kind: Rule
+      match: Host(`{{ .Values.domainName | replace "." "-" }}`) && PathPrefix(`/media`)
+      #      middlewares:
+      #        - name: someshit
+      priority: 15
+      services:
+        - kind: Service
+          name: authentik-static
+          port: 80
+    - kind: Rule
+      match: Host(`{{ .Values.domainName | replace "." "-" }}`) && Path(`/favicon.ico`)
+      #      middlewares:
+      #        - name: someshit
+      priority: 15
+      services:
+        - kind: Service
+          name: authentik-static
+          port: 80
+    - kind: Rule
+      match: Host(`{{ .Values.domainName | replace "." "-" }}`) && Path(`/robots.txt`)
+      #      middlewares:
+      #        - name: someshit
       priority: 15
       services:
         - kind: Service
