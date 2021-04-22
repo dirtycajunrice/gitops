@@ -10,7 +10,11 @@ spec:
     - kind: Rule
       match: Host(`{{ include "traefik.hostname" . }}`)
       middlewares:
-        - name: {{ index .Values "traefik-forward-auth" "middleware" "name" }}
+        {{- $mw := index .Values "traefik-forward-auth" "middleware" "name" }}
+        {{- if .Values.cluster "home" }}
+          {{- $mw := printf "%s-home" }}
+        {{- end }}
+        - name: {{ $mw }}
       priority: 10
       services:
         - kind: TraefikService
