@@ -11,7 +11,7 @@ spec:
       match: Host(`{{ include "traefik.hostname" . }}`)
       middlewares:
         {{- $mw := index .Values "traefik-forward-auth" "middleware" "name" }}
-        {{- if .Values.cluster "home" }}
+        {{- if eq .Values.cluster "home" }}
           {{- $mw := printf "%s-home" $mw }}
         {{- end }}
         - name: {{ $mw }}
