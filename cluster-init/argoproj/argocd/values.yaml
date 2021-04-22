@@ -113,7 +113,7 @@ argo-cd:
         g, nick@cajun.pro, role:admin
         g, nstgermain@ea.com, role:admin
         g, kellinmcavoy@gmail.com, role:readonly
-        g, nstgermain@gmail.com, role:readonly
+        g, cajuntestemail@gmail.com, role:readonly
     ingress:
       enabled: false
       annotations:
