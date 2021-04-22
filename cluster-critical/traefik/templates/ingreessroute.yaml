@@ -12,7 +12,7 @@ spec:
       middlewares:
         {{- $mw := index .Values "traefik-forward-auth" "middleware" "name" }}
         {{- if eq .Values.cluster "home" }}
-          {{- $mw := printf "%s-home" $mw }}
+          {{- $mw = printf "%s-home" $mw }}
         {{- end }}
         - name: {{ $mw }}
       priority: 10
