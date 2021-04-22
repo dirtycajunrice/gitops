@@ -116,6 +116,7 @@ argo-cd:
         g, cajuntestemail@gmail.com, role:readonly
     ingress:
       enabled: true
+      ingressClassName: traefik
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
