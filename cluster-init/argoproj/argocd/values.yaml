@@ -63,8 +63,18 @@ argo-cd:
     extraArgs:
       - --insecure
     config:
+      admin.enabled: "false"
       url: https://argocd.cajun.pro
       application.instanceLabelKey: argocd.argoproj.io/instance
+      statusbadge.enabled: "true"
+      ga.trackingid: "G-2KKZYB17DC"
+      ga.anonymizeusers: "false"
+      # TODO: public access
+      # help.chatUrl: "https://discord.gg"
+      # help.chatText: "Discord"
+      # users.anonymous.enabled: "true"
+      # users.session.duration: "24h"
+      # statusbadge.enabled: "true"
       oidc.config: |
         name: OIDC
         issuer: https://accounts.google.com
@@ -102,6 +112,8 @@ argo-cd:
       policy.csv: |
         g, nick@cajun.pro, role:admin
         g, nstgermain@ea.com, role:admin
+        g, kellinmcavoy@gmail.com, role:readonly
+        g, nstgermain@gmail.com, role:readonly
     ingress:
       enabled: false
       annotations:
