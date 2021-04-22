@@ -12,6 +12,7 @@ traefik:
     - "--global.checknewversion"
     - "--serverstransport.insecureskipverify=true"
     - "--providers.kubernetesingress.ingressclass=traefik"
+    - "--metrics.prometheus=true"
     - "--metrics.prometheus.entryPoint=metrics"
   logs:
     general:
@@ -20,10 +21,6 @@ traefik:
     access:
       enabled: true
       format: json
-  metrics:
-    prometheus:
-      enabled: true
-      entryPoint: metrics
   service:
     spec:
       externalTrafficPolicy: Local
