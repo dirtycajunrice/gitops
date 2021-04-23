@@ -10,7 +10,7 @@ flood:
   # https://github.com/jesec/flood/blob/master/config.cli.js
   env:
     FLOOD_OPTION_RUNDIR: /data
-    FLOOD_OPTION_BASE_URI: /flood/1
+    FLOOD_BASE_URI: /flood/1
     FLOOD_OPTION_RTHOST: rtorrent1
     FLOOD_OPTION_RTPORT: "5000"
 
