@@ -11,6 +11,7 @@ flood:
   env:
     FLOOD_OPTION_RUNDIR: /data
     FLOOD_BASE_URI: /flood/1
+    FLOOD_OPTION_AUTH: none
     FLOOD_OPTION_RTHOST: rtorrent1
     FLOOD_OPTION_RTPORT: "5000"
 
