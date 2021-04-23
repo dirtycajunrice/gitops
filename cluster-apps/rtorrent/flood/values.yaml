@@ -42,13 +42,13 @@ flood:
       size: 1Gi
       skipuninstall: true
 
-  additionalVolumes:
+  additionalVolumeMounts:
     - mountPath: /config
       name: config
     - mountPath: /mnt
       name: media
 
-  additionalVolumeMounts:
+  additionalVolumes:
     - name: config
       hostPath:
         path: /mnt/nfs/rtorrent

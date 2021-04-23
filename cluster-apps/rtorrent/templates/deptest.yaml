@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ printf "rtorrent%s" .Values.iteration }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ printf "rtorrent%s" .Values.iteration }}
+  template:
+    metadata:
+      labels:
+        app: {{ printf "rtorrent%s" .Values.iteration }}
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: node4.k8s.cajun.pro
+      restartPolicy: Always
+      containers:
+        - name: rtorrent
+          image: binhex/arch-rtorrentvpn:v3.10-01
+          ports:
+            - containerPort: {{ .Values.service.web.port }}
+              name: web
+            - containerPort: {{ .Values.service.seed.port }}
+              hostPort: {{ .Values.service.seed.port }}
+              name: seed
+            - containerPort: {{ .Values.service.scgi.port }}
+              name: sgci
+          envFrom:
+            - configMapRef:
+                name: {{ printf "rtorrent%s-env" .Values.iteration }}
+          livenessProbe:
+            exec:
+              command:
+                - stat
+                - /mnt/torrents/completed/private
+            initialDelaySeconds: 0
+            periodSeconds: 15
+            failureThreshold: 2
+          volumeMounts:
+            - mountPath: /config
+              name: config
+            - mountPath: /mnt
+              name: media
+      volumes:
+        - name: config
+          hostPath:
+            {{- if eq .Values.iteration "2" }}
+            path: /mnt/nfs/rtorrent2
+            {{- else }}
+            path: /mnt/nfs/rtorrent
+            {{- end }}
+            type: Directory
+        - name: media
+          hostPath:
+            path: /mnt/media
+            type: Directory
