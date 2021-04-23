@@ -23,8 +23,8 @@ spec:
   tls:
     - hosts: [{{ include "traefik.hostname" . }}]
       secretName: {{ include "traefik.secretname" . }}
-{{- end -}}
-{{- if and .Values.traefik.deployment.enabled (eq .Values.cluster "do") -}}
+{{- end }}
+{{- if and .Values.traefik.deployment.enabled (eq .Values.cluster "do") }}
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress

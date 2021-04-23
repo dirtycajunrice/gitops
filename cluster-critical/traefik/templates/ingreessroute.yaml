@@ -21,8 +21,8 @@ spec:
           name: api@internal
   tls:
     secretName: {{ include "traefik.secretname" . }}
-{{- end -}}
-{{- if and .Values.traefik.deployment.enabled (eq .Values.cluster "do") -}}
+{{- end }}
+{{- if and .Values.traefik.deployment.enabled (eq .Values.cluster "do") }}
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
