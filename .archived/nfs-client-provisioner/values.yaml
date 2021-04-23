@@ -1,8 +1,0 @@
-nfs-client-provisioner:
-  storageClass:
-    defaultClass: false
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"
-  nfs:
-    server: 10.0.10.211
-    path: /mnt/nfs

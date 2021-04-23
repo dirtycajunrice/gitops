@@ -1,0 +1,27 @@
+nfs-subdir-external-provisioner:
+  fullnameOverride: nfs-provisioner
+
+  image:
+    repository: k8s.gcr.io/sig-storage/nfs-subdir-external-provisioner
+    tag: v4.0.2
+
+  nfs:
+    server: 10.0.10.211
+    path: /k8s
+    mountOptions:
+      - nfsvers=4
+
+  storageClass:
+    create: true
+    name: nfs-client
+    defaultClass: false
+    allowVolumeExpansion: true
+    reclaimPolicy: Delete
+    archiveOnDelete: true
+    accessModes: ReadWriteMany
+    pathPattern: '${.PVC.namespace}-${.PVC.name}'
+    annotations: {}
+
+  nodeSelector:
+    cajun.pro/cluster-gen: "2"
+
