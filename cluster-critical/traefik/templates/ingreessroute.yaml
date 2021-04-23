@@ -47,6 +47,7 @@ spec:
       services:
         - kind: Service
           name: authentik-outpost-a2118407e48843738a9eb8f25c4915a3
+          namespace: authentik
           port: 4180
   tls:
     secretName: do-traefik-cajun-pro
