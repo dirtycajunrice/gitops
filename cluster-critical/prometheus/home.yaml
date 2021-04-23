@@ -91,6 +91,7 @@ kps:
       cajun.pro/cluster-gen: "2"
     persistence:
       enabled: true
+      storageClassName: nfs-client
       accessModes:
         - ReadWriteOnce
     plugins:
