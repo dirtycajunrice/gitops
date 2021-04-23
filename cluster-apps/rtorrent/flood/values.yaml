@@ -59,7 +59,7 @@ flood:
         type: Directory
 
   nodeSelector:
-    cajun.pro/cluster-gen: "2"
+    kubernetes.io/hostname: node4.k8s.cajun.pro
 
   resources:
     requests:
