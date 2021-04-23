@@ -1,6 +1,8 @@
 domainName: authentik.cajun.pro
+
 authentik:
   fullnameOverride: authentik
+
   image:
     name: beryju/authentik
     tag: 2021.4.3
@@ -18,4 +20,3 @@ authentik:
     password: PaSsWoRdYoUgEnErAtEd
   config:
     secretKey: PaSsWoRdYoUgEnErAtEd
-

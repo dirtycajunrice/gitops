@@ -5,7 +5,7 @@ metadata:
 spec:
   forwardAuth:
     address: http://authentik-outpost-a2118407e48843738a9eb8f25c4915a3.authentik:4180
-    authRequestHeaders:
-      - Host
     authResponseHeaders:
+      - Authorization
+      - Set-Cookie
       - X-Forwarded-User
