@@ -1,0 +1,9 @@
+[
+  {
+    "name": "nfs-provisioner",
+    "cluster": "home",
+    "namespace": "utility",
+    "path": "cluster-apps/nfs-subdir-external-provisioner",
+    "valueFile": ""
+  }
+]
