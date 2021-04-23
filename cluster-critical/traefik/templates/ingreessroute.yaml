@@ -36,6 +36,7 @@ spec:
       match: Host(`do.traefik.cajun.pro`)
       middlewares:
         - name: authentik
+          namespace: authentik
       priority: 10
       services:
         - kind: TraefikService
