@@ -12,5 +12,12 @@
     "namespace": "cajun-pro",
     "path": "cluster-apps/rtorrent",
     "valueFile": "2.yaml"
+  },
+  {
+    "name": "flood-1",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/rtorrent/flood",
+    "valueFile": ""
   }
 ]
