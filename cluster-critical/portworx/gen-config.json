@@ -1,0 +1,10 @@
+[
+  {
+    "name": "portworx-home",
+    "cluster": "home",
+    "namespace": "storage",
+    "path": "cluster-critical/portworx",
+    "valueFile": ""
+  }
+]
+

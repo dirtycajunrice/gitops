@@ -40,11 +40,11 @@ spec:
             failureThreshold: 2
           volumeMounts:
             - mountPath: /config
-              name: data
+              name: config
             - mountPath: /mnt
               name: media
       volumes:
-        - name: data
+        - name: config
           hostPath:
             {{- if eq .Values.iteration "2" }}
             path: /mnt/nfs/rtorrent2

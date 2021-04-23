@@ -1,0 +1,9 @@
+[
+  {
+    "name": "organizr",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/organizr",
+    "valueFile": ""
+  }
+]
