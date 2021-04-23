@@ -32,7 +32,7 @@ flood:
 
   persistence:
     data:
-      enabled: false
+      enabled: true
       nameSuffix: "-"
       emptyDir:
         enabled: false
