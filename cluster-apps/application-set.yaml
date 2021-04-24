@@ -49,14 +49,3 @@ spec:
         syncOptions:
           - ApplyOutOfSyncOnly=true
           - PrunePropagationPolicy=orphan
-      ignoreDifferences:
-        - group: ""
-          kind: Secret
-          name: kopia-tls-cert
-          jsonPointers:
-            - /data
-        - group: ""
-          kind: Secret
-          name: kopia-tls-key
-          jsonPointers:
-            - /data
