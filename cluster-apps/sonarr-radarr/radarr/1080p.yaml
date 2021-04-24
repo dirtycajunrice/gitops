@@ -2,3 +2,5 @@ arr:
   fullnameOverride: radarr-1080p
   env:
     APP_NAME: "radarr-1080p"
+  nodeSelector:
+    kubernetes.io/hostname: node4.k8s.cajun.pro
