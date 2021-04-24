@@ -9,11 +9,11 @@ flood:
   # Other environment variables that can be configure can be seen at
   # https://github.com/jesec/flood/blob/master/config.cli.js
   env:
-    FLOOD_OPTION_RUNDIR: /data
+    FLOOD_OPTION_rundir: /data
     FLOOD_OPTION_baseuri: /flood/1
-    FLOOD_OPTION_AUTH: none
-    FLOOD_OPTION_RTHOST: rtorrent1
-    FLOOD_OPTION_RTPORT: "5000"
+    FLOOD_OPTION_auth: none
+    FLOOD_OPTION_rthost: rtorrent1
+    FLOOD_OPTION_rtport: "5000"
 
   ingress:
     enabled: true
