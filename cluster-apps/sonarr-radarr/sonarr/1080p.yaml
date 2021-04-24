@@ -1,7 +1,9 @@
 arr:
   fullnameOverride: sonarr-1080p
+
   env:
     APP_NAME: "sonarr-1080p"
+
   persistence:
     config:
       enabled: false
@@ -31,5 +33,6 @@ arr:
         path: /mnt/media
     - name: emptydir
       emptyDir: {}
+
   nodeSelector:
     kubernetes.io/hostname: node4.k8s.cajun.pro
