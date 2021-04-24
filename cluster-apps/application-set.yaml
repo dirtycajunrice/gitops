@@ -49,3 +49,14 @@ spec:
         syncOptions:
           - ApplyOutOfSyncOnly=true
           - PrunePropagationPolicy=orphan
+      ignoreDifferences:
+        - group: ""
+          kind: Secret
+          name: kubedb-apiserver-cert
+          jsonPointers:
+            - /data
+        - group: apps
+          kind: Deployment
+          name: kubedb
+          jsonPointers:
+            - /metadata/annotations
