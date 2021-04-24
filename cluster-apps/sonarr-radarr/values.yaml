@@ -56,8 +56,6 @@ arr:
     runAsUser: 1000
     runAsGroup: 1000
     fsGroup: 1000
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"
   probes:
     liveness:
       spec:
