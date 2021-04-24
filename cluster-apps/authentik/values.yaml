@@ -10,9 +10,9 @@ authentik:
   pvc:
     mode: ReadWriteOnce
     uploadsSize: 5Gi
-    uploadsStorageClass: nfs-client
+    uploadsStorageClass: do-block-storage
     geoIpSize: 1Gi
-    geoIpStorageClass: nfs-client
+    geoIpStorageClass: do-block-storage
 
   postgresql:
     postgresqlPassword: PaSsWoRdYoUgEnErAtEd
