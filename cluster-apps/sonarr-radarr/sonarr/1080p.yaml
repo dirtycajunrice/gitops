@@ -31,3 +31,5 @@ arr:
         path: /mnt/media
     - name: emptydir
       emptyDir: {}
+  nodeSelector:
+    kubernetes.io/hostname: node4.k8s.cajun.pro
