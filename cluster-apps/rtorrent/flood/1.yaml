@@ -1,0 +1,26 @@
+flood:
+  fullnameOverride: flood-1
+
+  env:
+    FLOOD_OPTION_baseuri: /flood/1
+    FLOOD_OPTION_rthost: rtorrent1
+    FLOOD_OPTION_rtport: "5000"
+
+  ingress:
+    iteration: "1"
+
+  additionalVolumeMounts:
+    - mountPath: /config
+      name: config
+    - mountPath: /mnt
+      name: media
+
+  additionalVolumes:
+    - name: config
+      hostPath:
+        path: /mnt/nfs/rtorrent
+        type: Directory
+    - name: media
+      hostPath:
+        path: /mnt/media
+        type: Directory

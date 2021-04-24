@@ -1,19 +1,11 @@
 flood:
-  fullnameOverride: flood
-
   image:
     repository: jesec/flood
     tag: 4.5.3
 
-
-  # Other environment variables that can be configure can be seen at
-  # https://github.com/jesec/flood/blob/master/config.cli.js
   env:
     FLOOD_OPTION_rundir: /data
-    FLOOD_OPTION_baseuri: /flood/1
     FLOOD_OPTION_auth: none
-    FLOOD_OPTION_rthost: rtorrent1
-    FLOOD_OPTION_rtport: "5000"
 
   ingress:
     enabled: true
@@ -25,7 +17,7 @@ flood:
     hosts:
       - hostTpl: '{{ .Values.ingress.domainName }}'
         paths:
-          - path: /flood/1
+          - pathTpl: '{{ printf "/flood/%s" .Values.ingress.iteration }}'
             pathType: Prefix
     tls:
       - hostsTpl: ['{{ .Values.ingress.domainName }}']
@@ -35,29 +27,11 @@ flood:
     data:
       enabled: true
       nameSuffix: "-"
-      emptyDir:
-        enabled: false
       mountPath: /data
       storageClass: nfs-client
       accessMode: ReadWriteMany
       size: 1Gi
       skipuninstall: true
-
-  additionalVolumeMounts:
-    - mountPath: /config
-      name: config
-    - mountPath: /mnt
-      name: media
-
-  additionalVolumes:
-    - name: config
-      hostPath:
-        path: /mnt/nfs/rtorrent
-        type: Directory
-    - name: media
-      hostPath:
-        path: /mnt/media
-        type: Directory
 
   nodeSelector:
     kubernetes.io/hostname: node4.k8s.cajun.pro
