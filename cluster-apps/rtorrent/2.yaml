@@ -6,4 +6,4 @@ service:
   seed:
     port: 50106
   scgi:
-    port: 5001
+    port: 5000

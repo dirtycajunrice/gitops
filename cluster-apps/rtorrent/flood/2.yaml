@@ -4,7 +4,7 @@ flood:
   env:
     FLOOD_OPTION_baseuri: /flood/2
     FLOOD_OPTION_rthost: rtorrent2
-    FLOOD_OPTION_rtport: "5001"
+    FLOOD_OPTION_rtport: "5000"
 
   ingress:
     iteration: "2"
