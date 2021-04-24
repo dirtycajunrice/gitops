@@ -10,7 +10,7 @@ spec:
   resources:
     requests:
       storage: 40Gi
-  storageClassName: rook-cephfs
+  storageClassName: nfs-client
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -24,4 +24,4 @@ spec:
   resources:
     requests:
       storage: 50Gi
-  storageClassName: rook-cephfs
+  storageClassName: nfs-client

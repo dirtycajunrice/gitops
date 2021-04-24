@@ -30,7 +30,7 @@ jetbrains-projector:
     config:
       enabled: true
       nameSuffix: "-"
-      storageClass: rook-cephfs
+      storageClass: nfs-client
       size: 10Gi
       accessMode: ReadWriteMany
       skipuninstall: true
