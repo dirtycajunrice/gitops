@@ -42,7 +42,7 @@ spec:
         - kind: TraefikService
           name: api@internal
     - kind: Rule
-      match: Host(`do.traefik.cajun.pro`) && PathPrefix(`/akprox/callback`) && Headers(`Referer`, `https://authentik.cajun.pro/`)
+      match: Host(`do.traefik.cajun.pro`) && PathPrefix(`/akprox/callback`)
       priority: 15
       services:
         - kind: Service
