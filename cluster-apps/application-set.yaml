@@ -58,5 +58,6 @@ spec:
         - group: apps
           kind: Deployment
           name: kubedb
+          namespace: databases
           jsonPointers:
-            - /metadata/annotations
+            - /metadata
