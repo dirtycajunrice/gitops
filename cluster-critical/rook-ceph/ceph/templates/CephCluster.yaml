@@ -49,7 +49,6 @@ spec:
     # allowMultiplePerNode: false
 
   mgr:
-    count: 3
     modules:
       - name: pg_autoscaler
         enabled: true
