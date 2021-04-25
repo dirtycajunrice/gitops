@@ -68,16 +68,6 @@ spec:
       iteration: 1
   # continueUpgradeAfterChecksEvenIfNotHealthy: false
   # skipUpgradeChecks: false
-  placement:
-    all:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: cajun.pro/cluster-gen
-              operator: In
-              values:
-              - "2"
   resources:
     mon:
       requests:
