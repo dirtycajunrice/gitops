@@ -1,7 +1,7 @@
 kps:
   alertmanager:
     ingress:
-      enabled: false
+      enabled: true
       ingress:
         annotations:
           traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
@@ -44,7 +44,7 @@ kps:
       enabled: true
       minAvailable: 1
     ingress:
-      enabled: false
+      enabled: true
       hosts:
         - prometheus.cajun.pro
       paths:
@@ -76,7 +76,7 @@ kps:
     serviceMonitor:
       enabled: true
     ingress:
-      enabled: false
+      enabled: true
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
@@ -91,7 +91,7 @@ kps:
       cajun.pro/cluster-gen: "2"
     persistence:
       enabled: true
-      storageClassName: nfs-client
+      storageClassName: rook-ceph-fs
       accessModes:
         - ReadWriteOnce
     plugins:
