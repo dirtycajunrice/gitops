@@ -1,6 +1,3 @@
 external-secrets:
   env:
     DEFAULT_VAULT_MOUNT_POINT: kubernetes-home
-
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"

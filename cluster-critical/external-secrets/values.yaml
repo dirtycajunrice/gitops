@@ -1,9 +1,16 @@
 external-secrets:
   fullnameOverride: external-secrets
 
+  image:
+    repository: ghcr.io/external-secrets/kubernetes-external-secrets
+    tag: 7.2.1
+
   env:
     VAULT_ADDR: https://vault.cajun.pro
-    DEFAULT_VAULT_ROLE: "vault-auth"
+    DEFAULT_VAULT_ROLE: vault-auth
+    LOG_LEVEL: debug
+    USE_HUMAN_READABLE_LOG_LEVELS: "true"
+#    POLLER_INTERVAL_MILLISECONDS: "1800000"
 
   serviceMonitor:
     enabled: true
