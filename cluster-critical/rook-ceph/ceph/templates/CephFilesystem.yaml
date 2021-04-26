@@ -16,12 +16,3 @@ spec:
   metadataServer:
     activeCount: 1
     activeStandby: true
-    placement:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: cajun.pro/cluster-gen
-              operator: In
-              values:
-              - "2"
