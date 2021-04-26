@@ -28,13 +28,18 @@ flood:
       enabled: true
       nameSuffix: "-"
       mountPath: /data
-      storageClass: nfs-client
+      storageClass: rook-ceph-block
       accessMode: ReadWriteMany
       size: 1Gi
       skipuninstall: true
 
+  tolerations:
+    - key: role
+      value: storage
+      effect: NoSchedule
+
   nodeSelector:
-    kubernetes.io/hostname: node4.k8s.cajun.pro
+    node-role.kubernetes.io/storage: ""
 
   resources:
     requests:
