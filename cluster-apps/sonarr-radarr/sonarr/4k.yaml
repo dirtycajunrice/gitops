@@ -2,5 +2,3 @@ arr:
   fullnameOverride: sonarr-4k
   env:
     APP_NAME: "sonarr-4k"
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"

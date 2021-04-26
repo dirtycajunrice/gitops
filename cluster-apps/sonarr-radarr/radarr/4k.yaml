@@ -2,8 +2,3 @@ arr:
   fullnameOverride: radarr-4k
   env:
     APP_NAME: "radarr-4k"
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"
-  persistence:
-    config:
-      storageClass: rook-ceph-block

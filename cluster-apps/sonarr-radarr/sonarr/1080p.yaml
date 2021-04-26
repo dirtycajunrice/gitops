@@ -3,36 +3,3 @@ arr:
 
   env:
     APP_NAME: "sonarr-1080p"
-
-  persistence:
-    config:
-      enabled: false
-
-  additionalVolumeMounts:
-    - mountPath: /config
-      name: config2
-    - mountPath: /mnt
-      name: media
-    - name: mnt
-      mountPath: /mnt/media
-    - name: emptydir
-      mountPath: /mnt/media/torrents/incomplete
-
-  additionalVolumes:
-    - name: config2
-      hostPath:
-        path: /mnt/nfs/cajun-pro-sonarr-1080p
-        type: Directory
-    - name: media
-      hostPath:
-        path: /mnt/media
-        type: Directory
-    - name: mnt
-      nfs:
-        server: 10.0.10.211
-        path: /mnt/media
-    - name: emptydir
-      emptyDir: {}
-
-  nodeSelector:
-    kubernetes.io/hostname: node4.k8s.cajun.pro

@@ -36,22 +36,25 @@ arr:
     config:
       enabled: true
       nameSuffix: "-"
-      storageClass: nfs-client
+      storageClass: rook-ceph-block
       size: 10Gi
       accessMode: ReadWriteOnce
       skipuninstall: true
+
+  additionalVolumeMounts:
+    - name: media
+      mountPath: /mnt/media
+    - name: emptydir
+      mountPath: /mnt/media/torrents/incomplete
+
   additionalVolumes:
-    - name: mnt
+    - name: media
       nfs:
         server: 10.0.10.211
         path: /mnt/media
     - name: emptydir
       emptyDir: {}
-  additionalVolumeMounts:
-    - name: mnt
-      mountPath: /mnt/media
-    - name: emptydir
-      mountPath: /mnt/media/torrents/incomplete
+
   podSecurityContext:
     runAsUser: 1000
     runAsGroup: 1000

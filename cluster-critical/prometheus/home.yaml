@@ -93,7 +93,7 @@ kps:
     nodeSelector:
       cajun.pro/cluster-gen: "2"
     persistence:
-      enabled: true
+      enabled: false
       storageClassName: rook-ceph-fs
       accessModes:
         - ReadWriteOnce
