@@ -3,22 +3,21 @@ kps:
     ingress:
       enabled: true
       pathType: Prefix
-      ingress:
-        annotations:
-          traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
-        hosts:
-          - alertmanager.cajun.pro
-        paths:
-          - /
-        tls:
-          - secretName: alertmanager-cajun-pro
-            hosts:
-              - alertmanager.cajun.pro
+      ingressClassName: traefik
+      paths:
+        - /
+      hosts:
+        - alertmanager.cajun.pro
       annotations:
-        kubernetes.io/ingress.class: traefik
+        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
         cert-manager.io/cluster-issuer: le-production
+      tls:
+        - secretName: alertmanager-cajun-pro
+          hosts:
+            - alertmanager.cajun.pro
+
   kubeScheduler:
     service:
       port: 10259
@@ -47,6 +46,7 @@ kps:
     ingress:
       enabled: true
       pathType: Prefix
+      ingressClassName: traefik
       hosts:
         - prometheus.cajun.pro
       paths:
@@ -80,6 +80,7 @@ kps:
     ingress:
       enabled: true
       pathType: Prefix
+      ingressClassName: traefik
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
@@ -90,8 +91,6 @@ kps:
         - hosts:
             - grafana.cajun.pro
           secretName: grafana-cajun-pro
-    nodeSelector:
-      cajun.pro/cluster-gen: "2"
     persistence:
       enabled: false
       storageClassName: rook-ceph-fs
