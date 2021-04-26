@@ -13,8 +13,12 @@ spec:
       labels:
         app: {{ printf "rtorrent%s" .Values.iteration }}
     spec:
+      tolerations:
+        - key: role
+          value: storage
+          effect: NoSchedule
       nodeSelector:
-        kubernetes.io/hostname: node4.k8s.cajun.pro
+        node-role.kubernetes.io/storage: ""
       restartPolicy: Always
       containers:
         - name: rtorrent
