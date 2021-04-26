@@ -15,6 +15,7 @@ spec:
     spec:
       tolerations:
         - key: role
+          operator: Equal
           value: storage
           effect: NoSchedule
       nodeSelector:
