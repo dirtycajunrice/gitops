@@ -7,7 +7,7 @@ external-secrets:
 
   env:
     VAULT_ADDR: https://vault.cajun.pro
-    DEFAULT_VAULT_ROLE: vault-auth
+    DEFAULT_VAULT_ROLE: external-secrets
     LOG_LEVEL: debug
     USE_HUMAN_READABLE_LOG_LEVELS: "true"
 #    POLLER_INTERVAL_MILLISECONDS: "1800000"
