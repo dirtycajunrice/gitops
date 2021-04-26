@@ -2,6 +2,7 @@ kps:
   alertmanager:
     ingress:
       enabled: true
+      pathType: Prefix
       ingress:
         annotations:
           traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
@@ -45,6 +46,7 @@ kps:
       minAvailable: 1
     ingress:
       enabled: true
+      pathType: Prefix
       hosts:
         - prometheus.cajun.pro
       paths:
@@ -77,6 +79,7 @@ kps:
       enabled: true
     ingress:
       enabled: true
+      pathType: Prefix
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
