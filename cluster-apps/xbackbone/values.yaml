@@ -2,8 +2,8 @@ xbackbone:
   fullnameOverride: xbackbone
 
   image:
-    repository: pe46dro/xbackbone-docker
-    tag: 3.3.3
+    repository: ghcr.io/itscontained/xbackbone
+    tag: v3.3.5
 
   env:
     TZ: UTC
