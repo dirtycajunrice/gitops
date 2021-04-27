@@ -17,7 +17,7 @@ external-dns:
     - "nickflix.io"
     - "cajun.pro"
     - "itscontained.io"
-  interval: "1m"
+  interval: "5m"
   logLevel: debug
   logFormat: json
   txtPrefix: "_."
