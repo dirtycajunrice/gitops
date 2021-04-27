@@ -3,22 +3,36 @@
     "name": "traefik-home",
     "cluster": "home",
     "namespace": "ingress",
-    "path": "cluster-critical/traefik",
+    "path": "cluster-critical/traefik/traefik",
     "valueFile": "home.yaml"
   },
   {
     "name": "traefik-do",
     "cluster": "do",
     "namespace": "ingress",
-    "path": "cluster-critical/traefik",
+    "path": "cluster-critical/traefik/traefik",
     "valueFile": "do.yaml"
   },
   {
     "name": "traefik-forward-auth2-home",
     "cluster": "home",
     "namespace": "ingress",
-    "path": "cluster-critical/traefik",
+    "path": "cluster-critical/traefik/traefik",
     "valueFile": "tfa2.yaml"
+  },
+  {
+    "name": "error-pages-home",
+    "cluster": "home",
+    "namespace": "ingress",
+    "path": "cluster-critical/traefik/error-pages",
+    "valueFile": ""
+  },
+  {
+    "name": "error-pages-do",
+    "cluster": "do",
+    "namespace": "ingress",
+    "path": "cluster-critical/traefik/error-pages",
+    "valueFile": ""
   }
 ]
 

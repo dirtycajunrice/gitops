@@ -1,0 +1,14 @@
+fullnameOverride: error-pages
+
+image:
+  repository: tarampampam/error-pages
+  tag: 1.6.0
+
+strategy:
+  type: Recreate
+
+env: {}
+
+service:
+  port:
+    port: 8082
