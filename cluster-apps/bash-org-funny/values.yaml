@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/dirtycajunrice/bash-org-funny
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   tag: v1.0.0
 
 strategy:
