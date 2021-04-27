@@ -17,7 +17,7 @@ ingress:
   domainName: "bashfunny.cajun.pro"
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.priority: "5"
+    traefik.ingress.kubernetes.io/router.priority: "10"
     cert-manager.io/cluster-issuer: le-production
   hosts:
     - hostTpl: '{{ .Values.ingress.domainName }}'
