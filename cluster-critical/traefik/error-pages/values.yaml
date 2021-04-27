@@ -7,8 +7,9 @@ image:
 strategy:
   type: Recreate
 
-env: {}
+env:
+  TEMPLATE_NAME: l7-dark
 
 service:
   port:
-    port: 8082
+    port: 8080

@@ -6,7 +6,7 @@ spec:
   errors:
     status:
       - "400-599"
-    query: /l7-dark/{status}.html
+    query: /{status}.html
     service:
       name: error-pages
       port: 8082
