@@ -1,0 +1,7 @@
+name: bash-org-funny
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: common
+    repository: https://library-charts.k8s-at-home.com
+    version: 2.3.1

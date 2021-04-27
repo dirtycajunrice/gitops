@@ -1,0 +1,29 @@
+image:
+  repository: ghcr.io/dirtycajunrice/bash-org-funny
+  pullPolicy: IfNotPresent
+  tag: latest
+
+strategy:
+  type: Recreate
+
+env: {}
+
+service:
+  port:
+    port: 8080
+
+ingress:
+  enabled: true
+  domainName: "bashfunny.cajun.pro"
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "5"
+    cert-manager.io/cluster-issuer: le-production
+  hosts:
+    - hostTpl: '{{ .Values.ingress.domainName }}'
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hostsTpl: ['{{ .Values.ingress.domainName }}']
+      secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
