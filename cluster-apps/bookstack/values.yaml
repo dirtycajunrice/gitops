@@ -42,7 +42,6 @@ bookstack:
         key: db_password
         name: bookstack
   env:
-    APP_KEY: base64:JXr5Od2c7bNjhTLXc+fxz4rdST8q5kaLDtfv0kL//bM=
     APP_URL: https://wiki.cajun.pro
     DB_HOST: mysql-bookstack-pods
     DB_DATABASE: bookstack_cajunpro
