@@ -7,9 +7,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: HostRegexp(`{host.+}`)
-      middlewares:
-        - name: error-pages
+      match: HostRegexp(`{host:.+}`)
       priority: 1
       services:
         - kind: Service
