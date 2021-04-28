@@ -110,7 +110,7 @@ bookstack:
                     - bookstack
             topologyKey: kubernetes.io/hostname
 
-  persistance:
+  persistence:
     env:
       enabled: true
       emptyDir:
