@@ -18,7 +18,7 @@ spec:
         secretPath: kv-v2/data/k8s/monitoring/grafana
   secretObjects:
     - type: Opaque
-      secretName: bitwarden
+      secretName: grafana-env
       data:
         - key: GF_AUTH_GOOGLE_CLIENT_SECRET
           objectName: GF_AUTH_GOOGLE_CLIENT_SECRET
