@@ -7,13 +7,13 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: HostRegexp(`{catchall:.*}`)
+      match: HostRegexp(`{host.+}`)
       middlewares:
         - name: error-pages
       priority: 1
       services:
         - kind: Service
           name: error-pages
-          port: 8082
+          port: 8080
   tls:
     secretName: wc-cajun-pro
