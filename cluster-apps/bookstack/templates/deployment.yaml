@@ -39,18 +39,23 @@ spec:
             path: /
             port: http
         volumeMounts:
-#          - mountPath: /config/www/uploads
-#            name: data
           - name: env
             mountPath: /config/www/.env
             subPath: .env
+            readOnly: true
+         - mountPath: /mnt/secrets-store
+           name: secrets
+           readOnly: true
       volumes:
-#        - name: data
-#          persistentVolumeClaim:
-#          claimName: bookstack
         - name: env
           secret:
             secretName: bookstack
             items:
             - key: temp-env
               path: .env
+        - name: secrets
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "vault-secrets"

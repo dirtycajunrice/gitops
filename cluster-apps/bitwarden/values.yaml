@@ -17,8 +17,8 @@ bitwardenrs:
       existingSecret:
         enabled: true
         name: bitwarden
-        userKey: smtp-username
-        passwordKey: smtp-password
+        userKey: username
+        passwordKey: password
   persistence:
     enabled: true
     storageClass: do-block-storage
@@ -35,7 +35,11 @@ bitwardenrs:
     tls:
       - hosts: [password.cajun.pro]
         secretName: password-cajun-pro
-  extraVolumes:
+  additionalVolumeMounts:
+    - mountPath: /mnt/secrets-store
+      name: secrets
+      readOnly: true
+  additionalVolumes:
     - name: secrets
       csi:
         driver: secrets-store.csi.k8s.io

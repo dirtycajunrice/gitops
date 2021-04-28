@@ -11,6 +11,7 @@ spec:
     # found here: https://github.com/hashicorp/vault-csi-provider/blob/master/internal/provider/provider.go#L91
     vaultKubernetesMountPath: kubernetes/do
     objects: |
+      # bitwarden
       - objectName: "username"
         secretKey: "username"
         secretPath: "kv-v2/data/k8s/external/google/smtp"
@@ -20,6 +21,18 @@ spec:
       - objectName: "admin-token"
         secretKey: "admin-token"
         secretPath: "kv-v2/data/k8s/cajun-pro/bitwarden"
+      - objectName: "bookstasck-mysql-config"
+        secretKey: "mysql-config"
+        secretPath: "kv-v2/data/k8s/cajun-pro/bookstack"
+      - objectName: "bookstasck-temp-env"
+        secretKey: "temp-env"
+        secretPath: "kv-v2/data/k8s/cajun-pro/bookstack"
+      - objectName: "bookstasck-db_password"
+        secretKey: "db_password"
+        secretPath: "kv-v2/data/k8s/cajun-pro/bookstack"
+      - objectName: "bookstasck-db_username"
+        secretKey: "db_username"
+        secretPath: "kv-v2/data/k8s/cajun-pro/bookstack"
   secretObjects:
     - type: Opaque
       secretName: bitwarden
@@ -31,3 +44,19 @@ spec:
           objectName: password
         - key: admin-token
           objectName: admin-token
+    - type: Opaque
+      secretName: bookstack
+      labels: {}
+      data:
+        - key: temp-env
+          objectName: bookstasck-temp-env
+        - key: password
+          objectName: bookstasck-db_password
+        - key: username
+          objectName: bookstasck-db_username
+    - type: Opaque
+      secretName: mysql-bookstack-config
+      labels: {}
+      data:
+        - key: config.cnf
+          objectName: bookstasck-mysql-config
