@@ -45,4 +45,4 @@ bitwardenrs:
         driver: secrets-store.csi.k8s.io
         readOnly: true
         volumeAttributes:
-          secretProviderClass: "vault-secrets"
+          secretProviderClass: bitwarden
