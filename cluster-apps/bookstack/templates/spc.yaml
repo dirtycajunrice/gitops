@@ -11,8 +11,8 @@ spec:
     vaultKubernetesMountPath: kubernetes/do
     objects: |
       {{- range .Values.spc }}
-      - objectName: {{ . }}
-        secretKey: {{ . }}
+      - objectName: {{ quote . }}
+        secretKey: {{ quote . }}
         secretPath: kv-v2/data/k8s/cajun-pro/bookstack
       {{- end }}
   secretObjects:
