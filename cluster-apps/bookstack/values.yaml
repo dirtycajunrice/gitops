@@ -3,10 +3,21 @@ bookstack:
 
   image:
     repository: ghcr.io/linuxserver/bookstack
-    tag: version-v21.04.2
+    tag: version-v21.04.3
 
   replicas: 3
-
+  envFrom:
+    - secretRef:
+        name: bookstack
+  envValueFrom:
+    DB_USERNAME:
+      secretKeyRef:
+        key: db_username
+        name: bookstack
+    DB_PASSWORD:
+      secretKeyRef:
+        key: db_password
+        name: bookstack
   env:
     APP_KEY: base64:JXr5Od2c7bNjhTLXc+fxz4rdST8q5kaLDtfv0kL//bM=
     APP_URL: https://wiki.cajun.pro
