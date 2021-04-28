@@ -32,18 +32,11 @@ bookstack:
   envFrom:
     - secretRef:
         name: bookstack
-  envValueFrom:
-    DB_USERNAME:
-      secretKeyRef:
-        key: db_username
-        name: bookstack
-    DB_PASSWORD:
-      secretKeyRef:
-        key: db_password
-        name: bookstack
   env:
     APP_URL: https://wiki.cajun.pro
-    DB_HOST: mysql-bookstack-pods
+    DB_HOST: $(MYSQL_BOOKSTACK_SERVICE_HOST)
+    DB_USERNAME: $(db_username)
+    DB_PASSWORD: $(db_password)
     DB_DATABASE: bookstack_cajunpro
     MAIL_DRIVER: smtp
     MAIL_FROM_NAME: "cajun.pro Wiki"
