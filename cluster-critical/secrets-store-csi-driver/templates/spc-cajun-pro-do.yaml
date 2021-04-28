@@ -8,6 +8,8 @@ spec:
   parameters:
     roleName: "csi-secrets-store"
     vaultAddress: https://vault.cajun.pro
+    # found here: https://github.com/hashicorp/vault-csi-provider/blob/master/internal/provider/provider.go#L91
+    vaultKubernetesMountPath: kubernetes/do
     objects: |
       - objectName: "username"
         secretKey: "username"
