@@ -23,7 +23,7 @@ secrets-store-csi-driver:
   syncSecret:
     enabled: true
 
-  enableSecretRotation: false
+  enableSecretRotation: true
   rotationPollInterval: "120s"
   # label: secrets-store.csi.k8s.io/used: "true"
   filteredWatchSecret: false
