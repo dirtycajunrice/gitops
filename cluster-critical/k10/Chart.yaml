@@ -3,5 +3,5 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: k10
-    version: 3.0.13
+    version: 4.0.1
     repository: https://charts.kasten.io/
