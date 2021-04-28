@@ -8,7 +8,7 @@ spec:
   parameters:
     roleName: "csi-secrets-store"
     vaultAddress: https://vault.cajun.pro
-    vaultKubernetesMountPath: kubernetes/do
+    vaultKubernetesMountPath: kubernetes/home
     objects: |
       - objectName: GF_AUTH_GOOGLE_CLIENT_ID
         secretKey: GF_AUTH_GOOGLE_CLIENT_ID
