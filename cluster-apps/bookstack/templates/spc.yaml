@@ -10,18 +10,18 @@ spec:
     vaultAddress: https://vault.cajun.pro
     vaultKubernetesMountPath: kubernetes/do
     objects: |
-      - objectName: "mysql-config"
-        secretKey: "mysql-config"
-        secretPath: "kv-v2/data/k8s/cajun-pro/bookstack"
-      - objectName: "temp-env"
-        secretKey: "temp-env"
-        secretPath: "kv-v2/data/k8s/cajun-pro/bookstack"
-      - objectName: "db_password"
-        secretKey: "db_password"
-        secretPath: "kv-v2/data/k8s/cajun-pro/bookstack"
-      - objectName: "db_username"
-        secretKey: "db_username"
-        secretPath: "kv-v2/data/k8s/cajun-pro/bookstack"
+      - objectName: mysql-config
+        secretKey: mysql-config
+        secretPath: kv-v2/data/k8s/cajun-pro/bookstack
+      - objectName: temp-env
+        secretKey: temp-env
+        secretPath: kv-v2/data/k8s/cajun-pro/bookstack
+      - objectName: db_password
+        secretKey: db_password
+        secretPath: kv-v2/data/k8s/cajun-pro/bookstack
+      - objectName: db_username
+        secretKey: db_username
+        secretPath: kv-v2/data/k8s/cajun-pro/bookstack
   secretObjects:
     - type: Opaque
       secretName: bookstack

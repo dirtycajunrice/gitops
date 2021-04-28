@@ -1,0 +1,93 @@
+bookstack:
+  fullnameOverride: bookstack
+
+  image:
+    repository: ghcr.io/linuxserver/bookstack
+    tag: version-v21.04.2
+
+  replicas: 3
+
+  env:
+    APP_KEY: base64:JXr5Od2c7bNjhTLXc+fxz4rdST8q5kaLDtfv0kL//bM=
+    APP_URL: https://wiki.cajun.pro
+    DB_HOST: mysql-bookstack-pods
+    DB_DATABASE: bookstack_cajunpro
+    MAIL_DRIVER: smtp
+    MAIL_FROM: no-reply@cajun.pro
+    MAIL_FROM_NAME: "cajun.pro Wiki"
+    MAIL_HOST: smtp.gmail.com
+    MAIL_PORT: "587"
+    MAIL_ENCRYPTION: TLS
+    APP_ENV: production
+    APP_LANG: en
+    APP_AUTO_LANG_PUBLIC: "true"
+    DRAWIO: "true"
+    APP_VIEWS_BOOKS: list
+    APP_VIEWS_BOOKSHELVES: grid
+    REVISION_LIMIT: "false"
+    STORAGE_TYPE: s3
+    STORAGE_S3_REGION: us-east-1
+    CACHE_DRIVER: database
+    SESSION_DRIVER: database
+    ALLOW_ROBOTS: "false"
+    ALLOW_CONTENT_SCRIPTS: "true"
+    GOOGLE_SELECT_ACCOUNT: "true"
+    GOOGLE_AUTO_REGISTER: "true"
+    GOOGLE_AUTO_CONFIRM_EMAIL: "true"
+    GITHUB_AUTO_REGISTER: "true"
+    GITHUB_AUTO_CONFIRM_EMAIL: "true"
+    GITLAB_BASE_URI: "false"
+    GITLAB_AUTO_REGISTER: "true"
+    GITLAB_AUTO_CONFIRM_EMAIL: "true"
+    FACEBOOK_AUTO_REGISTER: "true"
+    FACEBOOK_AUTO_CONFIRM_EMAIL: "true"
+    DISCORD_AUTO_REGISTER: "true"
+    DISCORD_AUTO_CONFIRM_EMAIL: "true"
+
+  ingress:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - host: wiki.cajun.pro
+        paths:
+          - /
+    tls:
+      - hosts: [wiki.cajun.pro]
+        secretName: wiki-cajun-pro
+
+  additionalVolumeMounts:
+    - name: secrets
+      mountPath: /mnt/secrets
+      readOnly: true
+
+  additionalVolumes:
+    - name: secrets
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: bookstack
+
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                    - bookstack
+            topologyKey: kubernetes.io/hostname
+
+  persistance:
+    env:
+      enabled: true
+      emptyDir:
+        enabled: true
+      mountPath: /config/www/.env
+      subPath: .env
