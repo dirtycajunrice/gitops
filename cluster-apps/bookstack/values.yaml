@@ -1,3 +1,26 @@
+spc:
+  - APP_KEY
+  - DISCORD_APP_ID
+  - DISCORD_APP_SECRET"
+  - FACEBOOK_APP_ID
+  - FACEBOOK_APP_SECRET
+  - GITHUB_APP_ID
+  - GITHUB_APP_SECRET
+  - GITLAB_APP_ID
+  - GITLAB_APP_SECRET
+  - GOOGLE_APP_ID
+  - GOOGLE_APP_SECREToYmFk1Oq
+  - MAIL_FROM
+  - MAIL_PASSWORD
+  - MAIL_USERNAME
+  - STORAGE_S3_BUCKET
+  - STORAGE_S3_KEY
+  - STORAGE_S3_SECRET
+  - STORAGE_URL
+  - db_password
+  - db_username
+  - mysql-config
+
 bookstack:
   fullnameOverride: bookstack
 
