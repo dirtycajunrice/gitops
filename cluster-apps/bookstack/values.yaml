@@ -64,7 +64,8 @@ bookstack:
     hosts:
       - host: wiki.cajun.pro
         paths:
-          - /
+          - path: /
+            pathType: Prefix
     tls:
       - hosts: [wiki.cajun.pro]
         secretName: wiki-cajun-pro
