@@ -9,4 +9,4 @@ spec:
     query: /{status}.html
     service:
       name: error-pages
-      port: 8082
+      port: 8080
