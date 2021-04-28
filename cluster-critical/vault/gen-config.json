@@ -5,6 +5,13 @@
     "namespace": "vault",
     "path": "cluster-critical/vault",
     "valueFile": ""
+  },
+  {
+    "name": "vault-home",
+    "cluster": "home",
+    "namespace": "utility",
+    "path": "cluster-critical/vault",
+    "valueFile": "home.yaml"
   }
 ]
 

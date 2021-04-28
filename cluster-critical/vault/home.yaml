@@ -1,0 +1,9 @@
+vault:
+  server:
+    enabled: false
+  ui:
+    enabled: false
+  csi:
+    enabled: true
+  injector:
+    enbaled: false

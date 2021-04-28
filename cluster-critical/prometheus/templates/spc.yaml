@@ -1,0 +1,28 @@
+{{- if .Values.kps.grafana.enabled -}}
+apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+kind: SecretProviderClass
+metadata:
+  name: grafana-env
+  namespace: cajun-pro
+spec:
+  provider: vault
+  parameters:
+    roleName: "csi-secrets-store"
+    vaultAddress: https://vault.cajun.pro
+    vaultKubernetesMountPath: kubernetes/do
+    objects: |
+      - objectName: GF_AUTH_GOOGLE_CLIENT_ID
+        secretKey: GF_AUTH_GOOGLE_CLIENT_ID
+        secretPath: kv-v2/data/k8s/monitoring/grafana
+      - objectName: GF_AUTH_GOOGLE_CLIENT_SECRET
+        secretKey: GF_AUTH_GOOGLE_CLIENT_SECRET
+        secretPath: kv-v2/data/k8s/monitoring/grafana
+  secretObjects:
+    - type: Opaque
+      secretName: bitwarden
+      data:
+        - key: GF_AUTH_GOOGLE_CLIENT_SECRET
+          objectName: GF_AUTH_GOOGLE_CLIENT_SECRET
+        - key: GF_AUTH_GOOGLE_CLIENT_ID
+          objectName: GF_AUTH_GOOGLE_CLIENT_ID
+{{- end -}}
