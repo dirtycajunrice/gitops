@@ -20,3 +20,7 @@ vault:
     storageClass: file
   ui:
     enabled: true
+  csi:
+    enabled: true
+  injector:
+    enbaled: false
