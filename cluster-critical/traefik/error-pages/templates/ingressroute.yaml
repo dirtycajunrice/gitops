@@ -15,5 +15,5 @@ spec:
         - kind: Service
           name: error-pages
           port: 8082
-
-
+  tls:
+    secretName: wc-cajun-pro
