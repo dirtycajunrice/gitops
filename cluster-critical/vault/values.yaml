@@ -23,4 +23,4 @@ vault:
   csi:
     enabled: true
   injector:
-    enbaled: false
+    enabled: false
