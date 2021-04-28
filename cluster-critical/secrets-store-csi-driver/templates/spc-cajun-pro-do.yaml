@@ -8,13 +8,24 @@ spec:
   parameters:
     roleName: "csi-secrets-store"
     vaultAddress: https://vault.cajun.pro
+    objects: |
+      - objectName: "username"
+        secretKey: "username"
+        secretPath: "kv-v2/data/k8s/external/google/smtp"
+      - objectName: "password"
+        secretKey: "password"
+        secretPath: "kv-v2/data/k8s/external/google/smtp"
+      - objectName: "admin-token"
+        secretKey: "admin-token"
+        secretPath: "kv-v2/data/k8s/cajun-pro/bitwarden"
   secretObjects:
     - type: Opaque
       secretName: bitwarden
+      labels: {}
       data:
         - key: username
-          objectName: kv-v2/data/k8s/external/google/smtp
+          objectName: username
         - key: password
-          objectName: kv-v2/data/k8s/external/google/smtp
+          objectName: password
         - key: admin-token
-          objectName: kv-v2/data/k8s/cajun-pro/bitwarden
+          objectName: admin-token
