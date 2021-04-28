@@ -25,14 +25,14 @@
     "cluster": "home",
     "namespace": "ingress",
     "path": "cluster-critical/traefik/error-pages",
-    "valueFile": ""
+    "valueFile": "home.yaml"
   },
   {
     "name": "error-pages-do",
     "cluster": "do",
     "namespace": "ingress",
     "path": "cluster-critical/traefik/error-pages",
-    "valueFile": ""
+    "valueFile": "do.yaml"
   }
 ]
 

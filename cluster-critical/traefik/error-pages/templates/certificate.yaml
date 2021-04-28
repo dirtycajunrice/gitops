@@ -1,5 +1,5 @@
 {{- $domain := "nickflix.io" -}}
-{{- if eq .Release.Name "traefik-do" -}}
+{{- if eq .Values.env.TEMPLATE_NAME "l7-dark" -}}
   {{- $domain = "cajun.pro" -}}
 {{- end -}}
 apiVersion: cert-manager.io/v1

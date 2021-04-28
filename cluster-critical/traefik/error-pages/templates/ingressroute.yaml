@@ -14,7 +14,7 @@ spec:
           name: error-pages
           port: 8080
   tls:
-    {{- if eq .Release.Name "traefik-do" }}
+    {{- if eq .Values.env.TEMPLATE_NAME "l7-dark" }}
     secretName: wc-cajun-pro
     {{- else }}
     secretName: wc-nickflix-io
