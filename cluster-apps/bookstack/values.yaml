@@ -46,7 +46,6 @@ bookstack:
     DB_HOST: mysql-bookstack-pods
     DB_DATABASE: bookstack_cajunpro
     MAIL_DRIVER: smtp
-    MAIL_FROM: no-reply@cajun.pro
     MAIL_FROM_NAME: "cajun.pro Wiki"
     MAIL_HOST: smtp.gmail.com
     MAIL_PORT: "587"
