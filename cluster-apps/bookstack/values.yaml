@@ -33,7 +33,7 @@ bookstack:
     - secretRef:
         name: bookstack
   envValueFrom:
-    DB_USERNAME:
+    DB_USER:
       secretKeyRef:
         key: db_username
         name: bookstack
