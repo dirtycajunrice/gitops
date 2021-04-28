@@ -43,9 +43,9 @@ spec:
             mountPath: /config/www/.env
             subPath: .env
             readOnly: true
-         - mountPath: /mnt/secrets-store
-           name: secrets
-           readOnly: true
+          - mountPath: /mnt/secrets-store
+            name: secrets
+            readOnly: true
       volumes:
         - name: env
           secret:
