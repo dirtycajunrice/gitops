@@ -40,8 +40,7 @@ spec:
             port: http
         volumeMounts:
           - name: env
-            mountPath: /config/www/.env
-            subPath: .env
+            mountPath: /config/www
             readOnly: true
       volumes:
         - name: env
