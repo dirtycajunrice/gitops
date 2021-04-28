@@ -1,13 +1,17 @@
+{{- $domain := "nickflix.io" -}}
+{{- if eq .Release.Name "traefik-do" -}}
+  {{- $domain = "cajun.pro" -}}
+{{- end -}}
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: wc-cajun-pro
+  name: {{ printf "wc-%s" (replace "." "-" $domain) }}
 spec:
   dnsNames:
-    - "*.cajun.pro"
+    - {{ printf "*.%s" $domain | quote }}
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
     name: le-production
-  secretName: wc-cajun-pro
+  secretName: {{ printf "wc-%s" (replace "." "-" $domain) }}
 

@@ -1,3 +1,7 @@
+{{- $theme := .Values.env.TEMPLATE_NAME -}}
+{{- if eq .Release.Name "error-pages-home" -}}
+  {{- $theme = "shuffle" -}}
+{{- end -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -6,7 +10,7 @@ spec:
   errors:
     status:
       - "400-599"
-    query: /{status}.html
+    query: /{{ $theme }}/{status}.html
     service:
       name: error-pages
       port: 8080
