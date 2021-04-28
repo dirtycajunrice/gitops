@@ -1,0 +1,31 @@
+apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+kind: SecretProviderClass
+metadata:
+  name: bitwarden
+  namespace: cajun-pro
+spec:
+  provider: vault
+  parameters:
+    roleName: "csi-secrets-store"
+    vaultAddress: https://vault.cajun.pro
+    vaultKubernetesMountPath: kubernetes/do
+    objects: |
+      - objectName: "username"
+        secretKey: "username"
+        secretPath: "kv-v2/data/k8s/external/google/smtp"
+      - objectName: "password"
+        secretKey: "password"
+        secretPath: "kv-v2/data/k8s/external/google/smtp"
+      - objectName: "admin-token"
+        secretKey: "admin-token"
+        secretPath: "kv-v2/data/k8s/cajun-pro/bitwarden"
+  secretObjects:
+    - type: Opaque
+      secretName: bitwarden
+      data:
+        - key: username
+          objectName: username
+        - key: password
+          objectName: password
+        - key: admin-token
+          objectName: admin-token
