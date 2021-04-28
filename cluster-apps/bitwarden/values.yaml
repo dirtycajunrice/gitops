@@ -35,7 +35,7 @@ bitwardenrs:
     tls:
       - hosts: [password.cajun.pro]
         secretName: password-cajun-pro
-  additionalVolumes:
+  extraVolumes:
     - name: secrets
       csi:
         driver: secrets-store.csi.k8s.io
