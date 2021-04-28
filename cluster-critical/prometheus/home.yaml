@@ -108,3 +108,16 @@ kps:
         token_url: https://accounts.google.com/o/oauth2/token
         allowed_domains: cajun.pro
     envFromSecret: grafana-env
+    extraVolumeMounts:
+      - name: secrets
+        mountPath: /mnt/secrets-store
+        readOnly: true
+    extraContainerVolumes:
+      - name: secrets
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: grafana-env
+
+
