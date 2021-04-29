@@ -1,5 +1,6 @@
 bitwardenrs:
   image:
+    repository: vaultwarden/server
     tag: 1.20.0
   fullnameOverride: bitwarden
   bitwardenrs:
