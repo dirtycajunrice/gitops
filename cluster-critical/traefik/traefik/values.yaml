@@ -14,7 +14,7 @@ traefik:
     - "--providers.kubernetesingress.ingressclass=traefik"
     - "--metrics.prometheus=true"
     - "--metrics.prometheus.entryPoint=metrics"
-    - "--entrypoints.websecure.http.middlewares=ingress-error-pages@kubernetescrd"
+    # - "--entrypoints.websecure.http.middlewares=ingress-error-pages@kubernetescrd"
   logs:
     general:
       format: json
