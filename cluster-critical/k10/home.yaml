@@ -5,7 +5,7 @@ k10:
 
   global:
     persistence:
-      storageClass: rook-ceph-block
+      storageClass: mayastor-ssd
 
   prometheus:
     enabled: true

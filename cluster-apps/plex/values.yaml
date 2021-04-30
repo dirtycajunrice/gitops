@@ -44,7 +44,7 @@ plex:
     config:
       enabled: true
       nameSuffix: "-"
-      storageClass: rook-ceph-block
+      storageClass: mayastor-ssd
       size: 50Gi
       accessMode: ReadWriteOnce
       skipuninstall: true

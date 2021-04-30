@@ -31,7 +31,7 @@ xbackbone:
     config:
       enabled: true
       nameSuffix: "-"
-      storageClass: rook-ceph-block
+      storageClass: mayastor-ssd
       size: 1Gi
       accessMode: ReadWriteOnce
       skipuninstall: true

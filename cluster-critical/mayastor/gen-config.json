@@ -1,0 +1,17 @@
+[
+  {
+    "name": "prometheus-home",
+    "cluster": "home",
+    "namespace": "monitoring",
+    "path": "cluster-critical/prometheus",
+    "valueFile": "home.yaml"
+  },
+  {
+    "name": "prometheus-do",
+    "cluster": "do",
+    "namespace": "monitoring",
+    "path": "cluster-critical/prometheus",
+    "valueFile": "do.yaml"
+  }
+]
+

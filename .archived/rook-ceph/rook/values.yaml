@@ -4,3 +4,4 @@ rook-ceph:
       - key: role
         value: storage
         effect: NoSchedule
+roo

@@ -28,7 +28,7 @@ flood:
       enabled: true
       nameSuffix: "-"
       mountPath: /data
-      storageClass: rook-ceph-block
+      storageClass: mayastor-ssd
       accessMode: ReadWriteOnce
       size: 1Gi
       skipuninstall: true
