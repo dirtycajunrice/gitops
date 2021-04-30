@@ -1,4 +1,5 @@
 arr:
   fullnameOverride: sonarr-4k
+
   env:
     APP_NAME: "sonarr-4k"

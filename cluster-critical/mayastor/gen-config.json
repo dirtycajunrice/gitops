@@ -1,17 +1,10 @@
 [
   {
-    "name": "prometheus-home",
+    "name": "mayastor",
     "cluster": "home",
-    "namespace": "monitoring",
-    "path": "cluster-critical/prometheus",
-    "valueFile": "home.yaml"
-  },
-  {
-    "name": "prometheus-do",
-    "cluster": "do",
-    "namespace": "monitoring",
-    "path": "cluster-critical/prometheus",
-    "valueFile": "do.yaml"
+    "namespace": "mayastor",
+    "path": "cluster-critical/mayastor",
+    "valueFile": ""
   }
 ]
 
