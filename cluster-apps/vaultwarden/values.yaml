@@ -2,7 +2,7 @@ bitwardenrs:
   image:
     #
     repository: vaultwarden/server
-    tag: 1.21.0
+    tag: 1.21.1
   fullnameOverride: bitwarden
   bitwardenrs:
     domain: https://password.cajun.pro
