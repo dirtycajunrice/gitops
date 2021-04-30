@@ -3,6 +3,6 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: external-dns
-    version: 4.11.2
+    version: 4.12.2
     # renovatebot:alturl=https://github.com/bitnami/charts/tree/master/bitnami/external-dns
     repository: https://charts.bitnami.com/bitnami
