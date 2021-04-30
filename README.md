@@ -15,6 +15,11 @@ installation.
 All general applications.
 
 
+## Powered By
+* [K8s at Home](https://k8s-at-home.com/) Charts, apps, and so much more
+* [Argo Projects][argo] Handling the automated deployment and generation of files
+* [RenovateBot](https://github.com/renovatebot/renovate) Handling the notification of new upstream releases
+
 [argo]: https://argoproj.github.io/
 [argoproj]: /cluster-init/argoproj
 [apps]: /cluster-apps
