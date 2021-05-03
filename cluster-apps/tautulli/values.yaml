@@ -39,9 +39,7 @@ tautulli:
     config:
       enabled: true
       nameSuffix: "-"
-      storageClass: mayastor-ssd
+      storageClass: cstor-replica-pool
       size: 10Gi
       accessMode: ReadWriteOnce
       skipuninstall: true
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"
