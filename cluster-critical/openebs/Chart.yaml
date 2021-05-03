@@ -2,6 +2,7 @@ name: openebs
 apiVersion: v2
 version: 1.0.0
 dependencies:
-  - name: openebs
+  - name: cstor
     version: 2.8.1
-    repository: https://openebs.github.io/charts
+    repository: https://openebs.github.io/cstor-operators
+

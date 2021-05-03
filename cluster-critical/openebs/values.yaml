@@ -1,4 +1,8 @@
-openebs:
+cstor:
+  release:
+    version: "2.8.0"
+  openebsNDM:
+    enabled: true
   ndm:
     filters:
       excludePaths: "/dev/loop,/dev/fd0,/dev/sr0,/dev/ram,/dev/dm-,/dev/md,/dev/rbd,/dev/zd,/dev/sda"
