@@ -9,5 +9,5 @@ spec:
     matchLabels:
       app: cstor-pool
       openebs.io/cstor-pool-cluster: stripe
-  endpoints:
+  podMetricsEndpoints:
     - port: 9500
