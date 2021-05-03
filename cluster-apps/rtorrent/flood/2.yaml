@@ -12,7 +12,7 @@ flood:
   additionalVolumes:
     - name: data
       hostPath:
-        path: /mnt/flood-1
+        path: /mnt/flood-2
         type: Directory
     - name: config
       hostPath:
