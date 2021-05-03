@@ -81,12 +81,12 @@
       "versioning": "loose"
     },
     // Docker containers that do not follow semver compliant tagging
-    {
-      "matchDatasources": ["docker"],
-      "matchPackagePatterns": [
-        "bitnami/external-dns",
-      ],
-      "versioning": "loose"
-    }
+    //{
+    //  "matchDatasources": ["docker"],
+    //  "matchPackagePatterns": [
+    //    "bitnami/external-dns",
+    //  ],
+    //  "versioning": "loose"
+    //}
   ]
 }
