@@ -93,9 +93,6 @@ kps:
           secretName: grafana-cajun-pro
     persistence:
       enabled: false
-      storageClassName: rook-ceph-fs
-      accessModes:
-        - ReadWriteOnce
     plugins:
       - grafana-piechart-panel
     grafana.ini:
@@ -107,6 +104,11 @@ kps:
         auth_url: https://accounts.google.com/o/oauth2/auth
         token_url: https://accounts.google.com/o/oauth2/token
         allowed_domains: cajun.pro
+      users:
+        auto_assign_org_role: Admin
+      auth:
+        disable_login_form: true
+        disable_signout_menu: true
     envFromSecret: grafana-env
     extraVolumeMounts:
       - name: secrets-fakemount
