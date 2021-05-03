@@ -23,7 +23,7 @@ organizr:
     config:
       enabled: true
       nameSuffix: "-"
-      storageClass: mayastor-ssd
+      storageClass: cstor-replica-pool
       size: 1Gi
       accessMode: ReadWriteOnce
       skipuninstall: true
