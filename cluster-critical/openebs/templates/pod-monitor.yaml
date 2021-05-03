@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: openebs-cstor-pool
+  labels:
+    app: openebs-cstor-pool
+spec:
+  selector:
+    matchLabels:
+      app: cstor-pool
+      openebs.io/cstor-pool-cluster: stripe
+  endpoints:
+    - port: 9500
