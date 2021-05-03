@@ -2,7 +2,7 @@ fullnameOverride: error-pages
 
 image:
   repository: tarampampam/error-pages
-  tag: 1.7.0
+  tag: 1.7.1
 
 strategy:
   type: Recreate
