@@ -25,13 +25,9 @@ flood:
 
   persistence:
     data:
-      enabled: true
+      enabled: false
       nameSuffix: "-"
-      mountPath: /data
-      storageClass: mayastor-ssd
-      accessMode: ReadWriteOnce
-      size: 1Gi
-      skipuninstall: true
+
 
   tolerations:
     - key: role
@@ -46,4 +42,10 @@ flood:
       cpu: 100m
       memory: 128m
 
-
+  additionalVolumeMounts:
+    - mountPath: /config
+      name: config
+    - mountPath: /mnt
+      name: media
+    - mountPath: /data
+      name: data

@@ -9,13 +9,11 @@ flood:
   ingress:
     iteration: "1"
 
-  additionalVolumeMounts:
-    - mountPath: /config
-      name: config
-    - mountPath: /mnt
-      name: media
-
   additionalVolumes:
+    - name: data
+      hostPath:
+        path: /mnt/flood-1
+        type: Directory
     - name: config
       hostPath:
         path: /mnt/nfs/rtorrent

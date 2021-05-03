@@ -22,6 +22,4 @@ traefik-forward-auth:
     tls:
       - hosts: [nickflix.io]
         secretName: nickflix-io
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"
 
