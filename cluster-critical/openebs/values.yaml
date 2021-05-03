@@ -1,3 +1,7 @@
+nodes:
+  node5: 6f2a1fd397c70066d8f4be7f8aead107
+  node6: f8247d26bd46e3cdc69ea0b28e4c30ad
+  node7: 616c31d0e9fe6079f1996b64fb9b01ad
 cstor:
   release:
     version: "2.8.0"
