@@ -1,0 +1,6 @@
+openebs:
+  ndm:
+    filters:
+      includePaths: "/dev/sdb"
+  analytics:
+    enabled: false

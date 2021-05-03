@@ -1,0 +1,10 @@
+[
+  {
+    "name": "openebs",
+    "cluster": "home",
+    "namespace": "openebs",
+    "path": "cluster-critical/openebs",
+    "valueFile": ""
+  }
+]
+
