@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: openebs-cstor-pvc
+  labels:
+    app: openebs-cstor-pvc
+spec:
+  selector:
+    matchLabels:
+      openebs.io/cas-type: cstor
+      openebs.io/storage-engine-type: cstor
+      openebs.io/target-service: cstor-target-svc
+  endpoints:
+    - port: exporter
+
