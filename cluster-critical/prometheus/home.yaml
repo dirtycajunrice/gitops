@@ -109,11 +109,11 @@ kps:
         allowed_domains: cajun.pro
     envFromSecret: grafana-env
     extraVolumeMounts:
-      - name: secrets
+      - name: secrets-fakemount
         mountPath: /mnt/secrets-store
         readOnly: true
     extraContainerVolumes:
-      - name: secrets
+      - name: secrets-fakemount
         csi:
           driver: secrets-store.csi.k8s.io
           readOnly: true
