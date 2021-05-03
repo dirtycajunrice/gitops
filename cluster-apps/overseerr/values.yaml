@@ -50,5 +50,3 @@ overseerr:
     requests:
       cpu: 100m
       memory: 128m
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"

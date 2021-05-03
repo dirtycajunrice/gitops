@@ -27,8 +27,6 @@ organizr:
       size: 1Gi
       accessMode: ReadWriteOnce
       skipuninstall: true
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"
   resources:
     requests:
       cpu: 100m
