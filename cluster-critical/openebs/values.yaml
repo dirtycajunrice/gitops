@@ -1,6 +1,7 @@
 openebs:
   ndm:
     filters:
+      excludePaths: "/dev/loop,/dev/fd0,/dev/sr0,/dev/ram,/dev/dm-,/dev/md,/dev/rbd,/dev/zd,/dev/sda"
       includePaths: "/dev/sdb"
   analytics:
     enabled: false
