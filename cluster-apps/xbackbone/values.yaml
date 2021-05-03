@@ -42,6 +42,3 @@ xbackbone:
     - mountPath: /app/storage
       name: config
       subPath: storage
-
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"
