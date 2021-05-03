@@ -12,4 +12,3 @@ spec:
       openebs.io/target-service: cstor-target-svc
   endpoints:
     - port: exporter
-
