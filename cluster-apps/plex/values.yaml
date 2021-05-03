@@ -38,8 +38,6 @@ plex:
     PLEX_PREFERENCE_26: "GdmEnabled=0"
     PLEX_PREFERENCE_27: "secureConnections=2"
     PLEX_PREFERENCE_28: "TranscoderToneMapping=0"
-  nodeSelector:
-    cajun.pro/cluster-gen: "2"
   persistence:
     config:
       enabled: true
