@@ -50,6 +50,14 @@ additionalVolumeMounts:
 
 additionalVolumes:
   - name: data
-    nfs:
-      server: 10.0.10.211
+    hostPath:
       path: /mnt/media/seafile
+      type: Directory
+
+tolerations:
+  - key: role
+    value: storage
+    effect: NoSchedule
+
+nodeSelector:
+  node-role.kubernetes.io/storage: ""
