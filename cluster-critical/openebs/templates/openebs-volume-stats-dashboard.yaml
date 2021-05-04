@@ -4,7 +4,7 @@ metadata:
   name: openebs-cstor-volume-something
   namespace: cajun-pro
 data:
-  something: |
+  something: |-
     {
       "annotations": {
         "list": [
@@ -366,7 +366,7 @@ data:
               "hide": false,
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "{{ job }}",
+              "legendFormat": '{{ job }}',
               "refId": "A",
               "step": 2
             },
@@ -376,7 +376,7 @@ data:
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
-              "legendFormat": "{{ job }}",
+              "legendFormat": '{{ job }}',
               "refId": "B",
               "step": 2
             }
