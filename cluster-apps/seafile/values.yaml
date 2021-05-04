@@ -34,6 +34,16 @@ ingress:
     - hosts: [files.cajun.pro]
       secretName: files-cajun-pro
 
+persistence:
+  config:
+    enabled: true
+    nameSuffix: "-"
+    storageClass: cstor-replica-pool
+    mountPath: /shared/seafile
+    size: 5Gi
+    accessMode: ReadWriteOnce
+    skipuninstall: true
+
 additionalVolumeMounts:
   - name: data
     mountPath: /opt/seafile-data
