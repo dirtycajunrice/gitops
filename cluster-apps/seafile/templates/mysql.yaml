@@ -3,7 +3,7 @@ kind: MySQL
 metadata:
   name: mysql-seafile
 spec:
-  version: 8.0.21-v1
+  version: 8.0.23-v1
   storageType: Durable
   monitor:
     agent: prometheus.io/operator
