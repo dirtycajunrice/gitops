@@ -44,10 +44,6 @@ persistence:
     accessMode: ReadWriteOnce
     skipuninstall: true
 
-securityContext:
-  runAsUser: 1000
-  runAsGroup: 1000
-
 additionalVolumeMounts:
   - name: data
     mountPath: /shared/seafile
