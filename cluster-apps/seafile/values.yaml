@@ -14,7 +14,7 @@ env:
   DB_HOST: $(MYSQL_SEAFILE_PORT_3306_TCP_ADDR)
 
 envValueFrom:
-  DB_ROOT_PASSWORD:
+  DB_ROOT_PASSWD:
     secretKeyRef:
       key: password
       name: mysql-seafile-auth
