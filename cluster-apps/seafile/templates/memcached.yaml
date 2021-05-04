@@ -1,0 +1,24 @@
+apiVersion: kubedb.com/v1alpha2
+kind: Memcached
+metadata:
+  name: memcached-seafile
+spec:
+  replicas: 3
+  version: 1.5.22
+  podTemplate:
+    spec:
+      resources:
+        limits:
+          cpu: 500m
+          memory: 128Mi
+        requests:
+          cpu: 250m
+          memory: 64Mi
+  monitor:
+    agent: prometheus.io/operator
+    prometheus:
+      serviceMonitor:
+        labels:
+          app: seafile
+        interval: 10s
+  terminationPolicy: DoNotTerminate

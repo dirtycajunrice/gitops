@@ -1,0 +1,39 @@
+fullnameOverride: seafile
+
+image:
+  repository: seafileltd/seafile-mc
+  tag: 8.0.4
+
+service:
+  port:
+    port: 80
+
+env:
+  SEAFILE_ADMIN_EMAIL: nick@cajun.pro
+  SEAFILE_SERVER_HOSTNAME: files.cajun.pro
+  DB_HOST: $(MYSQL_SEAFILE_SERVICE_HOST)
+
+ingress:
+  enabled: true
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+    cert-manager.io/cluster-issuer: le-production
+  hosts:
+    - host: files.cajun.pro
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts: [files.cajun.pro]
+      secretName: files-cajun-pro
+
+additionalVolumeMounts:
+  - name: data
+    mountPath: /opt/seafile-data
+
+additionalVolumes:
+  - name: data
+    nfs:
+      server: 10.0.10.211
+      path: /mnt/media/seafile

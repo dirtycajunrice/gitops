@@ -11,3 +11,10 @@ spec:
       openebs.io/cstor-pool-cluster: stripe
   podMetricsEndpoints:
     - targetPort: 9500
+# to look into below
+#    - relabelings:
+#        - action: replace
+#          targetLabel: __address__
+#          sourceLabels:
+#            - __address__
+#          replacement: $1:9500
