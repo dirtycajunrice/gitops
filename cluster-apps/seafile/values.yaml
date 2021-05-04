@@ -39,14 +39,14 @@ persistence:
     enabled: true
     nameSuffix: ""
     storageClass: cstor-replica-pool
-    mountPath: /shared/seafile
+    mountPath: /shared/seafile/conf
     size: 5Gi
     accessMode: ReadWriteOnce
     skipuninstall: true
 
 additionalVolumeMounts:
   - name: data
-    mountPath: /opt/seafile-data
+    mountPath: /shared/seafile
 
 additionalVolumes:
   - name: data
