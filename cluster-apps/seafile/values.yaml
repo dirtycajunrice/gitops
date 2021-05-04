@@ -13,6 +13,12 @@ env:
   SEAFILE_SERVER_HOSTNAME: files.cajun.pro
   DB_HOST: $(MYSQL_SEAFILE_SERVICE_HOST)
 
+envValueFrom:
+  DB_ROOT_PASSWORD:
+    secretKeyRef:
+      key: password
+      name: mysql-seafile-auth
+
 ingress:
   enabled: true
   annotations:
