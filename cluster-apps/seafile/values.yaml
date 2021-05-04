@@ -37,7 +37,7 @@ ingress:
 persistence:
   config:
     enabled: true
-    nameSuffix: "-"
+    nameSuffix: ""
     storageClass: cstor-replica-pool
     mountPath: /shared/seafile
     size: 5Gi
