@@ -597,7 +597,7 @@
 #              "hide": false,
 #              "interval": "",
 #              "intervalFactor": 2,
-#              "legendFormat": "{{ job }}",
+#              "legendFormat": "{ job }",
 #              "refId": "A",
 #              "step": 2
 #            },
@@ -608,7 +608,7 @@
 #              "hide": false,
 #              "interval": "",
 #              "intervalFactor": 2,
-#              "legendFormat": "{{ job }}",
+#              "legendFormat": "{ job }",
 #              "refId": "B",
 #              "step": 2
 #            }
