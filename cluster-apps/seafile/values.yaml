@@ -36,7 +36,7 @@ ingress:
 
 persistence:
   config:
-    enabled: true
+    enabled: false
     nameSuffix: ""
     storageClass: cstor-replica-pool
     mountPath: /shared/seafile/conf
