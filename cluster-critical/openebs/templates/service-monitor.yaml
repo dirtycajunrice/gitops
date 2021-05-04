@@ -13,7 +13,7 @@ spec:
   endpoints:
     - port: exporter
       relabelings:
-        - sourceLabels: [label_openebs_io_persistent_volume]
+        - sourceLabels: [__meta_kubernetes_pod_label_openebs_io_persistent_volume]
           targetLabel: pv
-        - sourceLabels: [label_openebs_io_persistent_volume_claim]
+        - sourceLabels: [__meta_kubernetes_pod_label_openebs_io_persistent_volume_claim]
           targetLabel: pvc
