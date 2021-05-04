@@ -12,3 +12,8 @@ spec:
       openebs.io/target-service: cstor-target-svc
   endpoints:
     - port: exporter
+      relabelings:
+        - sourceLabels: [label_openebs_io_persistent_volume]
+          targetLabel: pv
+        - sourceLabels: [label_openebs_io_persistent_volume_claim]
+          targetLabel: pvc
