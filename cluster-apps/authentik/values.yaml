@@ -62,12 +62,12 @@ authentik:
       - hosts: [auth.cajun.pro]
         secretName: auth-cajun-pro
 
-  additionalVolumeMounts:
+  volumeMounts:
     - name: secrets
       mountPath: /mnt/secrets
       readOnly: true
 
-  additionalVolumes:
+  volumes:
     - name: secrets
       csi:
         driver: secrets-store.csi.k8s.io
