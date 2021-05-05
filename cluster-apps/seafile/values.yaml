@@ -4,7 +4,7 @@ image:
   repository: docker.seadrive.org/seafileltd/seafile-pro-mc
   tag: 8.0.2
 
-imagePullSecrets: seafile-registry-creds
+imagePullSecrets: [seafile-registry-creds]
 
 service:
   port:
