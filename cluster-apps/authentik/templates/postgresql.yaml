@@ -13,6 +13,9 @@ spec:
         storage: 1Gi
   podTemplate:
     spec:
+      env:
+        - name: POSTGRES_DB
+          value: authentik
       resources:
         requests:
           memory: "64Mi"
