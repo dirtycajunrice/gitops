@@ -30,7 +30,7 @@ authentik:
       host: postgres-authentik
       name: authentik
     redis:
-      host: authentik-redis
+      host: $(REDIS_AUTHENTIK_SERVICE_HOST)
       password: stupid
 
   envFrom:
