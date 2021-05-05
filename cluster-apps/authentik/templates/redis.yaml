@@ -16,6 +16,8 @@ spec:
         storage: 1Gi
   podTemplate:
     spec:
+      args:
+        - "--requirepass stupid"
       resources:
         requests:
           memory: "64Mi"
