@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-authentik-config
+  namespace: demo
+data:
+  redis.conf: |
+    dir /data
+    appendonly yes
+    protected-mode no
+    cluster-enabled yes
+    cluster-config-file /data/nodes.conf
+    cluster-node-timeout 5000
+    cluster-migration-barrier 1
+

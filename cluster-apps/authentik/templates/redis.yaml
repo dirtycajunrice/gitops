@@ -4,10 +4,9 @@ metadata:
   name: redis-authentik
 spec:
   version: 6.0.6
-  mode: Cluster
-  cluster:
-    master: 3
-    replicas: 1
+  #configSecret:
+  #  name: rd-configuration
+  mode: Standalone
   storageType: Durable
   storage:
     accessModes:
