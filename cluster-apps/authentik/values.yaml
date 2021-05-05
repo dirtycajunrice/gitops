@@ -38,11 +38,11 @@ authentik:
 
   envValueFrom:
     AUTHENTIK_POSTGRESQL__USER:
-      secretRef:
+      secretKeyRef:
         key: username
         name: postgres-authentik-auth
     AUTHENTIK_POSTGRESQL__PASSWORD:
-      secretRef:
+      secretKeyRef:
         key: password
         name: postgres-authentik-auth
 
