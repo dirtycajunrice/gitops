@@ -3,5 +3,5 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: authentik
-    version: 2021.4.5
-    repository: https://docker.beryju.org/chartrepo/authentik
+    version: 1.0.0-RC3
+    repository: https://goauthentik.github.io/helm
