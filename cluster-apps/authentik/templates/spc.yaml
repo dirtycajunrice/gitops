@@ -1,0 +1,24 @@
+apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+kind: SecretProviderClass
+metadata:
+  name: authentik
+spec:
+  provider: vault
+  parameters:
+    roleName: "csi-secrets-store"
+    vaultAddress: https://vault.cajun.pro
+    vaultKubernetesMountPath: kubernetes/do
+    objects: |
+      {{- range .Values.spc }}
+      - objectName: {{ . }}
+        secretKey: {{ . }}
+        secretPath: kv-v2/data/k8s/cajun-pro/authentik
+      {{- end }}
+  secretObjects:
+    - type: Opaque
+      secretName: authentik
+      data:
+        {{- range .Values.spc }}
+        - key: {{ . }}
+          objectName: {{ . }}
+        {{- end }}

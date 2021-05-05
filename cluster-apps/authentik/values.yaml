@@ -1,22 +1,76 @@
-domainName: authentik.cajun.pro
+spc:
+  - AUTHENTIK_EMAIL__FROM
+  - AUTHENTIK_EMAIL__PASSWORD
+  - AUTHENTIK_EMAIL__USERNAME
+  - AUTHENTIK_POSTGRESQL__S3_BACKUP__ACCESS_KEY
+  - AUTHENTIK_POSTGRESQL__S3_BACKUP__BUCKET
+  - AUTHENTIK_POSTGRESQL__S3_BACKUP__HOST
+  - AUTHENTIK_POSTGRESQL__S3_BACKUP__REGION
+  - AUTHENTIK_SECRET_KEY
 
 authentik:
   fullnameOverride: authentik
 
   image:
-    name: beryju/authentik
-    tag: 2021.4.3
+    name: docker.beryju.org/authentik/server
+    tag: gh-next
 
-  pvc:
-    mode: ReadWriteOnce
-    uploadsSize: 5Gi
-    uploadsStorageClass: do-block-storage
-    geoIpSize: 1Gi
-    geoIpStorageClass: do-block-storage
+  authentik:
+    log_level: debug
+    email:
+      host: smtp.gmail.com
+      port: 587
+      use_ssl: true
+      timeout: 30s
+    outposts:
+      docker_image_base: docker.beryju.org/authentik/server
+    error_reporting:
+      enabled: false
+    postgresql:
+      host: postgres-authentik
+      name: authentik
+    redis:
+      host: authentik-redis
 
-  postgresql:
-    postgresqlPassword: PaSsWoRdYoUgEnErAtEd
-  redis:
-    password: PaSsWoRdYoUgEnErAtEd
-  config:
-    secretKey: PaSsWoRdYoUgEnErAtEd
+  envFrom:
+    - secretRef:
+        name: authentik
+
+  envValueFrom:
+    AUTHENTIK_POSTGRESQL__USER:
+      secretRef:
+        key: username
+        name: postgres-authentik-auth
+    AUTHENTIK_POSTGRESQL__PASSWORD:
+      secretRef:
+        key: password
+        name: postgres-authentik-auth
+
+  ingress:
+    enabled: true
+    ingressClassName: "traefik"
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - host: auth.cajun.pro
+        paths:
+          - path: "/"
+            pathType: Prefix
+    tls:
+      - hosts: [auth.cajun.pro]
+        secretName: auth-cajun-pro
+
+  additionalVolumeMounts:
+    - name: secrets
+      mountPath: /mnt/secrets
+      readOnly: true
+
+  additionalVolumes:
+    - name: secrets
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: authentik
