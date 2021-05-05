@@ -14,7 +14,7 @@ service:
 env:
   SEAFILE_ADMIN_EMAIL: nick@cajun.pro
   SEAFILE_SERVER_HOSTNAME: files.cajun.pro
-  DB_HOST: $(MYSQL_SEAFILE_PORT_3306_TCP_ADDR)
+  DB_HOST: mysql-seafile
 
 envValueFrom:
   DB_ROOT_PASSWD:
