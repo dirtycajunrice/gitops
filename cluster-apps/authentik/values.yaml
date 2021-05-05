@@ -21,7 +21,7 @@ authentik:
       host: smtp.gmail.com
       port: 587
       use_ssl: true
-      timeout: 30s
+      timeout: 30
     outposts:
       docker_image_base: docker.beryju.org/authentik/server
     error_reporting:
