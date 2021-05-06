@@ -2,7 +2,7 @@ fullnameOverride: seafile
 
 image:
   repository: seafileltd/seafile-mc
-  tag: 8.0.3
+  tag: 8.0.4
 
 imagePullSecrets:
   - name: seafile-registry-creds
