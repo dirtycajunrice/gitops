@@ -42,3 +42,12 @@ persistence:
     size: 1Gi
     accessMode: ReadWriteOnce
     skipuninstall: true
+
+livenessProbe:
+  enabled: false
+
+readinessProbe:
+  enabled: false
+
+startupProbe:
+  enabled: false
