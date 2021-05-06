@@ -37,6 +37,8 @@ ingress:
     - hosts: [files.cajun.pro]
       secretName: files-cajun-pro
 
+command: /usr/local/bin/entrypoint.sh
+
 persistence:
   config:
     enabled: false
@@ -50,22 +52,25 @@ persistence:
 additionalVolumeMounts:
   - name: data
     mountPath: /shared/seafile
+  - name: entrypoint
+    mountPath: /usr/local/bin/entrypoint.sh
+    subPath: entrypoint.sh
 
 additionalVolumes:
   - name: data
     hostPath:
       path: /mnt/media/seafile
       type: Directory
-
+  - name: entrypoint
+    configMap:
+      name: seafile-config
+      items:
+        - key: entrypoint.sh
+          path: entrypoint.sh
 tolerations:
   - key: role
     value: storage
     effect: NoSchedule
-
-podSecurityContext:
-  runAsUser: 1000
-  runAsGroup: 1000
-  fsGroup: 1000
 
 nodeSelector:
   node-role.kubernetes.io/storage: ""
