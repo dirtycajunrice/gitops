@@ -1,0 +1,20 @@
+apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+kind: SecretProviderClass
+metadata:
+  name: discord
+spec:
+  provider: vault
+  parameters:
+    roleName: csi-secrets-store
+    vaultAddress: https://vault.cajun.pro
+    vaultKubernetesMountPath: kubernetes/do
+    objects: |
+      - objectName: varken-bot-token
+        secretKey: varken-bot-token
+        secretPath: kv-v2/data/k8s/external/discord
+  secretObjects:
+    - type: Opaque
+      secretName: discord
+      data:
+        - key: varken-bot-token
+          objectName: varken-bot-token
