@@ -11,8 +11,6 @@ external-dns:
     - ingress
   provider: aws
   aws:
-    credentials:
-      secretName: aws-creds
     evaluateTargetHealth: false
   domainFilters:
     - "nickflix.io"
