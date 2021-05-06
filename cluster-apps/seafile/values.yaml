@@ -55,22 +55,22 @@ additionalVolumeMounts:
   - name: entrypoint
     mountPath: /usr/local/bin/entrypoint.sh
     subPath: entrypoint.sh
+    defaultMode: 0777
 
 additionalVolumes:
   - name: data
-    hostPath:
+    nfs:
       path: /mnt/media/seafile
-      type: Directory
+      server: 10.0.10.211
   - name: entrypoint
     configMap:
       name: seafile-config
       items:
         - key: entrypoint.sh
           path: entrypoint.sh
+
 tolerations:
   - key: role
     value: storage
     effect: NoSchedule
 
-nodeSelector:
-  node-role.kubernetes.io/storage: ""
