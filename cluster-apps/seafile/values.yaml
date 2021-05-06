@@ -1,7 +1,7 @@
 fullnameOverride: seafile
 
 image:
-  repository: docker.seadrive.org/seafileltd/seafile-mc
+  repository: seafileltd/seafile-mc
   tag: 8.0.3
 
 imagePullSecrets:
