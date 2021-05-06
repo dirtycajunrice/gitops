@@ -38,7 +38,7 @@
     "name": "mash-home",
     "cluster": "home",
     "namespace": "ingress",
-    "path": "cluster-critical/traefik/home",
+    "path": "cluster-critical/traefik/mesh",
     "valueFile": "home.yaml"
   }
 ]
