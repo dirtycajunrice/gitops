@@ -1,0 +1,21 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: applicationset
+  labels:
+    app: applicationset
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: applicationset
+      app.kubernetes.io/instance: applicationset
+  podMetricsEndpoints:
+    - port: metrics
+      relabelings:
+        - action: replace
+          targetLabel: __address__
+          sourceLabels:
+            - __address__
+          replacement: $1:8080
+        - sourceLabels: [__meta_kubernetes_pod_node_name]
+          targetLabel: node
