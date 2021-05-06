@@ -58,13 +58,13 @@ additionalVolumeMounts:
     mountPath: /usr/local/bin/entrypoint.sh
     subPath: entrypoint.sh
 
-  - name: ccnet
+  - name: config
     mountPath: /shared/seafile/ccnet
     subPath: ccnet
-  - name: pro-data
+  - name: config
     mountPath: /shared/seafile/pro-data
     subPath: pro-data
-  - name: seahub-data
+  - name: config
     mountPath: /shared/seafile/seahub-data
     subPath: seahub-data
 
