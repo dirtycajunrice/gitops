@@ -55,7 +55,6 @@ additionalVolumeMounts:
   - name: entrypoint
     mountPath: /usr/local/bin/entrypoint.sh
     subPath: entrypoint.sh
-    defaultMode: 0777
 
 additionalVolumes:
   - name: data
@@ -65,12 +64,7 @@ additionalVolumes:
   - name: entrypoint
     configMap:
       name: seafile-config
+      defaultMode: 0777
       items:
         - key: entrypoint.sh
           path: entrypoint.sh
-
-tolerations:
-  - key: role
-    value: storage
-    effect: NoSchedule
-
