@@ -10,7 +10,9 @@ data:
     addgroup --gid 1000 seafile
     useradd -s /bin/bash -u 1000 -m -d /home/seafile -g seafile -k /dev/null seafile
 
-    chown seafile:seafile /opt/seafile /opt/seafile/seafile-pro-server-${SEAFILE_VERSION}/runtime/
+    chown seafile:seafile /opt/seafile \
+                          /opt/seafile/seafile-pro-server-${SEAFILE_VERSION}/runtime/ \
+                          /shared/seafile/{ccnet,conf,pro-data,seahub-data}
 
     sed -i 's!{} start!/usr/sbin/gosu seafile:seafile {} start!g' /scripts/start.py
     sed -i 's!memcached:11211!memcached-seafile:11211!g' /scripts/bootstrap.py
