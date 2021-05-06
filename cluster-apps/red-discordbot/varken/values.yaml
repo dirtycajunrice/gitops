@@ -43,11 +43,9 @@ persistence:
     accessMode: ReadWriteOnce
     skipuninstall: true
 
-livenessProbe:
-  enabled: false
+livenessProbe: ~
 
-readinessProbe:
-  enabled: false
+readinessProbe: ~
 
-startupProbe:
-  enabled: false
+startupProbe: ~
+
