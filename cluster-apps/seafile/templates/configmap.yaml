@@ -11,6 +11,6 @@ data:
     sed -i 's!{} start!/usr/sbin/gosu seafile:seafile {} start!g' /scripts/start.py
     mkdir /bootstrap
     chown seafile:seafile /opt/seafile /bootstrap
-    chown seafile:seafile -R /etc/nginx
+    chown seafile:seafile -R /etc/nginx /shared/nginx
     sed -i 's!memcached:11211!memcached-seafile:11211!g' /scripts/bootstrap.py
     exec gosu seafile:seafile /scripts/start.py
