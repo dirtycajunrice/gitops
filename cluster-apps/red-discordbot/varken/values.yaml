@@ -17,6 +17,9 @@ env:
   PUID: "1000"
   PGID: "1000"
 
+service:
+  enabled: false
+
 additionalVolumeMounts:
   - name: secrets
     mountPath: /mnt/secrets
