@@ -35,7 +35,7 @@
     "valueFile": "do.yaml"
   },
   {
-    "name": "mash-home",
+    "name": "mesh-home",
     "cluster": "home",
     "namespace": "ingress",
     "path": "cluster-critical/traefik/mesh",
