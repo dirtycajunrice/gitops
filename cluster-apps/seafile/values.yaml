@@ -11,6 +11,8 @@ service:
   port:
     port: 80
 
+command: [/usr/local/bin/entrypoint.sh]
+
 env:
   SEAFILE_ADMIN_EMAIL: nick@cajun.pro
   SEAFILE_SERVER_HOSTNAME: files.cajun.pro
@@ -36,8 +38,6 @@ ingress:
   tls:
     - hosts: [files.cajun.pro]
       secretName: files-cajun-pro
-
-command: /usr/local/bin/entrypoint.sh
 
 persistence:
   config:
