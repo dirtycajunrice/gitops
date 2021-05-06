@@ -4,10 +4,11 @@ metadata:
   name: seafile-config
 data:
   entrypoint.sh: |
+    #!/bin/bash
     apt-get update && apt-get -y -qq install gosu
     addgroup --gid 1000 seafile
     useradd -s /bin/bash -u 1000 -m -d /home/seafile -g seafile -k /dev/null seafile
     sed -i 's!{} start!/usr/sbin/gosu seafile:seafile {} start!g' /scripts/start.py
     chown seafile:seafile /opt/seafile
     sed -i 's!memcached:11211!memcached-seafile:11211!g' /scripts/bootstrap.py
-    gosu 1000:1000 /scripts/start.py
+    exec gosu 1000:1000 /scripts/start.py
