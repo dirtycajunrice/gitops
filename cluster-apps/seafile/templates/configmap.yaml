@@ -5,12 +5,20 @@ metadata:
 data:
   entrypoint.sh: |
     #!/bin/bash
+    # apt-get update && apt-get -y -qq install gosu
+    # addgroup --gid 1000 seafile
+    # useradd -s /bin/bash -u 1000 -m -d /home/seafile -g seafile -k /dev/null seafile
+    # sed -i 's!{} start!/usr/sbin/gosu seafile:seafile {} start!g' /scripts/start.py
+    # mkdir -p /bootstrap /shared/logs
+    # chown seafile:seafile /opt/seafile /bootstrap /etc/container_environment* /shared
+    # chown seafile:seafile -R /etc/nginx /etc/container_environment /var/log /shared/logs
+    # sed -i 's!memcached:11211!memcached-seafile:11211!g' /scripts/bootstrap.py
+    # /sbin/my_init -- /scripts/start.py
+
     apt-get update && apt-get -y -qq install gosu
     addgroup --gid 1000 seafile
     useradd -s /bin/bash -u 1000 -m -d /home/seafile -g seafile -k /dev/null seafile
     sed -i 's!{} start!/usr/sbin/gosu seafile:seafile {} start!g' /scripts/start.py
-    mkdir -p /bootstrap /shared/logs
-    chown seafile:seafile /opt/seafile /bootstrap /etc/container_environment* /shared
-    chown seafile:seafile -R /etc/nginx /etc/container_environment /var/log /shared/logs
+    chown seafile:seafile /opt/seafile
     sed -i 's!memcached:11211!memcached-seafile:11211!g' /scripts/bootstrap.py
-    exec gosu seafile:seafile /sbin/my_init -- /scripts/start.py
+    /sbin/my_init -- /scripts/start.py
