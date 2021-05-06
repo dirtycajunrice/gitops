@@ -37,6 +37,4 @@ mesh:
       enabled: true
 
   metrics:
-    deploy: true
-    prometheus:
-      enabled: true
+    deploy: false
