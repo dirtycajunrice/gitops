@@ -1,0 +1,25 @@
+cluster: home
+
+traefik:
+  additionalArguments:
+    - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-home.k8s.cajun.pro"
+    - "--providers.kubernetesingress.ingressendpoint.ip=12.161.64.36"
+  service:
+    externalIPs:
+      - 172.30.0.10
+  pilot:
+    token: "23f45ed9-8bcb-43a5-b41f-1af0762be61d"
+  logs:
+    general:
+      format: json
+      level: INFO
+traefik-forward-auth:
+  authHost: nickflix.io
+  ingress:
+    hosts:
+      - host: nickflix.io
+        paths: [/_oauth]
+    tls:
+      - hosts: [nickflix.io]
+        secretName: nickflix-io
+

@@ -1,0 +1,8 @@
+name: mesh
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: traefik-mesh
+    version: 3.0.6
+    repository: https://helm.traefik.io/mesh
+    alias: mesh

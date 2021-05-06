@@ -1,0 +1,42 @@
+cluster: ""
+
+mesh:
+  fullnameOverride: mesh
+
+  acl: true
+  kubedns: true
+  clusterDomain: cluster.local
+  logLevel: error
+  logFormat: common
+  defaultMode: http
+
+  limits:
+    http: 10
+    tcp: 25
+    udp: 25
+
+  controller:
+    image:
+      name: traefik/mesh
+      tag: v1.4.1
+    resources:
+      limit:
+        mem: 100Mi
+        cpu: 200m
+      request:
+        mem: 50Mi
+        cpu: 100m
+
+  proxy:
+    image:
+      name: traefik
+
+  tracing:
+    deploy: true
+    jaeger:
+      enabled: true
+
+  metrics:
+    deploy: true
+    prometheus:
+      enabled: true
