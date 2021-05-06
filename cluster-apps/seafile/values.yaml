@@ -1,8 +1,8 @@
 fullnameOverride: seafile
 
 image:
-  repository: docker.seadrive.org/seafileltd/seafile-pro-mc
-  tag: 8.0.2
+  repository: docker.seadrive.org/seafileltd/seafile-mc
+  tag: 8.0.3
 
 imagePullSecrets:
   - name: seafile-registry-creds
