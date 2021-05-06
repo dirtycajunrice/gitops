@@ -44,8 +44,7 @@ persistence:
     enabled: true
     nameSuffix: ""
     storageClass: cstor-replica-pool
-    mountPath: /shared/seafile/conf
-    subPath: conf
+    mountPath: /shared/seafile
     size: 5Gi
     accessMode: ReadWriteOnce
     skipuninstall: true
@@ -57,16 +56,6 @@ additionalVolumeMounts:
   - name: entrypoint
     mountPath: /usr/local/bin/entrypoint.sh
     subPath: entrypoint.sh
-
-  - name: config
-    mountPath: /shared/seafile/ccnet
-    subPath: ccnet
-  - name: config
-    mountPath: /shared/seafile/pro-data
-    subPath: pro-data
-  - name: config
-    mountPath: /shared/seafile/seahub-data
-    subPath: seahub-data
 
 additionalVolumes:
   - name: data
