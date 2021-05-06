@@ -51,8 +51,7 @@ persistence:
 
 additionalVolumeMounts:
   - name: data
-    mountPath: /shared/seafile
-    subPath: seafile
+    mountPath: /shared
   - name: entrypoint
     mountPath: /usr/local/bin/entrypoint.sh
     subPath: entrypoint.sh
