@@ -1,3 +1,7 @@
 name: varken
 apiVersion: v2
 version: 1.0.0
+dependencies:
+  - name: common
+    version: 2.5.0
+    repository: https://library-charts.k8s-at-home.com

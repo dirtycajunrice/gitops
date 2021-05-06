@@ -1,0 +1,41 @@
+fullnameOverride: red-varken
+
+image:
+  repository: phasecorex/red-discordbot@sha256
+  tag: 10e89e48d2954aab02674bc453ab9aefa743b83863115abd87d84b3e36200cdd
+
+replicas: 1
+
+envValueFrom:
+  TOKEN:
+    secretKeyRef:
+      key: varken-bot-token
+      name: discord
+
+env:
+  PREFIX: "!"
+  PUID: "1000"
+  PGID: "1000"
+
+additionalVolumeMounts:
+  - name: secrets
+    mountPath: /mnt/secrets
+    readOnly: true
+
+additionalVolumes:
+  - name: secrets
+    csi:
+      driver: secrets-store.csi.k8s.io
+      readOnly: true
+      volumeAttributes:
+        secretProviderClass: discord
+
+persistence:
+  data:
+    enabled: true
+    mountPath: /data
+    nameSuffix: "-"
+    storageClass: do-block-storage
+    size: 1Gi
+    accessMode: ReadWriteOnce
+    skipuninstall: true
