@@ -13,4 +13,5 @@ data:
     chown seafile:seafile /opt/seafile /bootstrap
     chown seafile:seafile -R /etc/nginx
     sed -i 's!memcached:11211!memcached-seafile:11211!g' /scripts/bootstrap.py
+    cd /scripts
     exec gosu seafile:seafile /scripts/start.py
