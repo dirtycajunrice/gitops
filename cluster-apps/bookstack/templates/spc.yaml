@@ -6,7 +6,7 @@ metadata:
 spec:
   provider: vault
   parameters:
-    roleName: "csi-secrets-store"
+    roleName: csi-secrets-store
     vaultAddress: https://vault.cajun.pro
     vaultKubernetesMountPath: kubernetes/do
     objects: |

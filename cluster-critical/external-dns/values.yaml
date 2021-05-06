@@ -28,3 +28,18 @@ external-dns:
   metrics:
     serviceMonitor:
       enabled: true
+  extraEnv:
+    - name: AWS_SHARED_CREDENTIALS_FILE
+      value: /.aws/credentials
+  extraVolumes:
+    - name: credentials
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: external-dns
+  extraVolumeMounts:
+    - name: credentials
+      mountPath: /.aws
+      readOnly: true
+
