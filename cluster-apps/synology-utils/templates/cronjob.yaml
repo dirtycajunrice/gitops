@@ -21,7 +21,6 @@ spec:
                   name: certs
                 - name: ssh
                   mountPath: /root/.ssh
-                  readOnly: true
 
           hostNetwork: true
           restartPolicy: OnFailure
