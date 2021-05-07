@@ -12,7 +12,7 @@ spec:
             - name: sync
               image: kroniak/ssh-client:3.10
               imagePullPolicy: IfNotPresent
-              command: ["sh", "-C"]
+              command: ["bash", "-c"]
               args:
                 - cd /root &&
                   cp -r .ssh2 .ssh &&
