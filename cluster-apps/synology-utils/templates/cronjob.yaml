@@ -19,7 +19,6 @@ spec:
               volumeMounts:
                 - mountPath: /root/certs
                   name: certs
-                  readOnly: true
                 - name: ssh
                   mountPath: /root/.ssh
                   readOnly: true
@@ -33,7 +32,6 @@ spec:
             - name: ssh
               csi:
                 driver: secrets-store.csi.k8s.io
-                readOnly: true
                 volumeAttributes:
                   secretProviderClass: synology
 
