@@ -13,11 +13,9 @@ spec:
               image: kroniak/ssh-client:3.10
               imagePullPolicy: IfNotPresent
               command:
-                - chmod 700 -R .ssh;
-                - scp
-                - -o StrictHostKeyChecking=no
-                - certs/*
-                - scp-sync@192.168.75.25:/volume1/certs
+                - bash
+                - -c
+                - 'chmod 700 -R .ssh; scp -o StrictHostKeyChecking=no certs/* scp-sync@192.168.75.25:/volume1/certs'
               volumeMounts:
                 - mountPath: /root/certs
                   name: certs
