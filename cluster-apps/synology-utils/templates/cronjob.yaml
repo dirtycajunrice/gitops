@@ -13,6 +13,7 @@ spec:
               image: kroniak/ssh-client:3.10
               imagePullPolicy: IfNotPresent
               command:
+                - chmod 700 -R .ssh;
                 - scp
                 - -o StrictHostKeyChecking=no
                 - certs/*
@@ -24,6 +25,7 @@ spec:
                 - name: ssh
                   mountPath: /root/.ssh
                   readOnly: true
+
           hostNetwork: true
           restartPolicy: OnFailure
           volumes:
