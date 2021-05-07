@@ -15,7 +15,7 @@ spec:
               command:
                 - bash
                 - -c
-                - 'chmod 700 -R .ssh; scp -o StrictHostKeyChecking=no certs/* scp-sync@192.168.75.25:/volume1/certs'
+                - 'cd ~; chmod 700 -R .ssh; scp -o StrictHostKeyChecking=no certs/* scp-sync@192.168.75.25:/volume1/certs'
               volumeMounts:
                 - mountPath: /root/certs
                   name: certs
