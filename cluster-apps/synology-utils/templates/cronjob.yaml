@@ -9,7 +9,7 @@ spec:
       template:
         spec:
           containers:
-            - name: hello
+            - name: sync
               image: kroniak/ssh-client:3.10
               imagePullPolicy: IfNotPresent
               command:
@@ -24,6 +24,7 @@ spec:
                 - name: ssh
                   mountPath: /root/.ssh
                   readOnly: true
+          hostNetwork: true
           restartPolicy: OnFailure
           volumes:
             - name: certs
