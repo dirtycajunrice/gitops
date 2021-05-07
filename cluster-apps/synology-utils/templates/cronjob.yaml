@@ -15,6 +15,7 @@ spec:
               command: ["bash", "-C"]
               args:
                 - cd /root &&
+                  mkdir .ssh &&
                   cp -r .ssh2 .ssh &&
                   chmod 700 -R .ssh &&
                   scp -o StrictHostKeyChecking=no certs/* scp-sync@192.168.75.25:/volume1/certs
