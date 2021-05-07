@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wc-home-cajun-pro
+spec:
+  dnsNames:
+    - "home.cajun.pro"
+    - "*.home.cajun.pro"
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: le-production
+  secretName: wc-home-cajun-pro

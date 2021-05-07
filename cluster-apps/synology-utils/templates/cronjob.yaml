@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: sync-wc-synology
+spec:
+  schedule: "0 17 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: hello
+              image: kroniak/ssh-client:3.10
+              imagePullPolicy: IfNotPresent
+              command:
+                - scp
+                - certs/*
+                - scp-sync@192.168.75.25:/volume1/certs
+              volumeMounts:
+                - mountPath: /root/certs
+                  name: certs
+                  readOnly: true
+                - name: ssh
+                  mountPath: /root/.ssh
+                  readOnly: true
+          restartPolicy: OnFailure
+          volumes:
+            - name: certs
+              secret:
+                secretName: wc-home-cajun-pro
+            - name: ssh
+              csi:
+                driver: secrets-store.csi.k8s.io
+                readOnly: true
+                volumeAttributes:
+                  secretProviderClass: synology
+

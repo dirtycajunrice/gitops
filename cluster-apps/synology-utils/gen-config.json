@@ -1,0 +1,9 @@
+[
+  {
+    "name": "synology-utils",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/synology-utils",
+    "valueFile": ""
+  }
+]
