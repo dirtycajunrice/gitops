@@ -3,6 +3,7 @@ cluster: do
 traefik:
   additionalArguments:
     - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-do.k8s.cajun.pro"
+    - "--entryPoints.websecure.proxyProtocol.trustedIPs=10.120.0.0/20"
   service:
     annotations:
       service.beta.kubernetes.io/do-loadbalancer-name: traefik
