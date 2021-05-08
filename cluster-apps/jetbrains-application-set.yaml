@@ -5,7 +5,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        repoURL: https://github.com/dirtycajunrice/gitops.git
         revision: HEAD
         files:
           - path: "cluster-apps/projector/gen-ide-config.json"
@@ -20,7 +20,7 @@ spec:
       source:
         path: cluster-apps/projector/ide
         targetRevision: HEAD
-        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        repoURL: https://github.com/dirtycajunrice/gitops.git
         helm:
           valueFiles:
             - values.yaml

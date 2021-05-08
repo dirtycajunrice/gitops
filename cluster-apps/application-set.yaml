@@ -5,12 +5,12 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        repoURL: https://github.com/dirtycajunrice/gitops.git
         revision: HEAD
         files:
           - path: "cluster-apps/**/gen-config.json"
     - git:
-        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        repoURL: https://github.com/dirtycajunrice/gitops.git
         revision: HEAD
         files:
           - path: "cluster-apps/**/gen-config2.json"
@@ -20,7 +20,7 @@ spec:
             destination: {}
             project: cluster-apps
             source:
-              repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+              repoURL: https://github.com/dirtycajunrice/gitops.git
               helm:
                 valueFiles:
                   - '../values.yaml'
@@ -37,7 +37,7 @@ spec:
       source:
         path: '{{ path }}'
         targetRevision: HEAD
-        repoURL: https://github.com/DirtyCajunRice/GitOps-Argo-CD.git
+        repoURL: https://github.com/dirtycajunrice/gitops.git
         helm:
           valueFiles:
             - values.yaml
