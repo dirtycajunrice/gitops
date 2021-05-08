@@ -11,6 +11,7 @@ ingress:
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.priority: "10"
+    cert-manager.io/cluster-issuer: le-production
   domainName: cajun.pro
   hosts:
     - hostTpl: '{{ printf "whoami-%s.%s" .Values.ingress.cluster .Values.ingress.domainName }}'
