@@ -1,0 +1,16 @@
+[
+  {
+    "name": "whoami",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/whoami",
+    "valueFile": "home.yaml"
+  },
+  {
+    "name": "whoami",
+    "cluster": "do",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/whoami",
+    "valueFile": "do.yaml"
+  }
+]

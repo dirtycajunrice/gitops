@@ -1,0 +1,22 @@
+image:
+  name: containous/whoami
+  tag: v1.5.0
+
+service:
+  port:
+    port: 80
+
+ingress:
+  enabled: true
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+  domainName: cajun.pro
+  hosts:
+    - hostTpl: '{{ printf "whoami-%s.%s" .Values.ingress.cluster .Values.ingress.domainName }}'
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hostsTpl: ['{{ printf "whoami-%s.%s" .Values.ingress.cluster .Values.ingress.domainName }}']
+      secretNameTpl: '{{ printf "whoami-%s.%s" .Values.ingress.cluster .Values.ingress.domainName | replace "." "-" }}'
