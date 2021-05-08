@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: sync-wc-synology
 spec:
-  schedule: "0 17 * * *"
+  schedule: "0 17 * * 1"
   jobTemplate:
     spec:
       template:
@@ -21,7 +21,7 @@ spec:
                   mv certs/tls.crt certs/home.cajun.pro.cer &&
                   mv certs/tls.key certs/home.cajun.pro.key &&
                   scp -o StrictHostKeyChecking=no certs/* scp-sync@192.168.75.25:/volume1/certs/home.cajun.pro &&
-                  ssh scp-sync@192.168.75.25 './update_certs.sh
+                  ssh scp-sync@192.168.75.25 './update_certs.sh'
               volumeMounts:
                 - mountPath: /root/certs2
                   name: certs
