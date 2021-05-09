@@ -1,3 +1,7 @@
+{{- $mwns := "ingress" -}}
+{{- if eq .Values.cluster "do" -}}
+  {{- $mwns = "authentik" -}}
+{{- end -}}
 {{- if .Values.traefik.deployment.enabled -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -10,11 +14,8 @@ spec:
     - kind: Rule
       match: Host(`{{ include "traefik.hostname" . }}`)
       middlewares:
-        {{- $mw := index .Values "traefik-forward-auth" "middleware" "name" }}
-        {{- if eq .Values.cluster "home" }}
-          {{- $mw = printf "%s-home" $mw }}
-        {{- end }}
-        - name: {{ $mw }}
+        - name: authentik-outpost
+          namespace: $mwns
       priority: 10
       services:
         - kind: TraefikService
@@ -22,33 +23,3 @@ spec:
   tls:
     secretName: {{ include "traefik.secretname" . }}
 {{- end }}
-{{- if and .Values.traefik.deployment.enabled (eq .Values.cluster "do") }}
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: traefik-do-ingress
-spec:
-  entryPoints:
-    - websecure
-  routes:
-    - kind: Rule
-      match: Host(`do.traefik.cajun.pro`)
-      middlewares:
-        - name: authentik-outpost
-          namespace: authentik
-      priority: 10
-      services:
-        - kind: TraefikService
-          name: api@internal
-    - kind: Rule
-      match: Host(`do.traefik.cajun.pro`) && PathPrefix(`/akprox`)
-      priority: 50
-      services:
-        - kind: Service
-          name: authentik-outpost
-          namespace: authentik
-          port: 4180
-  tls:
-    secretName: do-traefik-cajun-pro
-{{- end -}}
