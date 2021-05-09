@@ -9,9 +9,7 @@ kps:
       hosts:
         - alertmanager.cajun.pro
       annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.priority: "10"
+        traefik.ingress.kubernetes.io/router.middlewares: ingress-authentik-outpost@kubernetescrd
         cert-manager.io/cluster-issuer: le-production
       tls:
         - secretName: alertmanager-cajun-pro
@@ -55,9 +53,7 @@ kps:
         - hosts: [prometheus.cajun.pro]
           secretName: prometheus-cajun-pro
       annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.priority: "10"
+        traefik.ingress.kubernetes.io/router.middlewares: ingress-authentik-outpost@kubernetescrd
         cert-manager.io/cluster-issuer: le-production
     prometheusSpec:
       ruleSelectorNilUsesHelmValues: false
@@ -82,8 +78,6 @@ kps:
       pathType: Prefix
       ingressClassName: traefik
       annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.priority: "10"
         cert-manager.io/cluster-issuer: le-production
       hosts:
         - grafana.cajun.pro
