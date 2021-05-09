@@ -28,7 +28,7 @@ traefik:
   logs:
     general:
       format: json
-      level: DEBUG
+      level: INFO
 
 traefik-forward-auth:
   enabled: false
