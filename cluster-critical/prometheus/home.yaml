@@ -7,14 +7,14 @@ kps:
       paths:
         - /
       hosts:
-        - alertmanager.cajun.pro
+        - dc.alertmanager.k8s.cajun.pro
       annotations:
         traefik.ingress.kubernetes.io/router.middlewares: ingress-authentik-outpost@kubernetescrd
         cert-manager.io/cluster-issuer: le-production
       tls:
-        - secretName: alertmanager-cajun-pro
+        - secretName: dc-alertmanager-k8s-cajun-pro
           hosts:
-            - alertmanager.cajun.pro
+            - dc.alertmanager.k8s.cajun.pro
 
   kubeScheduler:
     service:
@@ -46,12 +46,12 @@ kps:
       pathType: Prefix
       ingressClassName: traefik
       hosts:
-        - prometheus.cajun.pro
+        - dc.prometheus.k8s.cajun.pro
       paths:
         - /
       tls:
-        - hosts: [prometheus.cajun.pro]
-          secretName: prometheus-cajun-pro
+        - hosts: [dc.prometheus.k8s.cajun.pro]
+          secretName: dc-prometheus-k8s-cajun-pro
       annotations:
         traefik.ingress.kubernetes.io/router.middlewares: ingress-authentik-outpost@kubernetescrd
         cert-manager.io/cluster-issuer: le-production
