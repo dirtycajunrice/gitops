@@ -42,7 +42,7 @@ spec:
         - kind: TraefikService
           name: api@internal
     - kind: Rule
-      match: PathPrefix(`/akprox`)
+      match: Host(`do.traefik.cajun.pro`) && PathPrefix(`/akprox`)
       priority: 50
       services:
         - kind: Service
