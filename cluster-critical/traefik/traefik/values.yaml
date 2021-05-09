@@ -81,11 +81,11 @@ traefik:
           podAffinityTerm:
             labelSelector:
               matchExpressions:
-                - key: app.kubernetes.io/name
+                - key: 'app.kubernetes.io/name'
                   operator: In
                   values:
                     - traefik
-            topologyKey: kubernetes.io/hostname
+            topologyKey: 'kubernetes.io/hostname'
 
 traefik-forward-auth:
   fullnameOverride: traefik-forward-auth
