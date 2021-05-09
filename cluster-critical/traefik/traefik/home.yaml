@@ -2,7 +2,7 @@ cluster: home
 
 traefik:
   additionalArguments:
-    - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-home.k8s.cajun.pro"
+    - "--providers.kubernetesingress.ingressendpoint.hostname=home.traefik.k8s.cajun.pro"
     - "--providers.kubernetesingress.ingressendpoint.ip=12.161.64.36"
   service:
     externalIPs:
