@@ -24,7 +24,7 @@ authentik:
       use_ssl: true
       timeout: 30
     outposts:
-      docker_image_base: docker.beryju.org/authentik/outpost-%(type)s:gh-next
+      docker_image_base: docker.beryju.org/authentik/outpost-%(type)s
     error_reporting:
       enabled: false
     postgresql:
