@@ -26,7 +26,7 @@ authentik:
     outposts:
       docker_image_base: docker.beryju.org/authentik/outpost-%(type)s:gh-next
     error_reporting:
-      enabled: false
+      enabled: true
     postgresql:
       host: postgres-authentik
       name: authentik
