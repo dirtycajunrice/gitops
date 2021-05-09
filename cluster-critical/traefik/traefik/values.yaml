@@ -88,6 +88,7 @@ traefik:
             topologyKey: 'kubernetes.io/hostname'
 
 traefik-forward-auth:
+  enabled: true
   fullnameOverride: traefik-forward-auth
   cookie:
     name: "_cajun_forward_auth"

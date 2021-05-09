@@ -8,3 +8,4 @@ dependencies:
   - name: traefik-forward-auth
     version: 1.0.10
     repository: https://k8s-at-home.com/charts/
+    condition: traefik-forward-auth.enabled

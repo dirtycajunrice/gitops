@@ -29,12 +29,6 @@ traefik:
     general:
       format: json
       level: DEBUG
+
 traefik-forward-auth:
-  authHost: cajun.pro
-  ingress:
-    hosts:
-      - host: cajun.pro
-        paths: [/_oauth]
-    tls:
-      - hosts: [cajun.pro]
-        secretName: cajun-pro
+  enabled: false
