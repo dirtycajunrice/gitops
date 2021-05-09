@@ -1,2 +1,6 @@
 external-dns:
   txtOwnerId: home
+  zoneIdFilters:
+    - "Z2W34PNGGWEWGE" # nickflix.io
+    - "ZZN0GGUVLFPKM" # cajun.pro
+    - "Z235Z433P2IR27" # k8s.cajun.pro

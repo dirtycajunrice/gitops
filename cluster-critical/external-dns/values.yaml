@@ -12,10 +12,7 @@ external-dns:
   provider: aws
   aws:
     evaluateTargetHealth: false
-  domainFilters:
-    - "nickflix.io"
-    - "cajun.pro"
-    - "itscontained.io"
+
   interval: "5m"
   logLevel: debug
   logFormat: json

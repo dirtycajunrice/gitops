@@ -1,2 +1,6 @@
 external-dns:
   txtOwnerId: do
+  zoneIdFilters:
+    - "Z01642011FPZ15KIKHOD3" # itscontained.io
+    - "ZZN0GGUVLFPKM" # cajun.pro
+    - "Z235Z433P2IR27" # k8s.cajun.pro
