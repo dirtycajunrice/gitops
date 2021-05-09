@@ -14,6 +14,7 @@ authentik:
   image:
     name: docker.beryju.org/authentik/server
     tag: gh-next
+    pullPolicy: Always
 
   authentik:
     log_level: debug
@@ -23,7 +24,7 @@ authentik:
       use_ssl: true
       timeout: 30
     outposts:
-      docker_image_base: docker.beryju.org/authentik/server
+      docker_image_base: docker.beryju.org/authentik/outpost-%(type)s:gh-next
     error_reporting:
       enabled: false
     postgresql:
