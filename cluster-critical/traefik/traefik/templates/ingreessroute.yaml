@@ -42,11 +42,11 @@ spec:
         - kind: TraefikService
           name: api@internal
     - kind: Rule
-      match: Host(`do.traefik.cajun.pro`) && PathPrefix(`/akprox/callback`)
-      priority: 15
+      match: PathPrefix(`/akprox`)
+      priority: 50
       services:
         - kind: Service
-          name: authentik-outpost-a2118407e48843738a9eb8f25c4915a3
+          name: authentik-outpost
           namespace: authentik
           port: 4180
   tls:
