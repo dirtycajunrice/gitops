@@ -24,7 +24,12 @@ traefik:
     enabled: true
     minReplicas: 1
     maxReplicas: 5
-
+  logs:
+    general:
+      format: json
+      level: DEBUG
+      access:
+        level: DEBUG
 traefik-forward-auth:
   authHost: cajun.pro
   ingress:
