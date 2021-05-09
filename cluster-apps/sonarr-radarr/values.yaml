@@ -8,7 +8,7 @@ arr:
     enabled: true
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-4@kubernetescrd
+      traefik.ingress.kubernetes.io/router.middlewares: ingress-authentik-outpost@kubernetescrd
       traefik.ingress.kubernetes.io/router.priority: "10"
     hosts:
       - hostTpl: '{{ .Values.ingress.domainName }}'
