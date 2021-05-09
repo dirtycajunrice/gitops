@@ -28,8 +28,6 @@ traefik:
     general:
       format: json
       level: DEBUG
-      access:
-        level: DEBUG
 traefik-forward-auth:
   authHost: cajun.pro
   ingress:
