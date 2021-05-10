@@ -4,4 +4,4 @@ version: 1.0.0
 dependencies:
   - name: authentik
     version: 1.0.0-RC6
-    repository: https://goauthentik.github.io/helm
+    repository: https://charts.goauthentik.io
