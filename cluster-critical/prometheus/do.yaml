@@ -7,15 +7,15 @@ kps:
       enabled: true
       pathType: Prefix
       ingressClassName: traefik
-      paths:
-        - /
-      hosts:
-        - do.alertmanager.k8s.cajun.pro
       annotations:
         cert-manager.io/cluster-issuer: le-production
         traefik.ingress.kubernetes.io/router.priority: "10"
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.middlewares: authentik-authentik-outpost@kubernetescrd
+      paths:
+        - /
+      hosts:
+        - do.alertmanager.k8s.cajun.pro
       tls:
         - secretName: do-alertmanager-k8s-cajun-pro
           hosts:
@@ -26,6 +26,11 @@ kps:
       enabled: true
       pathType: Prefix
       ingressClassName: traefik
+      annotations:
+        cert-manager.io/cluster-issuer: le-production
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.middlewares: authentik-authentik-outpost@kubernetescrd
       hosts:
         - do.prometheus.k8s.cajun.pro
       paths:
@@ -33,8 +38,4 @@ kps:
       tls:
         - hosts: [do.prometheus.k8s.cajun.pro]
           secretName: do-prometheus-k8s-cajun-pro
-      annotations:
-        cert-manager.io/cluster-issuer: le-production
-        traefik.ingress.kubernetes.io/router.priority: "10"
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.middlewares: authentik-authentik-outpost@kubernetescrd
+
