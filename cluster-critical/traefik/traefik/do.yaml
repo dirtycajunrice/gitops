@@ -21,8 +21,10 @@ traefik:
     kubernetesIngress:
       publishedService:
         enabled: true
+  deployment:
+    replicas: 5
   autoscaling:
-    enabled: true
+    enabled: false
     minReplicas: 1
     maxReplicas: 5
   logs:
