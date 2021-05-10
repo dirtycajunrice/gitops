@@ -2,15 +2,15 @@ xbackbone:
   fullnameOverride: xbackbone
 
   image:
-    repository: ghcr.io/itscontained/xbackbone
-    tag: v3.3.5
+    repository: pe46dro/xbackbone-docker
+    tag: latest
 
   env:
     TZ: UTC
     APP_NAME: "images.cajun.pro"
     URL: "https://images.cajun.pro"
     PHP_UPLOAD_MAX_FILESIZE: "25G"
-
+    UID:
   ingress:
     enabled: true
     annotations:
