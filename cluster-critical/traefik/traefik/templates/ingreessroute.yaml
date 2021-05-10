@@ -2,7 +2,6 @@
 {{- if eq .Values.cluster "do" -}}
   {{- $mwns = "authentik" -}}
 {{- end -}}
-{{- if .Values.traefik.deployment.enabled -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -22,4 +21,4 @@ spec:
           name: api@internal
   tls:
     secretName: {{ include "traefik.secretname" . }}
-{{- end }}
+

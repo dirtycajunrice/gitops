@@ -1,11 +1,9 @@
-{{- if .Values.traefik.deployment.enabled -}}
-  {{- $chartVersion := printf "%s-%s" .Chart.Name (index .Chart.Dependencies 0).Version -}}
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
     app.kubernetes.io/name: traefik
-    helm.sh/chart: {{ $chartVersion }}
+    helm.sh/chart: {{ printf "%s-%s" .Chart.Name (index .Chart.Dependencies 0).Version }}
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/instance: {{ .Release.Name }}
   name: traefik
@@ -20,7 +18,7 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: traefik
-      helm.sh/chart: {{ $chartVersion }}
+      helm.sh/chart: {{ printf "%s-%s" .Chart.Name (index .Chart.Dependencies 0).Version }}
       app.kubernetes.io/managed-by: Helm
       app.kubernetes.io/instance: {{ .Release.Name }}
-{{- end -}}
+

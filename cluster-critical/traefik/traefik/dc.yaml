@@ -1,6 +1,8 @@
-cluster: home
+cluster: dc
 
 traefik:
+  deployment:
+    replicas: 3
   additionalArguments:
     - "--providers.kubernetesingress.ingressendpoint.hostname=home.traefik.k8s.cajun.pro"
     - "--providers.kubernetesingress.ingressendpoint.ip=12.161.64.36"
@@ -13,3 +15,17 @@ traefik:
     general:
       format: json
       level: INFO
+  autoscaling:
+    enabled: false
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+                - key: 'app.kubernetes.io/name'
+                  operator: In
+                  values:
+                    - traefik
+            topologyKey: 'kubernetes.io/hostname'

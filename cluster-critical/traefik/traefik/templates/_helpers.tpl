@@ -1,5 +1,5 @@
 {{- define "traefik.hostname" -}}
-  {{- printf "%s.traefik.cajun.pro" .Values.cluster -}}
+  {{- printf "%s.traefik.k8s.cajun.pro" .Values.cluster -}}
 {{- end -}}
 
 {{- define "traefik.secretname" -}}

@@ -1,4 +1,3 @@
-{{- if .Values.traefik.deployment.enabled -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -7,7 +6,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.entrypoints: metrics
     traefik.ingress.kubernetes.io/router.priority: "1"
     cert-manager.io/cluster-issuer: le-production
-  name: {{ .Values.traefik.fullnameOverride }}
+  name: {{ printf "%s-fakegen" .Values.traefik.fullnameOverride }}
 spec:
   rules:
     - host: {{ include "traefik.hostname" . }}
@@ -23,31 +22,3 @@ spec:
   tls:
     - hosts: [{{ include "traefik.hostname" . }}]
       secretName: {{ include "traefik.secretname" . }}
-{{- end }}
-{{- if and .Values.traefik.deployment.enabled (eq .Values.cluster "do") }}
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    # used only to automate certificate and dns. Point to metrics to ensure its not used
-    traefik.ingress.kubernetes.io/router.entrypoints: metrics
-    traefik.ingress.kubernetes.io/router.priority: "1"
-    cert-manager.io/cluster-issuer: le-production
-  name: traefik-do-ingress
-spec:
-  rules:
-    - host: do.traefik.cajun.pro
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: traefik
-                port:
-                  number: 80
-  tls:
-    - hosts: [do.traefik.cajun.pro]
-      secretName: do-traefik-cajun-pro
-{{- end -}}
