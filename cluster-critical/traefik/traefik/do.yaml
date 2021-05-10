@@ -2,7 +2,7 @@ cluster: do
 
 traefik:
   additionalArguments:
-    - "--providers.kubernetesingress.ingressendpoint.hostname=traefik-do.k8s.cajun.pro"
+    - "--providers.kubernetesingress.ingressendpoint.hostname=do.traefik.k8s.cajun.pro"
     - "--entryPoints.websecure.proxyProtocol.trustedIPs=10.120.0.0/20"
     - "--entryPoints.web.proxyProtocol.trustedIPs=10.120.0.0/20"
   service:
