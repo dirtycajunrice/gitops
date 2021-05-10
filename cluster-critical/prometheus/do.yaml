@@ -32,7 +32,7 @@ kps:
         cert-manager.io/cluster-issuer: le-production
         traefik.ingress.kubernetes.io/router.priority: "10"
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.middlewares: ingress-ak-outpost-test-prometheus-outpost@kubernetescrd
+        traefik.ingress.kubernetes.io/router.middlewares: monitoring-ak-outpost-test-prometheus-outpost@kubernetescrd
       hosts:
         - do.prometheus.k8s.cajun.pro
       paths:
