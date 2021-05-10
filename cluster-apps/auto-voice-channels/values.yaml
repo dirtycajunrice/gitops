@@ -32,3 +32,9 @@ additionalVolumes:
       readOnly: true
       volumeAttributes:
         secretProviderClass: auto-voice-channels
+
+probes:
+  liveness:
+    enabled: false
+  readiness:
+    enabled: false
