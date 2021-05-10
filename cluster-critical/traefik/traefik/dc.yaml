@@ -13,13 +13,3 @@ traefik:
     general:
       format: json
       level: INFO
-traefik-forward-auth:
-  authHost: nickflix.io
-  ingress:
-    hosts:
-      - host: nickflix.io
-        paths: [/_oauth]
-    tls:
-      - hosts: [nickflix.io]
-        secretName: nickflix-io
-

@@ -29,6 +29,3 @@ traefik:
     general:
       format: json
       level: INFO
-
-traefik-forward-auth:
-  enabled: false

@@ -1,10 +1,10 @@
 [
   {
-    "name": "traefik-home",
+    "name": "traefik-dc",
     "cluster": "home",
     "namespace": "ingress",
     "path": "cluster-critical/traefik/traefik",
-    "valueFile": "home.yaml"
+    "valueFile": "dc.yaml"
   },
   {
     "name": "traefik-do",
@@ -14,18 +14,11 @@
     "valueFile": "do.yaml"
   },
   {
-    "name": "traefik-forward-auth2-home",
-    "cluster": "home",
-    "namespace": "ingress",
-    "path": "cluster-critical/traefik/traefik",
-    "valueFile": "tfa2.yaml"
-  },
-  {
-    "name": "error-pages-home",
+    "name": "error-pages-dc",
     "cluster": "home",
     "namespace": "ingress",
     "path": "cluster-critical/traefik/error-pages",
-    "valueFile": "home.yaml"
+    "valueFile": "dc.yaml"
   },
   {
     "name": "error-pages-do",
@@ -35,11 +28,11 @@
     "valueFile": "do.yaml"
   },
   {
-    "name": "mesh-home",
+    "name": "mesh-dc",
     "cluster": "home",
     "namespace": "ingress",
     "path": "cluster-critical/traefik/mesh",
-    "valueFile": "home.yaml"
+    "valueFile": "dc.yaml"
   }
 ]
 

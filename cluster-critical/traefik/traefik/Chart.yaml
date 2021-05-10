@@ -4,8 +4,4 @@ version: 1.0.0
 dependencies:
   - name: traefik
     version: 9.18.4
-    repository: https://dirtycajunrice.github.io/charts-1/
-  - name: traefik-forward-auth
-    version: 1.0.10
-    repository: https://k8s-at-home.com/charts/
-    condition: traefik-forward-auth.enabled
+    repository: https://charts.itscontained.io

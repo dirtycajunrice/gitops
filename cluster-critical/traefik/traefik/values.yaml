@@ -86,29 +86,3 @@ traefik:
                   values:
                     - traefik
             topologyKey: 'kubernetes.io/hostname'
-
-traefik-forward-auth:
-  enabled: true
-  fullnameOverride: traefik-forward-auth
-  cookie:
-    name: "_cajun_forward_auth"
-    csrfName: "_cajun_forward_auth_csrf"
-    domain: "cajun.pro,nickflix.io"
-  logging:
-    level: debug
-    format: json
-  providers:
-    google:
-      enabled: true
-  middleware:
-    enabled: true
-    name: "google-auth"
-  secret: "-"
-  envFrom:
-    - secretRef:
-        name: traefik-forward-auth
-  ingress:
-    enabled: false
-    annotations:
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.priority: "50"
