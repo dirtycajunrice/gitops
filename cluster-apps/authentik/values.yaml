@@ -47,6 +47,10 @@ authentik:
       secretKeyRef:
         key: password
         name: postgres-authentik-auth
+    POSTGRES_PASSWORD:
+      secretKeyRef:
+        key: password
+        name: postgres-authentik-auth
 
   ingress:
     enabled: true
