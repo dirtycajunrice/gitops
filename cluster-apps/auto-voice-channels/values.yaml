@@ -38,3 +38,5 @@ probes:
     enabled: false
   readiness:
     enabled: false
+  startupProbe:
+    enabled: false
