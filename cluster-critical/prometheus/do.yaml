@@ -13,6 +13,7 @@ kps:
         - do.alertmanager.k8s.cajun.pro
       annotations:
         traefik.ingress.kubernetes.io/router.middlewares: authentik-authentik-outpost@kubernetescrd
+        traefik.ingress.kubernetes.io/router.priority: "10"
         cert-manager.io/cluster-issuer: le-production
       tls:
         - secretName: do-alertmanager-k8s-cajun-pro
@@ -33,4 +34,5 @@ kps:
           secretName: do-prometheus-k8s-cajun-pro
       annotations:
         traefik.ingress.kubernetes.io/router.middlewares: authentik-authentik-outpost@kubernetescrd
+        traefik.ingress.kubernetes.io/router.priority: "10"
         cert-manager.io/cluster-issuer: le-production
