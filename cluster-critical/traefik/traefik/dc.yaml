@@ -19,7 +19,7 @@ traefik:
     enabled: false
   affinity:
     podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
+      preferredDuringSchedulingIgnoredDuringExecution:
         - weight: 100
           podAffinityTerm:
             labelSelector:
