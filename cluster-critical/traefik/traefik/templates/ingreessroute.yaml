@@ -1,7 +1,3 @@
-{{- $mwns := "ingress" -}}
-{{- if eq .Values.cluster "do" -}}
-  {{- $mwns = "authentik" -}}
-{{- end -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -14,18 +10,11 @@ spec:
       match: Host(`{{ include "traefik.hostname" . }}`)
       middlewares:
         - name: authentik-outpost
-          namespace: {{ $mwns }}
+          namespace: ingress
       priority: 10
       services:
         - kind: TraefikService
           name: api@internal
-    - kind: Rule
-      match: Host(`{{ include "traefik.hostname" . }}`) && PathPrefix(`/akprox`)
-      priority: 50
-      services:
-        - kind: Service
-          name: authentik-outpost
-          namespace: {{ $mwns }}
   tls:
     secretName: {{ include "traefik.secretname" . }}
 

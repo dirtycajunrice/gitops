@@ -11,7 +11,7 @@ kps:
       hosts:
         - dc.alertmanager.k8s.cajun.pro
       annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: monitoring-ak-outpost-test-prometheus-dc-outpost@kubernetescrd
+        traefik.ingress.kubernetes.io/router.middlewares: ingress-authentik-outpost@kubernetescrd
         cert-manager.io/cluster-issuer: le-production
       tls:
         - secretName: dc-alertmanager-k8s-cajun-pro
@@ -55,7 +55,7 @@ kps:
         - hosts: [dc.prometheus.k8s.cajun.pro]
           secretName: dc-prometheus-k8s-cajun-pro
       annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: monitoring-ak-outpost-test-prometheus-dc-outpost@kubernetescrd
+        traefik.ingress.kubernetes.io/router.middlewares: ingress-authentik-outpost@kubernetescrd
         cert-manager.io/cluster-issuer: le-production
     prometheusSpec:
       ruleSelectorNilUsesHelmValues: false
