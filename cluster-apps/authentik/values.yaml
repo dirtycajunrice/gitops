@@ -27,7 +27,7 @@ authentik:
       use_tls: true
       timeout: 30
     outposts:
-      docker_image_base: docker.beryju.org/authentik/outpost-%(type)s:gh-next
+      docker_image_base: jenslanghammer/ak-outpost-proxy-test:latest
       #docker_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
     error_reporting:
       enabled: true
