@@ -48,7 +48,7 @@ authentik:
       secretKeyRef:
         key: password
         name: postgres-authentik-auth
-    POSTGRES_PASSWORD:
+    PGPASSWORD:
       secretKeyRef:
         key: password
         name: postgres-authentik-auth
