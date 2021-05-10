@@ -27,7 +27,6 @@
       "commitMessageExtra": "to {{#if isSingleVersion}}v{{{newVersion}}}{{else}}{{{newValue}}}{{/if}}",
       "matchUpdateTypes": ["major", "minor", "patch"],
       "enabled": true,
-      "separateMinorPatch": true
     },
     {
       "matchDatasources": ["docker"],
