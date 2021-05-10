@@ -19,6 +19,13 @@ spec:
       services:
         - kind: TraefikService
           name: api@internal
+    - kind: Rule
+      match: Host(`{{ include "traefik.hostname" . }}`) && PathPrefix(`/akprox`)
+      priority: 50
+      services:
+        - kind: Service
+          name: authentik-outpost
+          namespace: {{ $mwns }}
   tls:
     secretName: {{ include "traefik.secretname" . }}
 
