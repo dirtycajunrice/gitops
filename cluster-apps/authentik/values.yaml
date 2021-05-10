@@ -8,6 +8,7 @@ spc:
   - AUTHENTIK_POSTGRESQL__S3_BACKUP__HOST
   - AUTHENTIK_POSTGRESQL__S3_BACKUP__REGION
   - AUTHENTIK_SECRET_KEY
+
 authentik:
   fullnameOverride: authentik
 
@@ -17,7 +18,7 @@ authentik:
     # name: docker.beryju.org/authentik/server
     # tag: gh-next
     name: jenslanghammer/authentik-test
-    tag: latest
+    tag: v2
     pullPolicy: Always
 
   authentik:
