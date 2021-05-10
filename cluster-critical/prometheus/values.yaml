@@ -1,3 +1,5 @@
+cluster: ""
+
 kps:
   fullnameOverride: kps
   alertmanager:

@@ -1,3 +1,5 @@
+cluster: dc
+
 kps:
   alertmanager:
     ingress:

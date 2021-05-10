@@ -1,3 +1,5 @@
+cluster: d0
+
 kps:
   grafana:
     enabled: false
