@@ -1,0 +1,34 @@
+image:
+  repository: ghcr.io/itscontained/auto-voice-channels
+  pullPolicy: Always
+  tag: af2bc36a
+
+strategy:
+  type: Recreate
+
+service:
+  enabled: false
+
+persistence:
+  data:
+    enabled: true
+    nameSuffix: "-"
+    storageClass: do-block-storage
+    size: 1Gi
+    accessMode: ReadWriteOnce
+    mountPath: /app/guilds
+    skipuninstall: true
+
+additionalVolumeMounts:
+  - name: config
+    mountPath: /app/config.json
+    subPath: config.json
+    readOnly: true
+
+additionalVolumes:
+  - name: config
+    csi:
+      driver: secrets-store.csi.k8s.io
+      readOnly: true
+      volumeAttributes:
+        secretProviderClass: auto-voice-channels

@@ -1,0 +1,9 @@
+[
+  {
+    "name": "auto-voice-channels",
+    "cluster": "do",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/auto-voice-channels",
+    "valueFile": ""
+  }
+]

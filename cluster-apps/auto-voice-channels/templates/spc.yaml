@@ -1,0 +1,14 @@
+apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+kind: SecretProviderClass
+metadata:
+  name: auto-voice-channels
+spec:
+  provider: vault
+  parameters:
+    roleName: "csi-secrets-store"
+    vaultAddress: https://vault.cajun.pro
+    vaultKubernetesMountPath: kubernetes/do
+    objects: |
+      - objectName:  config.json
+        secretKey: config.json
+        secretPath: kv-v2/data/auth/auto-voice-channels
