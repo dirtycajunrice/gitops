@@ -53,10 +53,10 @@ authentik:
       secretKeyRef:
         key: password
         name: postgres-authentik-auth
-    PGPASSWORD:
-      secretKeyRef:
-        key: password
-        name: postgres-authentik-auth
+    # PGPASSWORD:
+    #   secretKeyRef:
+    #     key: password
+    #     name: postgres-authentik-auth
 
   ingress:
     enabled: true
@@ -78,10 +78,10 @@ authentik:
     - name: secrets
       mountPath: /mnt/secrets
       readOnly: true
-    - name: pgpass
-      mountPath: /authentik/.pgpass
-      subPath: .pgpass
-      readOnly: true
+    # - name: pgpass
+    #   mountPath: /authentik/.pgpass
+    #   subPath: .pgpass
+    #   readOnly: true
   volumes:
     - name: secrets
       csi:
@@ -89,12 +89,12 @@ authentik:
         readOnly: true
         volumeAttributes:
           secretProviderClass: authentik
-    - name: pgpass
-      csi:
-        driver: secrets-store.csi.k8s.io
-        readOnly: true
-        volumeAttributes:
-          secretProviderClass: authentik-pgpass
+    #- name: pgpass
+    #  csi:
+    #    driver: secrets-store.csi.k8s.io
+    #    readOnly: true
+    #    volumeAttributes:
+    #      secretProviderClass: authentik-pgpass
 
   livenessProbe:
     initialDelaySeconds: 15
