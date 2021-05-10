@@ -1,31 +1,36 @@
 kps:
   grafana:
     enabled: false
-#kube-prometheus-stack:
-#  alertmanager:
-#    ingress:
-#      annotations:
-#        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
-#      hosts:
-#        - alertmanager-do.cajun.pro
-#      paths:
-#        - /
-#      tls:
-#        - secretName: alertmanager-do-cajun-pro
-#          hosts:
-#            - alertmanager-do.cajun.pro
-#  grafana:
-#    enabled: false
-#  prometheus:
-#    ingress:
-#      annotations:
-#        traefik.ingress.kubernetes.io/router.middlewares: ingress-google-auth-home@kubernetescrd
-#      hosts:
-#        - prometheus-do.cajun.pro
-#      paths:
-#        - /
-#      tls:
-#        - secretName: prometheus-do-cajun-pro
-#          hosts:
-#            - prometheus-do.cajun.pro
 
+  alertmanager:
+    ingress:
+      enabled: true
+      pathType: Prefix
+      ingressClassName: traefik
+      paths:
+        - /
+      hosts:
+        - do.alertmanager.k8s.cajun.pro
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: ingress-authentik-outpost@kubernetescrd
+        cert-manager.io/cluster-issuer: le-production
+      tls:
+        - secretName: do-alertmanager-k8s-cajun-pro
+          hosts:
+            - do.alertmanager.k8s.cajun.pro
+
+  prometheus:
+    ingress:
+      enabled: true
+      pathType: Prefix
+      ingressClassName: traefik
+      hosts:
+        - do.prometheus.k8s.cajun.pro
+      paths:
+        - /
+      tls:
+        - hosts: [do.prometheus.k8s.cajun.pro]
+          secretName: do-prometheus-k8s-cajun-pro
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: ingress-authentik-outpost@kubernetescrd
+        cert-manager.io/cluster-issuer: le-production
