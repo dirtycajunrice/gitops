@@ -17,4 +17,3 @@ spec:
           name: api@internal
   tls:
     secretName: {{ include "traefik.secretname" . }}
-
