@@ -42,3 +42,15 @@ xbackbone:
     - mountPath: /app/storage
       name: config
       subPath: storage
+    - name: config.php
+      mountPath: /app/config.php
+      subPath: config.php
+      readOnly: true
+
+  additionalVolumes:
+    - name: config.php
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: xbackbone
