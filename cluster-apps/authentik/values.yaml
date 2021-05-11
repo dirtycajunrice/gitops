@@ -7,7 +7,6 @@ addons:
     defaultObjectPath: k8s/cajun-pro/authentik
     secretObjects: true
     objects:
-      - name: config.php
       - name: AUTHENTIK_EMAIL__FROM
       - name: AUTHENTIK_EMAIL__PASSWORD
       - name: AUTHENTIK_EMAIL__USERNAME
