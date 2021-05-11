@@ -36,19 +36,15 @@ xbackbone:
       accessMode: ReadWriteOnce
       skipuninstall: true
       mountPath: /app/resources/database
-      subPath: database
 
   additionalVolumeMounts:
-    - mountPath: /app/storage
-      name: config
-      subPath: storage
-    - name: config.php
+    - name: config
       mountPath: /app/config.php
       subPath: config.php
       readOnly: true
 
   additionalVolumes:
-    - name: config.php
+    - name: config
       csi:
         driver: secrets-store.csi.k8s.io
         readOnly: true
