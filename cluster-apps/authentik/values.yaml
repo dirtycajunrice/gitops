@@ -5,6 +5,7 @@ addons:
   spc:
     enabled: true
     defaultObjectPath: k8s/cajun-pro/authentik
+    secretObjects: true
     objects:
       - name: config.php
       - name: AUTHENTIK_EMAIL__FROM
