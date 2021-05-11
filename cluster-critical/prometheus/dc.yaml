@@ -1,4 +1,14 @@
-cluster: dc
+global:
+  cluster: home
+
+addons:
+  spc:
+    enabled: true
+    defaultObjectPath: k8s/monitoring/grafana
+    secretObjects: true
+    objects:
+      - name: GF_AUTH_GOOGLE_CLIENT_ID
+      - name: GF_AUTH_GOOGLE_CLIENT_SECRET
 
 kps:
   alertmanager:

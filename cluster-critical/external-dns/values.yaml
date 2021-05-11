@@ -1,3 +1,14 @@
+global:
+  cluster: ""
+
+addons:
+  spc:
+    enabled: true
+    defaultObjectPath: k8s/external/aws
+    secretObjects: true
+    objects:
+      - name: credentials
+
 external-dns:
   fullnameOverride: external-dns
   image:

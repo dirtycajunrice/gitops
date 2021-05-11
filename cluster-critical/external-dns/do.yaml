@@ -1,3 +1,6 @@
+global:
+  cluster: do
+
 external-dns:
   txtOwnerId: do
   zoneIdFilters:

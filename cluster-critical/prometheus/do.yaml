@@ -1,5 +1,3 @@
-cluster: do
-
 kps:
   grafana:
     enabled: false
