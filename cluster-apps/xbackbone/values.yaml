@@ -42,9 +42,11 @@ xbackbone:
       mountPath: /app/config/config.php
       subPath: config.php
       readOnly: true
+    # this just saves the .installed so that the user is not forced
     - name: db
-      mountPath: /app/resources
-      subPath: resources
+      mountPath: /app/storage
+      subPath: storage
+
   additionalVolumes:
     - name: config
       csi:
