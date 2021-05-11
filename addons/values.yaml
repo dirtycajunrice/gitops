@@ -10,9 +10,9 @@ spc:
   defaultObjectPath: ""
   secretObjects: false
   extraSecretObjects: []
-  objects:
-    - name: config.php
-      key: config.php
-      mount: kv-v2
-      path: k8s/cajun-pro/xbackbone
-      secretName: ""
+  objects: []
+   # - name: config.php
+   #   key: config.php
+   #   mount: kv-v2
+   #   path: k8s/cajun-pro/xbackbone
+   #   secretName: ""
