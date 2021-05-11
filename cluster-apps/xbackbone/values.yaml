@@ -39,7 +39,7 @@ xbackbone:
 
   additionalVolumeMounts:
     - name: config
-      mountPath: /app/config.php
+      mountPath: /app/config/config.php
       subPath: config.php
       readOnly: true
 
