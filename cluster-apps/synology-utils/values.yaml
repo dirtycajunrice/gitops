@@ -1,1 +1,9 @@
+global:
+  cluster: home
 
+addons:
+  spc:
+    enabled: true
+    defaultObjectPath: k8s/cajun-pro/synology
+    objects:
+      - name: id_rsa

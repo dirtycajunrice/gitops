@@ -1,13 +1,21 @@
-spc:
-  - AUTHENTIK_EMAIL__FROM
-  - AUTHENTIK_EMAIL__PASSWORD
-  - AUTHENTIK_EMAIL__USERNAME
-  - AUTHENTIK_POSTGRESQL__S3_BACKUP__ACCESS_KEY
-  - AUTHENTIK_POSTGRESQL__S3_BACKUP__SECRET_KEY
-  - AUTHENTIK_POSTGRESQL__S3_BACKUP__BUCKET
-  - AUTHENTIK_POSTGRESQL__S3_BACKUP__HOST
-  - AUTHENTIK_POSTGRESQL__S3_BACKUP__REGION
-  - AUTHENTIK_SECRET_KEY
+global:
+  cluster: do
+
+addons:
+  spc:
+    enabled: true
+    defaultObjectPath: k8s/cajun-pro/authentik
+    objects:
+      - name: config.php
+      - name: AUTHENTIK_EMAIL__FROM
+      - name: AUTHENTIK_EMAIL__PASSWORD
+      - name: AUTHENTIK_EMAIL__USERNAME
+      - name: AUTHENTIK_POSTGRESQL__S3_BACKUP__ACCESS_KEY
+      - name: AUTHENTIK_POSTGRESQL__S3_BACKUP__SECRET_KEY
+      - name: AUTHENTIK_POSTGRESQL__S3_BACKUP__BUCKET
+      - name: AUTHENTIK_POSTGRESQL__S3_BACKUP__HOST
+      - name: AUTHENTIK_POSTGRESQL__S3_BACKUP__REGION
+      - name: AUTHENTIK_SECRET_KEY
 
 authentik:
   fullnameOverride: authentik
@@ -78,10 +86,7 @@ authentik:
     - name: secrets
       mountPath: /mnt/secrets
       readOnly: true
-    # - name: pgpass
-    #   mountPath: /authentik/.pgpass
-    #   subPath: .pgpass
-    #   readOnly: true
+
   volumes:
     - name: secrets
       csi:
@@ -89,12 +94,6 @@ authentik:
         readOnly: true
         volumeAttributes:
           secretProviderClass: authentik
-    #- name: pgpass
-    #  csi:
-    #    driver: secrets-store.csi.k8s.io
-    #    readOnly: true
-    #    volumeAttributes:
-    #      secretProviderClass: authentik-pgpass
 
   livenessProbe:
     initialDelaySeconds: 15

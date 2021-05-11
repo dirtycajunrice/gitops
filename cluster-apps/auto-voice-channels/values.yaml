@@ -1,3 +1,13 @@
+global:
+  cluster: do
+
+addons:
+  spc:
+    enabled: true
+    defaultObjectPath: auth/auto-voice-channels
+    objects:
+      - name: config.json
+
 image:
   repository: ghcr.io/itscontained/auto-voice-channels
   pullPolicy: Always

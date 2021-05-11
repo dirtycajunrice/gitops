@@ -1,3 +1,7 @@
 name: synology-utils
 apiVersion: v2
 version: 1.0.0
+dependencies:
+  - name: addons
+    version: 1.0.0
+    repository: file://../../addons

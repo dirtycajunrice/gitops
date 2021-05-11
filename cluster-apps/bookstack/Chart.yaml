@@ -5,3 +5,6 @@ dependencies:
   - name: bookstack
     version: 1.1.0
     repository: https://k8s-at-home.com/charts/
+  - name: addons
+    version: 1.0.0
+    repository: file://../../addons

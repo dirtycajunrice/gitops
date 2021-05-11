@@ -5,3 +5,6 @@ dependencies:
   - name: common
     version: 2.5.0
     repository: https://library-charts.k8s-at-home.com
+  - name: addons
+    version: 1.0.0
+    repository: file://../../../addons

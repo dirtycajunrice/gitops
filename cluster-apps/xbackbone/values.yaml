@@ -1,3 +1,13 @@
+global:
+  cluster: do
+
+addons:
+  spc:
+    enabled: true
+    defaultObjectPath: k8s/cajun-pro/xbackbone
+    objects:
+      - name: config.php
+
 xbackbone:
   fullnameOverride: xbackbone
 

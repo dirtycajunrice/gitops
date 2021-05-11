@@ -1,0 +1,18 @@
+global:
+  cluster: ""
+
+spc:
+  enabled: false
+  provider: vault
+  role: csi-secrets-store
+  vaultAddress: https://vault.cajun.pro
+  defaultSecretMountPath: kv-v2
+  defaultObjectPath: ""
+  secretObjects: false
+  extraSecretObjects: []
+  objects:
+    - name: config.php
+      key: config.php
+      mount: kv-v2
+      path: k8s/cajun-pro/xbackbone
+      secretName: ""
