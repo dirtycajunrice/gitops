@@ -21,7 +21,7 @@ envValueFrom:
   TOKEN:
     secretKeyRef:
       key: varken-bot-token
-      name: discord
+      name: red-discordbot-varken
 
 env:
   PREFIX: "!"
