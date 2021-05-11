@@ -28,7 +28,7 @@ xbackbone:
         secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
 
   persistence:
-    config:
+    db:
       enabled: true
       nameSuffix: "-"
       storageClass: do-block-storage
