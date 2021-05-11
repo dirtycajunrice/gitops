@@ -11,16 +11,19 @@ addons:
 
 external-dns:
   fullnameOverride: external-dns
+
   image:
     registry: docker.io
     repository: bitnami/external-dns
     # renovatebot:alturl=https://github.com/bitnami/bitnami-docker-external-dns
     tag: 0.7.6-debian-10-r99
+
   sources:
     - crd
     - service
     - ingress
   provider: aws
+
   aws:
     evaluateTargetHealth: false
 
@@ -29,21 +32,18 @@ external-dns:
   logFormat: json
   txtPrefix: "_."
   replicas: 1
+
   crd:
     create: true
+
   metrics:
     serviceMonitor:
       enabled: true
+
   extraEnv:
     - name: AWS_SHARED_CREDENTIALS_FILE
       value: /.aws/credentials
-  extraVolumes:
-    - name: credentials
-      csi:
-        driver: secrets-store.csi.k8s.io
-        readOnly: true
-        volumeAttributes:
-          secretProviderClass: external-dns
+
   extraVolumeMounts:
     - name: credentials
       mountPath: /.aws

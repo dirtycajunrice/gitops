@@ -7,3 +7,11 @@ external-dns:
     - "Z2W34PNGGWEWGE" # nickflix.io
     - "ZZN0GGUVLFPKM" # cajun.pro
     - "Z235Z433P2IR27" # k8s.cajun.pro
+
+  extraVolumes:
+    - name: credentials
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: external-dns-home
