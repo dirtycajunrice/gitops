@@ -42,7 +42,7 @@ additionalVolumes:
       driver: secrets-store.csi.k8s.io
       readOnly: true
       volumeAttributes:
-        secretProviderClass: discord
+        secretProviderClass: red-discordbot-varken
 
 persistence:
   data:
