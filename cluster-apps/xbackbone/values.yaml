@@ -59,7 +59,7 @@ xbackbone:
     - command:
         - /bin/sh
         - '-c'
-        - if [ ! -f /appcp /tmp/config.php /app/config/ && chown 1000:1000 /app/config/config.php'
+        - 'cp /tmp/config.php /app/config/ && chown 1000:1000 /app/config/config.php'
       image: busybox:1.28
       imagePullPolicy: IfNotPresent
       name: cp
