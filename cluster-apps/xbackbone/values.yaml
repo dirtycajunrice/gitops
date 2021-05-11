@@ -42,7 +42,9 @@ xbackbone:
       mountPath: /app/config/config.php
       subPath: config.php
       readOnly: true
-
+    - name: db
+      mountPath: /app/resources
+      subPath: resources
   additionalVolumes:
     - name: config
       csi:
