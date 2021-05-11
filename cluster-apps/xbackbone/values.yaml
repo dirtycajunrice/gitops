@@ -43,11 +43,6 @@ xbackbone:
       mountPath: /app/config
 
   additionalVolumeMounts:
-    - name: secret
-      mountPath: /tmp/config.php
-      subPath: config.php
-      readOnly: true
-    # this just saves the .installed so that the user is not forced
     - name: db
       mountPath: /app/storage
       subPath: storage
@@ -64,14 +59,14 @@ xbackbone:
     - command:
         - /bin/sh
         - '-c'
-        - 'cp /tmp/config.php /app/config/ && chown 1000:1000 /app/config/config.php'
-      image: 'busybox:1.28'
+        - if [ ! -f /appcp /tmp/config.php /app/config/ && chown 1000:1000 /app/config/config.php'
+      image: busybox:1.28
       imagePullPolicy: IfNotPresent
       name: cp
       volumeMounts:
-        - mountPath: /tmp/config.php
-          name: config
-          readOnly: true
+        - name: secret
+          mountPath: /tmp/config.php
           subPath: config.php
+          readOnly: true
         - mountPath: /app/config
           name: config
