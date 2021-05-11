@@ -36,10 +36,15 @@ xbackbone:
       accessMode: ReadWriteOnce
       skipuninstall: true
       mountPath: /app/resources/database
+    config:
+      enabled: true
+      emptyDir:
+        enabled: true
+      mountPath: /app/config
 
   additionalVolumeMounts:
-    - name: config
-      mountPath: /app/config/config.php
+    - name: secret
+      mountPath: /tmp/config.php
       subPath: config.php
       readOnly: true
     # this just saves the .installed so that the user is not forced
@@ -48,9 +53,25 @@ xbackbone:
       subPath: storage
 
   additionalVolumes:
-    - name: config
+    - name: secret
       csi:
         driver: secrets-store.csi.k8s.io
         readOnly: true
         volumeAttributes:
           secretProviderClass: xbackbone
+
+  initContainers:
+    - command:
+        - /bin/sh
+        - '-c'
+        - 'cp /tmp/config.php /app/config/ && chown 1000:1000 /app/config/config.php'
+      image: 'busybox:1.28'
+      imagePullPolicy: IfNotPresent
+      name: cp
+      volumeMounts:
+        - mountPath: /tmp/config.php
+          name: config
+          readOnly: true
+          subPath: config.php
+        - mountPath: /app/config
+          name: config
