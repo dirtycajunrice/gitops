@@ -38,4 +38,4 @@ qbittorrent:
 
   podSecurityContext:
     # media group
-    fsGroup: 500
+    runAsGroup: 500
