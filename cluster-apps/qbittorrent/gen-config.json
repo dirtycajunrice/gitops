@@ -1,0 +1,9 @@
+[
+  {
+    "name": "qbittorrent-sonarr-1080p",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/qbittorrent",
+    "valueFile": "sonarr-1080p.yaml"
+  }
+]

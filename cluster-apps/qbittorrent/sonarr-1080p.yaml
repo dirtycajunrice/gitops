@@ -1,0 +1,25 @@
+qbittorrent:
+  service:
+    additionalServices:
+      - enabled: true
+        nameSuffix: bittorrent
+        type: LoadBalancer
+        externalIPs:
+          - 172.30.0.13
+        port:
+          port: 6881
+          name: bittorrent
+          protocol: TCP
+          targetPort: 6881
+
+  ingress:
+    hosts:
+      - host: nickflix.io
+        paths:
+          - pathTpl: /torrents/sonarr/1080p
+            pathType: Prefix
+    tls:
+      - hosts: [nickflix.io]
+        secretName: nickflix-io
+
+

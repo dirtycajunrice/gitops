@@ -1,0 +1,32 @@
+qbittorrent:
+  image:
+    repository: ghcr.io/k8s-at-home/qbittorrent
+    pullPolicy: IfNotPresent
+    tag: v4.3.4.1
+
+  strategy:
+    type: Recreate
+
+  env:
+    TZ: UTC
+
+  service:
+    port:
+      port: 8080
+
+  ingress:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      external-dns.alpha.kubernetes.io/hostname: ""
+
+  additionalVolumeMounts:
+    - mountPath: /mnt/media/torrents
+      name: media
+
+  additionalVolumes:
+    - name: media
+      hostPath:
+        path: /mnt/media/torrents
+        type: Directory
