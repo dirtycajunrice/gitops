@@ -1,0 +1,8 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: triple-strip-prefix
+spec:
+  stripPrefixRegex:
+    regex:
+      - "/[a-z0-9_]+/[a-z0-9_]+/[a-z0-9_]+"

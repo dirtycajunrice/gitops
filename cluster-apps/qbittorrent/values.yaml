@@ -17,6 +17,7 @@ qbittorrent:
   ingress:
     enabled: true
     annotations:
+      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-triple-strip-prefix@kubernetescrd
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.priority: "10"
       external-dns.alpha.kubernetes.io/hostname: ""
