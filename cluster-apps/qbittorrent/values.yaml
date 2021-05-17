@@ -21,6 +21,14 @@ qbittorrent:
       traefik.ingress.kubernetes.io/router.priority: "10"
       external-dns.alpha.kubernetes.io/hostname: ""
 
+  tolerations:
+    - key: role
+      value: storage
+      effect: NoSchedule
+
+  nodeSelector:
+    node-role.kubernetes.io/storage: ""
+
   additionalVolumeMounts:
     - mountPath: /mnt/media/torrents
       name: media
