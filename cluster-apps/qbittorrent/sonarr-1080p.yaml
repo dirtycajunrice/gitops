@@ -4,6 +4,7 @@ qbittorrent:
       - enabled: true
         nameSuffix: bt
         type: LoadBalancer
+        externalTrafficPolicy: Local
         externalIPs:
           - 172.30.0.13
         port:
