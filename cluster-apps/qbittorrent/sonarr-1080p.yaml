@@ -7,10 +7,10 @@ qbittorrent:
         externalIPs:
           - 172.30.0.13
         port:
-          port: 6881
+          port: 50213
           name: bittorrent
           protocol: TCP
-          targetPort: 6881
+          targetPort: 50213
 
   ingress:
     hosts:
