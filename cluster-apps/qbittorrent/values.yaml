@@ -33,6 +33,7 @@ qbittorrent:
   hostPathMounts:
     torrents:
       enabled: true
+      setPermissions: false
       mountPath: /mnt/media/torrents
       hostPath: /mnt/media/torrents
 
