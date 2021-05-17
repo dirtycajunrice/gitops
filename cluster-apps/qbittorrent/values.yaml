@@ -31,6 +31,10 @@ qbittorrent:
     node-role.kubernetes.io/storage: ""
 
   hostPathMounts:
+    config:
+      enabled: true
+      mountPath: /config
+      hostPath: /tmp/placeholder
     torrents:
       enabled: true
       setPermissions: false
