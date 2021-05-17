@@ -29,12 +29,8 @@ qbittorrent:
   nodeSelector:
     node-role.kubernetes.io/storage: ""
 
-  additionalVolumeMounts:
-    - mountPath: /mnt/media/torrents
-      name: media
+  hostPathMounts:
+    torrents:
+      enabled: true
+      hostPath: /mnt/media/torrents
 
-  additionalVolumes:
-    - name: media
-      hostPath:
-        path: /mnt/media/torrents
-        type: Directory

@@ -2,7 +2,7 @@ qbittorrent:
   service:
     additionalServices:
       - enabled: true
-        nameSuffix: bittorrent
+        nameSuffix: bt
         type: LoadBalancer
         externalIPs:
           - 172.30.0.13
@@ -22,4 +22,7 @@ qbittorrent:
       - hosts: [nickflix.io]
         secretName: nickflix-io
 
-
+  hostPathMounts:
+    config:
+      enabled: true
+      hostPath: /mnt/qbittorrent/sonarr/1080p
