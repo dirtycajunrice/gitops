@@ -1,0 +1,30 @@
+qbittorrent:
+  service:
+    additionalServices:
+      - enabled: true
+        nameSuffix: bt
+        type: LoadBalancer
+        externalTrafficPolicy: Local
+        externalIPs:
+          - 172.30.0.14
+        port:
+          port: 50214
+          name: bittorrent
+          protocol: TCP
+          targetPort: 50214
+
+  ingress:
+    hosts:
+      - host: nickflix.io
+        paths:
+          - pathTpl: /torrents/sonarr/4k
+            pathType: Prefix
+    tls:
+      - hosts: [nickflix.io]
+        secretName: nickflix-io
+
+  hostPathMounts:
+    config:
+      enabled: true
+      mountPath: /config
+      hostPath: /mnt/qbittorrent/sonarr/4k

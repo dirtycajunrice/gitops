@@ -5,5 +5,12 @@
     "namespace": "cajun-pro",
     "path": "cluster-apps/qbittorrent",
     "valueFile": "sonarr-1080p.yaml"
+  },
+  {
+    "name": "qbittorrent-sonarr-4k",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/qbittorrent",
+    "valueFile": "sonarr-4k.yaml"
   }
 ]
