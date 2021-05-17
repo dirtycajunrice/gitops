@@ -6,7 +6,8 @@ metadata:
     app: {{ printf "rtorrent%s" .Values.iteration }}
 spec:
   type: LoadBalancer
-  loadBalancerIP: {{ printf "172.30.0.1%s" .Values.iteration }}
+  externalIPs:
+    - {{ printf "172.30.0.1%s" .Values.iteration }}
   ports:
     {{- range $name, $config := .Values.service }}
     - port: {{ $config.port }}
