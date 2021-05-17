@@ -25,4 +25,5 @@ qbittorrent:
   hostPathMounts:
     config:
       enabled: true
+      mountPath: /config
       hostPath: /mnt/qbittorrent/sonarr/1080p

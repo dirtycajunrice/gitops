@@ -32,5 +32,6 @@ qbittorrent:
   hostPathMounts:
     torrents:
       enabled: true
+      mountPath: /mnt/media/torrents
       hostPath: /mnt/media/torrents
 
