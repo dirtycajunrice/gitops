@@ -36,3 +36,6 @@ qbittorrent:
       mountPath: /mnt/media/torrents
       hostPath: /mnt/media/torrents
 
+  podSecurityContext:
+    # media group
+    fsGroup: 500
