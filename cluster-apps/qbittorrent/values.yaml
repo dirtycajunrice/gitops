@@ -37,5 +37,7 @@ qbittorrent:
       hostPath: /mnt/media/torrents
 
   podSecurityContext:
+    # kah user
+    runAsUser: 568
     # media group
     runAsGroup: 500
