@@ -14,14 +14,8 @@ qbittorrent:
           targetPort: 50214
 
   ingress:
-    hosts:
-      - host: nickflix.io
-        paths:
-          - pathTpl: /torrents/sonarr/4k
-            pathType: Prefix
-    tls:
-      - hosts: [nickflix.io]
-        secretName: nickflix-io
+    app: sonarr
+    quality: 4k
 
   hostPathMounts:
     config:

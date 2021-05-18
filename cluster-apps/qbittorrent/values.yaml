@@ -16,12 +16,23 @@ qbittorrent:
 
   ingress:
     enabled: true
+    domainName: nickflix.io
+    app: radarr
+    quality: 1080p
+    iteration: ''
     annotations:
-      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-triple-strip-prefix@kubernetescrd
+      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-quadruple-strip-prefix@kubernetescrd
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.priority: "10"
       external-dns.alpha.kubernetes.io/hostname: ""
-
+    hosts:
+      - hostTpl: '{{ .Values.ingress.domainName }}'
+        paths:
+          - pathTpl: '{{ printf "/torrents/%s/%s/%v" .Values.ingress.app .Values.ingress.quality .Values.ingress.iteration }}'
+            pathType: Prefix
+    tls:
+      - hostsTpl: ['{{ .Values.ingress.domainName }}']
+        secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
   tolerations:
     - key: role
       value: storage

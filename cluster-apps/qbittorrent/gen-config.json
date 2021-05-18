@@ -12,5 +12,61 @@
     "namespace": "cajun-pro",
     "path": "cluster-apps/qbittorrent",
     "valueFile": "sonarr-4k.yaml"
+  },
+  {
+    "name": "qbittorrent-radarr-4k-1",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/qbittorrent",
+    "valueFile": "radarr-4k-1.yaml"
+  },
+  {
+    "name": "qbittorrent-radarr-4k-2",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/qbittorrent",
+    "valueFile": "radarr-4k-2.yaml"
+  },
+  {
+    "name": "qbittorrent-radarr-1080p-1",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/qbittorrent",
+    "valueFile": "radarr-1080p-1.yaml"
+  },
+  {
+    "name": "qbittorrent-radarr-1080p-2",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/qbittorrent",
+    "valueFile": "radarr-1080p-2.yaml"
+  },
+  {
+    "name": "qbittorrent-radarr-1080p-3",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/qbittorrent",
+    "valueFile": "radarr-1080p-3.yaml"
+  },
+  {
+    "name": "qbittorrent-radarr-1080p-4",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/qbittorrent",
+    "valueFile": "radarr-1080p-4.yaml"
+  },
+  {
+    "name": "qbittorrent-radarr-1080p-5",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/qbittorrent",
+    "valueFile": "radarr-1080p-5.yaml"
+  },
+  {
+    "name": "qbittorrent-radarr-1080p-6",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/qbittorrent",
+    "valueFile": "radarr-1080p-6.yaml"
   }
 ]

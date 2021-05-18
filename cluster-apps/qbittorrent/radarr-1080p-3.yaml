@@ -6,16 +6,16 @@ qbittorrent:
         type: LoadBalancer
         externalTrafficPolicy: Local
         externalIPs:
-          - 172.30.0.13
+          - 172.30.0.19
         port:
-          port: 50213
+          port: 50219
           name: bittorrent
           protocol: TCP
-          targetPort: 50213
+          targetPort: 50219
 
   ingress:
-    app: sonarr
+    iteration: 3
 
   hostPathMounts:
     config:
-      hostPath: /mnt/qbittorrent/sonarr/1080p
+      hostPath: /mnt/qbittorrent/radarr/1080p/3

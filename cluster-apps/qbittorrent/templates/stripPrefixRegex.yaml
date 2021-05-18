@@ -6,5 +6,5 @@ metadata:
 spec:
   stripPrefixRegex:
     regex:
-      - "/[a-z0-9_]+/[a-z0-9_]+/[a-z0-9_]+"
+      - "/[a-z0-9_]+/[a-z0-9_]+/[a-z0-9_]+/[a-z0-9_]+"
 {{- end -}}
