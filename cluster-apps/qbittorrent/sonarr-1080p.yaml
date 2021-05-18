@@ -15,6 +15,7 @@ qbittorrent:
 
   ingress:
     app: sonarr
+    iteration: 1
 
   hostPathMounts:
     config:

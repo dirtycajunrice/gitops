@@ -16,6 +16,7 @@ qbittorrent:
   ingress:
     app: sonarr
     quality: 4k
+    iteration: 1
 
   hostPathMounts:
     config:
