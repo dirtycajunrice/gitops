@@ -72,20 +72,20 @@
     {
       "matchDatasources": ["docker"],
       "matchPackagePatterns": [
-        "ghcr.io/k8s-at-home/plex",
-        "^ghcr.io/itscontained/(radarr|sonarr)"
+        "^ghcr.io/k8s-at-home/((rad|son)arr|plex)"
       ],
       "addLabels": ["action/automerge"],
       "automerge": true,
       "versioning": "loose"
     },
     // Docker containers that do not follow semver compliant tagging
-    //{
-    //  "matchDatasources": ["docker"],
-    //  "matchPackagePatterns": [
-    //    "bitnami/external-dns",
-    //  ],
-    //  "versioning": "loose"
-    //}
+    {
+      "matchDatasources": ["docker"],
+      "matchPackagePatterns": [
+        "bitnami/external-dns",
+        "^ghcr.io/k8s-at-home/qbittorrent"
+      ],
+      "versioning": "loose"
+    }
   ]
 }
