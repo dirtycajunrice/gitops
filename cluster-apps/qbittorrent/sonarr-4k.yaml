@@ -21,3 +21,9 @@ qbittorrent:
   hostPathMounts:
     config:
       hostPath: /mnt/qbittorrent/sonarr/4k
+    incomplete:
+      mountPath: /mnt/media/torrents/incomplete/sonarr4k
+      hostPath: /mnt/media/torrents/incomplete/sonarr4k
+    completed:
+      mountPath: /mnt/media/torrents/completed/sonarr4k
+      hostPath: /mnt/media/torrents/completed/sonarr4k

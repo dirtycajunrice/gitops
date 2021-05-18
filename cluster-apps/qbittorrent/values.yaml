@@ -46,11 +46,16 @@ qbittorrent:
       enabled: true
       mountPath: /config
       hostPath: /tmp/placeholder
-    torrents:
+    incomplete:
       enabled: true
       setPermissions: false
-      mountPath: /mnt/media/torrents
-      hostPath: /mnt/media/torrents
+      mountPath: /mnt/media/torrents/incomplete/radarr
+      hostPath: /mnt/media/torrents/incomplete/radarr
+    completed:
+      enabled: true
+      setPermissions: false
+      mountPath: /mnt/media/torrents/completed/radarr
+      hostPath: /mnt/media/torrents/completed/radarr
 
   podSecurityContext:
     # kah user

@@ -20,3 +20,9 @@ qbittorrent:
   hostPathMounts:
     config:
       hostPath: /mnt/qbittorrent/radarr/4k/2
+    incomplete:
+      mountPath: /mnt/media/torrents/incomplete/radarr4k
+      hostPath: /mnt/media/torrents/incomplete/radarr4k
+    completed:
+      mountPath: /mnt/media/torrents/completed/radarr4k
+      hostPath: /mnt/media/torrents/completed/radarr4k

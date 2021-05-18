@@ -20,3 +20,9 @@ qbittorrent:
   hostPathMounts:
     config:
       hostPath: /mnt/qbittorrent/sonarr/1080p
+    incomplete:
+      mountPath: /mnt/media/torrents/incomplete/sonarr
+      hostPath: /mnt/media/torrents/incomplete/sonarr
+    completed:
+      mountPath: /mnt/media/torrents/completed/sonarr
+      hostPath: /mnt/media/torrents/completed/sonarr
