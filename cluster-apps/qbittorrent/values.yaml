@@ -62,3 +62,11 @@ qbittorrent:
     runAsUser: 568
     # media group
     runAsGroup: 500
+
+    resources:
+      limits:
+        cpu: "1"
+        memory: "10Gi"
+      requests:
+        cpu: "200m"
+        memory: "600Mi"
