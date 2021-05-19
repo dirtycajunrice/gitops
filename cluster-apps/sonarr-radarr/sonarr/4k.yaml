@@ -4,9 +4,15 @@ arr:
   additionalVolumeMounts:
     - name: media
       mountPath: /mnt/media/tv4k
+    - name: completed
+      mountPath: /mnt/media/torrents/completed/sonarr4k
 
   additionalVolumes:
     - name: media
       nfs:
         server: 10.0.10.211
         path: /mnt/media/tv4k
+    - name: completed
+      nfs:
+        server: 10.0.10.211
+        path: /mnt/media/torrents/completed/sonarr4k
