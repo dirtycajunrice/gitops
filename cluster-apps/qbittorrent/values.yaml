@@ -70,3 +70,12 @@ qbittorrent:
     requests:
       cpu: "200m"
       memory: "600Mi"
+
+  probes:
+    liveness:
+      spec:
+        failureThreshold: 60
+    readiness:
+      spec:
+        failureThreshold: 60
+
