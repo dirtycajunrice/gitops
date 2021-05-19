@@ -5,7 +5,7 @@ arr:
   envValueFrom:
     APP_NAME:
       fieldRef:
-        fieldPath: metadata.labels["app.kubernetes.io/instance"]
+        fieldPath: "metadata.labels['app.kubernetes.io/instance']"
 
   ingress:
     domainName: "nickflix.io"
