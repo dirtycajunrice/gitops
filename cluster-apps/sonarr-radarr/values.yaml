@@ -18,7 +18,7 @@ arr:
     hosts:
       - hostTpl: '{{ .Values.ingress.domainName }}'
         paths:
-          - pathTpl: '{{ printf "/%s" (replace .Values.fullnameOverride "-" "/") }}'
+          - pathTpl: '{{ printf "/%s" (replace "-" "/" .Values.fullnameOverride) }}'
             pathType: Prefix
     tls:
       - hostsTpl: ['{{ .Values.ingress.domainName }}']
