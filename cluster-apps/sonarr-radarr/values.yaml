@@ -39,7 +39,7 @@ arr:
       mountPath: /mnt/media/torrents/incomplete
 
   podSecurityContext:
-    runAsUser: 1000
+    runAsUser: 568
     runAsGroup: 500
 
   probes:
