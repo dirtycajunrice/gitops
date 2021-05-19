@@ -1,5 +1,12 @@
 arr:
   fullnameOverride: radarr-4k
 
-  env:
-    APP_NAME: "radarr-4k"
+  additionalVolumeMounts:
+    - name: media
+      mountPath: /mnt/media/movies4k
+
+  additionalVolumes:
+    - name: media
+      nfs:
+        server: 10.0.10.211
+        path: /mnt/media/movies4k

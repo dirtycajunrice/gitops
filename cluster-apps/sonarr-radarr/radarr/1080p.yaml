@@ -1,5 +1,12 @@
 arr:
   fullnameOverride: radarr-1080p
 
-  env:
-    APP_NAME: "radarr-1080p"
+  additionalVolumeMounts:
+    - name: media
+      mountPath: /mnt/media/movies
+
+  additionalVolumes:
+    - name: media
+      nfs:
+        server: 10.0.10.211
+        path: /mnt/media/movies

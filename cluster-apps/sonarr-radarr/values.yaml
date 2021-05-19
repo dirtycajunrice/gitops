@@ -1,8 +1,12 @@
 arr:
   env:
     TZ: America/Chicago
-    PUID: "1000"
-    PGID: "1000"
+
+  envValueFrom:
+    APP_NAME:
+      fieldRef:
+        fieldPath: metadata.labels['app.kubernetes.io/instance']
+
   ingress:
     domainName: "nickflix.io"
     enabled: true
@@ -10,28 +14,16 @@ arr:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.middlewares: ingress-authentik-outpost@kubernetescrd
       traefik.ingress.kubernetes.io/router.priority: "10"
+
     hosts:
       - hostTpl: '{{ .Values.ingress.domainName }}'
         paths:
-          - pathTpl: '{{ printf "/%s" .Values.fullnameOverride }}'
+          - pathTpl: '{{ printf "/%s" (replace .Values.fullnameOverride "-" "/") }}'
             pathType: Prefix
     tls:
       - hostsTpl: ['{{ .Values.ingress.domainName }}']
         secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
-    additionalIngresses:
-      - enabled: true
-        nameSuffix: "api"
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/router.priority: "15"
-        hosts:
-          - hostTpl: '{{ .Values.ingress.domainName }}'
-            paths:
-              - pathTpl: '{{ printf "/%s/api" .Values.fullnameOverride }}'
-                pathType: Prefix
-        tls:
-          - hostsTpl: ['{{ .Values.ingress.domainName }}']
-            secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
+
   persistence:
     config:
       enabled: true
@@ -40,25 +32,16 @@ arr:
       size: 10Gi
       accessMode: ReadWriteOnce
       skipuninstall: true
-
-  additionalVolumeMounts:
-    - name: media
-      mountPath: /mnt/media
-    - name: emptydir
+    emptydir:
+      enabled: true
+      emptyDir:
+        enabled: true
       mountPath: /mnt/media/torrents/incomplete
-
-  additionalVolumes:
-    - name: media
-      nfs:
-        server: 10.0.10.211
-        path: /mnt/media
-    - name: emptydir
-      emptyDir: {}
 
   podSecurityContext:
     runAsUser: 1000
-    runAsGroup: 1000
-    fsGroup: 1000
+    runAsGroup: 500
+
   probes:
     liveness:
       spec:
@@ -67,5 +50,5 @@ arr:
             - /usr/bin/env
             - bash
             - -c
-            - curl --fail localhost:${APP_PORT}/${APP_NAME}/api/v3/system/status?apiKey=`IFS=\> && while
+            - curl --fail localhost:${APP_PORT}/${APP_NAME/-//}/api/v3/system/status?apiKey=`IFS=\> && while
               read -d \< E C; do if [[ $E = "ApiKey" ]]; then echo $C; fi; done < /config/config.xml`

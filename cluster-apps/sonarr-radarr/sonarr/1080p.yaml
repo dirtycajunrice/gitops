@@ -1,5 +1,12 @@
 arr:
   fullnameOverride: sonarr-1080p
 
-  env:
-    APP_NAME: "sonarr-1080p"
+  additionalVolumeMounts:
+    - name: media
+      mountPath: /mnt/media/tv
+
+  additionalVolumes:
+    - name: media
+      nfs:
+        server: 10.0.10.211
+        path: /mnt/media/tv
