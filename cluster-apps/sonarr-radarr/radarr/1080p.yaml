@@ -1,18 +1,2 @@
 arr:
   fullnameOverride: radarr-1080p
-
-  additionalVolumeMounts:
-    - name: media
-      mountPath: /mnt/media/movies
-    - name: completed
-      mountPath: /mnt/media/torrents/completed/radarr
-
-  additionalVolumes:
-    - name: media
-      nfs:
-        server: 10.0.10.211
-        path: /mnt/media/movies
-    - name: completed
-      nfs:
-        server: 10.0.10.211
-        path: /mnt/media/torrents/completed/radarr

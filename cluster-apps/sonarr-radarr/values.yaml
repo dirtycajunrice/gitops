@@ -42,6 +42,18 @@ arr:
     runAsUser: 568
     runAsGroup: 500
 
+  additionalVolumeMounts:
+    - name: media
+      mountPath: /mnt/media
+    - name: completed
+      mountPath: /mnt/media
+
+  additionalVolumes:
+    - name: media
+      nfs:
+        server: 10.0.10.211
+        path: /mnt/media
+
   probes:
     liveness:
       spec:

@@ -1,18 +1,2 @@
 arr:
   fullnameOverride: sonarr-1080p
-
-  additionalVolumeMounts:
-    - name: media
-      mountPath: /mnt/media/tv
-    - name: completed
-      mountPath: /mnt/media/torrents/completed/sonarr
-
-  additionalVolumes:
-    - name: media
-      nfs:
-        server: 10.0.10.211
-        path: /mnt/media/tv
-    - name: completed
-      nfs:
-        server: 10.0.10.211
-        path: /mnt/media/torrents/completed/sonarr

@@ -1,18 +1,4 @@
 arr:
   fullnameOverride: radarr-4k
 
-  additionalVolumeMounts:
-    - name: media
-      mountPath: /mnt/media/movies4k
-    - name: completed
-      mountPath: /mnt/media/torrents/completed/radarr4k
 
-  additionalVolumes:
-    - name: media
-      nfs:
-        server: 10.0.10.211
-        path: /mnt/media/movies4k
-    - name: completed
-      nfs:
-        server: 10.0.10.211
-        path: /mnt/media/torrents/completed/radarr4k
