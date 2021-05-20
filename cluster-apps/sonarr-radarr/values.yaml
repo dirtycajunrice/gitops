@@ -45,8 +45,6 @@ arr:
   additionalVolumeMounts:
     - name: media
       mountPath: /mnt/media
-    - name: completed
-      mountPath: /mnt/media
 
   additionalVolumes:
     - name: media
