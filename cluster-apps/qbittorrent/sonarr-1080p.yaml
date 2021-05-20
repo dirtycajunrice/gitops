@@ -4,6 +4,8 @@ qbittorrent:
     # category: imported | save_path: /mnt/media/torrents/completed/sonarr/
     QBT_BitTorrent__Session__Categories: '@Variant(\0\0\0\b\0\0\0\x2\0\0\0\f\0s\0o\0n\0\x61\0r\0r\0\0\0\n\0\0\0J\0/\0m\0n\0t\0/\0m\0\x65\0\x64\0i\0\x61\0/\0t\0o\0r\0r\0\x65\0n\0t\0s\0/\0\x63\0o\0m\0p\0l\0\x65\0t\0\x65\0\x64\0/\0s\0o\0n\0\x61\0r\0r\0/\0\0\0\x10\0i\0m\0p\0o\0r\0t\0\x65\0\x64\0\0\0\n\0\0\0J\0/\0m\0n\0t\0/\0m\0\x65\0\x64\0i\0\x61\0/\0t\0o\0r\0r\0\x65\0n\0t\0s\0/\0\x63\0o\0m\0p\0l\0\x65\0t\0\x65\0\x64\0/\0s\0o\0n\0\x61\0r\0r\0/)'
     QBT_Preferences__Connection__PortRangeMin: '50213'
+    QBT_Session__GlobalMaxSeedingMinutes: '43800' # one month in minutes
+    QBT_Bittorrent__MaxRatioAction: '3' # Remove torrent and files
 
   service:
     additionalServices:
