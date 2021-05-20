@@ -1,5 +1,6 @@
 arr:
-  fullnameOverride: readarr
+  fullnameOverride: readarr-ebooks
+
   env:
     APP_PORT: "8787"
 

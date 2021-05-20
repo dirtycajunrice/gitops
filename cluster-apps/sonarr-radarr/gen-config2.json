@@ -28,7 +28,7 @@
     "valueFile": "4k.yaml"
   },
   {
-    "name": "readarr",
+    "name": "readarr-ebooks",
     "cluster": "home",
     "namespace": "cajun-pro",
     "path": "cluster-apps/sonarr-radarr/readarr",
