@@ -1,4 +1,7 @@
 qbittorrent:
+  env:
+    QBT_Preferences__Connection__PortRangeMin: '50222'
+
   service:
     additionalServices:
       - enabled: true
