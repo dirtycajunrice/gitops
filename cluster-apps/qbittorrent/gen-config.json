@@ -70,10 +70,10 @@
     "valueFile": "radarr-1080p-6.yaml"
   },
   {
-    "name": "qbittorrent-readarr-1",
+    "name": "qbittorrent-readarr-ebooks-1",
     "cluster": "home",
     "namespace": "cajun-pro",
     "path": "cluster-apps/qbittorrent",
-    "valueFile": "readarr-1.yaml"
+    "valueFile": "readarr-ebooks-1.yaml"
   }
 ]
