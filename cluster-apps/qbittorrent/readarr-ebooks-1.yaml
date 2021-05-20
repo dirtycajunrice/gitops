@@ -20,16 +20,9 @@ qbittorrent:
           targetPort: 50223
 
   ingress:
-    annotations:
-      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-quadruple-strip-prefix@kubernetescrd
-    hosts:
-      - hostTpl: '{{ .Values.ingress.domainName }}'
-        paths:
-          - pathTpl: '{{ printf "/torrents/readarr/ebooks/1" }}'
-            pathType: Prefix
-    tls:
-      - hostsTpl: ['{{ .Values.ingress.domainName }}']
-        secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
+    app: readarr
+    quality: ebooks
+    iteration: 1
 
   hostPathMounts:
     config:
