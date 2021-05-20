@@ -86,6 +86,14 @@
         "^ghcr.io/k8s-at-home/qbittorrent"
       ],
       "versioning": "loose"
+    },
+    // Docker containers that need digest updates because... you know... shit
+    {
+      "matchDatasources": ["docker"],
+      "matchPackagePatterns": [
+        "phasecorex/red-discordbot",
+      ],
+      "versioning": "loose"
     }
   ]
 }
