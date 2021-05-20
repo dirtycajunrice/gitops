@@ -1,4 +1,5 @@
 qbittorrent:
+  fullnameOverride: readarr
   env:
     # category: readarr | save_path: /mnt/media/torrents/completed/readarr/
     # category: imported | save_path: /mnt/media/torrents/completed/readarr/
