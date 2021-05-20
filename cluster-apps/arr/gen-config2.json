@@ -3,35 +3,35 @@
     "name": "sonarr-1080p",
     "cluster": "home",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/sonarr-radarr/sonarr",
+    "path": "cluster-apps/arr/sonarr",
     "valueFile": "1080p.yaml"
   },
   {
     "name": "sonarr-4k",
     "cluster": "home",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/sonarr-radarr/sonarr",
+    "path": "cluster-apps/arr/sonarr",
     "valueFile": "4k.yaml"
   },
   {
     "name": "radarr-1080p",
     "cluster": "home",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/sonarr-radarr/radarr",
+    "path": "cluster-apps/arr/radarr",
     "valueFile": "1080p.yaml"
   },
   {
     "name": "radarr-4k",
     "cluster": "home",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/sonarr-radarr/radarr",
+    "path": "cluster-apps/arr/radarr",
     "valueFile": "4k.yaml"
   },
   {
     "name": "readarr-ebooks",
     "cluster": "home",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/sonarr-radarr/readarr",
+    "path": "cluster-apps/arr/readarr",
     "valueFile": ""
   }
 ]

@@ -37,9 +37,9 @@ qbittorrent:
     QBT_Preferences__Connection__alt_speeds_on: 'false'
 
     QBT_Preferences__Downloads__DiskWriteCacheSize: '256'
-    QBT_Preferences__Downloads__SavePath: /mnt/media/torrents/completed/sonarr/
+    QBT_Preferences__Downloads__SavePath: /mnt/media/torrents/completed/radarr/
     QBT_Preferences__Downloads__SaveResumeDataInterval: '15'
-    QBT_Preferences__Downloads__TempPath: /mnt/media/torrents/incomplete/sonarr/
+    QBT_Preferences__Downloads__TempPath: /mnt/media/torrents/incomplete/radarr/
     QBT_Preferences__Downloads__TempPathEnabled: 'true'
     QBT_Preferences__Downloads__UseIncompleteExtension: 'true'
 

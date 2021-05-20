@@ -6,6 +6,8 @@ qbittorrent:
     QBT_Preferences__Connection__PortRangeMin: '50213'
     QBT_Session__GlobalMaxSeedingMinutes: '43800' # one month in minutes
     QBT_Bittorrent__MaxRatioAction: '3' # Remove torrent and files
+    QBT_Preferences__Downloads__SavePath: /mnt/media/torrents/completed/sonarr/
+    QBT_Preferences__Downloads__TempPath: /mnt/media/torrents/incomplete/sonarr/
 
   service:
     additionalServices:
