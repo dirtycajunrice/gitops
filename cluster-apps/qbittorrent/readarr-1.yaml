@@ -25,7 +25,7 @@ qbittorrent:
     hosts:
       - hostTpl: '{{ .Values.ingress.domainName }}'
         paths:
-          - pathTpl: '{{ printf "/torrents/readarr/1" }}'
+          - pathTpl: '{{ printf "/torrents/readarr/ebooks/1" }}'
             pathType: Prefix
     tls:
       - hostsTpl: ['{{ .Values.ingress.domainName }}']
