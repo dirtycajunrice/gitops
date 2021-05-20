@@ -43,7 +43,7 @@ plex:
       enabled: true
       nameSuffix: "-"
       storageClass: cstor-replica-pool
-      size: 50Gi
+      size: 100Gi
       accessMode: ReadWriteOnce
       skipuninstall: true
     transcode:
