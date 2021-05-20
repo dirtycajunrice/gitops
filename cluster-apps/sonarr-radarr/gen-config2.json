@@ -26,5 +26,12 @@
     "namespace": "cajun-pro",
     "path": "cluster-apps/sonarr-radarr/radarr",
     "valueFile": "4k.yaml"
+  },
+  {
+    "name": "readarr",
+    "cluster": "home",
+    "namespace": "cajun-pro",
+    "path": "cluster-apps/sonarr-radarr/readarr",
+    "valueFile": ""
   }
 ]
