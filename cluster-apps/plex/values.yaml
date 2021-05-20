@@ -51,8 +51,8 @@ plex:
       emptyDir:
         enabled: true
   podSecurityContext:
-    runAsUser: 1000
-    runAsGroup: 1000
+    runAsUser: 568
+    runAsGroup: 500
   probes:
     liveness:
       enabled: false
