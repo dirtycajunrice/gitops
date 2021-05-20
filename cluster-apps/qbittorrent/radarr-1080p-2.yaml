@@ -1,6 +1,5 @@
 qbittorrent:
   env:
-    QBT_BitTorrent__Session__Categories: ''
     QBT_Preferences__Connection__PortRangeMin: '50218'
 
   service:
