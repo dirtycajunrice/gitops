@@ -38,4 +38,3 @@ mesh:
 
   metrics:
     deploy: false
-    grafana
