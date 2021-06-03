@@ -1,3 +1,7 @@
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
 argo-cd:
   fullnameOverride: argocd
   installCRDs: false
@@ -161,7 +165,3 @@ argo-cd:
     env:
       - name: "ARGOCD_EXEC_TIMEOUT"
         value: "5m"
-
-  podDisruptionBudget:
-    enabled: true
-    minAvailable: 1
