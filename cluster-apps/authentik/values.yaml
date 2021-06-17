@@ -43,7 +43,7 @@ authentik:
     error_reporting:
       enabled: true
     postgresql:
-      host: postgres-authentik
+      host: pg-authentik
       name: authentik
     redis:
       host: $(REDIS_AUTHENTIK_SERVICE_HOST)
@@ -56,15 +56,11 @@ authentik:
     AUTHENTIK_POSTGRESQL__USER:
       secretKeyRef:
         key: username
-        name: postgres-authentik-auth
+        name: pg-authentik-auth
     AUTHENTIK_POSTGRESQL__PASSWORD:
       secretKeyRef:
         key: password
-        name: postgres-authentik-auth
-    # PGPASSWORD:
-    #   secretKeyRef:
-    #     key: password
-    #     name: postgres-authentik-auth
+        name: pg-authentik-auth
 
   ingress:
     enabled: true
