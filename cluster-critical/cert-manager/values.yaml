@@ -1,3 +1,10 @@
+addons:
+  spc:
+    enabled: true
+    defaultObjectPath: k8s/external/aws
+    objects:
+      - name: credentials
+
 cert-manager:
   fullnameOverride: cert-manager
   prometheus:
@@ -6,11 +13,12 @@ cert-manager:
   installCRDs: true
   volumes:
     - name: aws-credentials
-      secret:
-        defaultMode: 420
-        secretName: aws-creds
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: cert-manager
   volumeMounts:
     - mountPath: /.aws
       name: aws-credentials
       readOnly: true
-
