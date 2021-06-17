@@ -1,0 +1,11 @@
+global:
+  cluster: do
+
+cert-manager:
+  volumes:
+    - name: aws-credentials
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: cert-manager-do
