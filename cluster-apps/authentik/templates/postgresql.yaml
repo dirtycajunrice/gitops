@@ -3,7 +3,7 @@ kind: Postgres
 metadata:
   name: postgres-authentik
 spec:
-  version: "13.2"
+  version: 13.2-debian
   storageType: Durable
   storage:
     accessModes:
