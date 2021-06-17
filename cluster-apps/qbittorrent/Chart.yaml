@@ -3,5 +3,5 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: qbittorrent
-    version: 10.1.0
+    version: 11.2.0
     repository: https://k8s-at-home.com/charts/
