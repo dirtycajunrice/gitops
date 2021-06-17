@@ -5,3 +5,6 @@ dependencies:
   - name: cert-manager
     version: v1.3.1
     repository: https://charts.jetstack.io
+  - name: addons
+    version: 1.0.0
+    repository: file://../../addons
