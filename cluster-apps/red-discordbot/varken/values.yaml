@@ -25,6 +25,10 @@ env:
       key: varken-bot-token
       name: red-discordbot-varken
 
+service:
+  main:
+    enabled: false
+
 persistence:
   data:
     enabled: true
