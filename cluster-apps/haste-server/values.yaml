@@ -35,10 +35,10 @@ haste-server:
         traefik.ingress.kubernetes.io/router.priority: "10"
         cert-manager.io/cluster-issuer: le-production
       hosts:
-        - hostTpl: '{{ .Values.global.domainName }}'
+        - host: '{{ .Values.global.domainName }}'
           paths:
             - path: /
               pathType: Prefix
       tls:
-        - hostsTpl: ['{{ .Values.global.domainName }}']
-          secretNameTpl: '{{ .Values.global.domainName | replace "." "-" }}'
+        - hosts: ['{{ .Values.global.domainName }}']
+          secretName: '{{ .Values.global.domainName | replace "." "-" }}'
