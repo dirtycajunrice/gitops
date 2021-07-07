@@ -48,6 +48,7 @@ arr:
         enabled: true
       mountPath: /mnt/media/torrents/incomplete
       accessMode: ReadWriteMany
+      size: 1Gi
 
   podSecurityContext:
     runAsUser: 568
