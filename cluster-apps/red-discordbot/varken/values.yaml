@@ -16,17 +16,14 @@ image:
 
 replicas: 1
 
-envValueFrom:
-  TOKEN:
-    secretKeyRef:
-      key: varken-bot-token
-      name: red-discordbot-varken
-
 env:
   PREFIX: "!"
   PUID: "1000"
   PGID: "1000"
-
+  TOKEN:
+    secretKeyRef:
+      key: varken-bot-token
+      name: red-discordbot-varken
 service:
   enabled: false
 
