@@ -1,3 +1,9 @@
+global:
+  domainName: nickflix.io
+  app: radarr
+  quality: 1080p
+  iteration: ''
+
 qbittorrent:
   image:
     repository: ghcr.io/k8s-at-home/qbittorrent
@@ -74,24 +80,21 @@ qbittorrent:
       port: 8080
 
   ingress:
-    enabled: true
-    domainName: nickflix.io
-    app: radarr
-    quality: 1080p
-    iteration: ''
-    annotations:
-      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-quadruple-strip-prefix@kubernetescrd
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.priority: "10"
-      external-dns.alpha.kubernetes.io/hostname: ""
-    hosts:
-      - hostTpl: '{{ .Values.ingress.domainName }}'
-        paths:
-          - pathTpl: '{{ printf "/torrents/%s/%s/%v" .Values.ingress.app .Values.ingress.quality .Values.ingress.iteration }}'
-            pathType: Prefix
-    tls:
-      - hostsTpl: ['{{ .Values.ingress.domainName }}']
-        secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
+    main:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-quadruple-strip-prefix@kubernetescrd
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        external-dns.alpha.kubernetes.io/hostname: ""
+      hosts:
+        - host: '{{ .Values.global.domainName }}'
+          paths:
+            - path: '{{ printf "/torrents/%s/%s/%v" .Values.global.app .Values.global.quality .Values.global.iteration }}'
+              pathType: Prefix
+      tls:
+        - hosts: ['{{ .Values.global.domainName }}']
+          secretName: '{{ .Values.global.domainName | replace "." "-" }}'
   tolerations:
     - key: role
       value: storage

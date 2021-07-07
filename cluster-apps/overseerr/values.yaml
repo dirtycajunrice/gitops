@@ -1,3 +1,7 @@
+global:
+  domainPrimary: request.cajun.pro
+  domainSecondary: overseerr.nickflix.io
+
 overseerr:
   fullnameOverride: overseerr
   image:
@@ -8,36 +12,34 @@ overseerr:
     TZ: America/Chicago
     LOG_LEVEL: debug
   ingress:
-    enabled: true
-    domainPrimary: request.cajun.pro
-    domainSecondary: overseerr.nickflix.io
-    annotations:
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.priority: "10"
-      cert-manager.io/cluster-issuer: le-production
-    hosts:
-      - hostTpl: '{{ .Values.ingress.domainPrimary }}'
-        paths:
-          - path: /
-            pathType: Prefix
-    tls:
-      - hostsTpl: ['{{ .Values.ingress.domainPrimary }}']
-        secretNameTpl: '{{ .Values.ingress.domainPrimary | replace "." "-" }}'
-    additionalIngresses:
-      - enabled: true
-        nameSuffix: "test"
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/router.priority: "10"
-          cert-manager.io/cluster-issuer: le-production
-        hosts:
-          - hostTpl: '{{ .Values.ingress.domainSecondary }}'
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hostsTpl: ['{{ .Values.ingress.domainSecondary }}']
-            secretNameTpl: '{{ .Values.ingress.domainSecondary | replace "." "-" }}'
+    main:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        cert-manager.io/cluster-issuer: le-production
+      hosts:
+        - host: '{{ .Values.global.domainPrimary }}'
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts: ['{{ .Values.global.domainPrimary }}']
+          secretName: '{{ .Values.global.domainPrimary | replace "." "-" }}'
+    test:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        cert-manager.io/cluster-issuer: le-production
+      hosts:
+        - host: '{{ .Values.global.domainSecondary }}'
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts: ['{{ .Values.global.domainSecondary }}']
+          secretName: '{{ .Values.global.domainSecondary | replace "." "-" }}'
   persistence:
     config:
       enabled: true

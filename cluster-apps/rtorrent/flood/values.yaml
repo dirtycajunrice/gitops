@@ -1,3 +1,6 @@
+global:
+  domainName: nickflix.io
+
 flood:
   image:
     repository: jesec/flood
@@ -8,20 +11,20 @@ flood:
     FLOOD_OPTION_auth: none
 
   ingress:
-    enabled: true
-    domainName: "nickflix.io"
-    annotations:
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.priority: "10"
-      traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-0@kubernetescrd,cajun-pro-redirectregex@kubernetescrd
-    hosts:
-      - hostTpl: '{{ .Values.ingress.domainName }}'
-        paths:
-          - pathTpl: '{{ printf "/flood/%s" .Values.ingress.iteration }}'
-            pathType: Prefix
-    tls:
-      - hostsTpl: ['{{ .Values.ingress.domainName }}']
-        secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
+    main:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-organizr-auth-0@kubernetescrd,cajun-pro-redirectregex@kubernetescrd
+      hosts:
+        - host: '{{ .Values.global.domainName }}'
+          paths:
+            - path: '{{ printf "/flood/%s" .Values.global.iteration }}'
+              pathType: Prefix
+      tls:
+        - hosts: ['{{ .Values.global.domainName }}']
+          secretName: '{{ .Values.global.domainName | replace "." "-" }}'
 
   persistence:
     data:

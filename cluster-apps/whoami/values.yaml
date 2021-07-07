@@ -1,3 +1,6 @@
+global:
+  domainName: cajun.pro
+
 image:
   repository: containous/whoami
   tag: v1.5.0
@@ -12,12 +15,11 @@ ingress:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.priority: "10"
     cert-manager.io/cluster-issuer: le-production
-  domainName: cajun.pro
   hosts:
-    - hostTpl: '{{ printf "whoami-%s.%s" .Values.ingress.cluster .Values.ingress.domainName }}'
+    - host: '{{ printf "whoami-%s.%s" .Values.global.cluster .Values.global.domainName }}'
       paths:
         - path: /
           pathType: Prefix
   tls:
-    - hostsTpl: ['{{ printf "whoami-%s.%s" .Values.ingress.cluster .Values.ingress.domainName }}']
-      secretNameTpl: '{{ printf "whoami-%s.%s" .Values.ingress.cluster .Values.ingress.domainName | replace "." "-" }}'
+    - hosts: ['{{ printf "whoami-%s.%s" .Values.global.cluster .Values.global.domainName }}']
+      secretName: '{{ printf "whoami-%s.%s" .Values.global.cluster .Values.global.domainName | replace "." "-" }}'

@@ -1,20 +1,23 @@
+global:
+  domainName: "irc.cajun.pro"
+
 thelounge:
   fullnameOverride: thelounge
   ingress:
-    enabled: true
-    domainName: "irc.cajun.pro"
-    annotations:
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.priority: "10"
-      cert-manager.io/cluster-issuer: le-production
-    hosts:
-      - hostTpl: '{{ .Values.ingress.domainName }}'
-        paths:
-            - path: /
-              pathType: Prefix
-    tls:
-      - hostsTpl: ['{{ .Values.ingress.domainName }}']
-        secretNameTpl: '{{ .Values.ingress.domainName | replace "." "-" }}'
+    main:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        cert-manager.io/cluster-issuer: le-production
+      hosts:
+        - host: '{{ .Values.global.domainName }}'
+          paths:
+              - path: /
+                pathType: Prefix
+      tls:
+        - hosts: ['{{ .Values.global.domainName }}']
+          secretName: '{{ .Values.global.domainName | replace "." "-" }}'
   persistence:
     config:
       enabled: true
