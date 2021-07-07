@@ -1,6 +1,8 @@
-plex:
-  controllerType: deployment
+global:
   fullnameOverride: plex
+  domainName: "cajun.pro"
+
+plex:
   image:
     repository: ghcr.io/k8s-at-home/plex
     tag: v1.23.3.4707-ebb5fe9f3
@@ -41,15 +43,60 @@ plex:
   persistence:
     config:
       enabled: true
-      nameSuffix: "-"
+      nameOverride: "-"
       storageClass: cstor-replica-pool
       size: 100Gi
       accessMode: ReadWriteOnce
       skipuninstall: true
     transcode:
       enabled: true
-      emptyDir:
-        enabled: true
+      type: emptyDir
+      mountPoint: /transcode
+    tv:
+      enabled: true
+      type: custom
+      mountPath: /mnt/media/tv
+      readOnly: true
+      volumeSpec:
+        nfs:
+          server: 10.0.10.211
+          path: /mnt/media/tv
+    tv4k:
+      enabled: true
+      type: custom
+      mountPath: /mnt/media/tv4k
+      readOnly: true
+      volumeSpec:
+        nfs:
+          server: 10.0.10.211
+          path: /mnt/media/tv4k
+    movies:
+      enabled: true
+      type: custom
+      mountPath: /mnt/media/movies
+      readOnly: true
+      volumeSpec:
+        nfs:
+          server: 10.0.10.211
+          path: /mnt/media/movies
+    movies4k:
+      enabled: true
+      type: custom
+      mountPath: /mnt/media/movies4k
+      readOnly: true
+      volumeSpec:
+        nfs:
+          server: 10.0.10.211
+          path: /mnt/media/movies4k
+    audiobooks:
+      enabled: true
+      type: custom
+      mountPath: /mnt/media/audiobooks
+      readOnly: true
+      volumeSpec:
+        nfs:
+          server: 10.0.10.211
+          path: /mnt/media/audiobooks
   podSecurityContext:
     runAsUser: 568
     runAsGroup: 500
@@ -72,55 +119,17 @@ plex:
       memory: "8Gi"
       cpu: "4"
       nvidia.com/gpu: "1"
-  additionalVolumes:
-    - name: tv
-      nfs:
-        server: 10.0.10.211
-        path: /mnt/media/tv
-    - name: tv4k
-      nfs:
-        server: 10.0.10.211
-        path: /mnt/media/tv4k
-    - name: movies
-      nfs:
-        server: 10.0.10.211
-        path: /mnt/media/movies
-    - name: movies4k
-      nfs:
-        server: 10.0.10.211
-        path: /mnt/media/movies4k
-    - name: audiobooks
-      nfs:
-        server: 10.0.10.211
-        path: /mnt/media/audiobooks
-  additionalVolumeMounts:
-    - mountPath: /mnt/media/tv
-      name: tv
-      readOnly: true
-    - mountPath: /mnt/media/tv4k
-      name: tv4k
-      readOnly: true
-    - mountPath: /mnt/media/movies
-      name: movies
-      readOnly: true
-    - mountPath: /mnt/media/movies4k
-      name: movies4k
-      readOnly: true
-    - mountPath: /mnt/media/audiobooks
-      name: audiobooks
-      readOnly: true
   ingress:
     enabled: true
-    domainName: "cajun.pro"
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.priority: "10"
       cert-manager.io/cluster-issuer: le-production
     hosts:
-      - hostTpl: '{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}'
+      - host: '{{ .Values.global.fullnameOverride }}.{{ .Values.global.domainName }}'
         paths:
           - path: /
             pathType: Prefix
     tls:
-      - hostsTpl: ['{{ include "common.names.fullname" . }}.{{ .Values.ingress.domainName }}']
-        secretNameTpl: '{{ include "common.names.fullname" . }}-{{ .Values.ingress.domainName | replace "." "-" }}'
+      - hosts: ['{{ .Values.global.fullnameOverride }}.{{ .Values.global.domainName }}']
+        secretName: '{{ .Values.global.fullnameOverride }}-{{ .Values.global.domainName | replace "." "-" }}'
