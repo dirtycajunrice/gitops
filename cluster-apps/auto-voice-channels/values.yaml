@@ -28,20 +28,18 @@ persistence:
     accessMode: ReadWriteOnce
     mountPath: /app/guilds
     skipuninstall: true
-
-additionalVolumeMounts:
-  - name: config
+  config:
+    enabled: true
+    type: custom
     mountPath: /app/config.json
     subPath: config.json
     readOnly: true
-
-additionalVolumes:
-  - name: config
-    csi:
-      driver: secrets-store.csi.k8s.io
-      readOnly: true
-      volumeAttributes:
-        secretProviderClass: auto-voice-channels
+    volumeSpec:
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: auto-voice-channels
 
 probes:
   liveness:
