@@ -1,5 +1,6 @@
 global:
   cluster: do
+  fullnameOverride: bookstack
 
 addons:
   spc:
@@ -38,24 +39,14 @@ addons:
             objectName: mysql-config
 
 bookstack:
-  fullnameOverride: bookstack
-
   image:
     repository: ghcr.io/linuxserver/bookstack
     tag: version-v21.04.3
 
   replicas: 3
+
   envFrom:
     - secretRef:
-        name: bookstack
-  envValueFrom:
-    DB_USERNAME:
-      secretKeyRef:
-        key: username
-        name: bookstack
-    DB_PASSWORD:
-      secretKeyRef:
-        key: password
         name: bookstack
   env:
     APP_URL: https://wiki.cajun.pro
@@ -91,34 +82,30 @@ bookstack:
     FACEBOOK_AUTO_CONFIRM_EMAIL: "true"
     DISCORD_AUTO_REGISTER: "true"
     DISCORD_AUTO_CONFIRM_EMAIL: "true"
+    DB_PASSWORD:
+      secretKeyRef:
+        key: password
+        name: bookstack
+    DB_USERNAME:
+      secretKeyRef:
+        key: username
+        name: bookstack
 
   ingress:
-    enabled: true
-    annotations:
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.priority: "10"
-      cert-manager.io/cluster-issuer: le-production
-    hosts:
-      - host: wiki.cajun.pro
-        paths:
-          - path: /
-            pathType: Prefix
-    tls:
-      - hosts: [wiki.cajun.pro]
-        secretName: wiki-cajun-pro
-
-  additionalVolumeMounts:
-    - name: secrets
-      mountPath: /mnt/secrets
-      readOnly: true
-
-  additionalVolumes:
-    - name: secrets
-      csi:
-        driver: secrets-store.csi.k8s.io
-        readOnly: true
-        volumeAttributes:
-          secretProviderClass: bookstack
+    main:
+      enabled: true
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.priority: "10"
+        cert-manager.io/cluster-issuer: le-production
+      hosts:
+        - host: wiki.cajun.pro
+          paths:
+            - path: /
+              pathType: Prefix
+      tls:
+        - hosts: [wiki.cajun.pro]
+          secretName: wiki-cajun-pro
 
   affinity:
     podAntiAffinity:
@@ -136,7 +123,17 @@ bookstack:
   persistence:
     env:
       enabled: true
-      emptyDir:
-        enabled: true
+      type: emptyDir
       mountPath: /config/www/.env
       subPath: .env
+  secrets:
+    enabled: true
+    type: custom
+    mountPath: /mnt/secrets
+    readOnly: true
+    volumeSpec:
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: bookstack
