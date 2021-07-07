@@ -1,6 +1,7 @@
-arr:
+global:
   fullnameOverride: readarr-ebooks
 
+arr:
   env:
     APP_PORT: "8787"
 
