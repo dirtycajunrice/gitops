@@ -1,7 +1,6 @@
-fullnameOverride: red-varken
-
 global:
   cluster: do
+  fullnameOverride: red-varken
 
 addons:
   spc:
@@ -31,19 +30,6 @@ env:
 service:
   enabled: false
 
-additionalVolumeMounts:
-  - name: secrets
-    mountPath: /mnt/secrets
-    readOnly: true
-
-additionalVolumes:
-  - name: secrets
-    csi:
-      driver: secrets-store.csi.k8s.io
-      readOnly: true
-      volumeAttributes:
-        secretProviderClass: red-discordbot-varken
-
 persistence:
   data:
     enabled: true
@@ -53,6 +39,17 @@ persistence:
     size: 1Gi
     accessMode: ReadWriteOnce
     skipuninstall: true
+  secrets:
+    enabled: true
+    type: custom
+    mountPath: /mnt/secrets
+    readOnly: true
+    volumeSpec:
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: red-discordbot-varken
 
 probes:
   liveness:
