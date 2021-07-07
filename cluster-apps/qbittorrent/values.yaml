@@ -105,18 +105,21 @@ qbittorrent:
       type: hostPath
       mountPath: /config
       hostPath: /tmp/placeholder
+      hostPathType: DirectoryOrCreate
     incomplete:
       enabled: true
       type: hostPath
       setPermissions: false
       mountPath: /mnt/media/torrents/incomplete/radarr
       hostPath: /mnt/media/torrents/incomplete/radarr
+      hostPathType: DirectoryOrCreate
     completed:
       enabled: true
       type: hostPath
       setPermissions: false
       mountPath: /mnt/media/torrents/completed/radarr
       hostPath: /mnt/media/torrents/completed/radarr
+      hostPathType: DirectoryOrCreate
 
   podSecurityContext:
     # kah user
