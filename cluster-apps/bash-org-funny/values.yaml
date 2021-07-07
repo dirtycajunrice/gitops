@@ -1,3 +1,6 @@
+global:
+  domainName: bashfunny.cajun.pro
+
 image:
   repository: ghcr.io/dirtycajunrice/bash-org-funny
   pullPolicy: Always
@@ -17,16 +20,16 @@ service:
 ingress:
   main:
     enabled: true
-    domainName: "bashfunny.cajun.pro"
+    domainName: ""
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.priority: "10"
       cert-manager.io/cluster-issuer: le-production
     hosts:
-      - host: '{{ .Values.ingress.domainName }}'
+      - host: '{{ .Values.global.domainName }}'
         paths:
           - path: /
             pathType: Prefix
     tls:
-      - hosts: ['{{ .Values.ingress.domainName }}']
-        secretName: '{{ .Values.ingress.domainName | replace "." "-" }}'
+      - hosts: ['{{ .Values.global.domainName }}']
+        secretName: '{{ .Values.global.domainName | replace "." "-" }}'
