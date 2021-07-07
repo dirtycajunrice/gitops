@@ -1,4 +1,4 @@
-{{- if eq .Values.qbittorrent.hostPathMounts.config.hostPath "/mnt/qbittorrent/sonarr/1080p" -}}
+{{- if eq .Values.qbittorrent.persistence.config.hostPath "/mnt/qbittorrent/sonarr/1080p" -}}
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
