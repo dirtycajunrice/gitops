@@ -29,7 +29,7 @@ arr:
   persistence:
     config:
       enabled: true
-      nameSuffix: "-"
+      nameOverride: sonarr-1080p
       storageClass: cstor-replica-pool
       size: 10Gi
       accessMode: ReadWriteOnce
