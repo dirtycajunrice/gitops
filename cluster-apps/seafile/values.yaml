@@ -8,8 +8,9 @@ imagePullSecrets:
   - name: seafile-registry-creds
 
 service:
-  port:
-    port: 80
+  main:
+    ports:
+      port: 80
 
 command: [/usr/local/bin/entrypoint.sh]
 
