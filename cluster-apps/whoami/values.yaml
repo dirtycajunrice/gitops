@@ -6,20 +6,23 @@ image:
   tag: v1.5.0
 
 service:
-  port:
-    port: 80
+  main:
+    ports:
+      http:
+        port: 80
 
 ingress:
-  enabled: true
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.priority: "10"
-    cert-manager.io/cluster-issuer: le-production
-  hosts:
-    - host: '{{ printf "whoami-%s.%s" .Values.global.cluster .Values.global.domainName }}'
-      paths:
-        - path: /
-          pathType: Prefix
-  tls:
-    - hosts: ['{{ printf "whoami-%s.%s" .Values.global.cluster .Values.global.domainName }}']
-      secretName: '{{ printf "whoami-%s.%s" .Values.global.cluster .Values.global.domainName | replace "." "-" }}'
+  main:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - host: '{{ printf "whoami-%s.%s" .Values.global.cluster .Values.global.domainName }}'
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hosts: ['{{ printf "whoami-%s.%s" .Values.global.cluster .Values.global.domainName }}']
+        secretName: '{{ printf "whoami-%s.%s" .Values.global.cluster .Values.global.domainName | replace "." "-" }}'
