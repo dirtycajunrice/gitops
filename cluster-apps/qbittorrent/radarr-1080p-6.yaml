@@ -1,24 +1,24 @@
+global:
+  iteration: 6
+
 qbittorrent:
   env:
     QBT_Preferences__Connection__PortRangeMin: '50222'
 
   service:
-    additionalServices:
-      - enabled: true
-        nameSuffix: bt
-        type: LoadBalancer
-        externalTrafficPolicy: Local
-        externalIPs:
-          - 172.30.0.22
-        port:
+    bittorrent:
+      enabled: true
+      type: LoadBalancer
+      externalIPs:
+        - 172.30.0.22
+      ports:
+        bittorrent:
+          enabled: true
           port: 50222
           name: bittorrent
           protocol: TCP
           targetPort: 50222
 
-  ingress:
-    iteration: 6
-
-  hostPathMounts:
+  persistence:
     config:
       hostPath: /mnt/qbittorrent/radarr/1080p/6

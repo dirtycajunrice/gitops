@@ -1,5 +1,11 @@
-qbittorrent:
+global:
   fullnameOverride: qbittorrent-readarr-1
+  app: readarr
+  quality: ebooks
+  iteration: 1
+
+qbittorrent:
+
   env:
     # category: readarr | save_path: /mnt/media/torrents/completed/readarr/
     # category: imported | save_path: /mnt/media/torrents/completed/readarr/
@@ -9,25 +15,20 @@ qbittorrent:
     QBT_Preferences__Downloads__TempPath: /mnt/media/torrents/incomplete/readarr/
 
   service:
-    additionalServices:
-      - enabled: true
-        nameSuffix: bt
-        type: LoadBalancer
-        externalTrafficPolicy: Local
-        externalIPs:
-          - 172.30.0.23
-        port:
+    bittorrent:
+      enabled: true
+      type: LoadBalancer
+      externalIPs:
+        - 172.30.0.23
+      ports:
+        bittorrent:
+          enabled: true
           port: 50223
           name: bittorrent
           protocol: TCP
           targetPort: 50223
 
-  ingress:
-    app: readarr
-    quality: ebooks
-    iteration: 1
-
-  hostPathMounts:
+  persistence:
     config:
       hostPath: /mnt/qbittorrent/readarr
     incomplete:

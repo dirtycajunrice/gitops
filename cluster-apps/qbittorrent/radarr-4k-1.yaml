@@ -1,26 +1,26 @@
+global:
+  quality: 4k
+  iteration: 1
+
 qbittorrent:
   env:
     QBT_Preferences__Connection__PortRangeMin: '50215'
 
   service:
-    additionalServices:
-      - enabled: true
-        nameSuffix: bt
-        type: LoadBalancer
-        externalTrafficPolicy: Local
-        externalIPs:
-          - 172.30.0.15
-        port:
+    bittorrent:
+      enabled: true
+      type: LoadBalancer
+      externalIPs:
+        - 172.30.0.15
+      ports:
+        bittorrent:
+          enabled: true
           port: 50215
           name: bittorrent
           protocol: TCP
           targetPort: 50215
 
-  ingress:
-    quality: 4k
-    iteration: 1
-
-  hostPathMounts:
+  persistence:
     config:
       hostPath: /mnt/qbittorrent/radarr/4k/1
     incomplete:

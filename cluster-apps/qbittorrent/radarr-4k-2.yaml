@@ -1,26 +1,26 @@
+global:
+  quality: 4k
+  iteration: 2
+
 qbittorrent:
   env:
     QBT_Preferences__Connection__PortRangeMin: '50216'
 
   service:
-    additionalServices:
-      - enabled: true
-        nameSuffix: bt
-        type: LoadBalancer
-        externalTrafficPolicy: Local
-        externalIPs:
-          - 172.30.0.16
-        port:
+    bittorrent:
+      enabled: true
+      type: LoadBalancer
+      externalIPs:
+        - 172.30.0.16
+      ports:
+        bittorrent:
+          enabled: true
           port: 50216
           name: bittorrent
           protocol: TCP
           targetPort: 50216
 
-  ingress:
-    quality: 4k
-    iteration: 2
-
-  hostPathMounts:
+  persistence:
     config:
       hostPath: /mnt/qbittorrent/radarr/4k/2
     incomplete:

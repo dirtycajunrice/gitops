@@ -1,24 +1,24 @@
+global:
+  iteration: 3
+
 qbittorrent:
   env:
     QBT_Preferences__Connection__PortRangeMin: '50219'
 
   service:
-    additionalServices:
-      - enabled: true
-        nameSuffix: bt
-        type: LoadBalancer
-        externalTrafficPolicy: Local
-        externalIPs:
-          - 172.30.0.19
-        port:
+    bittorrent:
+      enabled: true
+      type: LoadBalancer
+      externalIPs:
+        - 172.30.0.19
+      ports:
+        bittorrent:
+          enabled: true
           port: 50219
           name: bittorrent
           protocol: TCP
           targetPort: 50219
 
-  ingress:
-    iteration: 3
-
-  hostPathMounts:
+  persistence:
     config:
       hostPath: /mnt/qbittorrent/radarr/1080p/3

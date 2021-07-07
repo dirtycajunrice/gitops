@@ -75,10 +75,6 @@ qbittorrent:
     QBT_Preferences__WebUI__UseUPnP: 'false'
     QBT_Preferences__WebUI__Username: nick
 
-  service:
-    port:
-      port: 8080
-
   ingress:
     main:
       enabled: true
@@ -103,7 +99,7 @@ qbittorrent:
   nodeSelector:
     node-role.kubernetes.io/storage: ""
 
-  hostPathMounts:
+  persistence:
     config:
       enabled: true
       mountPath: /config

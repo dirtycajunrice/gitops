@@ -1,3 +1,8 @@
+global:
+  app: sonarr
+  quality: 4k
+  iteration: 1
+
 qbittorrent:
   env:
     # category: sonarr | save_path: /mnt/media/torrents/completed/sonarr/
@@ -10,25 +15,20 @@ qbittorrent:
     QBT_Preferences__Downloads__TempPath: /mnt/media/torrents/incomplete/sonarr/
 
   service:
-    additionalServices:
-      - enabled: true
-        nameSuffix: bt
-        type: LoadBalancer
-        externalTrafficPolicy: Local
-        externalIPs:
-          - 172.30.0.14
-        port:
+    bittorrent:
+      enabled: true
+      type: LoadBalancer
+      externalIPs:
+        - 172.30.0.14
+      ports:
+        bittorrent:
+          enabled: true
           port: 50214
           name: bittorrent
           protocol: TCP
           targetPort: 50214
 
-  ingress:
-    app: sonarr
-    quality: 4k
-    iteration: 1
-
-  hostPathMounts:
+  persistence:
     config:
       hostPath: /mnt/qbittorrent/sonarr/4k
     incomplete:
