@@ -63,21 +63,20 @@ authentik:
         name: pg-authentik-auth
 
   ingress:
-    main:
-      enabled: true
-      ingressClassName: "traefik"
-      annotations:
-        traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        traefik.ingress.kubernetes.io/router.priority: "10"
-        cert-manager.io/cluster-issuer: le-production
-      hosts:
-        - host: auth.cajun.pro
-          paths:
-            - path: "/"
-              pathType: Prefix
-      tls:
-        - hosts: [auth.cajun.pro]
-          secretName: auth-cajun-pro
+    enabled: true
+    ingressClassName: "traefik"
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - host: auth.cajun.pro
+        paths:
+          - path: "/"
+            pathType: Prefix
+    tls:
+      - hosts: [auth.cajun.pro]
+        secretName: auth-cajun-pro
 
   volumeMounts:
     - name: secrets
