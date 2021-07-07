@@ -1,4 +1,5 @@
-fullnameOverride: seafile
+global:
+  fullnameOverride: seafile
 
 image:
   repository: docker.seadrive.org/seafileltd/seafile-pro-mc
