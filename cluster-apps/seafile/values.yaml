@@ -11,7 +11,8 @@ imagePullSecrets:
 service:
   main:
     ports:
-      port: 80
+      http:
+        port: 80
 
 command: [/usr/local/bin/entrypoint.sh]
 
