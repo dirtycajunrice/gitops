@@ -21,7 +21,7 @@ thelounge:
   persistence:
     config:
       enabled: true
-      nameSuffix: "-"
+      nameOverride: "-"
       storageClass: do-block-storage
       size: 10Gi
       accessMode: ReadWriteOnce

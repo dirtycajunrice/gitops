@@ -40,7 +40,7 @@ tautulli:
   persistence:
     config:
       enabled: true
-      nameSuffix: "-"
+      nameOverride: "-"
       storageClass: cstor-replica-pool
       size: 10Gi
       accessMode: ReadWriteOnce
