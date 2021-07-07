@@ -25,19 +25,20 @@ envValueFrom:
       name: mysql-seafile-auth
 
 ingress:
-  enabled: true
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.priority: "10"
-    cert-manager.io/cluster-issuer: le-production
-  hosts:
-    - host: files.cajun.pro
-      paths:
-        - path: /
-          pathType: Prefix
-  tls:
-    - hosts: [files.cajun.pro]
-      secretName: files-cajun-pro
+  main:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - host: files.cajun.pro
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hosts: [files.cajun.pro]
+        secretName: files-cajun-pro
 
 persistence:
   config:
