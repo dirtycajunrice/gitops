@@ -17,7 +17,8 @@ strategy:
   type: Recreate
 
 service:
-  enabled: false
+  main:
+    enabled: false
 
 persistence:
   data:
