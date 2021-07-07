@@ -1,7 +1,7 @@
 flood:
   image:
     repository: jesec/flood
-    tag: 4.6.0
+    tag: 4.6.1
 
   env:
     FLOOD_OPTION_rundir: /data
