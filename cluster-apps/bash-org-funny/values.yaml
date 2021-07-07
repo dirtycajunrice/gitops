@@ -15,17 +15,18 @@ service:
         port: 8080
 
 ingress:
-  enabled: true
-  domainName: "bashfunny.cajun.pro"
-  annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.priority: "10"
-    cert-manager.io/cluster-issuer: le-production
-  hosts:
-    - host: '{{ .Values.ingress.domainName }}'
-      paths:
-        - path: /
-          pathType: Prefix
-  tls:
-    - hosts: ['{{ .Values.ingress.domainName }}']
-      secretName: '{{ .Values.ingress.domainName | replace "." "-" }}'
+  main:
+    enabled: true
+    domainName: "bashfunny.cajun.pro"
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - host: '{{ .Values.ingress.domainName }}'
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hosts: ['{{ .Values.ingress.domainName }}']
+        secretName: '{{ .Values.ingress.domainName | replace "." "-" }}'
