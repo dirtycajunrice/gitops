@@ -1,15 +1,15 @@
-fullnameOverride: error-pages
+global:
+  fullnameOverride: error-pages
 
 image:
   repository: tarampampam/error-pages
   tag: 1.7.1
 
-strategy:
-  type: Recreate
-
 env:
   TEMPLATE_NAME: l7-dark
 
 service:
-  port:
-    port: 8080
+  main:
+    ports:
+      http:
+        port: 8080
