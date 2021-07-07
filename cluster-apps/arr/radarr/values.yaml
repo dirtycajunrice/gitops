@@ -8,3 +8,4 @@ arr:
   persistence:
     config:
       size: 20Gi
+      accessMode: ReadWriteOnce
