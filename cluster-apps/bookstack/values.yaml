@@ -126,14 +126,14 @@ bookstack:
       type: emptyDir
       mountPath: /config/www/.env
       subPath: .env
-  secrets:
-    enabled: true
-    type: custom
-    mountPath: /mnt/secrets
-    readOnly: true
-    volumeSpec:
-      csi:
-        driver: secrets-store.csi.k8s.io
-        readOnly: true
-        volumeAttributes:
-          secretProviderClass: bookstack
+    secrets:
+      enabled: true
+      type: custom
+      mountPath: /mnt/secrets
+      readOnly: true
+      volumeSpec:
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: bookstack
