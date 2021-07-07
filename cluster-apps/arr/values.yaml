@@ -44,11 +44,12 @@ arr:
           path: /mnt/media
     emptydir:
       enabled: true
+      type: emptyDir
       emptyDir:
         enabled: true
       mountPath: /mnt/media/torrents/incomplete
-      accessMode: ReadWriteMany
-      size: 1Gi
+      # accessMode: ReadWriteMany
+      # size: 1Gi
 
   podSecurityContext:
     runAsUser: 568
