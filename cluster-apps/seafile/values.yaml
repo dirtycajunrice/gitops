@@ -64,7 +64,6 @@ persistence:
     type: custom
     mountPath: /usr/local/bin/entrypoint.sh
     subPath: entrypoint.sh
-    readOnly: true
     volumeSpec:
       configMap:
         name: seafile-config
