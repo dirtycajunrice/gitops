@@ -20,8 +20,6 @@ env:
   SEAFILE_ADMIN_EMAIL: nick@cajun.pro
   SEAFILE_SERVER_HOSTNAME: files.cajun.pro
   DB_HOST: mysql-seafile
-
-envValueFrom:
   DB_ROOT_PASSWD:
     secretKeyRef:
       key: password
@@ -52,24 +50,25 @@ persistence:
     size: 5Gi
     accessMode: ReadWriteOnce
     skipuninstall: true
-
-additionalVolumeMounts:
-  - name: data
+  data:
+    enabled: true
+    type: custom
     mountPath: /shared
     subPath: seafile-data
-  - name: entrypoint
+    volumeSpec:
+      nfs:
+        path: /mnt/media/seafile
+        server: 10.0.10.211
+  entrypoint:
+    enabled: true
+    type: custom
     mountPath: /usr/local/bin/entrypoint.sh
     subPath: entrypoint.sh
-
-additionalVolumes:
-  - name: data
-    nfs:
-      path: /mnt/media/seafile
-      server: 10.0.10.211
-  - name: entrypoint
-    configMap:
-      name: seafile-config
-      defaultMode: 0777
-      items:
-        - key: entrypoint.sh
-          path: entrypoint.sh
+    readOnly: true
+    volumeSpec:
+      configMap:
+        name: seafile-config
+        defaultMode: 0777
+        items:
+          - key: entrypoint.sh
+            path: entrypoint.sh
