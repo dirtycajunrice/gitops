@@ -47,6 +47,7 @@ arr:
       emptyDir:
         enabled: true
       mountPath: /mnt/media/torrents/incomplete
+      accessMode: ReadWriteMany
 
   podSecurityContext:
     runAsUser: 568
