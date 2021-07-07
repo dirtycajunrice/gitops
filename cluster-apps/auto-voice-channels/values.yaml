@@ -23,7 +23,7 @@ service:
 persistence:
   data:
     enabled: true
-    nameSuffix: "-"
+    nameOverride: "-"
     storageClass: do-block-storage
     size: 1Gi
     accessMode: ReadWriteOnce
