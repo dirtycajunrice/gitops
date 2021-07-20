@@ -5,7 +5,7 @@ global:
 plex:
   image:
     repository: ghcr.io/k8s-at-home/plex
-    tag: v1.23.4.4805-186bae04e
+    tag: v1.23.5.4841-549599676
   env:
     # cat /config/Library/Application\ Support/Plex\ Media\ Server/Preferences.xml | tr " " "\n" | \
     # sed -n '/<Preferences/,$p' | tail -n +2 | sed 's,/>,,g' | \
