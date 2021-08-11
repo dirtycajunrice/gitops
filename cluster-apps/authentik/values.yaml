@@ -25,7 +25,7 @@ authentik:
   fullnameOverride: authentik
 
   image:
-    name: ghcr.io/goauthentik/server
+    repository: ghcr.io/goauthentik/server
     tag: 2021.5.4
     # name: docker.beryju.org/authentik/server
     # tag: gh-next
