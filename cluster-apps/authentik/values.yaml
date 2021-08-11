@@ -48,6 +48,7 @@ authentik:
       enabled: true
     postgresql:
       name: authentik
+      host:
     redis:
       host: $(REDIS_AUTHENTIK_SERVICE_HOST)
 
