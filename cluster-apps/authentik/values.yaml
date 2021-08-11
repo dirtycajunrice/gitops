@@ -16,6 +16,10 @@ addons:
       - name: AUTHENTIK_POSTGRESQL__S3_BACKUP__HOST
       - name: AUTHENTIK_POSTGRESQL__S3_BACKUP__REGION
       - name: AUTHENTIK_SECRET_KEY
+      - name: AUTHENTIK_POSTGRESQL__HOST
+      - name: AUTHENTIK_POSTGRESQL__USER
+      - name: AUTHENTIK_POSTGRESQL__PASSWORD
+      - name: AUTHENTIK_POSTGRESQL__PORT
 
 authentik:
   fullnameOverride: authentik
@@ -43,7 +47,6 @@ authentik:
     error_reporting:
       enabled: true
     postgresql:
-      host: pg-authentik
       name: authentik
     redis:
       host: $(REDIS_AUTHENTIK_SERVICE_HOST)
@@ -51,16 +54,6 @@ authentik:
   envFrom:
     - secretRef:
         name: authentik
-
-  envValueFrom:
-    AUTHENTIK_POSTGRESQL__USER:
-      secretKeyRef:
-        key: username
-        name: pg-authentik-auth
-    AUTHENTIK_POSTGRESQL__PASSWORD:
-      secretKeyRef:
-        key: password
-        name: pg-authentik-auth
 
   ingress:
     enabled: true
