@@ -3,7 +3,7 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: xbackbone
-    version: 4.0.0
+    version: 5.0.0
     repository: https://k8s-at-home.com/charts/
   - name: addons
     version: 1.0.0
