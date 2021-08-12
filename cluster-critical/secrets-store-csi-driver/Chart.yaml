@@ -3,5 +3,5 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: secrets-store-csi-driver
-    version: 0.1.0
+    version: 0.2.0
     repository: https://raw.githubusercontent.com/kubernetes-sigs/secrets-store-csi-driver/master/charts
