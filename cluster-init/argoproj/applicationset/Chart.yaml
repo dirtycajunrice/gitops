@@ -3,6 +3,6 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: argocd-applicationset
-    version: 0.1.6
+    version: 0.1.7
     repository: https://argoproj.github.io/argo-helm
     alias: applicationset
