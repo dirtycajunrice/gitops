@@ -67,13 +67,14 @@ xbackbone:
           secretProviderClass: xbackbone
 
   initContainers:
-    - command:
+    cp:
+      name: cp
+      image: busybox:1.28
+      imagePullPolicy: IfNotPresent
+      command:
         - /bin/sh
         - '-c'
         - 'cp /tmp/config.php /app/config/ && chown 1000:1000 /app/config/config.php'
-      image: busybox:1.28
-      imagePullPolicy: IfNotPresent
-      name: cp
       volumeMounts:
         - name: secret
           mountPath: /tmp/config.php
