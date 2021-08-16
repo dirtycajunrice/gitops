@@ -49,8 +49,7 @@ xbackbone:
       mountPath: /app/resources/database
     config:
       enabled: true
-      emptyDir:
-        enabled: true
+      type: emptyDir
       mountPath: /app/config
 
   additionalVolumeMounts:

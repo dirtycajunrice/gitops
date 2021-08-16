@@ -36,8 +36,7 @@ jetbrains-projector:
       retain: true
     shared:
       enabled: true
-      emptydir:
-        enabled: true
+      type: emptyDir
       mountPath: /log
   nodeSelector:
     cajun.pro/cluster-gen: "2"
