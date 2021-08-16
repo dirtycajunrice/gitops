@@ -33,7 +33,7 @@ arr:
       storageClass: cstor-replica-pool
       size: 10Gi
       accessMode: ReadWriteOnce
-      skipuninstall: true
+      retain: true
     media:
       enabled: true
       type: custom

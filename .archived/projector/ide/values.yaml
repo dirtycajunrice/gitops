@@ -33,7 +33,7 @@ jetbrains-projector:
       storageClass: nfs-client
       size: 10Gi
       accessMode: ReadWriteMany
-      skipuninstall: true
+      retain: true
     shared:
       enabled: true
       emptydir:

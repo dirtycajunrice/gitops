@@ -49,7 +49,7 @@ persistence:
     mountPath: /shared/seafile
     size: 5Gi
     accessMode: ReadWriteOnce
-    skipuninstall: true
+    retain: true
   data:
     enabled: true
     type: custom

@@ -25,5 +25,5 @@ thelounge:
       storageClass: do-block-storage
       size: 10Gi
       accessMode: ReadWriteOnce
-      skipuninstall: true
+      retain: true
 

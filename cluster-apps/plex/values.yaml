@@ -47,7 +47,7 @@ plex:
       storageClass: cstor-replica-pool
       size: 100Gi
       accessMode: ReadWriteOnce
-      skipuninstall: true
+      retain: true
     transcode:
       enabled: true
       type: emptyDir

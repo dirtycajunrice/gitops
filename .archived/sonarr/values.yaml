@@ -18,7 +18,7 @@ sonarr:
   persistence:
     config:
       enabled: true
-      skipuninstall: true
+      retain: true
   additionalVolumes:
     - name: mnt
       nfs:

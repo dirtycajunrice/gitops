@@ -28,7 +28,7 @@ persistence:
     size: 1Gi
     accessMode: ReadWriteOnce
     mountPath: /app/guilds
-    skipuninstall: true
+    retain: true
   config:
     enabled: true
     type: custom

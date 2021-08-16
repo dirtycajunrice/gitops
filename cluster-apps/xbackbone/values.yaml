@@ -45,7 +45,7 @@ xbackbone:
       storageClass: do-block-storage
       size: 1Gi
       accessMode: ReadWriteOnce
-      skipuninstall: true
+      retain: true
       mountPath: /app/resources/database
     config:
       enabled: true

@@ -29,7 +29,7 @@ organizr:
       storageClass: cstor-replica-pool
       size: 1Gi
       accessMode: ReadWriteOnce
-      skipuninstall: true
+      retain: true
   resources:
     requests:
       cpu: 100m
