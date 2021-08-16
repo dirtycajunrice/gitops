@@ -37,7 +37,7 @@ persistence:
     storageClass: do-block-storage
     size: 1Gi
     accessMode: ReadWriteOnce
-    skipuninstall: true
+    retain: true
   secrets:
     enabled: true
     type: custom
