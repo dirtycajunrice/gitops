@@ -1,8 +1,8 @@
 applicationset:
   fullnameOverride: applicationset
   image:
-    repository: quay.io/argocdapplicationset/argocd-applicationset
-    tag: v0.1.0
+    repository: quay.io/argoproj/argocd-applicationset
+    tag: v0.2.0
 
   args:
     policy: create-update
