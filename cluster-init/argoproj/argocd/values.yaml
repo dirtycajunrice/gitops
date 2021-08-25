@@ -9,7 +9,7 @@ argo-cd:
   global:
     image:
       repository: argoproj/argocd
-      tag: v2.0.5
+      tag: v2.1.1
 
   controller:
     replicas: 1
