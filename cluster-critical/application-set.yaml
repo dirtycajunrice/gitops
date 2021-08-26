@@ -9,12 +9,13 @@ spec:
         revision: HEAD
         files:
           - path: "cluster-critical/**/gen-config.json"
+  syncPolicy:
+    preserveResourcesOnDeletion: true
   template:
     metadata:
       name: '{{ name }}'
       annotations:
         argocd.argoproj.io/manifest-generate-paths: '/{{ path }}'
-        argocd.argoproj.io/sync-options: Prune=false
     spec:
       project: cluster-critical
       source:
@@ -32,7 +33,6 @@ spec:
         #  automated: {}
         syncOptions:
           - ApplyOutOfSyncOnly=true
-          - PrunePropagationPolicy=orphan
       ignoreDifferences:
         - group: ""
           kind: Secret

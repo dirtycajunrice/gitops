@@ -6,3 +6,6 @@ dependencies:
     version: 1.1.0
     repository: https://argoproj.github.io/argo-helm
     alias: applicationset
+
+# https://github.com/argoproj-labs/applicationset
+# https://argocd-applicationset.readthedocs.io/en/stable/

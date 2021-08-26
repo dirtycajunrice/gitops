@@ -26,12 +26,13 @@ spec:
                   - '../values.yaml'
                   - 'values.yaml'
                   - '{{ valueFile }}'
+  syncPolicy:
+    preserveResourcesOnDeletion: true
   template:
     metadata:
       name: '{{ name }}'
       annotations:
         argocd.argoproj.io/manifest-generate-paths: '/{{ path }}'
-        argocd.argoproj.io/sync-options: Prune=false
     spec:
       project: cluster-apps
       source:
@@ -49,7 +50,6 @@ spec:
         #  automated: {}
         syncOptions:
           - ApplyOutOfSyncOnly=true
-          - PrunePropagationPolicy=orphan
       ignoreDifferences:
         - group: ""
           kind: Secret
