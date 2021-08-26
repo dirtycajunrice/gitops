@@ -6,6 +6,3 @@ applicationset:
 
   args:
     policy: create-update
-
-  securityContext:
-    fsGroup: 1000
