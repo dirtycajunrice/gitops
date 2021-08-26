@@ -61,4 +61,4 @@ spec:
           name: kubedb
           namespace: databases
           jsonPointers:
-            - /metadata
+            - /spec/template/metadata/annotations/checksum~1apiregistration.yaml
