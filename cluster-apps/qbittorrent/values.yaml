@@ -86,7 +86,7 @@ qbittorrent:
       hosts:
         - host: '{{ .Values.global.domainName }}'
           paths:
-            - path: '{{ printf "/torrents/%s/%s/%v" .Values.global.app .Values.global.quality .Values.global.iteration }}'
+            - path: '{{ printf "/torrents/%s/%s/%v/" .Values.global.app .Values.global.quality .Values.global.iteration }}'
               pathType: Prefix
       tls:
         - hosts: ['{{ .Values.global.domainName }}']
