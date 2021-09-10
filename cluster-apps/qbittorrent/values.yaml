@@ -79,18 +79,17 @@ qbittorrent:
     main:
       enabled: true
       annotations:
-        traefik.ingress.kubernetes.io/router.middlewares: cajun-pro-quadruple-strip-prefix@kubernetescrd
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
         external-dns.alpha.kubernetes.io/hostname: ""
       hosts:
-        - host: '{{ .Values.global.domainName }}'
+        - host: '{{ printf "%v.%s.%s.torrents.%s" .Values.global.iteration .Values.global.quality .Values.global.app .Values.global.domainName }}'
           paths:
-            - path: '{{ printf "/torrents/%s/%s/%v/" .Values.global.app .Values.global.quality .Values.global.iteration }}'
+            - path: /
               pathType: Prefix
       tls:
-        - hosts: ['{{ .Values.global.domainName }}']
-          secretName: '{{ .Values.global.domainName | replace "." "-" }}'
+        - hosts: ['{{ printf "%v.%s.%s.torrents.%s" .Values.global.iteration .Values.global.quality .Values.global.app .Values.global.domainName }}']
+          secretName: '{{ printf "%v-%s-%s-torrents-%s" .Values.global.iteration .Values.global.quality .Values.global.app .Values.global.domainName | replace "." "-" }}'
   tolerations:
     - key: role
       value: storage
