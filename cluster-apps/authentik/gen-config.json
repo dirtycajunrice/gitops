@@ -3,7 +3,7 @@
     "name": "authentik",
     "cluster": "do",
     "namespace": "authentik",
-    "path": "cluster-apps/authentik",
+    "folderPath": "cluster-apps/authentik",
     "valueFile": ""
   }
 ]

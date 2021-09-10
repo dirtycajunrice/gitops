@@ -3,7 +3,7 @@
     "name": "bash-org-funny",
     "cluster": "do",
     "namespace": "ingress",
-    "path": "cluster-apps/bash-org-funny",
+    "folderPath": "cluster-apps/bash-org-funny",
     "valueFile": ""
   }
 ]

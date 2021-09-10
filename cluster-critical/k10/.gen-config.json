@@ -3,7 +3,7 @@
     "name": "k10-home",
     "cluster": "home",
     "namespace": "k10",
-    "path": "cluster-critical/k10",
+    "folderPath": "cluster-critical/k10",
     "valueFile": "home.yaml"
   }
 ]

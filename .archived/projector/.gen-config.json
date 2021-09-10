@@ -3,7 +3,7 @@
     "name": "projector-shared",
     "cluster": "home",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/projector/shared",
+    "folderPath": "cluster-apps/projector/shared",
     "valueFile": ""
   }
 ]

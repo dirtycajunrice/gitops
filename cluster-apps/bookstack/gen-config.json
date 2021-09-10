@@ -3,7 +3,7 @@
     "name": "bookstack",
     "cluster": "do",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/bookstack",
+    "folderPath": "cluster-apps/bookstack",
     "valueFile": ""
   }
 ]

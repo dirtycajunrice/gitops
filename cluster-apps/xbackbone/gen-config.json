@@ -3,7 +3,7 @@
     "name": "xbackbone",
     "cluster": "do",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/xbackbone",
+    "folderPath": "cluster-apps/xbackbone",
     "valueFile": ""
   }
 ]

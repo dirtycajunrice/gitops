@@ -3,14 +3,14 @@
     "name": "external-dns-home",
     "cluster": "home",
     "namespace": "utility",
-    "path": "cluster-critical/external-dns",
+    "folderPath": "cluster-critical/external-dns",
     "valueFile": "home.yaml"
   },
   {
     "name": "external-dns-do",
     "cluster": "do",
     "namespace": "utility",
-    "path": "cluster-critical/external-dns",
+    "folderPath": "cluster-critical/external-dns",
     "valueFile": "do.yaml"
   }
 ]

@@ -3,7 +3,7 @@
     "name": "portworx-home",
     "cluster": "home",
     "namespace": "storage",
-    "path": "cluster-critical/portworx",
+    "folderPath": "cluster-critical/portworx",
     "valueFile": ""
   }
 ]

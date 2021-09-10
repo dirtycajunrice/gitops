@@ -3,14 +3,14 @@
     "name": "secrets-store-csi-driver-home",
     "cluster": "home",
     "namespace": "utility",
-    "path": "cluster-critical/secrets-store-csi-driver",
+    "folderPath": "cluster-critical/secrets-store-csi-driver",
     "valueFile": ""
   },
   {
     "name": "secrets-store-csi-driver-do",
     "cluster": "do",
     "namespace": "utility",
-    "path": "cluster-critical/secrets-store-csi-driver",
+    "folderPath": "cluster-critical/secrets-store-csi-driver",
     "valueFile": ""
   }
 ]

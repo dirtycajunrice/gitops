@@ -3,7 +3,7 @@
     "name": "seafile",
     "cluster": "home",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/seafile",
+    "folderPath": "cluster-apps/seafile",
     "valueFile": ""
   }
 ]

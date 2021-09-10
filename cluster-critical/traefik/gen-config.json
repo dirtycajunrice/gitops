@@ -3,35 +3,35 @@
     "name": "traefik-dc",
     "cluster": "home",
     "namespace": "ingress",
-    "path": "cluster-critical/traefik/traefik",
+    "folderPath": "cluster-critical/traefik/traefik",
     "valueFile": "dc.yaml"
   },
   {
     "name": "traefik-do",
     "cluster": "do",
     "namespace": "ingress",
-    "path": "cluster-critical/traefik/traefik",
+    "folderPath": "cluster-critical/traefik/traefik",
     "valueFile": "do.yaml"
   },
   {
     "name": "error-pages-dc",
     "cluster": "home",
     "namespace": "ingress",
-    "path": "cluster-critical/traefik/error-pages",
+    "folderPath": "cluster-critical/traefik/error-pages",
     "valueFile": "dc.yaml"
   },
   {
     "name": "error-pages-do",
     "cluster": "do",
     "namespace": "ingress",
-    "path": "cluster-critical/traefik/error-pages",
+    "folderPath": "cluster-critical/traefik/error-pages",
     "valueFile": "do.yaml"
   },
   {
     "name": "mesh-dc",
     "cluster": "home",
     "namespace": "ingress",
-    "path": "cluster-critical/traefik/mesh",
+    "folderPath": "cluster-critical/traefik/mesh",
     "valueFile": "dc.yaml"
   }
 ]

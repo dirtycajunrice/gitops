@@ -3,7 +3,7 @@
     "name": "plex",
     "cluster": "home",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/plex",
+    "folderPath": "cluster-apps/plex",
     "valueFile": ""
   }
 ]

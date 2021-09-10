@@ -15,11 +15,11 @@ spec:
     metadata:
       name: '{{ name }}'
       annotations:
-        argocd.argoproj.io/manifest-generate-paths: '/{{ path }}'
+        argocd.argoproj.io/manifest-generate-paths: '/{{ folderPath }}'
     spec:
       project: cluster-critical
       source:
-        path: '{{ path }}'
+        path: '{{ folderPath }}'
         targetRevision: HEAD
         repoURL: https://github.com/dirtycajunrice/gitops.git
         helm:

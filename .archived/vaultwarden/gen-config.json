@@ -3,7 +3,7 @@
     "name": "vaultwarden",
     "cluster": "do",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/vaultwarden",
+    "folderPath": "cluster-apps/vaultwarden",
     "valueFile": ""
   }
 ]

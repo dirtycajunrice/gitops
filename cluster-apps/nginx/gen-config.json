@@ -3,7 +3,7 @@
     "name": "nginx-cajun-pro",
     "cluster": "do",
     "namespace": "ingress",
-    "path": "cluster-apps/nginx/cajun-pro",
+    "folderPath": "cluster-apps/nginx/cajun-pro",
     "valueFile": ""
   }
 ]

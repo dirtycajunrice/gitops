@@ -3,7 +3,7 @@
     "name": "red-discordbot-varken",
     "cluster": "do",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/red-discordbot/varken",
+    "folderPath": "cluster-apps/red-discordbot/varken",
     "valueFile": ""
   }
 ]

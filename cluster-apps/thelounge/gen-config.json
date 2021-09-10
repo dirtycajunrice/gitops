@@ -3,7 +3,7 @@
     "name": "thelounge",
     "cluster": "do",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/thelounge",
+    "folderPath": "cluster-apps/thelounge",
     "valueFile": ""
   }
 ]

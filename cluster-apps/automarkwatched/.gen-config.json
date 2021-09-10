@@ -3,7 +3,7 @@
     "name": "charts-itscontained-io",
     "cluster": "do",
     "namespace": "ingress",
-    "path": "cluster-apps/itscontained",
+    "folderPath": "cluster-apps/itscontained",
     "valueFile": ""
   }
 ]

@@ -3,14 +3,14 @@
     "name": "metrics-server-home",
     "cluster": "home",
     "namespace": "kube-system",
-    "path": "cluster-critical/metrics-server",
+    "folderPath": "cluster-critical/metrics-server",
     "valueFile": "home.yaml"
   },
   {
     "name": "metrics-server-do",
     "cluster": "do",
     "namespace": "kube-system",
-    "path": "cluster-critical/metrics-server",
+    "folderPath": "cluster-critical/metrics-server",
     "valueFile": "do.yaml"
   }
 ]

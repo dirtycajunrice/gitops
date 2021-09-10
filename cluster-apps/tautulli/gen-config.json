@@ -3,7 +3,7 @@
     "name": "tautulli",
     "cluster": "home",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/tautulli",
+    "folderPath": "cluster-apps/tautulli",
     "valueFile": ""
   }
 ]

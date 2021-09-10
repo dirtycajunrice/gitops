@@ -3,14 +3,14 @@
     "name": "whoami-home",
     "cluster": "home",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/whoami",
+    "folderPath": "cluster-apps/whoami",
     "valueFile": "home.yaml"
   },
   {
     "name": "whoami-do",
     "cluster": "do",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/whoami",
+    "folderPath": "cluster-apps/whoami",
     "valueFile": "do.yaml"
   }
 ]

@@ -3,7 +3,7 @@
     "name": "openebs",
     "cluster": "home",
     "namespace": "openebs",
-    "path": "cluster-critical/openebs",
+    "folderPath": "cluster-critical/openebs",
     "valueFile": ""
   }
 ]

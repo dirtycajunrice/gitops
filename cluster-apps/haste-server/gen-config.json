@@ -3,7 +3,7 @@
     "name": "haste-server",
     "cluster": "do",
     "namespace": "cajun-pro",
-    "path": "cluster-apps/haste-server",
+    "folderPath": "cluster-apps/haste-server",
     "valueFile": ""
   }
 ]
