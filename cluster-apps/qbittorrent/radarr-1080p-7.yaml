@@ -1,0 +1,24 @@
+global:
+  iteration: 7
+
+qbittorrent:
+  env:
+    QBT_Preferences__Connection__PortRangeMin: '50223'
+
+  service:
+    bittorrent:
+      enabled: true
+      type: LoadBalancer
+      externalIPs:
+        - 172.30.0.23
+      ports:
+        bittorrent:
+          enabled: true
+          port: 50223
+          name: bittorrent
+          protocol: TCP
+          targetPort: 50223
+
+  persistence:
+    config:
+      hostPath: /mnt/qbittorrent/radarr/1080p/7
