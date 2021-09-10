@@ -81,7 +81,7 @@ qbittorrent:
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
-        external-dns.alpha.kubernetes.io/hostname: ""
+        cert-manager.io/cluster-issuer: le-production
       hosts:
         - host: '{{ printf "%v.%s.%s.torrents.%s" .Values.global.iteration .Values.global.quality .Values.global.app .Values.global.domainName }}'
           paths:
