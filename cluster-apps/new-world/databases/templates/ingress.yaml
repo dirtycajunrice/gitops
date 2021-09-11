@@ -1,4 +1,4 @@
-{{ $name := "mongodb-%s" .Values.global.fullnameOverride }}
+{{ $name := printf "mongodb-%s" .Values.global.fullnameOverride }}
 {{ $host := printf "mongodb.%s" .Values.global.baseURL | replace "-" "." }}
 
 apiVersion: networking.k8s.io/v1
