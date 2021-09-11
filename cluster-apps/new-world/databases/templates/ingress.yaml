@@ -1,0 +1,30 @@
+{{ $name := "mongodb-%s" .Values.global.fullnameOverride }}
+{{ $host := printf "mongodb.%s" .Values.global.baseURL | replace "-" "." }}
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: le-production
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.priority: "10"
+  name: {{ $name }}
+  namespace: cajun-pro
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: {{ $host }}
+      http:
+        paths:
+          - backend:
+              service:
+                name: {{ $name }}
+                port:
+                  name: primary
+            path: /
+            pathType: Prefix
+  tls:
+    - hosts:
+        - {{ $host }}
+      secretName: {{ replace "." "-" $host }}
+
