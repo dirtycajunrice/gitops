@@ -1,0 +1,29 @@
+apiVersion: kubedb.com/v1alpha2
+kind: MongoDB
+metadata:
+  name: mongodb-new-world-exporter
+spec:
+  version: "4.2.3"
+  storageType: Durable
+  authSecret:
+    name: mongodb-new-world-exporter
+  storage:
+    storageClassName: do-block-storage
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 10Gi
+  terminationPolicy: DoNotTerminate
+  monitor:
+    agent: prometheus.io/operator
+    prometheus:
+      serviceMonitor:
+        labels:
+          app: new-world-exporter
+        interval: 10s
+  podTemplate:
+    spec:
+      env:
+        - name: MONGO_INITDB_DATABASE
+          value: ae

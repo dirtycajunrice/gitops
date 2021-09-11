@@ -1,0 +1,9 @@
+[
+  {
+    "name": "new-world-databases",
+    "cluster": "do",
+    "namespace": "cajun-pro",
+    "folderPath": "cluster-apps/new-world/databases",
+    "valueFile": ""
+  }
+]
