@@ -5,6 +5,8 @@ metadata:
 spec:
   version: "4.2.3"
   storageType: Durable
+  authSecret:
+    name: mongodb-new-world-exporter
   storage:
     storageClassName: do-block-storage
     accessModes:
