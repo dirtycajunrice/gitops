@@ -17,3 +17,5 @@ spec:
           weight: 10
           proxyProtocol:
             version: 1
+  tls:
+    passthrough: true
