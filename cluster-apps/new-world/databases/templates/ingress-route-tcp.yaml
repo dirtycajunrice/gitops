@@ -15,5 +15,3 @@ spec:
           namespace: cajun-pro
           port: 27017
           weight: 10
-          proxyProtocol:
-            version: 1
