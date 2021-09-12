@@ -12,6 +12,7 @@ spec:
     - match: HostSNI(`{{ $host }}`)
   services:
     - name: {{ $name }}
+      namespace: cajun-pro
       port: 27017
       weight: 10
 
