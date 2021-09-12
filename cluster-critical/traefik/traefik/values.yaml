@@ -59,7 +59,7 @@ traefik:
       memory: "150Mi"
   autoscaling:
     enabled: true
-    minReplicas: 3
+    minReplicas: 5
     maxReplicas: 30
     metrics:
       - type: Resource
