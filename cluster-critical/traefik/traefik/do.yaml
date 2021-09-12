@@ -15,6 +15,12 @@ traefik:
       service.beta.kubernetes.io/do-loadbalancer-healthcheck-unhealthy-threshold: "10"
       service.beta.kubernetes.io/do-loadbalancer-healthcheck-check-interval-seconds: "3"
       service.beta.kubernetes.io/do-loadbalancer-healthcheck-response-timeout-seconds: "3"
+  ports:
+    db:
+      port: 25000
+      expose: true
+      exposedPort: 25000
+      protocol: TCP
   pilot:
     token: "cac885fb-0bee-4b6e-a316-ceaf61cab202"
   providers:
