@@ -9,7 +9,7 @@ spec:
   entryPoints:
     - db
   routes:
-    - match: HostSNI(`{{ $host }}`)
+    - match: HostSNI(`*`)
       services:
         - name: {{ $name }}
           namespace: cajun-pro
