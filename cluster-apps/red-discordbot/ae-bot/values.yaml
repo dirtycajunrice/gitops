@@ -27,7 +27,7 @@ persistence:
   secrets:
     enabled: true
     type: custom
-    mountPath: /usr/src/app/azoth-empire-bot/secrets
+    mountPath: /app/secrets
     readOnly: true
     volumeSpec:
       csi:
