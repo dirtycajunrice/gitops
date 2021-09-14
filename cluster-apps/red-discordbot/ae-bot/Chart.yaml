@@ -1,0 +1,10 @@
+name: ae-bot
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: common
+    version: 4.0.0
+    repository: https://library-charts.k8s-at-home.com
+  - name: addons
+    version: 1.0.0
+    repository: file://../../../addons
