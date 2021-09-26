@@ -47,7 +47,7 @@ spec:
         namespace: '{{ namespace }}'
         name: '{{ cluster }}'
       syncPolicy:
-        #  automated: {}
+        automated: {}
         syncOptions:
           - ApplyOutOfSyncOnly=true
       ignoreDifferences:
