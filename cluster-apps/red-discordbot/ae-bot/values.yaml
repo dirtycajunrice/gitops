@@ -12,7 +12,7 @@ addons:
       - name: .mongo-uri
 image:
   repository: bodnapa/azoth-empire-bot
-  tag: v1.3.11
+  tag: v1.3.15
 
 replicas: 1
 
