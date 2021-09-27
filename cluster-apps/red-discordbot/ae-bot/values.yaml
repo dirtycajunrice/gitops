@@ -13,7 +13,7 @@ addons:
       - name: .server-info-url
 image:
   repository: bodnapa/azoth-empire-bot
-  tag: v1.3.17
+  tag: v1.3.19
 
 replicas: 1
 
