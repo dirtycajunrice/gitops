@@ -92,9 +92,7 @@
     // Helm charts that are safe to auto merge
     {
       "matchDatasources": ["helm"],
-      "matchPackagePatterns": [
-        "k8s-at-home/charts",
-      ],
+      "registryUrls": ["https://k8s-at-home.com/charts"],
       "addLabels": ["action/automerge"],
       "automerge": true,
       "versioning": "loose"
