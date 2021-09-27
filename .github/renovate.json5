@@ -73,6 +73,7 @@
       "matchDatasources": ["docker"],
       "matchPackagePatterns": [
         "^ghcr.io/k8s-at-home/((rad|son)arr|plex)",
+        "^ghcr.io/k8s-at-home/.*",
         "^bodnapa/azoth-empire-(bot|web-app|graphql-api)"
       ],
       "addLabels": ["action/automerge"],
@@ -86,6 +87,16 @@
         "bitnami/external-dns",
         "^ghcr.io/k8s-at-home/qbittorrent"
       ],
+      "versioning": "loose"
+    },
+    // Helm charts that are safe to auto merge
+    {
+      "matchDatasources": ["helm"],
+      "matchPackagePatterns": [
+        "k8s-at-home/charts",
+      ],
+      "addLabels": ["action/automerge"],
+      "automerge": true,
       "versioning": "loose"
     }
   ]
