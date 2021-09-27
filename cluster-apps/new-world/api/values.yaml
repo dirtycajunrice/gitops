@@ -11,6 +11,7 @@ addons:
       - name: .client-token
       - name: .mongo-uri
       - name: .server-info-url
+      - name: .client-secret
 
 image:
   repository: bodnapa/azoth-empire-graphql-api
