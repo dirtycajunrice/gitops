@@ -4,7 +4,7 @@ global:
 
 image:
   repository: bodnapa/azoth-empire-bot
-  tag: v1.3.21
+  tag: v1.3.24
 
 replicas: 1
 

@@ -5,12 +5,5 @@
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/red-discordbot/varken",
     "valueFile": ""
-  },
-  {
-    "name": "ae-bot",
-    "cluster": "do",
-    "namespace": "cajun-pro",
-    "folderPath": "cluster-apps/red-discordbot/ae-bot",
-    "valueFile": ""
   }
 ]

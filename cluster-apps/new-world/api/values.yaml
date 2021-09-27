@@ -16,7 +16,7 @@ addons:
 
 image:
   repository: bodnapa/azoth-empire-graphql-api
-  tag: v1.3.21
+  tag: v1.3.24
 
 replicas: 1
 

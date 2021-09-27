@@ -19,5 +19,12 @@
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/new-world/api",
     "valueFile": ""
+  },
+  {
+    "name": "new-world-bot",
+    "cluster": "do",
+    "namespace": "cajun-pro",
+    "folderPath": "cluster-apps/new-world/bot",
+    "valueFile": ""
   }
 ]
