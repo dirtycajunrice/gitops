@@ -3,6 +3,6 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: cstor
-    version: 2.12.2
+    version: 3.0.1
     repository: https://openebs.github.io/cstor-operators
 
