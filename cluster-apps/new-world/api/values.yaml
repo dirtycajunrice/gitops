@@ -6,6 +6,7 @@ addons:
   spc:
     enabled: true
     defaultObjectPath: k8s/cajun-pro/new-world-exporter/ae-bot
+    secretObjects: true
     objects:
       - name: .client-id
       - name: .client-token
