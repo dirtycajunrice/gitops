@@ -5,5 +5,12 @@
     "namespace": "authentik",
     "folderPath": "cluster-apps/authentik",
     "valueFile": ""
+  },
+  {
+    "name": "authentik-rbac",
+    "cluster": "home",
+    "namespace": "ingress",
+    "folderPath": "cluster-apps/authentik/rbac",
+    "valueFile": ""
   }
 ]
