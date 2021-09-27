@@ -13,6 +13,22 @@ addons:
       - name: .server-info-url
       - name: .client-secret
 
+ingress:
+  main:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - host: 'api.newworld.k8s.cajun.pro'
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hosts: ['api.newworld.k8s.cajun.pro']
+        secretName: 'api-newworld-k8s-cajun-pro'
+
 image:
   repository: bodnapa/azoth-empire-graphql-api
 
