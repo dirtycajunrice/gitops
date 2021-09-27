@@ -1,5 +1,4 @@
 global:
-  cluster: do
   fullnameOverride: ae-api
 
 addons:
@@ -16,41 +15,9 @@ addons:
 
 image:
   repository: bodnapa/azoth-empire-graphql-api
-  tag: v1.3.24
 
-replicas: 1
-
-env:
-  GUILD_ID: '654661232497786893'
-  DISCORD_REDIRECT_URI: 'https://app.newworld.k8s.cajun.pro/discord/callback'
-  NODE_ENV: 'production'
 service:
   main:
     ports:
       http:
         port: 4000
-
-ingress:
-  main:
-    enabled: false
-
-persistence:
-  secrets:
-    enabled: true
-    type: custom
-    mountPath: /app/secrets
-    readOnly: true
-    volumeSpec:
-      csi:
-        driver: secrets-store.csi.k8s.io
-        readOnly: true
-        volumeAttributes:
-          secretProviderClass: new-world-api
-
-probes:
-  liveness:
-    enabled: false
-  readiness:
-    enabled: false
-  startup:
-    enabled: false

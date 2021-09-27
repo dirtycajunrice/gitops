@@ -1,0 +1,34 @@
+global:
+  cluster: do
+  fullnameOverride: ae-frontend
+
+image:
+  tag: v1.3.25
+
+replicas: 1
+
+env:
+  GUILD_ID: '654661232497786893'
+  DISCORD_REDIRECT_URI: 'https://app.newworld.k8s.cajun.pro/discord/callback'
+  NODE_ENV: 'production'
+
+persistence:
+  secrets:
+    enabled: true
+    type: custom
+    mountPath: /app/secrets
+    readOnly: true
+    volumeSpec:
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: new-world-api
+
+probes:
+  liveness:
+    enabled: false
+  readiness:
+    enabled: false
+  startup:
+    enabled: false

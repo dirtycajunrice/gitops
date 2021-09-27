@@ -88,14 +88,14 @@
         "^ghcr.io/k8s-at-home/qbittorrent"
       ],
       "versioning": "loose"
-    },
-    // Helm charts that are safe to auto merge
-    {
-      "matchDatasources": ["helm"],
-      "registryUrls": ["https://k8s-at-home.com/charts"],
-      "addLabels": ["action/automerge"],
-      "automerge": true,
-      "versioning": "loose"
     }
+    // Helm charts that are safe to auto merge
+    //{
+    //  "matchDatasources": ["helm"],
+    //  "registryUrls": ["https://k8s-at-home.com/charts"],
+    //  "addLabels": ["action/automerge"],
+    //  "automerge": true,
+    //  "versioning": "loose"
+    //}
   ]
 }

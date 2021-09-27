@@ -4,27 +4,27 @@
     "cluster": "do",
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/new-world/database",
-    "valueFile": ""
+    "valueFile": "../values.yaml"
   },
   {
     "name": "new-world-frontend",
     "cluster": "do",
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/new-world/frontend",
-    "valueFile": ""
+    "valueFile": "../values.yaml"
   },
   {
     "name": "new-world-api",
     "cluster": "do",
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/new-world/api",
-    "valueFile": ""
+    "valueFile": "../values.yaml"
   },
   {
     "name": "new-world-bot",
     "cluster": "do",
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/new-world/bot",
-    "valueFile": ""
+    "valueFile": "../values.yaml"
   }
 ]

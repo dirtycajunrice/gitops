@@ -1,37 +1,9 @@
 global:
-  cluster: do
   fullnameOverride: ae-bot
 
 image:
   repository: bodnapa/azoth-empire-bot
-  tag: v1.3.24
-
-replicas: 1
-
-env:
-  GUILD_ID: '654661232497786893'
 
 service:
   main:
-    enabled: false
-
-persistence:
-  secrets:
-    enabled: true
-    type: custom
-    mountPath: /app/secrets
-    readOnly: true
-    volumeSpec:
-      csi:
-        driver: secrets-store.csi.k8s.io
-        readOnly: true
-        volumeAttributes:
-          secretProviderClass: new-world-api
-
-probes:
-  liveness:
-    enabled: false
-  readiness:
-    enabled: false
-  startup:
     enabled: false

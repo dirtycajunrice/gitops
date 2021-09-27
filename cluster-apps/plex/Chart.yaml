@@ -4,4 +4,4 @@ version: 1.0.0
 dependencies:
   - name: plex
     version: 6.0.1
-    repository: https://k8s-at-home.com/charts
+    repository: https://k8s-at-home.com/charts/

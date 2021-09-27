@@ -1,15 +1,8 @@
 global:
-  cluster: do
   fullnameOverride: ae-frontend
 
 image:
   repository: bodnapa/azoth-empire-web-app
-  tag: v1.3.24
-
-replicas: 1
-
-env:
-  GUILD_ID: '654661232497786893'
 
 service:
   main:
@@ -33,10 +26,7 @@ ingress:
       - hosts: ['app.newworld.k8s.cajun.pro']
         secretName: 'app-newworld-k8s-cajun-pro'
 
-probes:
-  liveness:
+persistence:
+  secrets:
     enabled: false
-  readiness:
-    enabled: false
-  startup:
-    enabled: false
+
