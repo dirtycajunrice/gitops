@@ -1,5 +1,5 @@
 global:
-  fullnameOverride: ae-bot
+  fullnameOverride: new-world-bot
 
 image:
   repository: bodnapa/azoth-empire-bot

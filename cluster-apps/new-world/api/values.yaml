@@ -1,5 +1,5 @@
 global:
-  fullnameOverride: ae-api
+  fullnameOverride: new-world-api
 
 addons:
   spc:

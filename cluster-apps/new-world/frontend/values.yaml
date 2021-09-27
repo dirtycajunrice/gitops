@@ -1,5 +1,5 @@
 global:
-  fullnameOverride: ae-frontend
+  fullnameOverride: new-world-frontend
 
 image:
   repository: bodnapa/azoth-empire-web-app
