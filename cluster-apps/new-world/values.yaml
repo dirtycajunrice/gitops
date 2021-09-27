@@ -2,7 +2,7 @@ global:
   cluster: do
 
 image:
-  tag: v1.3.26
+  tag: v1.3.27
 
 replicas: 1
 
