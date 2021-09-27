@@ -12,5 +12,12 @@
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/new-world/frontend",
     "valueFile": ""
+  },
+  {
+    "name": "new-world-api",
+    "cluster": "do",
+    "namespace": "cajun-pro",
+    "folderPath": "cluster-apps/new-world/api",
+    "valueFile": ""
   }
 ]
