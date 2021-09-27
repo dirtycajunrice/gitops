@@ -1,6 +1,5 @@
 global:
   cluster: do
-  fullnameOverride: ae-frontend
 
 image:
   tag: v1.3.25
