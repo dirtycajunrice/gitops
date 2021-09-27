@@ -73,7 +73,7 @@
       "matchDatasources": ["docker"],
       "matchPackagePatterns": [
         "^ghcr.io/k8s-at-home/((rad|son)arr|plex)",
-        "bodnapa/azoth-empire-bot"
+        "^bodnapa/azoth-empire-(bot|web-app|graphql-api)"
       ],
       "addLabels": ["action/automerge"],
       "automerge": true,
