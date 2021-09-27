@@ -44,7 +44,7 @@ persistence:
         driver: secrets-store.csi.k8s.io
         readOnly: true
         volumeAttributes:
-          secretProviderClass: ae-api
+          secretProviderClass: new-world-api
 
 probes:
   liveness:
