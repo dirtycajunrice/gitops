@@ -1,0 +1,65 @@
+global:
+  cluster: do
+  fullnameOverride: ae-frontend
+
+addons:
+  spc:
+    enabled: true
+    defaultObjectPath: k8s/cajun-pro/new-world-exporter/ae-bot
+    objects:
+      - name: .client-id
+      - name: .client-token
+      - name: .mongo-uri
+      - name: .server-info-url
+
+image:
+  repository: bodnapa/azoth-empire-web-app
+  tag: v1.3.19
+
+replicas: 1
+
+env:
+  GUILD_ID: '654661232497786893'
+
+service:
+  main:
+    ports:
+      http:
+        port: 3333
+
+ingress:
+  main:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - host: 'app.newworld.k8s.cajun.pro'
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hosts: ['app.newworld.k8s.cajun.pro']
+        secretName: 'app-newworld-k8s-cajun-pro'
+
+persistence:
+  secrets:
+    enabled: true
+    type: custom
+    mountPath: /app/secrets
+    readOnly: true
+    volumeSpec:
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: ae-bot
+
+probes:
+  liveness:
+    enabled: false
+  readiness:
+    enabled: false
+  startup:
+    enabled: false

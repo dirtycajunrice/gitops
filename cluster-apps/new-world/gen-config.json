@@ -1,9 +1,16 @@
 [
   {
-    "name": "new-world-databases",
+    "name": "new-world-database",
     "cluster": "do",
     "namespace": "cajun-pro",
-    "folderPath": "cluster-apps/new-world/databases",
+    "folderPath": "cluster-apps/new-world/database",
+    "valueFile": ""
+  },
+  {
+    "name": "new-world-frontend",
+    "cluster": "do",
+    "namespace": "cajun-pro",
+    "folderPath": "cluster-apps/new-world/frontend",
     "valueFile": ""
   }
 ]
