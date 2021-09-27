@@ -72,9 +72,11 @@
     {
       "matchDatasources": ["docker"],
       "matchPackagePatterns": [
-        "^ghcr.io/k8s-at-home/((rad|son)arr|plex)",
         "^ghcr.io/k8s-at-home/.*",
-        "^bodnapa/azoth-empire-(bot|web-app|graphql-api)"
+        "^bodnapa/azoth-empire-(bot|web-app|graphql-api)",
+        "ghcr.io/sct/overseerr",
+        "phasecorex/red-discordbot",
+        "ghcr.io/goauthentik/.*"
       ],
       "addLabels": ["action/automerge"],
       "automerge": true,
