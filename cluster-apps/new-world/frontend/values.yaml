@@ -14,7 +14,7 @@ addons:
 
 image:
   repository: bodnapa/azoth-empire-web-app
-  tag: v1.3.20
+  tag: v1.3.21
 
 replicas: 1
 
