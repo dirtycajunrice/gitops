@@ -57,6 +57,10 @@ arr:
     liveness:
       custom: true
       spec:
+        initialDelaySeconds: 0
+        periodSeconds: 10
+        timeoutSeconds: 5
+        failureThreshold: 20
         exec:
           command:
             - /usr/bin/env
