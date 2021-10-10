@@ -55,6 +55,7 @@ arr:
 
   probes:
     liveness:
+      custom: true
       spec:
         exec:
           command:
