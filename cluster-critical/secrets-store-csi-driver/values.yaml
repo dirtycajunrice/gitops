@@ -4,7 +4,7 @@ secrets-store-csi-driver:
   linux:
     image:
       repository: k8s.gcr.io/csi-secrets-store/driver
-      tag: v0.3.0
+      tag: v1.0.0
 
     registrarImage:
       repository: k8s.gcr.io/sig-storage/csi-node-driver-registrar
