@@ -10,3 +10,6 @@ arr:
       enabled: false
     readiness:
       enabled: false
+  persistence:
+    config:
+      size: 10Gi
