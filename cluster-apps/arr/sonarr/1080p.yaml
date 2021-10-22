@@ -1,2 +1,6 @@
 global:
   fullnameOverride: sonarr-1080p
+arr:
+  persistence:
+    config:
+      size: 10Gi
