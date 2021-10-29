@@ -1,6 +1,9 @@
 global:
   fullnameOverride: sonarr-1080p
 arr:
+  image:
+    repository: hotio/sonarr
+    tag: release-3.0.6.1342
   persistence:
     config:
       size: 10Gi
