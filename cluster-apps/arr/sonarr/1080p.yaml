@@ -1,6 +1,9 @@
 global:
   fullnameOverride: sonarr-1080p
 arr:
+  env:
+    PUID: "568"
+    PGID: "568"
   image:
     repository: hotio/sonarr
     tag: release-3.0.6.1342
