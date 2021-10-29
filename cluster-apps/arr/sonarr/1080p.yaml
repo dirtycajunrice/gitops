@@ -3,7 +3,7 @@ global:
 arr:
   env:
     PUID: "568"
-    PGID: "568"
+    PGID: "500"
   image:
     repository: hotio/sonarr
     tag: release-3.0.6.1342
