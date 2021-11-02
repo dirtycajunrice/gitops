@@ -1,15 +1,16 @@
 global:
   fullnameOverride: sonarr-1080p
 arr:
-  env:
-    PUID: "568"
-    PGID: "500"
-  image:
-    repository: hotio/sonarr
-    tag: release-3.0.6.1342
+#  env:
+#    PUID: "568"
+#    PGID: "500"
+#  image:
+#    pullPolicy: Always
+#    repository: hotio/sonarr
+#    tag: release-3.0.6.1342
   persistence:
     config:
       size: 20Gi
-  securityContext:
-    runAsGroup: 500
-    runAsUser: 0
+#  securityContext:
+#    runAsGroup: 500
+#    runAsUser: 0
