@@ -6,6 +6,7 @@ vault:
       pullPolicy: IfNotPresent
     ingress:
       enabled: true
+      pathType: Prefix
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.priority: "10"
