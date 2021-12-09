@@ -12,7 +12,7 @@ addons:
 
 image:
   repository: phasecorex/red-discordbot
-  tag: latest@sha256:e72040d0ea19d1b5e712d72e053f6b4b5be8e57d6a0ab9e102553012ecbdba34
+  tag: latest@sha256:558df9ec83fc03b4948a62201575f2d90fbf72d4926fdd867370c8b56c1e26bf
 
 replicas: 1
 
