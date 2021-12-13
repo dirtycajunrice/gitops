@@ -51,19 +51,28 @@ xbackbone:
       enabled: true
       type: emptyDir
       mountPath: /app/config
+    secret:
+      enabled: true
+      type: custom
+      volumeSpec:
+        csi:
+          driver: secrets-store.csi.k8s.io
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: xbackbone
 
   additionalVolumeMounts:
     - name: db
       mountPath: /app/storage
       subPath: storage
 
-  additionalVolumes:
-    - name: secret
-      csi:
-        driver: secrets-store.csi.k8s.io
-        readOnly: true
-        volumeAttributes:
-          secretProviderClass: xbackbone
+  # additionalVolumes:
+  #   - name: secret
+  #     csi:
+  #       driver: secrets-store.csi.k8s.io
+  #       readOnly: true
+  #       volumeAttributes:
+  #         secretProviderClass: xbackbone
 
   initContainers:
     cp:
