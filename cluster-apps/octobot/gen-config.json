@@ -1,0 +1,9 @@
+[
+  {
+    "name": "octobot",
+    "cluster": "do",
+    "namespace": "cajun-pro",
+    "folderPath": "cluster-apps/octobot",
+    "valueFile": ""
+  }
+]

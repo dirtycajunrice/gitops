@@ -1,0 +1,62 @@
+global:
+  domainName: octobot.cajun.pro
+
+image:
+  repository: drakkarsoftware/octobot
+  pullPolicy: IfNotPresent
+  tag: 0.4.3
+
+strategy:
+  type: Recreate
+
+env: {}
+
+service:
+  main:
+    ports:
+      http:
+        port: 5001
+
+ingress:
+  main:
+    enabled: true
+    domainName: ""
+    annotations:
+      traefik.ingress.kubernetes.io/router.middlewares: ingress-authentik-outpost@kubernetescrd
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.priority: "10"
+      cert-manager.io/cluster-issuer: le-production
+    hosts:
+      - host: '{{ .Values.global.domainName }}'
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - hosts: ['{{ .Values.global.domainName }}']
+        secretName: '{{ .Values.global.domainName | replace "." "-" }}'
+
+persistence:
+  config:
+    enabled: true
+    nameOverride: "-"
+    storageClass: do-block-storage
+    size: 1Gi
+    accessMode: ReadWriteOnce
+    retain: true
+    mountPath: /octobot/user
+  tentacles:
+    enabled: true
+    nameOverride: "-"
+    storageClass: do-block-storage
+    size: 5Gi
+    accessMode: ReadWriteOnce
+    retain: true
+    mountPath: /octobot/tentacles
+  logs:
+    enabled: true
+    nameOverride: "-"
+    storageClass: do-block-storage
+    size: 5Gi
+    accessMode: ReadWriteOnce
+    retain: true
+    mountPath: /octobot/logs
