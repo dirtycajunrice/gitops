@@ -40,7 +40,7 @@ persistence:
     enabled: true
     nameOverride: "-"
     storageClass: do-block-storage
-    size: 1Gi
+    size: 5Gi
     accessMode: ReadWriteOnce
     retain: true
     mountPath: /octobot/user
