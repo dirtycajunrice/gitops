@@ -46,7 +46,6 @@ persistence:
     mountPath: /octobot/user
   tentacles:
     enabled: true
-    nameOverride: "-"
     storageClass: do-block-storage
     size: 5Gi
     accessMode: ReadWriteOnce
@@ -54,7 +53,6 @@ persistence:
     mountPath: /octobot/tentacles
   logs:
     enabled: true
-    nameOverride: "-"
     storageClass: do-block-storage
     size: 5Gi
     accessMode: ReadWriteOnce
