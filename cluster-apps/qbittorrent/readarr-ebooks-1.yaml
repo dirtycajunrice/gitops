@@ -13,7 +13,8 @@ qbittorrent:
     QBT_Preferences__Connection__PortRangeMin: '50223'
     QBT_Preferences__Downloads__SavePath: /mnt/media/torrents/completed/readarr/
     QBT_Preferences__Downloads__TempPath: /mnt/media/torrents/incomplete/readarr/
-
+    QBT_BitTorrent__Session__DefaultSavePath: /mnt/media/torrents/completed/readarr/
+    QBT_BitTorrent__Session__TempPath: /mnt/media/torrents/incomplete/readarr/
   service:
     bittorrent:
       enabled: true

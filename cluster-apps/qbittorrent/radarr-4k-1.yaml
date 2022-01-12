@@ -5,7 +5,9 @@ global:
 qbittorrent:
   env:
     QBT_Preferences__Connection__PortRangeMin: '50215'
-
+    QBT_BitTorrent__Session__DefaultSavePath: /mnt/media/torrents/completed/radarr4k/
+    QBT_BitTorrent__Session__TempPath: /mnt/media/torrents/incomplete/radarr4k/
+    QBT_BitTorrent__Session__TempPathEnabled: 'true'
   service:
     bittorrent:
       enabled: true
