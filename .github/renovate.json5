@@ -72,7 +72,7 @@
     {
       "matchDatasources": ["docker"],
       "matchPackagePatterns": [
-        "^ghcr.io/k8s-at-home/.*",
+        //"^ghcr.io/k8s-at-home/.*",
         "^bodnapa/azoth-empire-(bot|web-app|graphql-api)",
         "ghcr.io/sct/overseerr",
         "phasecorex/red-discordbot",
@@ -86,8 +86,7 @@
     {
       "matchDatasources": ["docker"],
       "matchPackagePatterns": [
-        "bitnami/external-dns",
-        "^ghcr.io/k8s-at-home/qbittorrent"
+        "bitnami/external-dns"
       ],
       "versioning": "loose"
     }
