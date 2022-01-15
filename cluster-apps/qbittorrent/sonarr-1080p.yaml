@@ -3,6 +3,8 @@ global:
   iteration: 1
 
 qbittorrent:
+  image:
+    tag: v4.3.9
   env:
     # category: sonarr | save_path: /mnt/media/torrents/completed/sonarr/
     # category: imported | save_path: /mnt/media/torrents/completed/sonarr/
