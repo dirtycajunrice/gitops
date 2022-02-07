@@ -3,7 +3,7 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: kube-prometheus-stack
-    version: 23.2.0
+    version: 31.0.2
     repository: https://prometheus-community.github.io/helm-charts
     alias: kps
   - name: addons
