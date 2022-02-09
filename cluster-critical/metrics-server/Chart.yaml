@@ -3,5 +3,5 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: metrics-server
-    version: 5.10.11
+    version: 5.11.1
     repository: https://charts.bitnami.com/bitnami
