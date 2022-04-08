@@ -33,7 +33,7 @@ persistence:
         driver: secrets-store.csi.k8s.io
         readOnly: true
         volumeAttributes:
-          secretProviderClass: sg-autoquester
+          secretProviderClass: spacing-guild-autoquester
 
 imagePullSecrets:
   - name: docker-config-json
