@@ -8,7 +8,7 @@ addons:
     defaultObjectPath: spacing-guild/auto-quester
     secretObjects: true
     objects:
-      - name: PRIVATE_KEY_BOT_0
+      - name: PRIVATE_KEY_BOT
       - name: PRIVATE_KEY_BOT_1
       - name: PRIVATE_KEY_BOT_2
       - name: PRIVATE_KEY_BOT_3
