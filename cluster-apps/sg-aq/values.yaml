@@ -20,6 +20,9 @@ image:
   pullPolicy: Always
   tag: develop
 
+imagePullSecrets:
+  - name: docker-config-json
+
 strategy:
   type: Recreate
 
