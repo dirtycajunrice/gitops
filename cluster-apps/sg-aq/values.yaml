@@ -16,6 +16,7 @@ addons:
       - name: PRIVATE_KEY_BOT_5
       - name: PRIVATE_KEY_BOT_6
       - name: PRIVATE_KEY_BOT_7
+      - name: PASSWORD_GUILD_RPC
 
 image:
   repository: ghcr.io/spacing-guild/aq-bot
