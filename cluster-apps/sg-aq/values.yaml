@@ -20,6 +20,18 @@ image:
   pullPolicy: Always
   tag: develop
 
+persistence:
+  secrets:
+    enabled: true
+    type: custom
+    mountPath: /app/secrets
+    readOnly: true
+    volumeSpec:
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: sg-autoquester
 imagePullSecrets:
   - name: docker-config-json
 
