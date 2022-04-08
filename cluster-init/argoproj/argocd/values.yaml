@@ -165,3 +165,13 @@ argo-cd:
     env:
       - name: "ARGOCD_EXEC_TIMEOUT"
         value: "5m"
+
+  applicationSet:
+    enabled: true
+    fullnameOverride: applicationset
+    image:
+      repository: quay.io/argoproj/argocd-applicationset
+      tag: v0.4.1
+
+    args:
+      policy: create-update
