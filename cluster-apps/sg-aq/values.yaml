@@ -1,0 +1,28 @@
+global:
+  fullnameOverride: "sg-autoquester"
+
+addons:
+  spc:
+    enabled: true
+    defaultObjectPath: spacing-guild/auto-quester
+    objects:
+      - name: PRIVATE_KEY_BOT_0
+      - name: PRIVATE_KEY_BOT_1
+      - name: PRIVATE_KEY_BOT_2
+      - name: PRIVATE_KEY_BOT_3
+      - name: PRIVATE_KEY_BOT_4
+      - name: PRIVATE_KEY_BOT_5
+      - name: PRIVATE_KEY_BOT_6
+      - name: PRIVATE_KEY_BOT_7
+
+image:
+  repository: ghcr.io/spacing-guild/aq-bot
+  pullPolicy: Always
+  tag: develop
+
+strategy:
+  type: Recreate
+
+envFrom:
+  - secretRef:
+      name: sg-autoquester

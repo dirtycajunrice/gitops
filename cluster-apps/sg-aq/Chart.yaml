@@ -1,0 +1,7 @@
+name: spacing-guild-autoquester
+apiVersion: v2
+version: 1.0.0
+dependencies:
+  - name: common
+    repository: https://library-charts.k8s-at-home.com
+    version: 4.2.0
