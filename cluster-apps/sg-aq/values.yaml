@@ -47,4 +47,4 @@ service:
 
 envFrom:
   - secretRef:
-      name: sg-autoquester
+      name: spacing-guild-autoquesterK
