@@ -120,8 +120,8 @@ argo-cd:
         g, cajuntestemail@gmail.com, role:readonly
         g, throwawayrs1350@gmail.com, role:spacing-guild-admin
         g, nicholas.totsch@gmail.com, role:spacing-guild-admin
-        p, nicholas.totsch@gmail.com, applications, get, cajun-pro/spacing-guild-autoquester, allow
-        p, nicholas.totsch@gmail.com, applications, sync, cajun-pro/spacing-guild-autoquester, allow
+        p, nicholas.totsch@gmail.com, applications, get, cluster-apps/spacing-guild-autoquester, allow
+        p, nicholas.totsch@gmail.com, applications, sync, cluster-apps/spacing-guild-autoquester, allow
 
     ingress:
       enabled: true
