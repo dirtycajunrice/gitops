@@ -4,6 +4,6 @@
     "cluster": "do",
     "namespace": "ingress",
     "folderPath": "cluster-apps/itscontained",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   }
 ]
