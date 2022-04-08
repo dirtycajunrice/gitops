@@ -5,6 +5,7 @@ addons:
   spc:
     enabled: true
     defaultObjectPath: spacing-guild/auto-quester
+    secretObjects: true
     objects:
       - name: PRIVATE_KEY_BOT_0
       - name: PRIVATE_KEY_BOT_1
@@ -32,6 +33,7 @@ persistence:
         readOnly: true
         volumeAttributes:
           secretProviderClass: sg-autoquester
+
 imagePullSecrets:
   - name: docker-config-json
 
