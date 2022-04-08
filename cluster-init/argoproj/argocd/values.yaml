@@ -116,12 +116,12 @@ argo-cd:
       policy.csv: |
         g, nick@cajun.pro, role:admin
         g, nstgermain@ea.com, role:admin
-        g, kellinmcavoy@gmail.com, role:readonly
         g, cajuntestemail@gmail.com, role:readonly
         g, throwawayrs1350@gmail.com, role:spacing-guild-admin
         g, nicholas.totsch@gmail.com, role:spacing-guild-admin
         p, throwawayrs1350@gmail.com, applications, get, cluster-apps/spacing-guild-autoquester, allow
         p, throwawayrs1350@gmail.com, applications, sync, cluster-apps/spacing-guild-autoquester, allow
+        p, throwawayrs1350@gmail.com, applications, delete, cluster-apps/spacing-guild-autoquester, allow
 
     ingress:
       enabled: true
