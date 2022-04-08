@@ -4,6 +4,6 @@
     "cluster": "do",
     "namespace": "ingress",
     "folderPath": "cluster-apps/nginx/cajun-pro",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   }
 ]

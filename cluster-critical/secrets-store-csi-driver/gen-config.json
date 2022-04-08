@@ -4,14 +4,14 @@
     "cluster": "home",
     "namespace": "utility",
     "folderPath": "cluster-critical/secrets-store-csi-driver",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   },
   {
     "name": "secrets-store-csi-driver-do",
     "cluster": "do",
     "namespace": "utility",
     "folderPath": "cluster-critical/secrets-store-csi-driver",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   }
 ]
 

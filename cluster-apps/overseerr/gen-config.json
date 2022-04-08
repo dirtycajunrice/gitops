@@ -4,6 +4,6 @@
     "cluster": "home",
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/overseerr",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   }
 ]

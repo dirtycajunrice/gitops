@@ -4,6 +4,6 @@
     "cluster": "do",
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/xbackbone",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   }
 ]

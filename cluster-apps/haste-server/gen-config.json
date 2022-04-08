@@ -4,6 +4,6 @@
     "cluster": "do",
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/haste-server",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   }
 ]

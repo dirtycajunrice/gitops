@@ -4,6 +4,6 @@
     "cluster": "home",
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/organizr",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   }
 ]

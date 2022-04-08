@@ -4,6 +4,6 @@
     "cluster": "do",
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/bookstack",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   }
 ]

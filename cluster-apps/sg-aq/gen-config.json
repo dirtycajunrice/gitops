@@ -4,6 +4,6 @@
     "cluster": "do",
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/sg-aq",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   }
 ]

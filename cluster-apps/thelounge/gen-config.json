@@ -4,6 +4,6 @@
     "cluster": "do",
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/thelounge",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   }
 ]

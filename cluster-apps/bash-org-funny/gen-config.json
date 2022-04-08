@@ -4,6 +4,6 @@
     "cluster": "do",
     "namespace": "ingress",
     "folderPath": "cluster-apps/bash-org-funny",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   }
 ]

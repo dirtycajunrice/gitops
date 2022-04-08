@@ -32,6 +32,6 @@
     "cluster": "home",
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/arr/readarr",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   }
 ]

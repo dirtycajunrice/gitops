@@ -4,6 +4,6 @@
     "cluster": "do",
     "namespace": "cajun-pro",
     "folderPath": "cluster-apps/auto-voice-channels",
-    "valueFile": ""
+    "valueFile": "values.yaml"
   }
 ]
