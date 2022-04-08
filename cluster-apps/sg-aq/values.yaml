@@ -1,5 +1,6 @@
 global:
   fullnameOverride: "sg-autoquester"
+  cluster: "do"
 
 addons:
   spc:
