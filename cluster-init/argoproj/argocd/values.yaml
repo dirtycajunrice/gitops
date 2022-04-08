@@ -118,10 +118,11 @@ argo-cd:
         g, nstgermain@ea.com, role:admin
         g, kellinmcavoy@gmail.com, role:readonly
         g, cajuntestemail@gmail.com, role:readonly
-        p, role:spacing-guild-admin, applications, get, cajun-pro/spacing-guild-autoquester, allow
-        p, role:spacing-guild-admin, applications, sync, cajun-pro/spacing-guild-autoquester, allow
         g, throwawayrs1350@gmail.com, role:spacing-guild-admin
         g, nicholas.totsch@gmail.com, role:spacing-guild-admin
+        p, nicholas.totsch@gmail.com, applications, get, cajun-pro/spacing-guild-autoquester, allow
+        p, nicholas.totsch@gmail.com, applications, sync, cajun-pro/spacing-guild-autoquester, allow
+
     ingress:
       enabled: true
       ingressClassName: traefik
