@@ -16,6 +16,9 @@ addons:
       - name: PRIVATE_KEY_BOT_5
       - name: PRIVATE_KEY_BOT_6
       - name: PRIVATE_KEY_BOT_7
+      - name: PRIVATE_KEY_BOT_8
+      - name: PRIVATE_KEY_BOT_9
+      - name: PRIVATE_KEY_BOT_10
       - name: PASSWORD_GUILD_RPC
 
 image:
