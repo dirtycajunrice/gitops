@@ -2,7 +2,7 @@ vault:
   server:
     image:
       repository: "vault"
-      tag: "1.10.0"
+      tag: "1.10.1"
       pullPolicy: IfNotPresent
     ingress:
       enabled: true
