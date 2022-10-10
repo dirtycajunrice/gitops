@@ -4,7 +4,7 @@ global:
 image:
   repository: drakkarsoftware/octobot
   pullPolicy: IfNotPresent
-  tag: 0.4.3
+  tag: 0.4.10
 
 strategy:
   type: Recreate
