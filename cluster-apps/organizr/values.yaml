@@ -27,7 +27,7 @@ organizr:
       enabled: true
       nameOverride: "-"
       storageClass: cstor-replica-pool
-      size: 1Gi
+      size: 3Gi
       accessMode: ReadWriteOnce
       retain: true
   resources:
