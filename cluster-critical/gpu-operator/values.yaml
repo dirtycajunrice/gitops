@@ -1,0 +1,5 @@
+gpu-operator:
+  mig:
+    strategy: single
+  migManager:
+    enabled: false
