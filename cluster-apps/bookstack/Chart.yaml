@@ -3,7 +3,7 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: bookstack
-    version: 4.2.2
+    version: 5.1.2
     repository: https://k8s-at-home.com/charts/
   - name: addons
     version: 1.0.0
