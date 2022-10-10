@@ -3,5 +3,5 @@ apiVersion: v2
 version: 1.0.0
 dependencies:
   - name: organizr
-    version: 7.2.0
+    version: 7.4.2
     repository: https://k8s-at-home.com/charts/
