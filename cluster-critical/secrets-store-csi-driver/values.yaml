@@ -4,15 +4,15 @@ secrets-store-csi-driver:
   linux:
     image:
       repository: k8s.gcr.io/csi-secrets-store/driver
-      tag: v1.2.4
+      tag: v1.3.0
 
     registrarImage:
       repository: k8s.gcr.io/sig-storage/csi-node-driver-registrar
-      tag: v2.5.1
+      tag: v2.6.2
 
     livenessProbeImage:
       repository: k8s.gcr.io/sig-storage/livenessprobe
-      tag: v2.7.0
+      tag: v2.8.0
 
   logVerbosity: 0
   logFormatJSON: false
