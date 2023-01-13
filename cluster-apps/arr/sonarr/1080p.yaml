@@ -10,7 +10,7 @@ arr:
 #    tag: release-3.0.6.1342
   persistence:
     config:
-      size: 20Gi
+      size: 40Gi
 #  securityContext:
 #    runAsGroup: 500
 #    runAsUser: 0
