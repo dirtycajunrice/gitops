@@ -119,7 +119,13 @@ bookstack:
                   values:
                     - bookstack
             topologyKey: kubernetes.io/hostname
-
+  probes:
+    liveness:
+      spec:
+        initialDelaySeconds: 0
+        periodSeconds: 10
+        timeoutSeconds: 1
+        failureThreshold: 30
   persistence:
     env:
       enabled: true
