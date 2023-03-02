@@ -26,7 +26,7 @@ authentik:
 
   image:
     repository: ghcr.io/goauthentik/server
-    tag: 2023.2.2
+    tag: 2023.2.3
     # name: docker.beryju.org/authentik/server
     # tag: gh-next
     # name: jenslanghammer/authentik-test
