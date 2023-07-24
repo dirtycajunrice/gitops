@@ -6,7 +6,7 @@ overseerr:
   fullnameOverride: overseerr
   image:
     repository: ghcr.io/sct/overseerr
-    tag: 1.33.0
+    tag: 1.33.1
     pullPolicy: IfNotPresent
   env:
     TZ: America/Chicago
